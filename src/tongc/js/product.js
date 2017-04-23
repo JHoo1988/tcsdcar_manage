@@ -122,6 +122,7 @@ layui.use(['form', 'layer', 'global'], function () {
             getData: function () {
                 // var par = {};
                 // par.pageIndex = 1;
+
                 // par.pagesize = 999;
                 $.ajax({
                     url: global.url.mfindProductList,
