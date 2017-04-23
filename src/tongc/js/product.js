@@ -288,12 +288,66 @@ layui.use(['form', 'layer', 'global'], function () {
                     window.location.href = authUrl;
                 }
             },
+            onBridgeReady: function (prepay_id,paySign,randomStr) {
+                WeixinJSBridge.invoke(
+                    'getBrandWCPayRequest', {
+                        "appId": "wx6d8daf3b1d3821cc",     //公众号名称，由商户传入
+                        "timeStamp": new Date().getTime().toString(),         //时间戳，自1970年以来的秒数
+                        "nonceStr": randomStr, //随机串
+                        "package": "prepay_id="+prepay_id,
+                        "signType": "MD5",         //微信签名方式：
+                        "paySign": paySign //微信签名
+                    },
+                    function (res) {
+                        if (res.err_msg == "get_brand_wcpay_request:ok") {
+                        }     // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
+                    }
+                );
+            },
             // 发起微信支付
-            wxPayOrderById: function (orderCode, wechatOpenId, callback, fail, fn, orderType) {
-                var param = { orderCode: orderCode, payWay: 0, openId: wechatOpenId };
-                if (orderType != null) {
-                    param.orderType = orderType;
-                }
+            wxPayOrderById: function (prepay_id,paySign,randomStr,appId,timeStamp, callback, fail) {
+                // wx.chooseWXPay({
+                //     "appId": "wx6d8daf3b1d3821cc",     //公众号名称，由商户传入
+                //     "timeStamp": new Date().getTime().toString(),         //时间戳，自1970年以来的秒数
+                //     "nonceStr": randomStr, //随机串
+                //     "package": "prepay_id="+prepay_id,
+                //     "signType": "MD5",         //微信签名方式：
+                //     "paySign": paySign ,//微信签名
+                //     success: function (res) {
+                //         if (typeof callback === 'function') {
+                //             callback();
+                //         }
+                //     },
+                //     fail: function (res) {
+                //         if (typeof fail === 'function') {
+                //             fail();
+                //         }
+                //     }
+                // });
+                WeixinJSBridge.invoke(
+                    'getBrandWCPayRequest', {
+                        "appId": appId,     //公众号名称，由商户传入
+                        "timeStamp": timeStamp.toString(), //时间戳，自1970年以来的秒数
+                        "nonceStr": randomStr, //随机串
+                        "package": prepay_id,
+                        "signType": "MD5",         //微信签名方式：
+                        "paySign": paySign //微信签名
+                    },
+                    function (res) {
+                        if (res.err_msg == "get_brand_wcpay_request:ok") {
+                            // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
+                            if (typeof callback === 'function') {
+                                callback();
+                            }
+                        } else {
+                            if (typeof fail === 'function') {
+                                fail();
+                            }
+                        }
+                    }
+                );
+
+
                 // var url = 'http://third.5ujd.net:88/ha-thirdpart/v1/tbase/online/wechat/pay';
                 // jea.post(url, param, function (result) {
                 //     hideLoadin();
@@ -323,21 +377,15 @@ layui.use(['form', 'layer', 'global'], function () {
             /**
              * @func
              * @desc 微信支付
-             * @param {string} orderNo 订单号
-             * @param {string} wechatOpenId
              * @param {string} successBackUrl 支付成功跳转地址
              */
-            weChatPay: function (orderNo, wechatOpenId, successBackUrl) {
-                var orderType = 1;
-                tablevue.wxPayOrderById(orderNo, wechatOpenId, function () {
+            weChatPay: function (prepay_id,paySign,randomStr,appId,timeStamp, successBackUrl) {
+                tablevue.wxPayOrderById(prepay_id, paySign, randomStr,appId,timeStamp, function () {
                     layer.msg('支付成功', { time: 1500 });
                     window.location.href = successBackUrl;
                 }, function () {
                     layer.msg('支付失败', { time: 1500 });
-                }, function () {
-                    // 支付信息接口请求成功之后
-                    // apiWechat.processOrderPayType(orderNo, 1);
-                }, orderType);
+                });
             },
             handleUrlToWxOauth: function (url, type) {
                 var url = encodeURIComponent(url);
@@ -387,7 +435,7 @@ layui.use(['form', 'layer', 'global'], function () {
                         par.mobile='18971057583';
                         par.carBodyNo='20170423105931';
                         par.shopCode='BF181BE044';
-                        par.openid = openId;
+                        par.openId = openId;
                         $.ajax({
                             url: global.url.unifiedOrder,
                             type: 'POST',
@@ -396,8 +444,9 @@ layui.use(['form', 'layer', 'global'], function () {
                             success: function (data) {
                                 if (undefined != data && null != data && data.code == 200) {
                                     var result = data.data;
-                                    console.log('payment()-result.orderNo='+result.orderNo+',result.prepayId='+result.prepayId+',result.sign='+result.sign);
-                                    tablevue.weChatPay(result.orderNo,openId,'http://www.tcsdcar.com/m/paysuccess.html');
+                                    console.log('payment()-result.package='+result.package+',result.paySign='+result.paySign+',result.randomStr='+result.randomStr
+                                        +',result.nonceStr='+result.nonceStr);
+                                    tablevue.weChatPay(result.package,result.paySign,result.nonceStr,result.appId,result.timeStamp,'http://www.tcsdcar.com/m/paysuccess.html');
                                 } else {
                                     layer.msg('订单创建失败，请重试', { time: 1200 });
                                 }
