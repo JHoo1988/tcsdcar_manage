@@ -1,0 +1,17 @@
+@charset "UTF-8";
+@import "mixins";
+// 首页公用css
+@import "home/common";
+// banner
+@import "home/banner";
+// 优势
+@import "home/superiority";
+// 家电清洗
+@import "home/wash";
+// 家电维修,安装
+@import "home/repair";
+// 数码回收
+@import "home/recover";
+// 手机维修
+@import "home/phone-repair";
+

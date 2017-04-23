@@ -1,0 +1,69 @@
+@charset "UTF-8";
+@import "../mixins";
+
+$phone-repair-banner: '../images/banner/05.jpg';
+$phone-repair-banner-mobile: '../images/banner/05_m.jpg';
+
+// 手机维修
+.sec-phone-repair {
+    .bg {
+        background-image: url($phone-repair-banner-mobile);
+        background-position: center center;
+        background-size: cover;
+        height: 225px;
+    }
+    .bd {
+        color: #5a5a5a;
+    }
+    .title-en {
+        color: #ffa350;
+    }
+
+}
+
+@media (min-width: 768px) {
+    .sec-phone-repair {
+        position: relative;
+        .bg {
+            background-image: url($phone-repair-banner);
+            height: 450px;
+        }
+        .bd {
+            position: absolute;
+            top: 110px;
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    .sec-phone-repair {
+        .bg {
+            height: 480px;
+        }
+        .bd {
+            top: 125px;
+        }
+    }
+}
+
+@media (min-width: 1240px) {
+    .sec-phone-repair {
+        .bg {
+            height: 520px;
+        }
+        .bd {
+            top: 150px;
+        }
+    }
+}
+
+@media (min-width: 1880px) {
+    .sec-phone-repair {
+        .bg {
+            height: 829px;
+        }
+        .bd {
+            top: 270px;
+        }
+    }
+}

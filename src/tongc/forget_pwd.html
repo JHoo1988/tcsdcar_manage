@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>同创盛大管理系统</title>
+    <meta name="viewport" content="initial-scale=1.0,width=device-width">
+    <meta name="renderer" content="webkit"/>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/forget_pwd.css">
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+    <link rel="stylesheet" type="text/css" href="lib/layui/css/layui.css">
+</head>
+<body style="min-width: 1140px; background-color: #f8f8fa">
+<div style="padding: 120px 0 65px;">
+    <div class="login" style="width: 500px; margin: 0 auto;">
+        <div class="layui-form-item" style="width: 350px; margin: 0 auto;">
+            <div class="login-area-title">
+                <img src="css/img/login_header_icon.png" alt=""/>
+                <h2>商家服务平台</h2>
+            </div>
+        </div>
+    </div>
+    <div class="up-main" style="margin-top: 10px;">
+        <div class="f-pwd">
+            <form enctype="multipart/form-data" method="post" name="fileinfo" id="postForm">
+                <table class="register-info info-table">
+                    <tbody>
+                    <tr>
+                        <td>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label" style="width: 100px;"><b>*</b>登录手机号</label>
+                                <div class="layui-input-inline" style="width: 336px">
+                                    <input type="text" class="layui-input" id="userMobile" name="userMobile" maxlength="11" autocomplete="off"
+                                           placeholder="请输入您的手机号"/>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label" style="width: 100px;"><b>*</b>验证码</label>
+                                <div class="layui-input-inline" style="width: 205px;">
+                                    <input type="text" class="layui-input" id="mobile_verify" name="code" maxlength="4"
+                                           placeholder="请输入验证码"/>
+                                </div>
+                                <button type="button" class="layui-btn layui-btn-normal" id="get_verify" value="" style="width: 120px;">获取验证码</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label" style="width: 100px;"><b>*</b>新密码</label>
+                                <div class="layui-input-inline" style="width: 336px">
+                                    <input type="password" autocomplete="off" class="layui-input" id="userPwd" maxlength="16"
+                                           placeholder="请输入6到16位长度新密码"/>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label" style="width: 100px;"><b>*</b>确认新密码</label>
+                                <div class="layui-input-inline" style="width: 336px">
+                                    <input type="password" autocomplete="off" class="layui-input" id="confirm_userPwd" maxlength="16"
+                                           placeholder="请输入6到16位长度新密码"/>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label" style="width: 100px;"></label>
+                                <div class="layui-input-inline">
+                                    <input type="button" class="layui-btn layui-btn-normal" id="info_register"
+                                           value="重置密码"
+                                           tabindex="5" style="width: 336px; margin-top: 30px;">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <input type="hidden" name="userPwd" value="" id="userPwd1"/>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+    <div class="up-ft">
+        <div class="login-footer-img">
+            <img src="css/img/login_footer_icon.png" alt=""/>
+        </div>
+        <p>联系我们：全国统一服务热线 027-87688603</p>
+        <p>Copyright © 2016. 湖北同创盛大汽车服务有限公司. All Rights Reserved. 鄂ICP备17007702号-1</p>
+    </div>
+</div>
+
+<script src="lib/layui/layui.js"></script>
+<script src="config/main.js"></script>
+<script src="js/forget_pwd.js?v20170119"></script>
+</body>
+</html>

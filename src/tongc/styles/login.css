@@ -1,0 +1,18 @@
+.login{width: 100%; margin-bottom: 50px;}
+.login-area{width: 350px; margin: 0 auto;}
+.login-area-title{margin-left: 10px;}
+.login-area-title h2{font-size: 18px; color: #333; margin-left: 10px; display: inline-block; vertical-align: top; margin-top: 8px;}
+.login-form{margin-top: 55px;}
+.table-style{margin: 0 auto;}
+.table-style td{padding: 5px 0;}
+.table-style .table-p{font-size: 20px; color: #333; text-align: center; padding: 20px 0; border-bottom: 1px solid rgb(205, 205, 205); margin-bottom: 16px;}
+.inp-328{width: 336px !important;}
+.inp-190{width: 190px !important;}
+.inp-128{width: 128px !important; margin-left: 10px; border-radius: 2px;}
+.btn-w-100{width: 100% !important; font-size: 18px;}
+.login-footer-img{margin: 26px auto;}
+.login-area .a-register{font-size: 12px; float: left; color: #00BBFF; font-family: Tahoma; padding-bottom: 4px;}
+.login-area .a-forget-pws{font-size: 12px; float: right; color: #00BBFF; font-family: Tahoma; padding-bottom: 4px;}
+
+
+

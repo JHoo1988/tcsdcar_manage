@@ -1,0 +1,19 @@
+@charset "UTF-8";
+// ie7, ie8 兼容
+@import "header-ie";
+
+@import "home/common-ie";
+@import "home/banner-ie";
+@import "home/superiority-ie";
+@import "home/wash-ie";
+@import "home/repair-ie";
+@import "home/recover-ie";
+@import "home/phone-repair-ie";
+
+@import "brand/banner-ie";
+@import "brand/advantage-ie";
+@import "brand/partner-ie";
+@import "brand/city-ie";
+
+@import "footer-ie";
+@import "fixed-bottom-ie";

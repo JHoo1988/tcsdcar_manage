@@ -1,0 +1,19 @@
+@charset "UTF-8";
+@import "../mixins";
+
+$phone-repair-banner: '../images/banner/05.jpg';
+$phone-repair-banner-mobile: '../images/banner/05_m.jpg';
+
+// 手机维修
+
+.sec-phone-repair {
+    position: relative;
+    .bg {
+        background-image: url($phone-repair-banner);
+        height: 520px;
+    }
+    .bd {
+        position: absolute;
+        top: 150px;
+    }
+}

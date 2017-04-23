@@ -1,0 +1,24 @@
+@charset "UTF-8";
+// sec-banner
+$superiority-banner: '../images/banner/01.jpg';
+.home .sec-banner {
+    background-image: url($superiority-banner);
+    height: 520px;
+    background-size: auto;
+}
+
+.js-show-video-wrapper {
+    position: relative
+}
+
+.js-show-video,
+.js-show-video img {
+    display: block;
+}
+
+.js-show-video {
+    position: absolute;
+    cursor: pointer;
+    top: -310px;
+    left: 45%;
+}

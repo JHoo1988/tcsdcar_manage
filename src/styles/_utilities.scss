@@ -1,0 +1,33 @@
+@charset "UTF-8";
+@import "mixins";
+
+.cf {
+    @include cf();
+}
+
+.center-block {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.pull-right {
+    float: right !important;
+}
+
+.pull-left {
+    float: left !important;
+}
+
+/*flex布局容器*/
+.flex-content{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+    flex-wrap:wrap;
+    -webkit-flex-wrap:wrap;
+}

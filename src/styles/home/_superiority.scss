@@ -1,0 +1,194 @@
+@charset "UTF-8";
+@import "../mixins";
+
+$phone-bg-xs: '../images/phone@xs.png';
+$phone-bg-xl: '../images/phone@xl.png';
+
+// 优势
+.home {
+    .phone {
+        margin-left: 10%;
+        height: 174px;
+    }
+    .slider {
+        margin-top: -100px;
+        position: absolute;
+        background-image: url($phone-bg-xs);
+        background-size: cover;
+    }
+    .slider ul {
+        @include reset();
+    }
+    .slider {
+        width: 130px;
+        height: 260px;
+    }
+    .slider-content {
+        position: absolute;
+        top: 31px;
+        left: 15px;
+        overflow: hidden;
+    }
+    .slider-content,
+    .slider-content li,
+    .slider-content li img {
+        width: 108px;
+        height: 193px;
+    }
+    .slider-content ul {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: all .6s;
+    }
+    .slider-number {
+        display: none;
+    }
+    .sec-superiority {
+        margin-top: 6px;
+        position: relative;
+    }
+    .sec-superiority .bd {
+        width: auto;
+        max-width: 1200px;
+        margin: 20px 10%;
+        text-align: left;
+    }
+    .sec-superiority .title {
+        color: #00bbff;
+    }
+
+}
+
+@media (min-width: 768px) {
+    .home {
+        .phone {
+            padding-top: 40px;
+            margin-left: 6%;
+            height: auto;
+        }
+        .slider {
+            margin-top: 0;
+            width: 220px;
+            height: 440px;
+            transition: top .6s;
+        }
+        .slider.fixed {
+            //margin-top: -100px;
+            position: fixed;
+            top: 120px;
+        }
+        .slider-content {
+            top: 53px;
+            left: 26px;
+        }
+        .slider-content,
+        .slider-content li,
+        .slider-content li img {
+            width: 182px;
+            height: 326px;
+        }
+        .slider-number {
+            position: absolute;
+            top: 150px;
+            left: -32px;
+            display: block;
+        }
+        .slider-number ul {
+            @include reset();
+        }
+        .slider-number li span {
+            display: block;
+            width: 10px;
+            height: 10px;
+            overflow: hidden;
+            background-color: #00bbff;
+            border: 2px solid #fff;
+            border-radius: 8px;
+            line-height: 60px;
+            transition: all .2s;
+            margin-bottom: 10px;
+        }
+        .slider-number .active span{
+            background-color: #fff;
+            border: 2px solid #00bbff;
+        }
+        .sec-superiority .bd {
+            padding-top: 120px;
+            padding-left: 280px;
+            height: 360px;
+            margin: 0;
+            text-align: center;
+        }
+        .sec-superiority .bd .title {
+            font-size: 32px;
+            line-height: 48px;
+            margin-bottom: 10px;
+        }
+        .sec-superiority .bd .desc {
+            font-size: 18px;
+            line-height: 26px;
+            color: #666;
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    .home {
+        .slider-number {
+            left: -40px;
+        }
+        .sec-superiority .bd .title {
+            font-size: 42px;
+            line-height: 58px;
+        }
+        .sec-superiority .bd .desc {
+            font-size: 24px;
+            line-height: 32px;
+        }
+    }
+}
+
+@media (min-width: 1600px) {
+    .home {
+        .phone {
+            padding-top: 100px;
+            margin-left: 2%;
+        }
+        .slider {
+            width: 309px;
+            height: 616px;
+            background-image: url($phone-bg-xl);
+        }
+        .slider-content {
+            top: 74px;
+            left: 37px;
+        }
+        .slider-content,
+        .slider-content li,
+        .slider-content li img {
+            width: 255px;
+            height: 456px;
+        }
+        .slider-number {
+            top: 280px;
+            left: -80px;
+        }
+        .sec-superiority .bd {
+            padding-top: 120px;
+            padding-left: 460px;
+            height: 548px;
+            text-align: center;
+        }
+        .sec-superiority .bd .title {
+            font-size: 50px;
+            line-height: 70px;
+            margin-bottom: 16px;
+        }
+        .sec-superiority .bd .desc {
+            font-size: 28px;
+            line-height: 40px;
+            color: #666;
+        }
+    }
+}

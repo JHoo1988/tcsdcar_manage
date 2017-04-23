@@ -1,0 +1,832 @@
+@charset "UTF-8";
+/*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */
+/**
+ * 1. Change the default font family in all browsers (opinionated).
+ * 2. Prevent adjustments of font size after orientation changes in IE and iOS.
+ */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */ }
+
+/**
+ * Remove the margin in all browsers (opinionated).
+ */
+body {
+  margin: 0; }
+
+/* HTML5 display definitions
+   ========================================================================== */
+/**
+ * Add the correct display in IE 9-.
+ * 1. Add the correct display in Edge, IE, and Firefox.
+ * 2. Add the correct display in IE.
+ */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section,
+summary {
+  /* 1 */
+  display: block; }
+
+/**
+ * Add the correct display in IE 9-.
+ */
+audio,
+canvas,
+progress,
+video {
+  display: inline-block; }
+
+/**
+ * Add the correct display in iOS 4-7.
+ */
+audio:not([controls]) {
+  display: none;
+  height: 0; }
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline; }
+
+/**
+ * Add the correct display in IE 10-.
+ * 1. Add the correct display in IE.
+ */
+template,
+[hidden] {
+  display: none; }
+
+/* Links
+   ========================================================================== */
+/**
+ * 1. Remove the gray background on active links in IE 10.
+ * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
+ */
+a {
+  background-color: transparent;
+  /* 1 */
+  -webkit-text-decoration-skip: objects;
+  /* 2 */ }
+
+/**
+ * Remove the outline on focused links when they are also active or hovered
+ * in all browsers (opinionated).
+ */
+a:active,
+a:hover {
+  outline-width: 0; }
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * 1. Remove the bottom border in Firefox 39-.
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  border-bottom: none;
+  /* 1 */
+  text-decoration: underline;
+  /* 2 */
+  text-decoration: underline dotted;
+  /* 2 */ }
+
+/**
+ * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
+ */
+b,
+strong {
+  font-weight: inherit; }
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder; }
+
+/**
+ * Add the correct font style in Android 4.3-.
+ */
+dfn {
+  font-style: italic; }
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0; }
+
+/**
+ * Add the correct background and color in IE 9-.
+ */
+mark {
+  background-color: #ff0;
+  color: #000; }
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%; }
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline; }
+
+sub {
+  bottom: -0.25em; }
+
+sup {
+  top: -0.5em; }
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove the border on images inside links in IE 10-.
+ */
+img {
+  border-style: none; }
+
+/**
+ * Hide the overflow in IE.
+ */
+svg:not(:root) {
+  overflow: hidden; }
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */ }
+
+/**
+ * Add the correct margin in IE 8.
+ */
+figure {
+  margin: 1em 40px; }
+
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box;
+  /* 1 */
+  height: 0;
+  /* 1 */
+  overflow: visible;
+  /* 2 */ }
+
+/* Forms
+   ========================================================================== */
+/**
+ * 1. Change font properties to `inherit` in all browsers (opinionated).
+ * 2. Remove the margin in Firefox and Safari.
+ */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  /* 1 */
+  margin: 0;
+  /* 2 */ }
+
+/**
+ * Restore the font weight unset by the previous rule.
+ */
+optgroup {
+  font-weight: bold; }
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+button,
+input {
+  /* 1 */
+  overflow: visible; }
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+button,
+select {
+  /* 1 */
+  text-transform: none; }
+
+/**
+ * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
+ *    controls in Android 4.
+ * 2. Correct the inability to style clickable types in iOS and Safari.
+ */
+button,
+html [type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */ }
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0; }
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText; }
+
+/**
+ * Change the border, margin, and padding in all browsers (opinionated).
+ */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em; }
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+legend {
+  box-sizing: border-box;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  display: table;
+  /* 1 */
+  max-width: 100%;
+  /* 1 */
+  padding: 0;
+  /* 3 */
+  white-space: normal;
+  /* 1 */ }
+
+/**
+ * Remove the default vertical scrollbar in IE.
+ */
+textarea {
+  overflow: auto; }
+
+/**
+ * 1. Add the correct box sizing in IE 10-.
+ * 2. Remove the padding in IE 10-.
+ */
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */ }
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto; }
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */ }
+
+/**
+ * Remove the inner padding and cancel buttons in Chrome and Safari on OS X.
+ */
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none; }
+
+/**
+ * Correct the text style of placeholders in Chrome, Edge, and Safari.
+ */
+::-webkit-input-placeholder {
+  color: inherit;
+  opacity: 0.54; }
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */ }
+
+.cf {
+  *zoom: 1; }
+  .cf:after, .cf:before {
+    content: " ";
+    /* 1 */
+    display: table;
+    /* 2 */ }
+  .cf:after {
+    clear: both; }
+
+.center-block {
+  display: block;
+  margin-right: auto;
+  margin-left: auto; }
+
+.pull-right {
+  float: right !important; }
+
+.pull-left {
+  float: left !important; }
+
+/*flex布局容器*/
+.flex-content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+  flex-wrap: wrap;
+  -webkit-flex-wrap: wrap; }
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  outline: 0;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none; }
+
+* {
+  margin: 0;
+  padding: 0; }
+
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+html, body {
+  width: 100%;
+  height: 100%; }
+
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */ }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  font-family: "Helvetica Neue", Helvetica, STHeiTi, Arial, sans-serif;
+  background-color: #ffffff; }
+
+textarea, select, input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  appearance: none; }
+
+/**
+ * 清洗主页
+ */
+.page-wash-m {
+  position: absolute;
+  z-index: 1;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #fc9b10; }
+
+.page-wash-m .page-container {
+  position: relative;
+  max-width: 540px;
+  min-width: 320px;
+  height: 100%;
+  margin: 0 auto; }
+
+.page-wash-m .main {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 60px;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch; }
+
+.page-wash-m .section-banner img {
+  width: 100%; }
+
+.page-wash-m .section-product-list {
+  padding: 4px;
+  width: 100%;
+  overflow: hidden; }
+  .page-wash-m .section-product-list ul, .page-wash-m .section-product-list li {
+    margin: 0;
+    padding: 0;
+    list-style: none; }
+  .page-wash-m .section-product-list li {
+    overflow: hidden;
+    background-color: #eeeeee;
+    margin-bottom: 4px; }
+  .page-wash-m .section-product-list .selected {
+    background-color: #ff9600; }
+  .page-wash-m .section-product-list .product {
+    width: 78%; }
+  .page-wash-m .section-product-list .btn {
+    width: 21%;
+    cursor: pointer; }
+  .page-wash-m .section-product-list .btn img,
+  .page-wash-m .section-product-list .product img {
+    display: block;
+    width: 100%; }
+
+.page-wash-m .section-text {
+  width: 100%;
+  overflow: hidden; }
+  .page-wash-m .section-text img {
+    display: block;
+    width: 100%; }
+
+.page-wash-m .footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 60px;
+  overflow: hidden;
+  padding: 10px 12px;
+  background-color: #f7f7f7; }
+  .page-wash-m .footer .shop-cart-num {
+    margin-right: 12px;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background: url("images/unselected.png?__inline") no-repeat;
+    background-size: cover; }
+  .page-wash-m .footer .badge {
+    display: none; }
+  .page-wash-m .footer .shop-cart-num.selected {
+    background-image: url("images/selected.png?__inline"); }
+  .page-wash-m .footer .shop-cart-num.selected .badge {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    display: block;
+    background-color: #dd0101;
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+    text-align: center;
+    border-radius: 7px;
+    font-size: 10px;
+    color: #fff; }
+  .page-wash-m .footer .button-group {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    flex-wrap: wrap-reverse !important; }
+  .page-wash-m .footer .btn-call {
+    background: #ff911b url("images/btn-call.png?__inline") no-repeat 50% 50%; }
+  .page-wash-m .footer .btn-call {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    min-width: 110px;
+    height: 40px;
+    background-size: cover;
+    border-radius: 5px;
+    line-height: 500px;
+    overflow: hidden; }
+  .page-wash-m .footer .btn-booking {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #ff8a00;
+    background-color: #ff8a00;
+    border-radius: 5px;
+    font-size: 20px;
+    color: #fff; }
+
+/**
+ * 在线预约
+ */
+.page-booking-m {
+  z-index: 2;
+  background-color: #fff;
+  overflow-x: hidden;
+  overflow-y: auto; }
+  .page-booking-m .title_bar {
+    height: 66px;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 2;
+    overflow: hidden; }
+    .page-booking-m .title_bar .close-dialog {
+      width: 56px;
+      height: 50px;
+      float: left;
+      padding: 12px 16px;
+      position: relative;
+      bottom: 56px; }
+    .page-booking-m .title_bar h1 {
+      font-size: 4rem;
+      line-height: 66px;
+      text-align: center;
+      margin: 0;
+      color: #333333;
+      font-weight: normal; }
+  .page-booking-m .main {
+    bottom: 0; }
+  .page-booking-m .title {
+    font-family: "Microsoft YaHei";
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: #666666;
+    padding-left: 21px;
+    font-size: 3.2rem;
+    font-weight: 100;
+    background-color: #EDEDED; }
+  .page-booking-m .title span {
+    background-color: #faaacd;
+    color: #722245;
+    font-size: 30px;
+    font-weight: 400; }
+
+.chooseds {
+  height: 72px;
+  width: 74%;
+  float: left;
+  background-color: #FFFFFF;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+  flex-wrap: wrap;
+  -webkit-flex-wrap: wrap; }
+
+select {
+  width: 33%; }
+
+.page-booking-m .service-list {
+  padding: 0 21px;
+  border-top: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc; }
+  .page-booking-m .service-list .choosed {
+    height: 72px;
+    background-color: #FFFFFF;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap; }
+    .page-booking-m .service-list .choosed .name {
+      font-size: 3.2rem;
+      color: #333333;
+      line-height: 72px; }
+    .page-booking-m .service-list .choosed .price {
+      font-size: 3.2rem;
+      color: #e00942;
+      line-height: 72px; }
+    .page-booking-m .service-list .choosed .edt {
+      width: 39px;
+      height: 39px;
+      font-size: 3.2rem;
+      color: #333333;
+      float: left;
+      margin-top: 15px; }
+    .page-booking-m .service-list .choosed .num_div {
+      position: relative;
+      left: -1px;
+      width: 39px;
+      height: 39px;
+      overflow: hidden; }
+      .page-booking-m .service-list .choosed .num_div img {
+        width: 39px;
+        height: 39px; }
+      .page-booking-m .service-list .choosed .num_div .num_span {
+        position: relative;
+        bottom: 35px; }
+    .page-booking-m .service-list .choosed .addnum {
+      position: relative;
+      left: -2px; }
+    .page-booking-m .service-list .choosed .tai {
+      color: #666;
+      font-size: 3rem;
+      margin-left: 10px;
+      line-height: 72px; }
+  .page-booking-m .service-list .hidden {
+    display: none; }
+
+.diveline {
+  height: 1px;
+  background-color: #dddddd; }
+
+.page-booking-m .booking-form {
+  padding: 0 16px;
+  border-top: 1px solid #cccccc; }
+  .page-booking-m .booking-form .form-group {
+    height: 72px;
+    background-color: #FFFFFF; }
+    .page-booking-m .booking-form .form-group .form-title {
+      font-size: 3.2rem;
+      color: #000000;
+      margin-right: 2%;
+      line-height: 72px;
+      width: 22%;
+      display: inline-block; }
+  .page-booking-m .booking-form .form-select,
+  .page-booking-m .booking-form .form-text {
+    height: 70px;
+    /* padding: 10px; */
+    background-color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    /* border-radius: 3px; */
+    color: #333333;
+    font-size: 3rem; }
+  .page-booking-m .booking-form .form-text {
+    width: 74%; }
+
+.bottom_bar {
+  height: 78px;
+  background-color: #FFFFFF;
+  border-top: 1px solid #dddddd;
+  padding: 0 21px; }
+  .bottom_bar .gongji {
+    font-size: 18px;
+    color: #666666;
+    position: relative;
+    top: 20px; }
+  .bottom_bar .jiage {
+    font-size: 25px;
+    color: #e00942;
+    position: relative;
+    top: 20px; }
+  .bottom_bar .btn-booking {
+    width: 140px;
+    height: 48px;
+    border: 1px solid #FC9B0F;
+    background-color: #FC9B0F;
+    border-radius: 5px;
+    font-size: 24px;
+    position: relative;
+    margin-top: -24px;
+    top: 50%;
+    color: #fff;
+    float: right; }
+
+@media all and (min-width: 1080px) {
+  html {
+    font-size: 60%; } }
+@media all and (min-width: 749px) and (max-width: 1080px) {
+  html {
+    font-size: 50%; } }
+@media all and (min-width: 643px) and (max-width: 749px) {
+  html {
+    font-size: 45%; } }
+@media all and (min-width: 480px) and (max-width: 643px) {
+  html {
+    font-size: 40%; } }
+@media all and (min-width: 320px) and (max-width: 480px) {
+  html {
+    font-size: 35%; } }
+@media all and (max-width: 320px) {
+  html {
+    font-size: 30%; }
+    html .page-booking-m .title_bar {
+      height: 55px;
+      background-color: #fff;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+      position: relative;
+      z-index: 2;
+      overflow: hidden; }
+      html .page-booking-m .title_bar h1 {
+        font-size: 4rem;
+        line-height: 55px;
+        text-align: center;
+        margin: 0;
+        color: #333333;
+        font-weight: normal; }
+      html .page-booking-m .title_bar .close-dialog {
+        width: 42px;
+        height: 38px;
+        padding: 8px 10px;
+        bottom: 46px; }
+    html .page-booking-m .service-list .choosed {
+      height: 55px;
+      background-color: #FFFFFF;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      text-align: center;
+      justify-content: space-between;
+      -webkit-justify-content: space-between;
+      flex-wrap: wrap;
+      -webkit-flex-wrap: wrap; }
+      html .page-booking-m .service-list .choosed .price {
+        font-size: 3.2rem;
+        color: #e00942;
+        line-height: 55px; }
+      html .page-booking-m .service-list .choosed .name {
+        font-size: 3.2rem;
+        color: #333333;
+        line-height: 55px; }
+      html .page-booking-m .service-list .choosed .edt {
+        width: 30px;
+        height: 30px;
+        font-size: 3.2rem;
+        color: #333333;
+        float: left;
+        margin-top: 12px; }
+      html .page-booking-m .service-list .choosed .tai {
+        line-height: 55px; }
+      html .page-booking-m .service-list .choosed .num_div .num_span {
+        bottom: 28px; }
+      html .page-booking-m .service-list .choosed .num_div img {
+        width: 30px;
+        height: 30px; }
+    html .bottom_bar {
+      height: 58px; }
+      html .bottom_bar .btn-booking {
+        width: 100px;
+        height: 40px;
+        font-size: 18px;
+        margin-top: -20px; }
+      html .bottom_bar .jiage {
+        font-size: 22px;
+        top: 15px; }
+      html .bottom_bar .gongji {
+        font-size: 16px;
+        top: 14px; } }
+
+/*# sourceMappingURL=wash.css.map */

@@ -1,0 +1,196 @@
+@charset "UTF-8";
+@import "../../../styles/mixins";
+@import "../../../styles/utilities";
+
+.fixed-bottom-bar{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #FFFFFF;
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+  -moz-box-shadow: 0 -1px 3px #ccc;
+  box-shadow: 0 -1px 3px #ccc;
+  .btn-call-phone{
+    display: inline-block;
+    font-size: 1rem;
+    background-color: #ffb836;
+    color: #fff;
+    border-radius: 4px;
+    width: 7.5rem;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    text-decoration: none;
+    margin-left: 1rem;
+    .tel_content{
+      position: relative;
+      left: 50%;
+      margin-left: -3rem;
+      .icon-call{
+        display: inline-block;
+        vertical-align: middle;
+        height: 1.5rem;
+      }
+    }
+  }
+  .btn-open{
+    display: inline-block;
+    font-size: 1rem;
+    background-color: #0bf;
+    color: #fff;
+    border-radius: 4px;
+    width: 7.5rem;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    text-align: center;
+    text-decoration: none;
+    right: 1rem;
+    position: absolute;
+  }
+  .btn-open:active{
+    box-shadow: 1px 1px 3px #cccccc;
+  }
+}
+.fixed-mask-layer{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0,0,0,0.2);
+  z-index: 3;
+}
+.fixed-bottom-form{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 10001;
+  .form-content{
+    position: relative;
+    background-color: #ffffff;
+    padding: 0.5rem 1.5rem 0.4rem 1.5rem;
+    position: relative;
+    .form-title{
+      position: relative;
+      font-size: 1rem;
+      text-align: center;
+      font-weight: 500;
+      z-index: 1;
+      margin-bottom: 0.5rem;
+      .title-span{
+        background-color: #ffffff;
+        padding: 0 1rem;
+        z-index: 2;
+        color: #00bbff;
+      }
+      &:after{
+        z-index: -1;
+        content: " ";
+        position: absolute;
+        border-bottom: 1px solid #00bbff;
+        width: 100%;
+        left: 0;
+        top: 50%;
+      }
+    }
+    .input-row{
+      margin-bottom: 0.5rem;
+      white-space: nowrap;
+      .input-txt{
+        display: inline-block;
+        vertical-align: middle;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        padding: 0.5rem 0.8rem;
+        height: 2.5rem;
+      }
+      .btn-get-code{
+        display: inline-block;
+        vertical-align: middle;
+        text-align: center;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        background-color: #F2F5F7;
+        font-size: 0.8rem;
+        height: 2.5rem;
+        line-height: 2.5rem;
+        color: #666666;
+        margin-left: 5%;
+      }
+      .btn-get-code:active{
+        box-shadow: 1px 1px 3px #cccccc;
+      }
+      .btn-get-code.disabled{
+        color: #c0c0c0;
+      }
+      .input-txt-area{
+        display: inline-block;
+        font-size: 0.8rem;
+        border: 1px solid #cccccc;
+        color: #666666;
+        padding: 0.4rem 0.6rem;
+        resize:none;
+        border-radius: 4px;
+        height: 4rem;
+      }
+      .col-100{
+        width: 100%;
+      }
+      .col-50{
+        width: 50%;
+      }
+      .col-45{
+        width: 45%;
+      }
+    }
+    .item-title{
+      font-size: 1rem;
+      line-height: 1.2rem;
+      padding-bottom: 0.4rem;
+      .main-char{
+        color: #00bbff;
+      }
+      .minor-char{
+        color: #666666;
+      }
+    }
+    .sui-check-box{
+      margin-bottom: 0.5rem;
+      .check-item{
+        display: inline-block;
+        font-size: 0.8rem;
+        border-radius: 4px;
+        line-height: 1.2rem;
+        padding: 0.3rem 0.4rem;
+        border: 1px solid #cccccc;
+        background-color: #ffffff;
+        color: #666666;
+        margin-right: 0.3rem;
+        margin-bottom: 0.3rem;
+      }
+      .check-item.checked{
+        border: 1px solid #00BCFF;
+        background-color: #00BCFF;
+        color: #ffffff;
+      }
+    }
+    .btn-box{
+      width: 100%;
+      padding: 0 0 0.5rem 0;
+      .btn-submit{
+        display: inline-block;
+        width: 100%;
+        font-size: 1rem;
+        line-height: 2.5rem;
+        color: #ffffff;
+        background-color: #00BCFF;
+        text-align: center;
+        border-radius: 4px;
+      }
+      .btn-submit:active{
+        box-shadow: 1px 1px 3px #cccccc;
+      }
+    }
+  }
+}

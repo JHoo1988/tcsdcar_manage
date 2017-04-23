@@ -1,0 +1,207 @@
+@charset "UTF-8";
+@import "../mixins";
+
+$linkage-banner: '../images/banner/linkage.jpg';
+$linkage-banner-mobile: '../images/banner/linkage_m.jpg';
+$superiority-banner: '../images/banner/01.jpg';
+$superiority-banner-mobile: '../images/banner/01_m.jpg';
+$buyout-banner: '../images/banner/buyoutprice_banner.jpg';
+$buyout-banner-mobile: '../images/banner/buyoutprice_banner_m.jpg';
+$registration-banner: '../images/banner/service_provider_registration_banner.jpg';
+$registration-banner-mobile: '../images/banner/service_provider_registration_banner_m.png';
+
+.site-main{
+    z-index: 0;
+}
+.home .linkage-banner {
+    background: url($linkage-banner-mobile) no-repeat;
+    background-size: contain;
+    -moz-background-size:contain;
+    -webkit-background-size:contain;
+    -o-background-size:contain;
+    height: 240px;
+    width: 100%;
+}
+
+.home .sec-banner {
+    background: url($superiority-banner-mobile) no-repeat;
+    background-size: contain;
+    -moz-background-size:contain;
+    -webkit-background-size:contain;
+    -o-background-size:contain;
+    height: 240px;
+    width: 100%;
+}
+.buyoutprice_banner{
+    background: url($buyout-banner-mobile) no-repeat;
+    background-size: contain;
+    -moz-background-size:contain;
+    -webkit-background-size:contain;
+    -o-background-size:contain;
+    height: 240px;
+    width: 100%;
+}
+.service_provider_registration_banner{
+    background: url($registration-banner-mobile) no-repeat;
+    background-size: contain;
+    -moz-background-size:contain;
+    -webkit-background-size:contain;
+    -o-background-size:contain;
+    height: 240px;
+    width: 100%;
+}
+
+.js-show-video-wrapper {
+    display: none;
+    position: relative
+}
+
+.js-show-video,
+.js-show-video img {
+    display: block;
+}
+
+.js-show-video {
+    position: absolute;
+    cursor: pointer;
+    opacity: .5;
+    animation: showVideButton 1s;
+    -webkit-animation: showVideButton 1s;
+    -moz-animation: showVideButton 1s;
+    animation-iteration-count:infinite;
+    -webkit-animation-iteration-count:infinite;
+    -moz-animation-iteration-count:infinite;
+}
+
+//.swiper-slide img {
+//    width: 100%;
+//    height: auto;
+//    max-height: 690px;
+//    max-width: 1920px;
+//}
+.swiper-lazy-preloader{
+    margin-top: 150px;
+}
+
+@keyframes showVideButton {
+    0% {
+        opacity: .5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes showVideButton /* Safari 与 Chrome */
+{
+    0% {
+        opacity: .5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes showVideButton /* Safari 与 Chrome */
+{
+    0% {
+        opacity: .5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@media (min-width: 768px) {
+    .home .sec-banner {
+        background-image: url($superiority-banner);
+        margin-top: 90px;
+        height: 430px;
+    }
+    .home .linkage-banner{
+        background-image: url($linkage-banner);
+        margin-top: 90px;
+        height: 430px;
+    }
+    .buyoutprice_banner{
+        background-image: url($buyout-banner);
+        margin-top: 90px;
+        height: 430px;
+    }
+    .service_provider_registration_banner{
+        background-image: url($registration-banner);
+        margin-top: 90px;
+        height: 430px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .home .sec-banner {
+        height: 480px;
+    }
+    .home .linkage-banner {
+        height: 480px;
+    }
+    .buyoutprice_banner{
+        height: 480px;
+    }
+    .service_provider_registration_banner{
+        height: 480px;
+    }
+    .js-show-video-wrapper {
+        display: block;
+    }
+    .js-show-video,
+    .js-show-video img {
+        width: 120px;
+        height: 85px;
+    }
+    .js-show-video {
+        top: -290px;
+        left: 42%;
+    }
+}
+
+@media (min-width: 1240px) {
+    .home .sec-banner {
+        height: 520px;
+    }
+    .home .linkage-banner {
+        height: 520px;
+    }
+    .buyoutprice_banner{
+        height: 520px;
+    }
+    .service_provider_registration_banner{
+        height: 520px;
+    }
+    .js-show-video {
+        top: -310px;
+        left: 45%;
+    }
+}
+
+@media (min-width: 1600px) {
+    .home .sec-banner {
+        height: 692px;
+    }
+
+    .home .linkage-banner {
+        height: 692px;
+    }
+    .buyoutprice_banner{
+        height: 692px;
+    }
+    .service_provider_registration_banner{
+        height: 690px;
+    }
+    .js-show-video,
+    .js-show-video img {
+        width: 175px;
+        height: 125px;
+    }
+    .js-show-video {
+        top: -420px;
+        left: 45%;
+    }
+}

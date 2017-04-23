@@ -1,0 +1,21 @@
+@charset "UTF-8";
+@import "../mixins";
+
+$wash-banner: '../images/banner/02.jpg';
+$wash-banner-mobile: '../images/banner/02_m.jpg';
+
+// 家电清洗
+
+.sec-wash {
+    position: relative;
+    .bg {
+        background-image: url($wash-banner);
+        height: 520px;
+    }
+    .bd {
+        position: absolute;
+        top: 150px;
+    }
+}
+
+

@@ -1,0 +1,265 @@
+/**
+ * Created by 焦红 on 2017/3/4.
+ * tel:18971057583
+ */
+@charset "UTF-8";
+
+html {
+  background-color: #ffffff;
+  font-size: 12px;
+  min-width: 320px;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul, li, dl, dt, dd, b {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+body, table, div, img, article, aside, ul, ol, li, menu, h1, h2, h3, h4,
+h5, h6, p, button, input, section, textarea {
+  box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.sh{
+  display: none;
+}
+header {
+  width: 100%;
+  position: relative;
+  background-color: #ffffff;
+  -moz-box-shadow: 0 1px 3px #ccc;
+  box-shadow: 0 1px 3px #ccc;
+  h1 {
+    font-size: 5rem;
+    color: #666666;
+    text-align: center;
+    font-weight: normal;
+    padding: 3%;
+  }
+}
+
+.weui_mask_transparent {
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 3;
+}
+.weui_toast{
+  top: 40%;
+}
+
+.top {
+  .title-img {
+    width: 100%;
+  }
+}
+.table {
+  width: 100%;
+  color: #666666;
+  padding: 3% 3% 20% 3%;
+  .type1 {
+    margin-top: 7%;
+    .type-title {
+      margin-bottom: 10px;
+      font-size: 4rem;
+    }
+  }
+  .product-tb {
+    width: 100%;
+    text-align: center;
+    border-left: solid 2px #F3F4F8;
+    border-top: solid 2px #F3F4F8;
+    .table-tr {
+      td {
+        border-right: solid 2px #F3F4F8;
+        border-bottom: solid 2px #F3F4F8;
+        width: 33%;
+        padding-top: 7%;
+        padding-bottom: 7%;
+        img {
+          width: 40%;
+          display: inline-block;
+        }
+        .car-type {
+          margin-top: 6%;
+          font-size: 4rem;
+        }
+      }
+      .checked {
+        background-color: rgba(52,152,159,0.15);
+      }
+    }
+  }
+}
+
+.fixed-bottom-bar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 2;
+  background-color: #FFFFFF;
+  -moz-box-shadow: 0 -1px 3px #ccc;
+  box-shadow: 0 -1px 3px #ccc;
+  #price {
+    float: left;
+    color: #ff6c60;
+    font-size: 7rem;
+    font-weight: bold;
+    line-height: 1;
+    padding-top: 4%;
+    padding-left: 4%;
+  }
+  .el-button {
+    display: inline-block;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    background: #FF8C00;
+    border: 1px solid #FF8C00;
+    color: #fff;
+    -webkit-appearance: none;
+    text-align: center;
+    box-sizing: border-box;
+    outline: none;
+    margin: 0;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    padding: 4% 10%;
+    font-size: 6rem;
+    border-radius: 0;
+    float: right;
+  }
+  .disable{
+    background: #C0CCDA;
+    border: 1px solid #C0CCDA;
+    disabled:disabled;
+  }
+}
+
+.layui-layer {
+  min-width: 320px;
+  .layui-layer-title {
+    font-size: 5rem;
+    padding: 7%;
+    height: 0;
+    line-height: 0;
+  }
+}
+
+.layui-layer-btn .layui-layer-btn0 {
+  font-size: 5rem;
+  width: 50%;
+  height: 50%;
+  line-height: 250%;
+}
+
+#get-value {
+  p {
+    font-size: 4rem;
+    color: #333;
+  }
+  .description {
+    font-size: 4rem;
+    color: #666;
+    margin: 7%;
+  }
+  .ipt {
+    width: 100%;
+    font-size: 4rem;
+    color: #333;
+    padding: 2% 2%;
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+  }
+  .form_sub {
+    margin: 0 7%;
+  }
+  .car-num {
+    margin-top: 3%;
+  }
+
+  .order-tips-title {
+    overflow: hidden;
+    background-color: #F8F8F8;
+    border-radius: 2px 2px 0 0;
+    border-bottom: 1px solid #eee;
+    .title {
+      font-size: 5rem;
+      color: #333;
+      float: left;
+      margin-left: 7%;
+      padding-top: 3%;
+      padding-bottom: 3%;
+    }
+    .closedialog {
+      float: right;
+      font-size: 5rem;
+      padding: 3% 6%;
+      border: 0px solid #eee;
+      border-left: 1px solid #ccc;
+      background-color: #F8F8F8;
+    }
+  }
+}
+
+.dowebok {
+  list-style-type: none;
+  margin: 0 auto;
+  width: 80%;
+  li {
+    display: inline-block;
+    margin: 0px 1%;
+    width: 30%;
+  }
+  input.labelauty + label {
+    font: 4rem "Microsoft Yahei";
+    width: 80%;
+  }
+}
+
+@media all and (min-width: 1080px) {
+  html {
+    font-size: 80%;
+  }
+}
+
+@media all and (min-width: 749px) and (max-width: 1080px) {
+  html {
+    font-size: 62.5%;
+  }
+}
+
+@media all and (min-width: 643px) and (max-width: 749px) {
+  html {
+    font-size: 50%;
+  }
+}
+
+@media all and (min-width: 480px) and (max-width: 643px) {
+  html {
+    font-size: 35%;
+  }
+}
+
+@media all and (min-width: 321px) and (max-width: 480px) {
+  html {
+    font-size: 25%;
+  }
+}
+
+@media all and (min-width: 320px) and (max-width: 424px) {
+  html {
+    font-size: 24%;
+  }
+}
+
+@media all and (max-width: 320px) {
+  html {
+    font-size: 20%;
+  }
+}

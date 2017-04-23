@@ -1,0 +1,25 @@
+@charset "UTF-8";
+@import "../mixins";
+
+$repair-banner: '../images/banner/03.jpg';
+$repair-banner-xl: '../images/banner/03_xl.jpg';
+
+// 家电维修
+
+.sec-repair {
+    position: relative;
+    .bg {
+        height: 520px;
+        background-image: url($repair-banner);
+    }
+    .bd {
+        position: absolute;
+        top: 150px;
+        width: 100%;
+        text-align: center;
+        color: #fff;
+    }
+    .title-en {
+        color: #fff;
+    }
+}

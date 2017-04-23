@@ -1,0 +1,85 @@
+@charset "UTF-8";
+@import "../mixins";
+
+// 首页公用css
+.home {
+    .site-main {
+        max-width: 1920px;
+        margin: 0 auto;
+    }
+    .bd {
+        margin: 32px 0;
+    }
+    .bd .title {
+        @include reset();
+        font-weight: 400;
+    }
+    .title {
+        font-size: 20px;
+        line-height: 32px;
+    }
+
+    .bd .desc {
+        @include reset();
+        font-size: 12px;
+        line-height: 22px;
+    }
+    .bd {
+        text-align: center;
+    }
+    .bd .icon {
+        width: 52px;
+        height: 52px;
+    }
+}
+
+@media (min-width: 768px) {
+    .home {
+        .bd .title {
+            font-size: 28px;
+            line-height: 36px;
+        }
+        .bd .title-en {
+            font-size: 24px;
+        }
+        .bd .desc {
+            margin-top: 6px;
+            font-size: 12px;
+            line-height: 24px;
+        }
+        .bd {
+            width: 400px;
+            text-align: center;
+            margin: 0;
+        }
+        .bd .icon {
+            width: 60px;
+            height: 60px;
+        }
+
+    }
+}
+
+@media (min-width: 1880px) {
+    .home {
+        .bd .title {
+            font-size: 46px;
+            line-height: 58px;
+            font-weight: 400;
+        }
+        .bd .title-en {
+            font-size: 32px;
+        }
+        .bd .desc {
+            font-size: 20px;
+            line-height: 32px;
+        }
+        .bd {
+            width: 520px;
+        }
+        .bd .icon {
+            width: 106px;
+            height: 106px;
+        }
+    }
+}

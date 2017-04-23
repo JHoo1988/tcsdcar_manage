@@ -1,0 +1,31 @@
+.f-pwd{
+    width: 1200px;  margin: 0px auto 0px;
+}
+.fp-title{float: right;}
+.fp-title a{ color: #00bbff;  font-size: 16px; font-weight: 500; line-height: 90px; }
+.fp-title b{color: #999; font-size: 16px;}
+.f-pwd .text:focus{border: 1px solid deepskyblue;}
+
+.register-info{margin: 20px auto;}
+.register-complete{margin-left: 120px; display: none}
+.info-table{margin: 50px auto 50px; width: 595px;}
+.info-table .text{width: 280px; border: 1px solid #bcbcbc; color: #333; padding: 10px 14px; height: 26px; line-height: 16px; border-radius: 0;}
+.info-table .desc{display: inline-block; width: 120px; text-align: right; font-size: 14px;}
+.info-table .desc b{color: red; font-size: 16px; vertical-align: middle}
+.info-table select{width: 126px; float: left; height: 28px; margin-left: 3px;}
+
+.btn{margin: 10px auto 0; width: 300px;}
+.button-agree{width: 116px;  border: 1px none;  height: 48px;  color: #fff;   font-size: 16px;  cursor: pointer;
+    margin-top: 10px;  font-family: "Microsoft YaHei" ! important; font-weight: normal}
+.button-left{float: left}
+.button-right{float: right}
+.button-agree-grey{ background-color: #ccc;}
+.button-agree-blue{ background-color: #00BBFF;}
+
+.up-ft{color:#999; text-align:center; }
+.up-ft p{ line-height:2; font-size: 12px;}
+
+@media screen and (min-height: 800px) {
+    /*.up-ft{color:#999; text-align:center; position: fixed; bottom: 72px; left: 50%; margin-left: -256px; }*/
+    .up-ft{color:#999; text-align:center; margin-top: 145px; }
+}

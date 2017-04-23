@@ -1,0 +1,609 @@
+@charset "UTF-8";
+@import "../mixins";
+@import "../utilities";
+
+html {
+  font-size: 62.5%;
+  background-color: gainsboro;
+  min-width: 1282px;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul, li, dl, dt, dd, b {
+  padding: 0;
+  margin: 0;
+}
+
+body, table, div, img, article, aside, ul, ol, li, menu, h1, h2, h3, h4,
+h5, h6, p, button, input, section {
+  box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+//@font-face {
+//  font-face-name: MyriadPro-BoldSemiExt;
+//  src: url('../font/MyriadPro-SemiboldSemiExt.eot');
+//  src: url('../font/MyriadPro-SemiboldSemiExt.otf');
+//  src: url('../font/MyriadPro-SemiboldSemiExt.ttf');
+//  src: url('../font/MyriadPro-SemiboldSemiExt.svg');
+//  src: url('../font/MyriadPro-SemiboldSemiExt.woff');
+//  font-style: normal;
+//  font-weight: normal;
+//}
+.header-box {
+  height: 92px;
+  width: 100%;
+  background-color: white;
+  .site-header {
+    height: 100%;
+    width: 61.66%;
+    margin: 0 auto;
+    background-color: #00bbfe;
+    background-color: white;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .phone-number a {
+      text-decoration: none;
+      color: #a1a1a1;
+    }
+  }
+}
+
+.banner {
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center;
+  background-color: #b1cdff;
+  height: 31.71%;
+  max-height: 609px;
+  img {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    max-width: 1920px;
+  }
+}
+
+.content {
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #db2e63;
+  .price_info {
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    .tab_div {
+      margin: 0 auto;
+      width: 886px;
+      .select_tab {
+        display: inline-block;
+        width: 428px;
+        height: 126px;
+        -webkit-border-radius: 15px 15px 0 0;
+        -moz-border-radius: 15px 15px 0 0;
+        border-radius: 15px 15px 0 0;
+        background-color: #ff6faa;
+        margin: 0 6.5px;
+        padding-left: 40px;
+        padding-top: 31px;
+        cursor: pointer;
+        span {
+          color: white;
+          font-size: 30px;
+
+        }
+        span:first-child {
+          font-size: 52px;
+          font-weight: bold;
+        }
+      }
+      .unselect_tab {
+        display: inline-block;
+        width: 428px;
+        height: 126px;
+        -webkit-border-radius: 15px 15px 0 0;
+        -moz-border-radius: 15px 15px 0 0;
+        border-radius: 15px 15px 0 0;
+        background-color: #A02349;
+        margin: 0 6.5px;
+        padding-left: 40px;
+        padding-top: 31px;
+        cursor: pointer;
+        span {
+          color: #c5d3e8;
+          font-size: 30px;
+
+        }
+        span:first-child {
+          color: #b2c6db;
+          font-size: 52px;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .info {
+      width: 1200px;
+      height: 615px;
+      background-color: white;
+      border: 10px solid #ff6faa;
+      -webkit-border-radius: 15px 15px 15px 15px;
+      -moz-border-radius: 15px 15px 15px 15px;
+      border-radius: 15px 15px 15px 15px;
+      position: relative;
+      margin: 0 auto;
+      bottom: 2px;
+      .grid {
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+        .grid-cell {
+          width: 289px;
+          height: 287px;
+          padding-top: 38px;
+          text-align: center;
+          margin: 0;
+          float: left;
+          .product_name {
+            color: black;
+            font-size: 50px;
+            display: inline-block;
+          }
+          .product_price {
+            margin-top: 43px;
+            color: #b0b0b0;
+            font-size: 30px;
+            text-decoration: line-through;
+          }
+          .product_favorable_price {
+            color: #ff5500;
+            font-size: 35px;
+            margin-top: 22px;
+          }
+        }
+        .grid-rb {
+          border-right: 1px solid #c7c7c7;
+          border-bottom: 1px solid #c7c7c7;
+        }
+        .grid-lrb {
+          border-left: 1px solid #c7c7c7;
+          border-right: 1px solid #c7c7c7;
+          border-bottom: 1px solid #c7c7c7;
+        }
+        .grid-lb {
+          border-left: 1px solid #c7c7c7;
+          border-bottom: 1px solid #c7c7c7;
+        }
+        .grid-tr {
+          border-top: 1px solid #c7c7c7;
+          border-right: 1px solid #c7c7c7;
+        }
+        .grid-lrt {
+          border-left: 1px solid #c7c7c7;
+          border-top: 1px solid #c7c7c7;
+          border-right: 1px solid #c7c7c7;
+        }
+        .grid-lt {
+          border-left: 1px solid #c7c7c7;
+          border-top: 1px solid #c7c7c7;
+        }
+      }
+      .grid2 {
+        display: none;
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+        .grid-cell {
+          width: 289px;
+          height: 287px;
+          padding-top: 38px;
+          text-align: center;
+          margin: 0;
+          float: left;
+          .product_name {
+            color: black;
+            font-size: 50px;
+            display: inline-block;
+          }
+          .product_price {
+            margin-top: 43px;
+            color: #b0b0b0;
+            font-size: 30px;
+            text-decoration: line-through;
+          }
+          .product_favorable_price {
+            color: #ff5500;
+            font-size: 35px;
+            margin-top: 22px;
+          }
+        }
+        .grid-rb {
+          border-right: 1px solid #c7c7c7;
+          border-bottom: 1px solid #c7c7c7;
+        }
+        .grid-lrb {
+          border-left: 1px solid #c7c7c7;
+          border-right: 1px solid #c7c7c7;
+          border-bottom: 1px solid #c7c7c7;
+        }
+        .grid-lb {
+          border-left: 1px solid #c7c7c7;
+          border-bottom: 1px solid #c7c7c7;
+        }
+        .grid-tr {
+          border-top: 1px solid #c7c7c7;
+          border-right: 1px solid #c7c7c7;
+        }
+        .grid-lrt {
+          border-left: 1px solid #c7c7c7;
+          border-top: 1px solid #c7c7c7;
+          border-right: 1px solid #c7c7c7;
+        }
+        .grid-lt {
+          border-left: 1px solid #c7c7c7;
+          border-top: 1px solid #c7c7c7;
+        }
+      }
+    }
+  }
+  /*在线预约表单*/
+  .online_booking {
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    .js-form-subscribe {
+      display: -webkit-flex;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      .submit {
+        margin-top: 60px;
+        margin-right: auto;
+        margin-left: auto;
+        width: 400px;
+        height: 108px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        outline: none;
+        -webkit-outline: none;
+        -moz-outline: none;
+        cursor: pointer;
+        border-top-width: 0px;
+        border-right-width: 0px;
+        border-bottom-width: 0px;
+        border-left-width: 0px;
+        background: url("../images/phone_repair/replace_screen/submit2.png") no-repeat;
+      }
+      .commit_div {
+        margin-top: 100px;
+        display: -webkit-flex;
+        display: flex;
+        align-content: center;
+        font-family: "Microsoft YaHei UI Light";
+        .commit_zxyy {
+          margin-left: 100px;
+          select {
+            width: 172px;
+            height: 47px;
+            background-color: white;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            padding: 6px 18px;
+            font-size: 20px;
+            color: #595959;
+            border: hidden;
+            opacity: 0;
+            position: relative;
+            top: -46px;
+            left: 0;
+            option {
+              font-size: 20px;
+              color: #595959;
+              padding: 6px 18px;
+              line-height: 50px;
+              border: 0px;
+            }
+            option:hover {
+              background-color: #f80;
+              color: #fff;
+            }
+          }
+          h2 {
+            color: white;
+            font-size: 44px;
+          }
+          .row-text {
+            display: none;
+            margin-left: 100px;
+            color: white;
+            margin-bottom: 10px;
+            font-size: 16px;
+          }
+          .commit_zxyy_content {
+            margin-top: 25px;
+            display: -webkit-flex;
+            display: flex;
+            align-content: center;
+            .selectbale {
+              cursor: pointer;
+            }
+            .xzgz_item {
+              width: 172px;
+              height: 47px;
+              background-color: white;
+              -webkit-border-radius: 5px;
+              -moz-border-radius: 5px;
+              border-radius: 5px;
+              padding: 6px 18px;
+              margin-right: 27px;
+
+              display: -webkit-flex;
+              display: flex;
+              justify-content: space-between;
+              align-content: center;
+              img {
+                width: 12px;
+                height: 13px;
+                margin-top: 10px;
+              }
+              span {
+                font-size: 20px;
+                color: #595959;
+              }
+            }
+          }
+          .input_title {
+            color: white;
+            font-size: 23px;
+            text-align: center;
+          }
+          .xxdz {
+            width: 568px;
+            height: 47px;
+            background-color: white;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            padding: 6px 18px;
+            border-top-width: 0px;
+            border-right-width: 0px;
+            border-bottom-width: 0px;
+            border-left-width: 0px;
+            outline: none;
+            font-size: 20px;
+            color: #595959;
+          }
+          .name, .phone {
+            width: 273px;
+            height: 47px;
+            background-color: white;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            padding: 6px 18px;
+            border-top-width: 0px;
+            border-right-width: 0px;
+            border-bottom-width: 0px;
+            border-left-width: 0px;
+            margin-right: 27px;
+            outline: none;
+            font-size: 20px;
+            color: #595959;
+          }
+        }
+      }
+    }
+  }
+  .curved_bg {
+    margin-top: 80px;
+  }
+  .hbd {
+    background-color: #fe556c;
+    padding-bottom: 80px;
+    /*TCL旗下手机维修品牌*/
+    .tcl_phone_repair {
+
+      display: -webkit-flex;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      background-color: #fe556c;
+      .title {
+        margin: 0 auto;
+        font-size: 45px;
+        color: white;
+        display: -webkit-flex;
+        display: flex;
+        align-content: center;
+        width: 595.1px;
+        img {
+          height: 79px;
+          width: 132px;
+          margin-right: 18px;
+        }
+      }
+      .mzx3 {
+        margin-top: 50px;
+        margin-right: auto;
+        margin-left: auto;
+        display: -webkit-flex;
+        display: flex;
+        justify-content: center;
+        .mzx_item {
+          color: white;
+          font-size: 16px;
+          margin: 0 82px;
+          display: -webkit-flex;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          img {
+            height: 72px;
+            width: 64px;
+            margin: 0 auto;
+          }
+        }
+      }
+      .mzx4 {
+        margin-top: 60px;
+        margin-right: auto;
+        margin-left: auto;
+        width: 1204px;
+        .adf {
+          height: 429px;
+          width: 284px;
+          margin: 0 7px;
+        }
+      }
+    }
+    /*常见问题*/
+    .common_problem {
+      width: 1282px;
+      height: 648px;
+      margin-top: 49px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-top: 51px;
+      background: url("../images/phone_repair/replace_screen/QA_bg.png") no-repeat;
+      display: flex;
+      display: -webkit-flex;
+      justify-content: center;
+      .common_problem_content {
+        color: white;
+        font-size: 16px;
+        display: flex;
+        display: -webkit-flex;
+        align-content: center;
+        flex-direction: column;
+        h2 {
+          font-size: 32px;
+          margin: 0 auto;
+        }
+        h3 {
+          margin-top: 26px;
+          margin-right: auto;
+          margin-left: auto;
+          font-size: 22px;
+          color: #00bbff;
+        }
+        p {
+          margin: 0 auto;
+        }
+      }
+    }
+    /*服务流程示意图*/
+    .service_flow {
+      width: 1200px;
+      height: 768px;
+      background-color: #efefef;
+      margin: 0 auto;
+      h2 {
+        text-align: center;
+        font-size: 32px;
+        padding-top: 49px;
+        padding-bottom: 30px;
+        color: black;
+        font-weight: normal;
+      }
+      .service_flow_content {
+        .align_right1 {
+          text-align: end;
+          float: left;
+          position: relative;
+          left: -373px;
+          top: 32px;
+        }
+        .align_right2 {
+          text-align: end;
+          float: left;
+          position: relative;
+          left: -583px;
+          top: 352px;
+        }
+        .align_left1 {
+          text-align: start;
+          float: left;
+          position: relative;
+          left: 390px;
+          top: 70px;
+        }
+        .align_left2 {
+          text-align: start;
+          float: left;
+          position: relative;
+          left: 95px;
+          top: 356px;
+        }
+        img {
+          height: 572px;
+          width: 457px;
+          float: left;
+          left: 371px;
+          position: relative;
+        }
+        h3 {
+          font-size: 35px;
+          color: #0d0d0d;
+        }
+        p {
+          font-size: 21px;
+          color: #636363;
+        }
+      }
+    }
+  }
+}
+
+footer {
+  padding: 46px;
+  background-color: #484848;
+  .foot_div {
+    width: 1200px;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    align-content: center;
+    text-align: center;
+    color: white;
+    font-size: 14px;
+    margin: 0 auto;
+    .qr_code {
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: column;
+      align-content: center;
+    }
+    img, .foot_des {
+      margin: auto 0;
+    }
+  }
+}
+
+.code-tip {
+  display: none;
+  width: 1282px;
+  margin: 49px auto 0;
+  text-align: center;
+  color: #fff;
+  h2 {
+    font-size: 16px;
+    margin: 10px 0;
+  }
+  a {
+    color: #fff
+  }
+}

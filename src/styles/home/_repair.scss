@@ -1,0 +1,74 @@
+@charset "UTF-8";
+@import "../mixins";
+
+$repair-banner: '../images/banner/03.jpg';
+$repair-banner-xl: '../images/banner/03_xl.jpg';
+
+// 家电维修
+.sec-repair {
+    .bg {
+        background-image: url($repair-banner-xl);
+        background-position: center top;
+        background-size: cover;
+        height: 225px;
+    }
+    .bd {
+        color: #5a5a5a;
+    }
+    .title-en {
+        color: #ffd55c;
+    }
+}
+
+@media (min-width: 768px) {
+    .sec-repair {
+        position: relative;
+        .bg {
+            height: 450px;
+            background-image: url($repair-banner);
+        }
+        .bd {
+            position: absolute;
+            top: 110px;
+            width: 100%;
+            text-align: center;
+            color: #fff;
+        }
+        .title-en {
+            color: #fff;
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    .sec-repair {
+        .bg {
+            height: 480px;
+        }
+        .bd {
+            top: 125px;
+        }
+    }
+}
+
+@media (min-width: 1240px) {
+    .sec-repair {
+        .bg {
+            height: 520px;
+        }
+        .bd {
+            top: 150px;
+        }
+    }
+}
+
+@media (min-width: 1880px) {
+    .sec-repair {
+        .bg {
+            height: 829px;
+        }
+        .bd {
+            top: 270px;
+        }
+    }
+}

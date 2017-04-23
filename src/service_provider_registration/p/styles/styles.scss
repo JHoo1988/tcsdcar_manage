@@ -1,0 +1,389 @@
+@charset "UTF-8";
+@import "../../../styles/normalize";
+@import "../../../styles/mixins";
+@import "../../../styles/utilities";
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  outline: 0;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+html {
+  font-family: sans-serif; /* 1 */
+  -ms-text-size-adjust: 100%; /* 2 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+html,body {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
+  background-color: #F3F3F3;
+  min-width: 1240px;
+}
+
+header {
+  height: 92px;
+  background-color: #ffffff;
+  box-shadow: 0px 1px 10px #ccc;
+  position: relative;
+  z-index: 999;
+  .head-content {
+    width: 1240px;
+    height: 92px;
+    overflow: hidden;
+    margin: 0 auto;
+    h1 {
+      text-align: center;
+      font-size: 24px;
+      font-style: normal;
+      color: #666666;
+      font-family: "Microsoft YaHei UI Light";
+      position: relative;
+      top: -60px;
+    }
+    .logo {
+      margin-top: 20px;
+    }
+  }
+
+}
+
+.banner {
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  width: 1240px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+  .content-left {
+    background-color: #ffffff;
+    float: left;
+    width: 650px;
+    margin-right: 20px;
+    h2 {
+      font-size: 36px;
+      color: #393f4d;
+      line-height: 58px;
+      text-align: center;
+    }
+    .line {
+      height: 3px;
+      background-color: #d2af75;
+    }
+    .dpbj {
+      width: 100%;
+      padding-left: 45px;
+      padding-right: 45px;
+      padding-bottom: 10px;
+      .dpbj-left {
+        float: left;
+        .dpbj-left-bottom, .dpbj-left-top {
+          margin-top: 20px;
+          .item-title {
+            font-size: 36px;
+            color: #d0b075;
+            font-weight: 800;
+          }
+          .item-dis {
+            font-size: 18px;
+            color: #393f4d;
+          }
+        }
+      }
+      .dpbj-right {
+        float: left;
+        .dpbj-right-bottom, .dpbj-right-top {
+          margin-top: 20px;
+          margin-left: 44px;
+          .item-title {
+            font-size: 36px;
+            color: #d0b075;
+            font-weight: 800;
+          }
+          .item-dis {
+            font-size: 18px;
+            color: #393f4d;
+          }
+          .hidden {
+            visibility: hidden;
+          }
+        }
+      }
+    }
+    .dpbj::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+    .qwjd {
+      width: 100%;
+      padding-left: 45px;
+      padding-right: 45px;
+      padding-bottom: 10px;
+      .qwjd-left {
+        float: left;
+        .qwjd-left-bottom, .qwjd-left-top {
+          margin-top: 20px;
+          .item-title {
+            font-size: 36px;
+            color: #d0b075;
+            font-weight: 800;
+          }
+          .item-dis {
+            font-size: 18px;
+            color: #393f4d;
+          }
+        }
+      }
+      .qwjd-right {
+        float: left;
+        .qwjd-right-bottom, .qwjd-right-top {
+          margin-top: 20px;
+          margin-left: 88px;
+          .item-title {
+            font-size: 36px;
+            color: #d0b075;
+            font-weight: 800;
+          }
+          .item-dis {
+            font-size: 18px;
+            color: #393f4d;
+          }
+          .hidden {
+            visibility: hidden;
+          }
+        }
+      }
+    }
+    .qwjd::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+    .zbbd {
+      width: 100%;
+      padding: 32px 36px;
+      .zbbd-top, .zbbd-bottom {
+        .zbbd-item {
+          float: left;
+          .item-img {
+            width: 60px;
+            height: 60px;
+            margin-left: 30px;
+          }
+          .item-discr {
+            font-size: 18px;
+            color: #393f4d;
+            margin-top: 10px;
+          }
+        }
+        .item-margin {
+          margin-left: 44px;
+        }
+      }
+      .zbbd-top::after {
+        content: '';
+        display: block;
+        clear: both;
+      }
+      .zbbd-bottom::after {
+        content: '';
+        display: block;
+        clear: both;
+      }
+      .zbbd-bottom {
+        margin-top: 32px;
+      }
+    }
+  }
+  .content-right {
+    background-color: #ffffff;
+    float: left;
+    width: 570px;
+    h2 {
+      line-height: 60px;
+      font-size: 36px;
+      color: #393f4d;
+      text-align: center;
+      background-color: #d2af75;
+
+    }
+    .form {
+      padding-right: 24px;
+      padding-left: 24px;
+      padding-top: 16px;
+      .form-item {
+        display: block;
+        margin-top: 20px;
+        .title {
+          color: #666666;
+          font-size: 22px;
+          float: left;
+          line-height: 62px;
+        }
+        .value {
+          float: right;
+          height: 62px;
+          width: 400px;
+          vertical-align: middle;
+          border: 1px solid #cccccc;
+          padding: 0 10px;
+          -webkit-border-radius: 6px;
+          -moz-border-radius: 6px;
+          border-radius: 6px;
+          font-size: 22px;
+        }
+        .mast{
+          float: right;
+          font-size: 25px;
+          line-height: 62px;
+          margin-left: 10px;
+          color: red;
+        }
+        .province-value,.city-value,.pinlei-value,.gy-value {
+          padding: 0px;
+          width: 400px;
+          .xzgz_item {
+            width: 100%;
+            height: 62px;
+            padding-left: 10px;
+            .down_arrow{
+              width: 60px;
+              height: 60px;
+              float: right;
+              border-bottom-right-radius: 6px;
+              border-top-right-radius: 6px;
+              background-color: #393f4d;
+              img{
+                margin-top: 22px;
+                margin-left: 17px;
+              }
+            }
+          }
+
+          #showProvince,#showCity,#showPinlei,#showGy {
+            line-height: 62px;
+            display: inline-block;
+            font-size: 22px;
+          }
+          select {
+            width: 400px;
+            height: 62px;
+            background-color: white;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            font-size: 22px;
+            color: #595959;
+            border: hidden;
+            opacity: 0;
+            position: relative;
+            top: -64px;
+            left: 0px;
+          }
+          #select-gy{
+            width: 230px;
+          }
+        }
+        .gy-value{
+          width: 230px;
+        }
+        .email-title-value{
+          width: 100%;
+          height: 126px;
+          padding: 10px;
+        }
+      }
+      .submit{
+        width: 100%;
+        height: 60px;
+        margin-top: 10px;
+        margin-bottom: 17px;
+        background-color: #393f4d;
+        font-size: 24px;
+        color: #d2af75;
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        border-radius: 6px;
+      }
+      .form-item::after {
+        content: '';
+        display: block;
+        clear: both;
+      }
+    }
+    .form::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+  }
+}
+
+.content::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+footer{
+  height: 240px;
+  margin-top: 85px;
+  background-color: #ffffff;
+  .f-content{
+    width: 1240px;
+    margin: 0px auto;
+    padding: 40px 18px;
+    img{
+      float: left;
+      margin-right: 68px;
+    }
+    p{
+      float: right;
+      font-size: 18px;
+      color: #999999;
+    }
+  }
+  .f-content::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+  .copyright{
+    width: 1240px;
+    margin: 20px auto;
+    font-size: 12px;
+    text-align: center;
+    color: #666;
+    a{
+      color: #666;
+      text-decoration: none;
+      cursor: auto;
+    }
+  }
+}

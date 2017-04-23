@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+@mixin reset {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+@mixin cf {
+    &:after, &:before {
+        content: " "; /* 1 */
+        display: table; /* 2 */
+    }
+    &:after {
+        clear: both;
+    }
+    *zoom: 1;
+}
+
+@mixin user-select($value) {
+    -webkit-user-select: $value;
+    -ms-user-select: $value;
+    -moz-user-select: $value;
+}

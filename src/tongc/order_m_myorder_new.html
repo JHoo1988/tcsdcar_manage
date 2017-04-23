@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>同创盛大服务平台</title>
+    <meta name="viewport" content="initial-scale=1.0,width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="renderer" content="webkit"/>
+    <link rel="stylesheet" type="text/css" href="css/msp.css">
+    <link rel="stylesheet" type="text/css" href="css/order_m_myorder_new.css">
+    <link rel="stylesheet" type="text/css" href="css/simple-pager.css">
+    <link rel="stylesheet" type="text/css" href="lib/layui/css/layui.css">
+</head>
+<body style="min-width: 800px; background-color: #fff; min-height: 870px;">
+<div>
+    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+        <ul class="layui-tab-title">
+            <li class="layui-this" data-par="-1">所有订单</li>
+        </ul>
+    </div>
+
+    <div style="margin-top: 24px;">
+        <div class="dp-filter layui-form">
+            <div class="layui-form-item">
+                <label class="layui-form-label">订单状态</label>
+
+                <div class="layui-input-inline">
+                    <select id="statu" name="brandName" lay-filter="brandName">
+                        <option value="-1" selected="selected">请选择</option>
+                        <option value="1">质保中</option>
+                        <option value="3">已过期</option>
+                        <option value="2">已赔付</option>
+                        <option value="4">已删除</option>
+                        <option value="0">未支付</option>
+                    </select>
+                </div>
+                <label class="layui-form-label">保修期限</label>
+
+                <div class="layui-input-inline">
+                    <select id="timelimit" name="" lay-filter="">
+                        <option value="-1" selected="selected">请选择</option>
+                        <option value="12">12期</option>
+                        <option value="24">24期</option>
+                        <option value="36">36期</option>
+                    </select>
+                </div>
+
+                <!--<label class="layui-form-label">产品类型</label>-->
+                <!--<div class="layui-input-inline">-->
+                    <!--<select name="producttype" lay-filter="producttype">-->
+                        <!--<option value="1" selected="selected">汽车膜</option>-->
+                    <!--</select>-->
+                <!--</div>-->
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">下单时间</label>
+
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input" id="orderStartTime" placeholder="起始时间" readonly="readonly"
+                           onclick="layui.laydate({elem: this})"/>
+                </div>
+                <label class="layui-form-label">至</label>
+
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input" id="orderEndTime" placeholder="结束时间" readonly="readonly"
+                           onclick="layui.laydate({elem: this})"/>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">关键字</label>
+
+                <div class="layui-input-inline" style="width: 500px;">
+                    <input type="text" class="layui-input" id="keyWord" placeholder="输入 车身号 / 电话 / 订单号 搜索"/>
+                </div>
+                <div class="layui-input-inline" style="width: 120px; margin-left: 52px;">
+                    <input type="button" id="btn-search" class="layui-btn layui-btn-normal" value="搜索"
+                           style="width: 120px;">
+                </div>
+                <div class="layui-input-inline" style="width: 120px;">
+                    <input type="button" id="btn-export" class="layui-btn layui-btn-primary layui-btn-disabled" value="发送续保短信"
+                           style="width: 120px;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-layout">
+        <div class="table-head">
+            <table style="width: 100%">
+                <thead>
+                <tr>
+                    <th style="width: 4%"><input style="width: 18px;height: 18px;position: relative;top: 4px;" type="checkbox" name="allChoose" class="allChoose"> 全选</th>
+                    <th style="width: 22%">订单详情</th>
+                    <th style="width: 7%">单价</th>
+                    <th style="width: 7%">期限</th>
+                    <th style="width: 18%">客户信息</th>
+                    <th style="width: 10%">金额</th>
+                    <th style="width: 10%">订单状态</th>
+                    <th style="width: 12%">操作</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+        <div id="table-list">
+
+        </div>
+        <div class="pager-footer simple-pager-wrapper">
+            <div style="visibility:hidden" class="simple-pager">
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div id="pop_up" style="display: none">
+    <div class="up-popup upp-addrecord" id="product_win" style="padding: 24px 0;box-sizing: border-box;">
+        <div class="upp-cont">
+            <div class="add_edit_dlg layui-form">
+                <form id="uploadForm" enctype="multipart/form-data">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">订单状态</label>
+                        <div class="layui-input-inline" style="width: 500px;">
+                            <select class="statu" name="statu" lay-filter="statu">
+                                <option selected="selected" value="-1">请选状态</option>
+                                <option value="0">未支付</option>
+                                <option value="1">质保中</option>
+                                <option value="2">已赔付</option>
+                                <option value="3">已过期</option>
+                                <option value="4">已删除</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">车身号</label>
+                        <div class="layui-input-block" style="width: 500px;">
+                            <input type="text" class="layui-input" name="carBodyNo" placeholder="车身号" autocomplete="off"
+                                   maxlength="30">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">客户电话</label>
+                        <div class="layui-input-block" style="width: 500px;">
+                            <input type="text" class="layui-input" name="mobile" placeholder="客户电话" autocomplete="off"
+                                   maxlength="11">
+                        </div>
+                    </div>
+
+                    <input style="display: none;" type="text" name="id">
+                </form>
+            </div>
+            <div class="layui-form-item" style="text-align: center">
+                <a href="javascript:void(0)" class="layui-btn layui-btn-normal js-btn-update" id="btn-update"
+                   style="width: 120px;">保存</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="lib/layui/layui.js"></script>
+<script src="config/main.js"></script>
+<script src="js/order_m_myorder_new.js?v20170307"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+@charset "UTF-8";
+@import "../mixins";
+
+// 首页公用css
+.home {
+    .site-main {
+        margin: 0 auto;
+    }
+
+    .bd .title {
+        font-size: 28px;
+        line-height: 36px;
+    }
+    .bd .title-en {
+        font-size: 24px;
+    }
+    .bd .desc {
+        margin-top: 6px;
+        font-size: 12px;
+        line-height: 24px;
+    }
+    .bd {
+        width: 400px;
+        text-align: center;
+        margin: 0;
+    }
+    .bd .icon {
+        width: 60px;
+        height: 60px;
+    }
+
+}

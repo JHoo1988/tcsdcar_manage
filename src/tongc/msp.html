@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>同创盛大管理平台</title>
+    <meta name="viewport" content="initial-scale=1.0,width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="renderer" content="webkit"/>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/msp.css">
+    <link rel="stylesheet" type="text/css" href="css/order_m_myorder_new.css">
+    <link rel="stylesheet" type="text/css" href="lib/layui/css/layui.css">
+    <style>
+        .layui-disabled, .layui-disabled:hover {
+            color: #666 !important;
+            cursor: not-allowed !important;
+        }
+    </style>
+</head>
+<body>
+<div class="up-main mkcl">
+    <div class="upm-nav">
+        <div class="layui-side-scroll">
+            <ul class="layui-nav layui-nav-tree">
+                <li class="un-item">
+                    <div class="company-name-money">
+                        <img src="images/company.png" alt=""/>
+                        <p class="company-name"></p>
+                        <p style="text-align: center; padding-bottom: 9px;"><a style="color: #ccc; font-size: 14px;"
+                                                                               href="javascript:void(0);"
+                                                                               id="user_quit">退出登录</a></p>
+                        <div class="company-money mkcl">
+                            <div class="user-wallet">
+                                <p class="ft-12">可用余额</p>
+                                <p><span id="wallet_balance">0</span>元</p>
+                            </div>
+                            <div class="user-ious">
+                                <p class="ft-12">信用额度</p>
+
+                                <p>可用额度: <span id="overdraftBalance">0</span>元</p>
+
+                                <p>总额度: <span id="overdraftLimit">0</span>元</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="layui-nav-item layui-this"><a href="javascript:void(0);"
+                                                         data-href="order_m_myorder_new.html">订单</a></li>
+                <li class="layui-nav-item"><a href="javascript:void(0);"
+                                              data-href="brand.html">品牌</a></li>
+                <li class="layui-nav-item"><a href="javascript:void(0);"
+                                              data-href="order_m_basedata_product.html">产品</a></li>
+                <li class="layui-nav-item"><a href="javascript:void(0);" data-href="carshop.html">4S店</a></li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">城市管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:void(0);" data-href="province.html">省</a></dd>
+                        <dd><a href="javascript:void(0);" data-href="city.html">市</a></dd>
+                        <dd><a href="javascript:void(0);" data-href="area.html">区/县</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="javascript:void(0);" data-href="salesman.html">业务员</a></li>
+                <!--<li class="layui-nav-item"><a href="javascript:void(0);" data-href="customer_service.html">客服管理</a></li>-->
+            </ul>
+        </div>
+        <!--<div class="sf-logo">-->
+            <!--<img src="images/sf_min_logo.png" alt=""/>-->
+            <!--<p>Version 0.1.1</p>-->
+        <!--</div>-->
+    </div>
+    <div style="width: 100%; height: 80px; border-bottom: 3px solid #00BBFF; position: fixed; top: 0; left: 200px; right: 0; background-color: #fff">
+        <div class="page-title">
+            <h2>同创盛大管理平台</h2>
+        </div>
+    </div>
+
+    <div class="upm-cont" style="padding: 0; margin-top: 75px;">
+
+        <a class="kefu" target="_blank"
+           href="http://wpa.qq.com/msgrd?v=3&uin=1418069769&site=qq&menu=yes"><img
+                border="0"
+                src="images/icon_qq.png"
+                alt="点击这里给我发消息"
+                title="点击这里给我发消息"/>
+            <p>在线客服</p></a>
+
+        <iframe src="order_m_myorder_new.html" frameborder="0"
+                style="width: 100%; height: 100%; border: 0; height: 870px;" scrolling="no" id="myIframe">
+        </iframe>
+    </div>
+</div>
+<script src="lib/layui/layui.js"></script>
+<script src="config/main.js"></script>
+<script>
+    layui.use(['element', 'upmobui', 'laydate', 'layer'], function () {
+        var upmobui = layui.upmobui;
+        upmobui.common.pageFunc();
+        upmobui.common.waitDealNums();
+        setInterval(function () {
+            upmobui.common.waitDealNums();
+        }, 1000 * 10);
+        upmobui.common.initDataInPage();
+    });
+</script>
+</body>
+</html>

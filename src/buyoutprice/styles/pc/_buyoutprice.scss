@@ -1,0 +1,526 @@
+@charset "UTF-8";
+
+html {
+  font-size: 12px;
+  min-width: 1200px;
+  background-color: #F3F4F8;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul, li, dl, dt, dd, b {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+body, table, div, img, article, aside, ul, ol, li, menu, h1, h2, h3, h4,
+h5, h6, p, button, input, section, textarea {
+  box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "微软雅黑 Light";
+}
+
+.customerservice {
+  position: fixed;
+  z-index: 9999;
+  top: 45%;
+  left: 5px;
+  width: 8rem;
+  .close_chat {
+    position: relative;
+    top: -0.5rem;
+    left: 2.5rem;
+    width: 40%;
+  }
+}
+
+header {
+  width: 100%;
+  height: 8rem;
+  background-color: #ffffff;
+  -moz-box-shadow: 0px 1px 10px #ccc;
+  box-shadow: 0px 1px 10px #ccc;
+  .header_content {
+    width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    .logo {
+      margin-top: 1.5rem;
+      float: left;
+    }
+    h1 {
+      float: left;
+      font-size: 2rem;
+      color: #666666;
+      margin-top: 2rem;
+      margin-left: 6rem;
+    }
+    h2 {
+      float: left;
+      font-size: 1.3rem;
+      color: #999999;
+      margin-top: 2.5rem;
+      margin-left: 2rem;
+    }
+    .head_right {
+      float: right;
+      margin-top: 1.7rem;
+      .phonenum {
+        float: left;
+        padding-top: 0.8rem;
+        padding-right: 2rem;
+      }
+      .city {
+        float: left;
+        #current_city {
+          font-size: 2rem;
+          color: #666666;
+          line-height: 2rem;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          width: 100px;
+          display: inline-block;
+        }
+        .location_img {
+          width: 2.1rem;
+        }
+      }
+    }
+    .head_right:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+
+  }
+  .header_content:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+.select_area {
+  width: 1200px;
+  margin-top: 40px;
+  margin-bottom: 24px;
+  margin-right: auto;
+  margin-left: auto;
+  .selected_name {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #666666;
+    float: left;
+  }
+  .product_items {
+    float: right;
+    a {
+      text-decoration: none;
+      span {
+        background-color: #ffffff;
+        -webkit-border-radius: 30px;
+        -moz-border-radius: 30px;
+        border-radius: 30px;
+        width: 86px;
+        display: inline-block;
+        text-align: center;
+        height: 34px;
+        font-size: 16px;
+        color: #666666;
+        margin-left: 10px;
+        line-height: 34px;
+        border: 1px solid #cccccc;
+      }
+    }
+
+  }
+
+}
+
+.select_area:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.price_table {
+  width: 1200px;
+  overflow: hidden;
+  background-color: #ffffff;
+  margin-left:auto;
+  margin-right:auto;
+  padding-left: 30px;
+  padding-right: 30px;
+  height: 437px;
+  margin-bottom: -2px;
+  //border-bottom: 1px solid #F3F4F8;
+  h3 {
+    text-align: center;
+    color: #666666;
+    font-size: 22px;
+    font-weight: normal;
+    margin: 20px;
+  }
+  .price_info {
+    width: 100%;
+    summary: '热水器维修价格';
+    text-align: center;
+    .title_tr {
+      font-size: 16px;
+      color: #333333;
+    }
+    th {
+      font-weight: normal;
+    }
+    td {
+      .center_div {
+        font-size: 14px;
+        color: #666666;
+      }
+    }
+    .title_td1 {
+      border-right: solid 2px #FFFFFF;
+      background-color: #f3f4f8;
+    }
+    .title_td2 {
+      border-right: solid 2px #FFFFFF;
+      background-color: #f3f4f8;
+    }
+    .title_td3 {
+      border-right: solid 2px #FFFFFF;
+      background-color: #f3f4f8;
+    }
+    .title_td4 {
+      background-color: #f3f4f8;
+    }
+    .content_td1 {
+      border-left: solid 2px #F3F4F8;
+      border-bottom: solid 2px #F3F4F8;
+      border-right: solid 2px #F3F4F8;
+    }
+    .content_td2, .content_td3, .content_td4 {
+      border-bottom: solid 2px #F3F4F8;
+      border-right: solid 2px #F3F4F8;
+    }
+  }
+}
+
+.discript {
+  width: 1200px;
+  overflow: hidden;
+  background-color: #ffffff;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 15px;
+  .des {
+    font-size: 14px;
+    color: #999999;
+    border: 2px solid #F3F4F8;
+    padding: 15px 30px;
+    .title {
+      font-size: 16px;
+      color: #666666;
+    }
+
+    .show_more, .close_more {
+      width: 100%;
+      padding: 0.5rem;
+      text-align: center;
+      display: inline-block;
+      text-decoration: none;
+      color: #999;
+    }
+
+    .close_more {
+      display: none;
+    }
+  }
+}
+
+.appointment {
+  width: 100%;
+  background-color: #FFFFFF;
+  height: 335px;
+  border-top: 5px solid #00BBFE;
+  margin-top: 18px;
+  padding-top: 49px;
+  .appointment_content {
+    width: 1200px;
+    margin: 0 auto;
+    padding-left: 30px;
+    .product_img {
+      float: left;
+    }
+    .select_appointment {
+      float: left;
+      margin-left: 55px;
+      h4 {
+        font-size: 22px;
+        color: #333333;
+        margin-left: 5px;
+      }
+      .select_items {
+        margin-top: 17px;
+        width: 280px;
+        a {
+          text-decoration: none;
+          span {
+            font-size: 18px;
+            color: #666666;
+            border: 1px solid #cccccc;
+            -webkit-border-radius: 30px;
+            -moz-border-radius: 30px;
+            border-radius: 30px;
+            width: 77px;
+            text-align: center;
+            margin: 5px;
+            display: inline-block;
+            background-color: #FFFFFF;
+          }
+        }
+      }
+    }
+    .zxyy {
+      float: left;
+      margin-left: 210px;
+      width: 300px;
+      .input-row {
+        margin-bottom: 10px;
+        white-space: nowrap;
+        .input-txt {
+          display: inline-block;
+          vertical-align: middle;
+          border: 1px solid #cccccc;
+          padding: 0 10px;
+          border-radius: 4px;
+          font-size: 14px;
+          height: 40px;
+        }
+        .btn-get-code {
+          display: inline-block;
+          vertical-align: middle;
+          text-align: center;
+          border: 1px solid #cccccc;
+          border-radius: 4px;
+          background-color: #F2F5F7;
+          font-size: 14px;
+          height: 40px;
+          line-height: 40px;
+          color: #666666;
+          margin-left: 5%;
+        }
+        .btn-get-code:active {
+          box-shadow: 1px 1px 3px #cccccc;
+        }
+        .btn-get-code.disabled {
+          color: #c0c0c0;
+        }
+        .col-100 {
+          width: 100%;
+        }
+        .col-50 {
+          width: 60%;
+        }
+        .col-45 {
+          width: 34%;
+        }
+      }
+      .btn-box {
+        margin-top: 20px;
+        .btn-submit {
+          display: inline-block;
+          width: 100%;
+          font-size: 22px;
+          line-height: 45px;
+          color: #ffffff;
+          background-color: #00BCFF;
+          text-align: center;
+          border-radius: 4px;
+        }
+        .btn-submit:active {
+          box-shadow: 1px 1px 3px #cccccc;
+        }
+        .yyphone {
+          margin-top: 10px;
+          font-size: 22px;
+          width: 100%;
+          border: 1px solid #cccccc;
+          -webkit-border-radius: 5px;
+          -moz-border-radius: 5px;
+          border-radius: 5px;
+          .yydh {
+            background-color: #00BCFF;
+            color: #FFFFFF;
+            padding: 3px 8px;
+            display: inline-block;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+          }
+          .yynum {
+            display: inline-block;
+            color: #333333;
+            margin-left: 20px;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+  .appointment_content:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+.sevice {
+  width: 1200px;
+  background-color: #FFFFFF;
+  margin: 45px auto 0 auto;
+  /*特殊样式标题*/
+  .line-title {
+    position: relative;
+
+    &:after {
+      content: " ";
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      left: 0;
+      background-color: #00bbff;
+      height: 2px;
+    }
+    .title {
+      background-color: #0bf;
+      color: #fff;
+      font-size: 24px;
+      padding: 5px 15px;
+      border-radius: 0 10px 0 0;
+      display: inline-block;
+    }
+  }
+
+  /*服务保障*/
+  .service-assurance-box {
+    background-color: #ffffff;
+    padding: 0 30px 20px 30px;
+    .service-cont {
+      width: 100%;
+
+      .service-item {
+        margin-top: 30px;
+        padding-bottom: 30px;
+        background-color: #F2F5F7;
+        display: inline-block;
+        width: 24%;
+        .item-icon {
+          padding-top: 20px;
+        }
+        .item-title {
+          margin-top: 20px;
+          color: #333333;
+          font-size: 18px;
+        }
+        .item-title-desc {
+          padding: 0 20px;
+          color: #999999;
+          font-size: 14px;
+        }
+      }
+
+    }
+  }
+  /*服务城市*/
+  .service-city-box {
+    background-color: #ffffff;
+    padding: 0 30px 20px 30px;
+    .img-div {
+      padding-top: 1em;
+    }
+    .desc-line {
+      color: #333333;
+      font-size: 16px;
+      margin-top: 20px;
+      padding-left: 20px;
+    }
+    .desc-gray {
+      font-size: 16px;
+      color: #999999;
+      padding-left: 20px;
+    }
+  }
+  /*服务流程*/
+  .service-flow-box {
+    background-color: #ffffff;
+    padding: 0 30px 20px 30px;
+    .service-flow-cont {
+      margin-top: 30px;
+      width: 100%;
+      .service-flow-item {
+        display: inline-block;
+        margin-bottom: 40px;
+        width: 50%;
+        .item-icon {
+
+        }
+        .item-title {
+          color: #00bbff;
+          font-size: 18px;
+        }
+        .item-desc {
+          font-size: 18px;
+          color: #999999;
+        }
+      }
+    }
+  }
+  /*服务说明*/
+  .service-desc-box {
+    background-color: #ffffff;
+    padding: 0 30px 20px 30px;
+    .desc-cont {
+      padding-top: 20px;
+      padding-left: 20px;
+      padding-right: 20px;
+      width: 100%;
+      p {
+        line-height: 44px;
+        font-size: 16px;
+        color: #666666;
+      }
+    }
+  }
+
+}
+
+/*油烟机
+.hood,
+热水器
+.water_heater,
+冰箱
+.fridges,
+洗衣机
+.washing_machine,
+燃气灶
+.cooker,
+彩电
+.tv,
+空调
+.air_conditioner,
+消毒柜
+.sterilizer,
+净水器
+.water_purifier,
+饮水机
+.water_dispenser*/
+
+.hood, .water_heater, .fridges, .washing_machine, .cooker, .tv, .air_conditioner, .sterilizer, .water_purifier, .water_dispenser {
+  display: none;
+}

@@ -1,0 +1,26 @@
+@charset "UTF-8";
+@import "mixins";
+
+.reserve-success-msg {
+    border-radius: 10px !important;
+    .layui-layer-content {
+        position: relative;
+        height: 200px;
+        // todo 图片待更换
+        background: url("../images/fixed-bottom/msg.png?__inline") no-repeat 50% 50%;
+        @include user-select(none);
+    }
+    .js-reserve-success-msg-close {
+        position: absolute;
+        top: 26px;
+        right: 26px;
+        width: 28px;
+        height: 28px;
+        background-image: url('../images/fixed-bottom/close.png?__inline');
+        background-size: cover;
+        line-height: 100px;
+        overflow: hidden;
+        cursor: pointer;
+
+    }
+}

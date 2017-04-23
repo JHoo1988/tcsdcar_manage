@@ -1,0 +1,386 @@
+@charset "UTF-8";
+@import "../mixins";
+@import "../utilities";
+html{
+}
+body, h1, h2, h3, h4, h5, h6, p, ol, ul, li, dl, dt, dd, b {
+  padding: 0;
+  margin: 0;
+}
+body, table, div, img, article, aside, ul, ol, li, menu, h1, h2, h3, h4,
+h5, h6, p, button, input, section{
+  box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.phone_repair{
+  width: 1200px;
+  position: relative;
+}
+.site-header{
+  position: relative;
+  width: 1200px;
+  z-index: 2;
+  padding: 16px 0;
+  background-color: #ffffff;
+
+  &:after{
+    content: " ";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    left: 0;
+    background-color: rgba(0,0,0,0.2);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  }
+  .logo{
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 50px;
+  }
+  .phone-number{
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 48px;
+    a{
+      text-decoration: none;
+      color: #999999;
+      font-size: 14px;
+    }
+  }
+}
+
+.top-banner{
+  width: 1200px;
+  margin-bottom: -5px;
+  img{
+    width: 100%;
+  }
+}
+.title-line{
+  text-align: center;
+  padding-top: 60px;
+  padding-bottom: 30px;
+  .h3-title{
+    position: relative;
+    display: inline-block;
+    font-size: 36px;
+    line-height: 40px;
+    color: #333333;
+    padding: 5px 15px;
+    .left-top-box{
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      border-left: 2px solid #333333;
+      border-top: 2px solid #333333;
+    }
+    .right-bottom-box{
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 20px;
+      height: 20px;
+      border-right: 2px solid #333333;
+      border-bottom: 2px solid #333333;
+    }
+  }
+}
+
+.section-fault{
+  background-color: #F2F5F7;
+  padding: 40px 0 60px 0;
+  width: 1200px;
+  .fault-cont{
+    width: 1000px;
+    overflow: hidden;
+    .fault-item{
+      background-color: #ffffff;
+      display: inline-block;
+      float: left;
+      width: 240px;
+      height: 240px;
+      margin: 0 5px;
+      .fault-icon{
+        padding-top: 40px;
+        img{
+          width: 80px;
+          height: 80px;
+
+        }
+      }
+      .title{
+        color: #666666;
+        font-size: 18px;
+        text-align: center;
+        line-height: 38px;
+        padding: 0 48px;
+      }
+      .title-desc{
+        padding: 0 28px;
+        font-size: 14px;
+        line-height: 20px;
+        color: #999999;
+        text-align: left;
+      }
+    }
+  }
+}
+::-webkit-input-placeholder{
+  color: #666666;
+  opacity : 0.54;
+}
+/*快速预约*/
+.section-subs{
+  background-color: #ffffff;
+  padding: 0 0 60px 0;
+  width: 1200px;
+  //.form-cont{
+  //  width: 1000px;
+  //  padding-bottom: 1rem;
+  //  .form-div{
+  //    width: 600px;
+  //  }
+  //  .row-input.center{
+  //    text-align: center;
+  //  }
+  //  .row-input{
+  //    text-align: left;
+  //    padding: 10px 0;
+  //    white-space: nowrap;
+  //    select{
+  //      border: 1px solid #cccccc;
+  //      border-radius: 4px;
+  //      padding: 10px 16px;
+  //      font-size: 16px;
+  //      color: #666666;
+  //      width: 450px;
+  //      height: 50px;
+  //    }
+  //    label{
+  //      width: 100px;
+  //      display: inline-block;
+  //      font-size: 18px;
+  //      color: #666666;
+  //    }
+  //    input{
+  //      border: 1px solid #cccccc;
+  //      border-radius: 4px;
+  //      padding: 10px 20px;
+  //      font-size: 16px;
+  //      color: #666666;
+  //      width: 450px;
+  //    }
+  //    input.half{
+  //      width: 250px;
+  //    }
+  //    .button{
+  //      display: inline-block;
+  //      text-align: center;
+  //      border: 1px solid #cccccc;
+  //      border-radius: 4px;
+  //      background-color: #F2F5F7;
+  //      padding: 8px 0;
+  //      width: 193px;
+  //      font-size: 18px;
+  //      color: #666666;
+  //      margin-left: 8px;
+  //    }
+  //    .button:active{
+  //      box-shadow: 1px 1px 3px #cccccc;
+  //    }
+  //    .button.disabled{
+  //      color: #c0c0c0;
+  //    }
+  //    .submit{
+  //      background-color: #00BCFF;
+  //      color: #ffffff;
+  //      font-size: 24px;
+  //      border-radius: 4px;
+  //      line-height: 54px;
+  //      display: inline-block;
+  //      width: 340px;
+  //      text-align: center;
+  //      margin-top: 20px;
+  //    }
+  //    .submit:active{
+  //      box-shadow: 1px 1px 3px #cccccc;
+  //    }
+  //  }
+  //}
+  .desc-title{
+    width: 1000px;
+    padding: 10px;
+    font-size: 24px;
+  }
+  .subs-cont{
+    width: 1000px;
+    margin-top: 10px;
+    overflow: hidden;
+    .subs-item{
+      float: left;
+      width: 14%;
+      .subs-icon{
+      }
+      .subs-arrow-icon{
+        margin-top: 30px;
+      }
+      .title{
+        text-align: center;
+        margin-top: 10px;
+        font-size: 14px;
+        color: #999999;
+      }
+    }
+  }
+}
+/*安全保障*/
+.section-safety{
+  background-color: #F2F5F7;
+  padding: 0 0 60px 0;
+  width: 1200px;
+  .safety-cont{
+    width: 1000px;
+    overflow: hidden;
+    .safety-item{
+      width: 33.33%;
+      height: 240px;
+      float: left;
+      .safety-icon{
+        padding-top: 40px;
+      }
+      .title{
+        color: #666666;
+        font-size: 24px;
+      }
+      .title-desc{
+        color: #999999;
+        font-size: 16px;
+      }
+    }
+  }
+}
+/*维修流程*/
+.section-repair-flow{
+  background-color: #ffffff;
+  padding: 0 0 40px 0;
+  width: 1200px;
+  .repair-flow-cont{
+    width: 1000px;
+    overflow: hidden;
+    .repair-flow-item{
+      width: 50%;
+      height: 350px;
+      float: left;
+
+
+      .repair-flow-icon{
+        img{
+
+        }
+      }
+      .title{
+        font-size: 18px;
+        color: #00bbff;
+      }
+      .title-desc{
+        color: #999999;
+        font-size: 18px;
+      }
+    }
+  }
+}
+/*服务说明*/
+.section-serve-desc{
+  background-color: #F2F5F7;
+  width: 1200px;
+  padding: 0 0 40px 0;
+  .serve-desc-cont{
+    width: 1000px;
+    p{
+      font-size: 18px;
+      color: #666666;
+      line-height: 34px;
+    }
+  }
+}
+/*常见问题*/
+.section-faq{
+  background-color: #ffffff;
+  width: 1200px;
+  padding: 0 0 40px 0;
+  .faq-cont{
+    width: 1000px;
+    padding-bottom: 18px;
+    p{
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+    .title{
+      color: #333333;
+      font-size: 16px;
+    }
+    .notice{
+      color: #00bbff;
+      font-size: 14px;
+      padding-left: 22px;
+    }
+    .text{
+      padding-left: 22px;
+      font-size: 16px;
+      color: #999999;
+    }
+  }
+}
+
+.site-footer{
+  background-color: #B1B3BF;
+  color: #ffffff;
+  min-width: 1200px;
+  font-size: 12px;
+  .logo-cont{
+    padding: 30px 0;
+    width: 1200px;
+    text-align: center;
+    .logo{
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .code{
+      margin-left: 120px;
+      display: inline-block;
+      vertical-align: middle;
+      img{
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .code-desc{
+        vertical-align: middle;
+        display: inline-block;
+        margin-left: 5px;
+      }
+    }
+  }
+  .nav{
+    text-align: center;
+    color: #ffffff;
+    a{
+      padding: 0 3px;
+      color: #ffffff;
+      text-decoration: none;
+    }
+  }
+  .copyright{
+    text-align: center;
+    padding: 10px 0;
+  }
+}
+
+

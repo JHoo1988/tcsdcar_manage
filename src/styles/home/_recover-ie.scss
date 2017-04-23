@@ -1,0 +1,21 @@
+@charset "UTF-8";
+@import "../mixins";
+
+$recover-banner: '../images/banner/04.jpg';
+$recover-banner-mobile: '../images/banner/04_m.jpg';
+
+// 数码回收
+
+.sec-recover {
+    position: relative;
+    .bg {
+        height: 520px;
+        background-image: url($recover-banner);
+    }
+    .bd {
+        position: absolute;
+        top: 150px;
+        width: 100%;
+        text-align: center;
+    }
+}

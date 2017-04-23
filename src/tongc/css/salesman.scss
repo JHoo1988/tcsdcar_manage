@@ -1,0 +1,160 @@
+@charset "utf-8";
+/* reset */
+html, body, div, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, img, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+
+img {
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+button, select {
+  text-transform: none;
+}
+
+button::-moz-focus-inner, input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+textarea {
+  overflow: auto;
+  vertical-align: top;
+  resize: none;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+em {
+  font-weight: normal;
+  font-style: normal;
+}
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit
+}
+
+input, textarea, select {
+  *font-size: 100%
+}
+
+h1, h2, h3, h4, h5, h6, b {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+td {
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+/* common */
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  overflow-y: scroll;
+}
+
+body {
+  font-size: 12px;
+  font-family: Microsoft Yahei, STHeiti, Simsun, STSong;
+  color: #333;
+  background-color: #fff;
+  min-width: 1340px;
+}
+
+a {
+  text-decoration: none;
+  color: #7c7c7c;
+}
+
+a:focus, a:active, a:hover, input {
+  outline: 0;
+}
+
+.layui-form-item .layui-input-inline {
+  width: 0px;
+}
+.btn-distibution,.btn-edit,.btn_delete{
+  font-family: '微软雅黑 Light';
+  font-size: 14px;
+  color: #00bbfe;
+  margin-right: 10px;
+  display: inline-block;
+}
+.btn_delete{
+  color: #FF5722;
+}
+.layui-collapse {
+  .layui-show {
+    padding: 0;
+  }
+  .layui-table {
+    margin: 0;
+  }
+  .list-head {
+    //background-color: #ffffff;
+    background-color: rgba(0,150,136,0.1);
+  }
+  .list-content{
+    font-weight: normal;
+    font-family: "微软雅黑";
+    .in_cooperation{
+      color: #009688;
+    }
+    .cooperative_termination{
+      color: #C3C3C3;
+    }
+    .del_shop{
+      color: #FF5722;
+      padding: 0 5px;
+    }
+    .edt_shop{
+      color: #00bbfe;
+    }
+  }
+  th {
+    font-weight: normal;
+    font-family: "微软雅黑";
+  }
+  .layui-colla-item {
+    .layui-colla-title {
+      height: 50px;
+      line-height: 50px;
+      font-size: 18px;
+    }
+    .salesman-phonenum {
+      margin-left: 5px;
+      font-family: '微软雅黑 Light';
+      font-size: 16px;
+    }
+    .salesman-operation {
+      float: right;
+      height: 50px;
+      a {
+        font-family: '微软雅黑 Light';
+        font-size: 14px;
+        color: #00bbfe;
+        line-height: 42px;
+        height: 50px;
+        display: inline-block;
+      }
+      .distribution {
+        margin-right: 10px;
+      }
+    }
+  }
+}
+

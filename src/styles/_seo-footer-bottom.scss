@@ -1,0 +1,60 @@
+@charset "UTF-8";
+.site-footer{
+  background-color: #B1B3BF;
+  color: #ffffff;
+  min-width: 1200px;
+  font-size: 12px;
+  .logo-cont{
+    padding: 30px 0;
+    width: 1200px;
+    text-align: center;
+    .about{
+      display: inline-block;
+      width: 320px;
+      margin-right: 80px;
+      text-align: left;
+      vertical-align: middle;
+    }
+    .logo{
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .code{
+      margin-left: 80px;
+      margin-right: 80px;
+      display: inline-block;
+      vertical-align: middle;
+      img{
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .code-desc{
+        vertical-align: middle;
+        display: inline-block;
+        margin-left: 5px;
+      }
+    }
+    .contact{
+      display: inline-block;
+      vertical-align: middle;
+      text-align: left;
+    }
+  }
+  .nav{
+    text-align: center;
+    color: #ffffff;
+    a{
+      padding: 0 3px;
+      color: #ffffff;
+      text-decoration: none;
+    }
+  }
+  .copyright{
+    text-align: center;
+    padding: 10px 0;
+  }
+  .copyright a{
+    color: #fff;
+    text-decoration: none;
+  }
+}

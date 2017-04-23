@@ -1,0 +1,241 @@
+@charset 'utf-8';
+/* 基础数据 */
+/*.clearfloat:after {display:block;clear:both;content:"";visibility:hidden;height:0;}
+.clearfloat {zoom:1;}*/
+
+.txt-c {
+    text-align: center;
+}
+
+.inp-text {
+    border: 1px solid #ccc;
+}
+
+.toolbar {
+    height: 70px;
+    margin-top: 35px;
+}
+
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
+
+.toolbar .btn, #brand_win .btn, #product_win .btn {
+    display: inline-block;
+    margin-left: 10px;
+    width: 120px;
+    line-height: 32px;
+    text-align: center;
+    background-color: #00BBFF;
+    color: #fff;
+    font-size: 14px;
+}
+
+.form-group {
+    float: left;
+    margin-left: 10px;
+}
+
+#search-form {
+    font-size: 14px;
+}
+.grid-wrapper{
+    padding-left: 30px;
+    padding-right: 30px;
+}
+#dg_list {
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
+}
+
+/*#dg_list td,#dg_list th {border: 1px solid #E5E5E5;line-height: 38px;}
+#dg_list th {background-color: #EAEAEA; border-right: 1px solid #D2D2D2; font-weight: normal;}*/
+#dg_list td, #dg_list th {
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.upbtn{
+    margin-left: 38px;
+}
+.btn-del {
+    color: #00BBFF;
+}
+
+#product_win .btn-update,
+#brand_win .btn-update {
+    width: 138px;
+    line-height: 40px;
+    font-size: 18px;
+}
+
+.content-tab {
+    height: 40px;
+    margin: 20px 0;
+}
+
+.content-tab a {
+    display: block;
+    float: left;
+    position: relative;
+    width: 120px;
+    line-height: 40px;
+    font-size: 16px;
+    border-bottom: 1px solid #ccc;
+    color: #333;
+    text-align: center;
+}
+
+.content-tab a.cur {
+    color: #00BBFF;
+}
+
+.content-tab a.cur:after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #00BBFF;
+}
+
+.win-group {
+}
+
+.win-group, #brand_win .win-group {
+    margin-bottom: 10px;
+}
+
+.win-group label, #brand_win .win-group label {
+    display: inline-block;
+    width: 40px;
+    font-size: 16px;
+}
+
+.win-group input.inp-text, #brand_win .win-group input {
+    padding: 2px 4px;
+    width: 500px;
+    height: 26px;
+    font-size: 14px;
+}
+
+.win-group label {
+    width: 80px;
+    text-align: right;
+    font-size: 12px;
+}
+
+.win-group select {
+    margin-right: 10px;
+    width: 510px;
+    height: 30px;
+    color: #515151;
+    font-size: 14px;
+    border-color: #ccc;
+}
+
+.win-group select.sel-half {
+    width: 248px;
+}
+
+.no-data {
+    margin-top: 10px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.productAttr {
+    width: 490px;
+    max-height: 150px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    margin-left: 2px;
+    overflow-y: auto;
+    border-radius: 4px;
+}
+
+.productAttr .attr-name {
+    font-size: 14px;
+    color: #00BBFF
+}
+
+.productAttr .inp-attr {
+    width: 50px;
+    padding: 2px 4px;
+    border: 1px solid #ccc;
+    text-align: center;
+    margin-left: 10px;
+    line-height: 20px;
+}
+
+.productAttr .attr-list {
+    display: inline-block;
+    width: 100%;
+    height: 16px;
+    font-size: 14px;
+    margin: 8px 0;
+}
+
+.productAttr .attr-list.sec {
+    width: 100%;
+}
+
+.productAttr .attr-list.sep {
+    width: 100%;
+}
+
+.productAttr .attr-list.sec .span-attr {
+    display: inline-block;
+    line-height: 16px;
+}
+
+.productAttr label {
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+
+.productAttr label input {
+    vertical-align: bottom;
+    display: inline-block;
+}
+
+.up-popup {
+    padding: 24px 0;
+    box-sizing: border-box;
+}
+
+.icon-search {
+    background: url("img/icon-search.png") no-repeat left center;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+}
+
+/* 发布订单 */
+.entry-btn {
+    display: block;
+    width: 160px;
+    line-height: 160px;
+    color: #fff;
+    text-align: center;
+    font-size: 24px;
+    border-radius: 50%;
+}
+
+/*.grid-wrapper{min-width: 900px; overflow-y: scroll; max-width: 980px; overflow-y: hidden}
+#dg_list{width: 1200px;}*/
+.page-layout {
+    /*padding: 0 24px;*/
+    box-sizing: border-box;
+}
+
+

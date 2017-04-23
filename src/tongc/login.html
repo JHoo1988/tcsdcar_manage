@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>同创盛大管理系统</title>
+    <meta name="viewport" content="initial-scale=1.0,width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="renderer" content="webkit"/>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/msp.css">
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+    <link rel="stylesheet" type="text/css" href="lib/layui/css/layui.css">
+    <!--<script language="javascript" type="text/javascript">
+        window.location.href="http://business.5ujd.net";
+    </script>-->
+</head>
+<body style="background-color: #f8f8fa; min-width: 1140px;">
+<div style="position: relative">
+    <div class="login-content">
+        <div class="login-box">
+            <div class="login-box-body">
+                <div class="lotin-title">管理后台登录</div>
+                <form class="login-form" enctype="multipart/form-data">
+                    <div class="form-group has-feedback field-loginform-username required">
+                        <input type="text" class="layui-input" id="loginName" autocomplete="off"
+                               name="loginName" maxlength="11" placeholder="请输入登录账号"/>
+                        <p class="help-block help-block-error"></p>
+                    </div>
+                    <div class="form-group has-feedback field-loginform-password required">
+                        <input type="password" disableautocomplete autocomplete="off" class="layui-input"
+                               id="loginPassWord" name="loginPassWord" placeholder="请输入密码" maxlength="16"/>
+                        <p class="help-block help-block-error"></p>
+                    </div>
+                    <div class="login-submit">
+                        <button id="login_btn" type="button" class="btn btn-primary btn-block btn-flat" name="login-button">登录</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.login-box-body -->
+        </div><!-- /.login-box -->
+    </div>
+    <div class="up-ft">
+        <div class="login-footer-img">
+            <img src="images/login_footer_icon.png" alt="同创盛大汽车服务"/>
+        </div>
+        <p>联系我们：全国统一服务热线 027-87688603</p>
+        <p>Copyright © 2017. 湖北同创盛大汽车服务有限公司. All Rights Reserved. 鄂ICP备17007702号-1</p>
+    </div>
+</div>
+
+<script src="lib/layui/layui.js"></script>
+<script src="config/main.js"></script>
+<script src="js/login.js?v20170119"></script>
+</body>
+</html>

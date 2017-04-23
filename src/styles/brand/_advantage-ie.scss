@@ -1,0 +1,50 @@
+@charset "UTF-8";
+@import "../mixins";
+
+.sec-advantage {
+    .hd {
+        padding: 100px 0 70px;
+    }
+    .hd .title-en {
+        font-size: 60px;
+    }
+    .hd h3 {
+        font-size: 50px;
+        line-height: 74px;
+    }
+    .summary {
+        margin: 0 6% 40px;
+        font-size: 16px;
+    }
+    .bd {
+        margin-left: 6%;
+        min-height: 460px;
+    }
+    .item {
+        height: 360px;
+        margin: 0;
+    }
+    .item-tm {
+        width: 21%;
+    }
+    .item-zy {
+        width: 27%;
+    }
+    .item-sx {
+        width: 22%;
+    }
+    .item-aq {
+        width: 28%;
+    }
+    .item .t {
+        font-size: 18px;
+    }
+    .item .numerical {
+        font-size: 100px;
+    }
+    .item .desc {
+        font-size: 16px;
+    }
+}
+
+

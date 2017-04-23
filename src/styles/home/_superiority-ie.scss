@@ -1,0 +1,96 @@
+@charset "UTF-8";
+@import "../mixins";
+
+$phone-bg-xs: '../images/phone@xs.png';
+$phone-bg-xl: '../images/phone@xl.png';
+
+// 优势
+
+.home {
+    .sec-superiority {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .phone {
+        padding-top: 40px;
+        margin-left: 6%;
+        height: auto;
+    }
+    .slider {
+        margin-top: 0;
+        width: 220px;
+        height: 440px;
+        transition: top .6s;
+    }
+    .slider.fixed {
+        //margin-top: -100px;
+        position: fixed;
+        top: 120px;
+    }
+    .slider-content {
+        top: 53px;
+        left: 26px;
+    }
+    .slider-content,
+    .slider-content li,
+    .slider-content li img {
+        width: 182px;
+        height: 326px;
+    }
+    .slider-number {
+        position: absolute;
+        top: 150px;
+        left: -32px;
+        display: block;
+    }
+    .slider-number ul {
+        @include reset();
+    }
+    .slider-number li span {
+        display: block;
+        width: 10px;
+        height: 10px;
+        overflow: hidden;
+        background-color: #00bbff;
+        border: 2px solid #fff;
+        border-radius: 8px;
+        line-height: 60px;
+        transition: all .2s;
+        margin-bottom: 10px;
+    }
+    .slider-number .active span {
+        background-color: #fff;
+        border: 2px solid #00bbff;
+    }
+    .sec-superiority .bd {
+        padding-top: 120px;
+        padding-left: 280px;
+        height: 360px;
+        margin: 0;
+        text-align: center;
+    }
+    .sec-superiority .bd .title {
+        font-size: 32px;
+        line-height: 48px;
+        margin-bottom: 10px;
+    }
+    .sec-superiority .bd .desc {
+        font-size: 18px;
+        line-height: 26px;
+        color: #666;
+    }
+}
+
+.home {
+    .slider-number {
+        left: -60px;
+    }
+    .sec-superiority .bd .title {
+        font-size: 42px;
+        line-height: 58px;
+    }
+    .sec-superiority .bd .desc {
+        font-size: 24px;
+        line-height: 32px;
+    }
+}

@@ -1,0 +1,202 @@
+@charset "UTF-8";
+.site-footer {
+    .logo {
+        width: 120px;
+        margin: 20px auto;
+    }
+    .logo img {
+        width: 120px;
+    }
+
+    .extra-image img {
+        display: block;
+        width: 220px;
+        margin: 20px auto;
+    }
+
+    .guide-tel {
+        text-align: center;
+        color: #666;
+    }
+    .guide-tel h4 {
+        font-size: 16px;
+        margin: 10px 0;
+    }
+    .guide-tel p {
+        @include reset();
+        font-size: 14px;
+    }
+    .guide-tel a {
+        text-decoration: none;
+        color: #666;
+    }
+    .tel {
+        font-weight: 700;
+        font-size: 16px;
+    }
+    .qrcode-img {
+        display: block;
+        margin: 20px auto;
+        width: 113px;
+    }
+
+    .copyright {
+        font-size: 12px;
+        margin: 10px 0;
+        text-align: center;
+        color: #666;
+    }
+    .copyright a {
+        color: #666;
+        text-decoration: none;
+    }
+    .safety {
+        margin: 10px 0;
+        text-align: center;
+    }
+}
+
+.sfdj-chat-m img,
+.sfdj-chat-m {
+    width: 48px !important;
+    height: 72px !important;
+    top: 45% !important;
+}
+
+@media (min-width: 768px) {
+    .site-footer {
+        max-width: 1200px;
+        margin: 0 auto;
+        .logo {
+            float: left;
+            width: 22%;
+            margin: 30px 0 0 10px;
+            display: block;
+        }
+        .logo img {
+            width: 70%;
+        }
+        .extra-image {
+            float: left;
+            margin-top: 30px;
+            width: 36%;
+        }
+        .extra-image img {
+            width: 60%;
+        }
+        .extra-image img {
+            display: block;
+            margin: 0 auto;
+        }
+        .qrcode {
+            float: right;
+            margin-top: 30px;
+        }
+        .guide-tel {
+            float: left;
+            text-align: left;
+            margin-right: 10px;
+        }
+        .guide-tel h4 {
+            margin: 0;
+            font-size: 14px;
+            padding: 0 0 4px;
+        }
+        .guide-tel p {
+            font-size: 12px;
+        }
+        .qrcode-img {
+            float: left;
+            margin-top: 0;
+            width: 80px;
+            margin-right: 10px;
+        }
+        .guide-tel .tel-row {
+            margin-bottom: 0px;
+        }
+        .guide-tel .tel {
+            font-size: 14px;
+        }
+        .copyright {
+            margin: 24px 0 12px;
+        }
+        .safety {
+            margin: 12px 0 20px;
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    .site-footer {
+        .logo {
+            width: 28%;
+            margin-top: 52px;
+            margin-left: 10px;
+        }
+        .logo img {
+            width: 60%;
+        }
+        .qrcode-img {
+            width: 96px;
+            margin-right: 10px;
+        }
+        .guide-tel h4 {
+            padding: 0 0 12px;
+        }
+        .guide-tel h4 {
+            font-size: 14px;
+        }
+        .guide-tel p {
+            font-size: 12px;
+        }
+        .guide-tel .tel-row {
+            margin-bottom: 6px;
+        }
+        .guide-tel .tel {
+            font-size: 14px;
+        }
+    }
+    .sfdj-chat-m img,
+    .sfdj-chat-m {
+        width: 144px !important;
+        height: 217px !important;
+        top: 20% !important;
+    }
+}
+
+@media (min-width: 1240px) {
+    .site-footer {
+        .logo {
+            width: 32%;
+            margin-top: 52px;
+            margin-left: 10px;
+        }
+        .logo img {
+            margin-left: 40px;
+            width: 48%;
+        }
+        .extra-image {
+            width: 34%;
+            margin-top: 52px;
+        }
+        .qrcode {
+            margin-top: 52px;
+        }
+        //.qrcode-img {
+        //    width: 113px;
+        //    margin-right: 14px;
+        //}
+        //.guide-tel h4 {
+        //    padding: 2px 0 26px;
+        //}
+        //.guide-tel h4 {
+        //    font-size: 18px;
+        //}
+        //.guide-tel p {
+        //    font-size: 16px;
+        //}
+        //.guide-tel .tel-row {
+        //    margin-bottom: 8px;
+        //}
+    }
+}

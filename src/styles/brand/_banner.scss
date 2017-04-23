@@ -1,0 +1,82 @@
+@charset "UTF-8";
+@import "../mixins";
+
+$banner-bg: '../images/banner/06.jpg';
+
+.site-main{
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+.brand {
+    .sec-banner {
+        background: url($banner-bg);
+        background-position: center center;
+        background-size: cover;
+        height: 300px;
+    }
+    .sec-banner .desc {
+        padding-top: 36px;
+        font-size: 20px;
+        line-height: 26px;
+        text-align: center;
+        color: #fff;
+    }
+    .sec-banner .desc span {
+        display: block;
+    }
+    .sec-banner .title {
+        margin-top: 4px;
+    }
+}
+
+@media (min-width: 768px) {
+    .brand {
+        .sec-banner {
+            margin-top: 90px;
+            height: 430px;
+        }
+        .sec-banner .desc {
+            padding-top: 40px;
+            font-size: 36px;
+            line-height: 42px;
+            text-align: center;
+            color: #fff;
+        }
+        .sec-banner .title {
+            margin-top: 10px;
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    .brand {
+        .sec-banner {
+            height: 520px;
+        }
+        .sec-banner .desc {
+            padding-top: 50px;
+            font-size: 42px;
+            line-height: 56px;
+            text-align: center;
+            color: #fff;
+        }
+    }
+}
+
+@media (min-width: 1600px) {
+    .brand {
+        .sec-banner {
+            height: 692px;
+        }
+        .sec-banner .desc {
+            padding-top: 90px;
+        }
+        .sec-banner .desc {
+            padding-top: 70px;
+            font-size: 60px;
+            line-height: 64px;
+        }
+    }
+}
+

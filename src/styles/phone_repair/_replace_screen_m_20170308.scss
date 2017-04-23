@@ -1,0 +1,544 @@
+@charset "UTF-8";
+@import "../mixins";
+@import "../utilities";
+
+html {
+  font-size: 60%;
+  background-color: #db2e63;
+  min-width: 320px;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul, li, dl, dt, dd, b {
+  padding: 0;
+  margin: 0;
+}
+
+body, table, div, img, article, aside, ul, ol, li, menu, h1, h2, h3, h4,
+h5, h6, p, button, input, section {
+  box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  img {
+    width: 100%;
+  }
+}
+
+.customerservice {
+  position: fixed;
+  z-index: 9999;
+  top: 45%;
+  left: 5px;
+  width: 16.8%;
+  _display: none;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  .close_chat{
+    position: relative;
+    top: -1rem;
+    width: 40%;
+  }
+}
+
+/*外屏，内屏价格表*/
+.replace_info_detail {
+  margin-top: 8.125%;
+  margin-bottom: 10.15%;
+  .tab {
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    .screen_tab{
+      width: 39.6875%;
+      background-color: #ff9000;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      color: white;
+      padding-top: 0.9rem;
+      padding-bottom: 0.9rem;
+      margin: 0 0.3rem;
+      display: flex;
+      display: -webkit-flex;
+      justify-content: center;
+      align-items:center;
+      .title{
+        font-size: 1.5rem;
+        font-family: "Microsoft YaHei UI";
+      }
+      .sub_title{
+        font-size: 0.9rem;
+        font-family: "Microsoft YaHei UI Light";
+      }
+    }
+    .in_screen_tab{
+      background-color: #A02349;
+      color: #90add8;
+    }
+    .out_screen_tab{
+      background-color: #ff6faa;
+      color: white;
+    }
+  }
+  .grid{
+    width: 87.34%;
+    margin: 0 auto;
+    .table_info{
+      width: 100%;
+      background-color: white;
+      border: #ff6faa 3px solid;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      border-radius: 3px;;
+      position: relative;
+      top: -1px;
+      padding: 3px;
+      display: flex;
+      display: -webkit-flex;
+      justify-content: center;
+      -moz-box-shadow: 10px 10px 2px #87431f; /* 老的 Firefox */
+      box-shadow: 10px 10px 1px #87431f;
+      .item{
+        width: 32.61%;
+        display: flex;
+        display: -webkit-flex;
+        flex-direction: column;
+        justify-content: center;
+        .title{
+          width: 100%;
+          font-size: 1.2rem;
+          color: black;
+          text-align: center;
+          padding-top: 1.5rem;
+          padding-bottom: 1.5rem;
+        }
+        .xh_content{
+          display: flex;
+          display: -webkit-flex;
+          justify-content: center;
+          align-items:center;
+          width: 100%;
+          height: 3.5rem;
+          font-size: 1.35rem;
+          color: black;
+        }
+        .yj_content{
+          display: flex;
+          display: -webkit-flex;
+          justify-content: center;
+          align-items:center;
+          width: 100%;
+          text-decoration: line-through;
+          font-size: 1.2rem;
+          color: #8b8b8b;
+          height: 3.5rem;
+        }
+        .hdj_content{
+          display: flex;
+          display: -webkit-flex;
+          justify-content: center;
+          align-items:center;
+          width: 100%;
+          font-size: 1.5rem;
+          color: #ef4f01;
+          height: 3.5rem;
+        }
+        .even_item{
+          background-color: #e4e4e4;
+        }
+      }
+    }
+  }
+  .grid2{
+    width: 87.34%;
+    margin: 0 auto;
+    display: none;
+    .table_info{
+      width: 100%;
+      background-color: white;
+      border: #ff6faa 3px solid;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      border-radius: 3px;;
+      position: relative;
+      top: -1px;
+      padding: 3px;
+      display: flex;
+      display: -webkit-flex;
+      justify-content: center;
+      -moz-box-shadow: 10px 10px 2px #87431f; /* 老的 Firefox */
+      box-shadow: 10px 10px 1px #87431f;
+      .item{
+        width: 32.61%;
+        display: flex;
+        display: -webkit-flex;
+        flex-direction: column;
+        justify-content: center;
+        .title{
+          width: 100%;
+          font-size: 1.2rem;
+          color: black;
+          text-align: center;
+          padding-top: 1.5rem;
+          padding-bottom: 1.5rem;
+        }
+        .xh_content{
+          display: flex;
+          display: -webkit-flex;
+          justify-content: center;
+          align-items:center;
+          width: 100%;
+          height: 3.5rem;
+          font-size: 1.35rem;
+          color: black;
+        }
+        .yj_content{
+          display: flex;
+          display: -webkit-flex;
+          justify-content: center;
+          align-items:center;
+          width: 100%;
+          text-decoration: line-through;
+          font-size: 1.2rem;
+          color: #8b8b8b;
+          height: 3.5rem;
+        }
+        .hdj_content{
+          display: flex;
+          display: -webkit-flex;
+          justify-content: center;
+          align-items:center;
+          width: 100%;
+          font-size: 1.5rem;
+          color: #ef4f01;
+          height: 3.5rem;
+        }
+        .even_item{
+          background-color: #e4e4e4;
+        }
+      }
+    }
+  }
+}
+/*TCL旗下手机品牌*/
+
+.tcl_model_div{
+  .model_top{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 10px;
+  }
+  .model_content{
+    width: 100%;
+    background-color: #fe556c;
+    padding-bottom: 2rem;
+    .mzx3{
+      padding-top: 5px;
+      width: 90%;
+      margin: 0 auto;
+      display: flex;
+      display: -webkit-flex;
+      justify-content: space-between;
+      img{
+        width: 22%;
+        height: 23%;
+      }
+    }
+    .item_div{
+      margin-top: 5.5%;
+      .item_content_div{
+        display: flex;
+        display: -webkit-flex;
+        justify-content: center;
+        .item_content{
+
+          margin: 4.5px;
+          width: 46.25%;
+          height: 46.71%;
+        }
+      }
+    }
+  }
+}
+/*常见问题*/
+.common_problem{
+  background-color:#fe556c;
+  color: white;
+  padding: 0 3.90625% 3% 3.90625%;
+  h2{
+    font-size: 1.375rem;
+    font-weight: normal;
+    margin-bottom: 1rem;
+  }
+  h3{
+    font-size: 0.958rem;
+    font-weight: normal;
+    color: #00bbff;
+    margin-bottom: 0.25rem;
+  }
+  p{
+    font-size: 0.7rem;
+    margin-bottom: 0.75rem;
+    margin-left: 1rem;
+  }
+}
+/*二维码*/
+.qr_code{
+  background-color: #3b3b3b;
+  //padding: 0 5.4%;
+  padding-left: 5.4%;
+  padding-right: 5.4%;
+  padding-bottom: 26.25%;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  span{
+    color: #868686;
+    padding-left: 3.5%;
+    font-size: 0.9rem;
+    position: relative;
+    bottom: 15px;
+  }
+  img{
+    width: 29.1%;
+    height: 29.1%;
+  }
+}
+.phone_booking {
+  color: white;
+  font-size: 1.4rem;
+  background-color: white;
+  width: 100%;
+  min-width: 320px;
+  position: fixed;
+  z-index: 100;
+  bottom: 0px;
+  display: flex;
+  padding-left: 5%;
+  padding-right: 5%;
+  display: -webkit-flex;
+  justify-content: space-between;
+  -moz-box-shadow: 10px 10px 15px #999999; /* 老的 Firefox */
+  box-shadow: 0px -1px 5px #999999;
+  .btn{
+    background-color: #ffb836;
+    text-align: center;
+    margin: 1em;
+    padding: 0.4em 0.3em;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+
+    width: 38%;
+
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    align-items: center;
+  }
+  img{
+    width: 20%;
+    height: 20%;
+  }
+  a{
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+  }
+  .online_book{
+    //padding: 3% 2rem;
+    //margin-left: 1px;
+    background-color: #00bbff;
+  }
+}
+
+.fixed-mask-layer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1; }
+
+.fixed-bottom-form {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 10001;
+  min-width: 320px;
+  color: white;
+  .close_dialog{
+    width: 36px;
+    height: 36px;
+    //background-color: rgba(0, 0, 0, 0.3);
+    float: right;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: flex-end;
+    img{
+      margin-top: 5px;margin-right: 5px;
+      width: 50%;
+      height: 50%;
+    }
+  }
+  .clean_float{
+    content: '';
+    clear: both;
+  }
+  .commit_div{
+    padding-left: 7.8125%;
+    padding-right: 7.8125%;
+    padding-bottom: 5%;
+    box-shadow: 0px -1px 2px #cccccc;
+    background-color: #005fd4;
+    .top{
+      display: flex;
+      display: -webkit-flex;
+      justify-content: center;
+      align-items: center;
+      img{
+        width: 16.57%;
+        height: 18.23%;
+        position: relative;
+        top: -0.5rem;
+      }
+      h2{
+        margin-left: 0.8rem;
+        font-weight: normal;
+        font-size: 1.7rem;
+      }
+    }
+    .commit_zxyy {
+      .input_title {
+        color: white;
+        font-size: 1.3rem;
+        text-align: center;
+      }
+      .commit_zxyy_content {
+        display: -webkit-flex;
+        display: flex;
+        margin-bottom: 1rem;
+        .gz_out,.city_out{
+          height: 3rem;
+          width: 31%;
+          margin-right: 8px;
+          .xzgz_item {
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            padding: 3px 8px;
+
+            display: -webkit-flex;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            img {
+              width: 14%;
+              height: 30%;
+            }
+            span {
+              font-size: 1.1rem;
+              color: #595959;
+            }
+          }
+        }
+        .xxdz{
+          width: 100%;
+          outline: none;
+          border-width:0;
+          padding: 0 8px;
+          height: 3rem;
+          font-size: 1.1rem;
+          color: #595959;
+          -webkit-border-radius: 3px;
+          -moz-border-radius: 3px;
+          border-radius: 3px;
+        }
+        select {
+          width: 100%;
+          height: 100%;
+          background-color: white;
+          -webkit-border-radius: 3px;
+          -moz-border-radius: 3px;
+          border-radius: 3px;
+          padding: 3px 8px;
+          font-size: 1.1rem;
+          color: #595959;
+          border: hidden;
+          opacity: 0;
+          position: relative;
+          top: -24px;
+          left: 0;
+        }
+        .name,.phone{
+          width: 48%;
+          outline: none;
+          border-width:0;
+          padding: 0 8px;
+          height: 3rem;
+          font-size: 1.1rem;
+          color: #595959;
+          -webkit-border-radius: 3px;
+          -moz-border-radius: 3px;
+          border-radius: 3px;
+        }
+        .name{
+          margin-right: 8px;
+        }
+      }
+    }
+    .submit {
+      margin-right: auto;
+      margin-left: auto;
+      width: 100%;
+      color: white;
+      margin-top: 5%;
+      font-size: 1.7rem;
+      padding: 0.5rem 1rem;
+      border-width: 0;
+      background-color: #ff7928;
+      font-weight: bold;
+    }
+    #service-address{
+      color: white;
+      font-size: 1.3rem;
+    }
+  }
+}
+
+.code-tip {
+  display: none;
+  width: 87.34%;
+  margin: 0 auto 10px;
+  text-align: center;
+  color: #fff;
+  h2 {
+    font-size: 16px;
+    margin: 10px 0;
+  }
+  p {
+    text-align: left;
+    margin-bottom: 5px;
+    font-size: 10px;
+  }
+  a {
+    color: #fff
+  }
+}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>同创盛大服务平台</title>
+    <meta name="viewport" content="initial-scale=1.0,width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="renderer" content="webkit"/>
+    <link rel="stylesheet" type="text/css" href="css/msp.css">
+    <link rel="stylesheet" type="text/css" href="css/baseData.css">
+    <link rel="stylesheet" type="text/css" href="css/simple-pager.css">
+    <link rel="stylesheet" type="text/css" href="lib/layui/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="css/customer_service.css">
+    <style>
+        .layui-layer-content {
+            overflow-y: hidden !important;
+        }
+    </style>
+</head>
+<body style="min-width: 800px; min-height: 870px; background-color: #fff;" id="baseData">
+
+<div style="width: 100%; margin-left: 0;">
+
+    <div class="upmc-wp">
+
+        <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+            <ul class="layui-tab-title">
+                <li class="layui-this">客服账号管理</li>
+            </ul>
+        </div>
+
+        <div class="content-box">
+            <div>
+                <div class="pull-left ">
+                    <form class="form-inline" id="search-form">
+                        <div class="layui-form-item layui-form">
+                            <!--<label class="layui-form-label">选择省份</label>-->
+                            <!--<div class="layui-input-inline" style="width: 150px;">-->
+                            <!--<select class="province" name="selectprovince" lay-filter="selectprovince">-->
+                            <!--<option class="choosePro" selected="selected" value="-1">请选择省份</option>-->
+                            <!--</select>-->
+                            <!--</div>-->
+
+                            <!--<label class="layui-form-label">选择城市</label>-->
+                            <!--<div class="layui-input-inline" style="width: 150px;">-->
+                            <!--<select class="city" name="selectcity" lay-filter="city">　　　　　　　　-->
+                            <!--<option class='chooseCity' value='-1'>请选择城市</option>-->
+                            <!--</select>-->
+                            <!--</div>-->
+
+                            <label class="layui-form-label">客服用户名</label>
+                            <div class="layui-input-inline" style="width: 500px;">
+                                <input type="text" name="querystr" id="querystr" lay-verify="querystr"
+                                       autocomplete="off" placeholder="输入关键字查询" class="layui-input">
+                            </div>
+                            <div class="layui-input-inline">
+                                <a href="javascript:void(0)" class="layui-btn layui-btn-normal" id="btn-search"
+                                   style="width: 120px;">
+                                    <b class="icon-search vm"></b>查询</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="pull-right" style="margin-right: 28px">
+                    <a class="layui-btn layui-btn-normal" href="javascript:void(0)" class="btn" id="btn_add"><b
+                            style="font-size: 16px;">+</b> 新增客服账号</a>
+                </div>
+
+                <div class="grid-wrapper">
+                    <table id="dg_list" class="layui-table" lay-skin="line" lay-even>
+                        <thead>
+                        <tr class="list-head">
+                            <th style="width: 50px;">编号</th>
+                            <th style="width: 180px;">客服账号登录用户名</th>
+                            <th>客服账号登录密码</th>
+                            <th style="width: 100px;">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+
+                    <div class="pager-footer simple-pager-wrapper page-layout">
+                        <div style="visibility:hidden" class="simple-pager">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<div id="pop_up" style="display: none">
+    <div class="up-popup upp-addrecord" id="product_win">
+        <div class="upp-cont">
+            <div class="add_edit_dlg layui-form">
+                <form id="uploadForm">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">登录用户名</label>
+                        <div class="layui-input-block" style="width: 500px;">
+                            <input type="text" autocomplete="off" class="layui-input" name="name" placeholder="请使用英文字母和数字" maxlength="10">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">登录密码</label>
+                        <div class="layui-input-block" style="width: 500px;">
+                            <input type="tel" autocomplete="off" class="layui-input" name="mobile" placeholder="请使用英文字母和数字" maxlength="11">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="layui-form-item" style="text-align: center">
+                <a href="javascript:void(0)" class="layui-btn layui-btn-normal js-btn-update" id="btn-update"
+                   style="width: 120px;">保存</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="lib/layui/layui.js"></script>
+<script src="config/main.js"></script>
+<script src="js/customer_service.js?v20170418"></script>
+</body>
+</html>
+
+
+

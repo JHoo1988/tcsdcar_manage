@@ -1,0 +1,373 @@
+@charset "UTF-8";
+@import "../mixins";
+@import "../utilities";
+html{
+  background-color: #ffffff;
+}
+body, h1, h2, h3, h4, h5, h6, p, ol, ul, li, dl, dt, dd, b {
+  padding: 0;
+  margin: 0;
+  list-style-type : none;
+}
+body, table, div, img, article, aside, ul, ol, li, menu, h1, h2, h3, h4,
+h5, h6, p, button, input, section,textarea{
+  box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+body{
+  font-size: 14px;
+}
+.img-div{
+  width: 100%;
+  img{
+    width: 100%;
+  }
+}
+.full_repair{
+  width: 100%;
+  position: relative;
+  color: #333333;
+}
+.header-box{
+  width: 100%;
+  background-color: #ffffff;
+  position: relative;
+  &:after{
+    content: " ";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    left: 0;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  }
+}
+/*页头*/
+.site-header{
+  position: relative;
+  width: 100%;
+  z-index: 2;
+  padding: 0.6rem 0;
+  background-color: #ffffff;
+
+  white-space: nowrap;
+  .logo{
+    white-space: normal;
+    display: inline-block;
+    vertical-align: middle;
+    width: 50%;
+    padding-left: 5%;
+    img{
+      width: 70%;
+    }
+  }
+  .phone-number{
+    text-align: right;
+    white-space: normal;
+    display: inline-block;
+    vertical-align: middle;
+    width: 50%;
+    padding-right: 5%;
+    a{
+      text-decoration: none;
+      color: #999999;
+      font-size: 0.6rem;
+      img{
+        width: 70%;
+      }
+    }
+  }
+}
+.title-box-top{
+  padding: 0.4rem 0;
+  text-align: center;
+  .title{
+    line-height: 1.2rem;
+    .h2,.h3,.h4{
+      font-weight: normal;
+      vertical-align: middle;
+      padding: 0 0.1rem;
+    }
+    .h2{
+      font-size: 1rem;
+      color: #333333;
+    }
+    .h3{
+      font-size: 0.8rem;
+      color: #333333;
+
+    }
+    .h4{
+      font-size: 0.8rem;
+      color: #999999;
+    }
+  }
+}
+/*banner和预约模块*/
+.banner-form-div{
+  width: 100%;
+  position: relative;
+  vertical-align: top;
+  white-space: nowrap;
+  .left-div{
+    white-space: normal;
+    display: inline-block;
+    width: 100%;
+    background-color: #ffffff;
+    .banner-box{
+      width: 100%;
+      img{
+        width: 100%;
+      }
+    }
+    .other-box{
+      padding: 0.6rem 0.8rem 1rem 0.8rem;
+      h3.title{
+        font-size: 1rem;
+        font-weight: normal;
+        line-height: 1.8rem;
+      }
+      .content-desc{
+        font-size: 0.8rem;
+        color: #666666;
+        line-height: 1.4rem;
+        padding-bottom: 0.5rem;
+      }
+      .subs-cont{
+        margin-top: 1rem;
+        flex-wrap: nowrap;
+        .subs-item{
+          max-width: 18%;
+          .subs-icon{
+            img{
+              width: 2rem;
+            }
+          }
+          .subs-arrow-icon{
+            margin-top: 0.5rem;
+            img{
+              max-width: 1rem;
+            }
+          }
+          .title{
+            color: #CCCCCC;
+            line-height: 1.4rem;
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+
+}
+/*特殊样式标题*/
+.line-title{
+  position: relative;
+
+  &:after{
+    content: " ";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    background-color: #00bbff;
+    height: 2px;
+  }
+  .title{
+    background-color: #00bbff;
+    color: #ffffff;
+    font-size: 1rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 0 5px 0 0;
+    display: inline-block;
+  }
+}
+/*价格表格*/
+.price-table-box,.service-city-box{
+  background-color: #ffffff;
+  padding: 0 0.8rem 1rem 0.8rem;
+  .tab-div{
+    width: 100%;
+    margin-top: 1rem;
+    .tab-box{
+      width: 100%;
+      border: 1px solid blue;
+      border-collapse:collapse;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #333333;
+      .bg-gray{
+        background-color: #F2F5F7;
+        .tab-cell{
+          border: 1px solid #ffffff;
+        }
+      }
+      .bg-white{
+        background-color: #ffffff;
+      }
+      .tab-row{
+
+      }
+      .tab-cell{
+        border: 1px solid #cccccc;
+        padding: 0.6rem 0.1rem;
+      }
+    }
+  }
+}
+/*服务保障*/
+.service-assurance-box{
+  background-color: #ffffff;
+  padding: 0 0.8rem;
+  .service-cont{
+    width: 100%;
+    margin-top: 1rem;
+    .service-item{
+      background-color: #F2F5F7;
+      display: inline-block;
+      width: 48%;
+      margin-bottom: 0.8rem;
+      min-height: 12rem;
+      .item-icon{
+        padding-top: 1rem;
+        img{
+          width: 50%;
+        }
+      }
+      .item-title{
+        color: #333333;
+        font-size: 1rem;
+      }
+      .item-title-desc{
+        padding: 0 0.2rem;
+        color: #999999;
+        font-size: 0.6rem;
+      }
+    }
+  }
+}
+/*服务城市*/
+.service-city-box{
+  background-color: #ffffff;
+  padding: 0 0.8rem;
+  .img-div{
+    padding-top: 1em;
+  }
+  .desc-cont{
+    padding: 1rem 0 0.2rem 0;
+    font-size: 0.8rem;
+    line-height: 1.5rem;
+  }
+  .desc-line{
+    padding: 0.8rem 0.2rem;
+  }
+  .desc-gray{
+    color: #cccccc;
+  }
+
+}
+/*服务现场*/
+.service-scene-box{
+  background-color: #ffffff;
+  padding: 0 0.8rem;
+  .img-cont{
+    margin-top: 1rem;
+    width: 100%;
+    .img-item{
+      display: inline-block;
+      width: 48%;
+      margin-bottom: 0.5rem;
+      img{
+        width: 100%;
+      }
+    }
+  }
+}
+/*服务流程*/
+.service-flow-box{
+  background-color: #ffffff;
+  padding: 0 0.8rem;
+  .service-flow-cont{
+    margin-top: 1rem;
+    width: 100%;
+    .service-flow-item{
+      display: inline-block;
+      width: 50%;
+      margin-bottom: 0.5rem;
+      .item-icon{
+        img{
+          width: 50%;
+        }
+      }
+      .item-title{
+        color: #00bbff;
+        font-size: 1rem;
+      }
+      .item-desc{
+        font-size: 0.8rem;
+        color: #999999;
+      }
+    }
+  }
+}
+/*服务说明*/
+.service-desc-box{
+  background-color: #ffffff;
+  padding: 0 0.8rem;
+  .desc-cont{
+    width: 100%;
+    padding: 0.5rem 0;
+    .tab-list{
+      display: table;
+      width: 100%;
+      .tab-cell{
+        display: table-cell;
+        padding: 0.2rem 0;
+      }
+      .tab-cell.col-1{
+
+      }
+      .tab-cell.col-2{
+
+      }
+    }
+  }
+}
+/*用户评价*/
+.user-comment-box{
+  background-color: #ffffff;
+  padding: 0 0.8rem;
+  .banner-box{
+    padding: 1rem 0;
+  }
+}
+
+/*合作伙伴*/
+.team-work-box{
+  background-color: #ffffff;
+  padding: 0 0.8rem;
+  .img-cont{
+    width: 100%;
+    img{
+      width: 100%;
+    }
+  }
+}
+#newBridge .icon-right-center{
+  top: 30% !important;
+}
+#newBridge .nb-icon-right-center{
+  display: none !important;
+}
+
+
+

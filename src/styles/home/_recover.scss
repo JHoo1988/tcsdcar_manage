@@ -1,0 +1,70 @@
+@charset "UTF-8";
+@import "../mixins";
+
+$recover-banner: '../images/banner/04.jpg';
+$recover-banner-mobile: '../images/banner/04_m.jpg';
+
+// 数码回收
+.sec-recover {
+    .bg {
+        background-image: url($recover-banner-mobile);
+        background-position: center center;
+        background-size: cover;
+        height: 225px;
+    }
+    .bd {
+        color: #5a5a5a;
+    }
+    .title-en {
+        color: #22dda7;
+    }
+}
+
+@media (min-width: 768px) {
+    .sec-recover {
+        position: relative;
+        .bg {
+            height: 450px;
+            background-image: url($recover-banner);
+        }
+        .bd {
+            position: absolute;
+            top: 110px;
+            width: 100%;
+            text-align: center;
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    .sec-recover {
+        .bg {
+            height: 480px;
+        }
+        .bd {
+            top: 125px;
+        }
+    }
+}
+
+@media (min-width: 1240px) {
+    .sec-recover {
+        .bg {
+            height: 520px;
+        }
+        .bd {
+            top: 150px;
+        }
+    }
+}
+
+@media (min-width: 1880px) {
+    .sec-recover {
+        .bg {
+            height: 829px;
+        }
+        .bd {
+            top: 270px;
+        }
+    }
+}

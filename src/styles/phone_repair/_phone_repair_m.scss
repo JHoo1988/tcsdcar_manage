@@ -1,0 +1,499 @@
+@charset "UTF-8";
+@import "../mixins";
+@import "../utilities";
+
+html {
+    font-size: 14px;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul, li, dl, dt, dd, b {
+    padding: 0;
+    margin: 0;
+}
+
+body, table, div, img, article, aside, ul, ol, li, menu, h1, h2, h3, h4,
+h5, h6, p, button, input, section {
+    box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+body {
+    font-size: 14px;
+}
+
+.phone_repair {
+    width: 100%;
+    z-index: 1;
+    position: relative;
+}
+
+.site-header {
+    width: 100%;
+    position: relative;
+    padding: 0.5rem 0 0.3rem 0;
+    white-space: nowrap;
+    box-shadow: 0 .1111rem .2111rem rgba(0, 0, 0, .2);
+    z-index: 2;
+    .logo {
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 5%;
+        width: 30%;
+        img {
+            width: 100%;
+        }
+    }
+    .phone-number {
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 20%;
+        width: 40%;
+        a {
+            text-decoration: none;
+            color: #999999;
+            font-size: 14px;
+        }
+        .tel {
+            width: 100%;
+            img {
+                width: 100%;
+            }
+        }
+        .tel-desc {
+            display: none;
+        }
+    }
+}
+
+.top-banner {
+    width: 100%;
+    height: auto;
+    img {
+        width: 100%;
+        display: block;
+    }
+}
+
+.title-line {
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    .h3-title {
+        position: relative;
+        display: inline-block;
+        font-size: 1.285rem;
+        line-height: 2.2rem;
+        color: #333333;
+        padding: 0.1rem 0.8rem;
+        img{
+            width: 80%;
+        }
+        .left-top-box {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-left: 2px solid #333333;
+            border-top: 2px solid #333333;
+        }
+        .right-bottom-box {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 20px;
+            height: 20px;
+            border-right: 2px solid #333333;
+            border-bottom: 2px solid #333333;
+        }
+    }
+}
+
+.section-superiority {
+    position: relative;
+
+    .title-line {
+        position: relative;
+        background: #fff;
+        border-radius: 6px 6px 0 0;
+        margin: -30px 15px 0;
+    }
+    .title-line .h3-title {
+        color: #00bbff;
+    }
+    .cont {
+        background: #fff;
+        border-top: 1px solid #f1f1f1;
+        padding: 8px 15px;
+    }
+    .cont .title {
+        font-size: .857rem;
+    }
+    .item {
+        width: 25%;
+    }
+    .icon img {
+        width: 36px;
+        height: 36px;
+    }
+}
+/*故障*/
+//.section-fault {
+//    background-color: #F2F5F7;
+//    width: 100%;
+//    //margin-top: -0.4rem;
+//    .fault-cont {
+//        width: 100%;
+//        justify-content: space-around;
+//        -webkit-justify-content: space-around;
+//        .fault-item {
+//            background-color: #ffffff;
+//            width: 45%;
+//            margin-bottom: 1.4rem;
+//            .fault-icon {
+//                img {
+//                    width: 30%;
+//                    max-width: 6rem;
+//                }
+//                padding-top: 1rem;
+//            }
+//            .title {
+//                color: #666666;
+//                font-size: 18px;
+//                text-align: center;
+//                line-height: 38px;
+//            }
+//            .title-desc {
+//                display: none;
+//                padding: 0 28px;
+//                font-size: 14px;
+//                line-height: 20px;
+//                color: #999999;
+//                text-align: left;
+//            }
+//        }
+//    }
+//}
+
+.section-fault {
+    background-color: #f3f4f8;
+    padding: 15px 0 0 0;
+    .fault-cont {
+        margin: 0 16px;
+    }
+    .brand-list, .model-list {
+        @include reset();
+    }
+    .brand-list {
+        height: 44px;
+        background: #fff url("../images/phone_repair/fault/line-blue.png?__inline") repeat-x 0 bottom;
+        background-size: 100% 1px;
+    }
+    .brand-list li {
+        float: left;
+        padding: 0 22px;
+        font-size: 14px;
+        line-height: 44px;
+        cursor: pointer;
+    }
+    .brand-list .active {
+        color: #00bbff;
+        background: url("../images/phone_repair/fault/up.png?__inline") no-repeat center bottom;
+        background-size: 12px 8px;
+    }
+    .model-list {
+        //float: left;
+        width: 142px;
+        height: 396px;
+        background-color: #efefef;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+    .model-list li {
+        font-size: .857rem;
+        height: 36px;
+        line-height: 36px;
+        overflow: hidden;
+        text-indent: 5px;
+        text-align: left;
+        border-left: 3px solid #efefef;
+        background-color: #efefef;
+        cursor: pointer;
+    }
+    .model-list .active {
+        background-color: #fff;
+        border-left-color: #00bbff;
+    }
+    .fault-list {
+        //float: left;
+        //width: 760px;
+        flex: 1;
+        height: 396px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        background-color: #fff;
+    }
+    .fault-list ul {
+        @include reset();
+    }
+    .fault-list li {
+        text-align: left;
+        height: 36px;
+        padding: 8px 0;
+     }
+    .fault-list .name,
+    .fault-list .price{
+        float: left;
+        height: 20px;
+        line-height: 20px;
+    }
+    .fault-list .name {
+        padding-left: 10px;
+        width: 140px;
+        overflow: hidden;
+        color: #666;
+        font-size: .857rem;
+    }
+    .fault-list .price {
+        float: right;
+        width: 48px;
+        font-size: 14px;
+        color: #00bbff;
+    }
+    .ft {
+        padding: 15px 0 24px;
+        text-align: center;
+        font-size: .857rem;
+        color: #999;
+    }
+}
+
+@media (max-width: 374px) {
+    .section-fault {
+        .fault-cont {
+            margin: 0;
+        }
+        .fault-list .name{
+            width: 130px;
+        }
+        .fault-list .price {
+            float: left;
+            width: auto;
+            font-size: .857rem;
+        }
+    }
+}
+
+::-webkit-input-placeholder {
+    color: #666666;
+    opacity: 0.54;
+}
+
+/*快速预约*/
+.section-subs {
+    background-color: #ffffff;
+    width: 100%;
+
+    .subs-cont {
+        width: 100%;
+        .subs-item {
+            flex: 1;
+            padding-right: 16px;
+            -webkit-box-flex: 1;
+            position: relative;
+            margin-bottom: 1rem;
+            .subs-icon img {
+                width: 48px;
+                height: 48px;
+            }
+            .title {
+                text-align: center;
+                margin-top: 0.5rem;
+                font-size: 1rem;
+                color: #999999;
+                margin-bottom: 1rem;
+            }
+            .line{
+                position: absolute;
+                right: 0;
+                top: 20px;
+                width: 16px;
+                height: 12px;
+                background: url("../images/phone_repair/fault/arrow.png") no-repeat 0 0;
+                background-size: 16px 12px;
+            }
+        }
+    }
+}
+
+/*安全保障*/
+.section-safety {
+    background-color: #F2F5F7;
+    width: 100%;
+    .safety-cont {
+        width: 100%;
+        justify-content: space-around;
+        -webkit-justify-content: space-around;
+        .safety-item {
+            width: 50%;
+            margin-bottom: 1.5rem;
+            .safety-icon {
+                img {
+                    width: 50%;
+                    max-width: 8rem;
+                }
+            }
+            .title {
+                color: #666666;
+                font-size: 1.2rem;
+            }
+            .title-desc {
+                color: #999999;
+                font-size: 0.9rem;
+            }
+        }
+    }
+}
+
+/*维修流程*/
+.section-repair-flow {
+    background-color: #f3f4f8;
+    width: 100%;
+    .repair-flow-cont {
+        width: 100%;
+        justify-content: space-around;
+        -webkit-justify-content: space-around;
+        .repair-flow-item {
+            width: 50%;
+            margin-bottom: 1rem;
+            .repair-flow-icon {
+                img {
+                    width: 65%;
+                    max-width: 10rem;
+                }
+            }
+            .title {
+                font-size: .857rem;
+                color: #00bbff;
+            }
+            .title-desc {
+                color: #999999;
+                font-size: .857rem;
+            }
+        }
+    }
+}
+
+/*服务说明*/
+.section-serve-desc {
+    background-color: #F2F5F7;
+    width: 100%;
+    .serve-desc-cont {
+        width: 100%;
+        padding: 0 1rem 1rem 1rem;
+        p {
+            width: 100%;
+            font-size: 1rem;
+            color: #666666;
+            line-height: 2rem;
+        }
+    }
+}
+
+/*常见问题*/
+.section-faq {
+    background-color: #ffffff;
+    width: 100%;
+    .faq-cont {
+        width: 100%;
+        padding: 0 1rem 0.5rem 1rem;
+        p {
+            padding: 0.2rem 0;
+        }
+        .title {
+            color: #333333;
+            font-size: 1rem;
+        }
+        .notice {
+            color: #00bbff;
+            font-size: 0.8rem;
+            padding-left: 1.5rem;
+        }
+        .text {
+            padding-left: 1.5rem;
+            font-size: 1rem;
+            color: #999999;
+        }
+    }
+}
+
+.site-footer {
+    background-color: #B1B3BF;
+    color: #ffffff;
+    width: 100%;
+    font-size: 0.8rem;
+    padding-bottom: 4rem;
+    .about_us{
+        padding: 0 20px;
+        .about_us_title{
+            font-weight: bold;
+        }
+    }
+    .contect_us{
+        padding: 10px 20px;
+        .contect_us_title{
+            font-weight: bold;
+        }
+    }
+    .logo-cont {
+        width: 100%;
+        text-align: center;
+        padding: 1rem 0;
+        .logo {
+            display: block;
+            text-align: center;
+            margin-bottom: 0.4rem;
+            img {
+                width: 50%;
+                max-width: 10rem;
+            }
+        }
+        .code {
+            text-align: center;
+            img {
+                display: inline-block;
+                width: 7rem;
+            }
+            .code-desc {
+            }
+        }
+    }
+    .nav {
+        padding: 0 0.5rem;
+        text-align: center;
+        color: #ffffff;
+        font-size: 0.8rem;
+        .group {
+            display: inline-block;
+        }
+        a {
+            padding: 0 3px;
+            color: #ffffff;
+            text-decoration: none;
+        }
+    }
+    .copyright {
+        text-align: center;
+        padding: 10px 0;
+        font-size: 0.6rem;
+    }
+}
+
+

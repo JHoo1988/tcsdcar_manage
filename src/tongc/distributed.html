@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>同创盛大管理平台</title>
+    <meta name="viewport" content="initial-scale=1.0,width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="renderer" content="webkit"/>
+    <link rel="stylesheet" type="text/css" href="css/msp.css">
+    <link rel="stylesheet" type="text/css" href="css/baseData.css">
+    <link rel="stylesheet" type="text/css" href="css/simple-pager.css">
+    <link rel="stylesheet" type="text/css" href="lib/layui/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="css/distribution.css">
+</head>
+<body style="min-width: 800px; min-height: 870px; background-color: #fff;margin-top: 8px;" id="baseData">
+<div style="width: 100%; margin-left: 0;">
+    <div class="upmc-wp">
+        <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+            <ul class="layui-tab-title">
+                <li class="layui-this" >管理已分配的店铺</li>
+            </ul>
+        </div>
+        <div class="content-box">
+            <div>
+                <div class="pull-left ">
+                    <form class="form-inline layui-form" id="search-form">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">选择省份</label>
+                            <div class="layui-input-inline" style="width: 200px;">
+                                <select class="province" name="selectprovince" lay-filter="selectprovince">
+                                    <option class="choosePro" selected="selected" value="-1">请选择省份</option>
+                                </select>
+                            </div>
+
+                            <label class="layui-form-label">选择城市</label>
+                            <div class="layui-input-inline" style="width: 200px;">
+                                <select class="city" name="selectcity" lay-filter="selectcity">　　　　　　　　
+                                    <option class='chooseCity' value='-1'>请选择城市</option>
+                                </select>
+                            </div>
+
+                            <label class="layui-form-label">选择区县</label>
+                            <div class="layui-input-inline" style="width: 200px;">
+                                <select id="county" name="area" lay-filter="area">　　　　　　　　
+                                    <option class='chooseCity' value='-1'>请选择区县</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">4S店名称</label>
+                            <div class="layui-input-inline" style="width: 500px;">
+                                <input type="text" name="productName" id="productName" lay-verify="productName"
+                                       autocomplete="off" placeholder="输入名称、电话、地址关键字查询" class="layui-input">
+                            </div>
+                            <div class="layui-input-inline">
+                                <a href="javascript:void(0)" class="layui-btn layui-btn-normal" id="btn-search"
+                                   style="width: 120px;">
+                                    <b class="icon-search vm"></b>查询</a>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="grid-wrapper">
+                    <table id="dg_list" class="layui-table" lay-skin="line" lay-even>
+                        <thead>
+                        <tr class="list-head">
+                            <th style="width:60px;">
+                                <input style="position: relative;top: 4px;" type="checkbox" name="allChoose" class="allChoose">
+                                <span style="font-weight: normal">全选</span>
+                            </th>
+                            <th style="width:30px;">编号</th>
+                            <th style="width:20%;">4S店名称</th>
+                            <th style="width:12%">店铺编码</th>
+                            <th>地址</th>
+                            <th style="width: 8%;">合作状态</th>
+                            <th style="width: 75px;">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+
+                    <div class="pager-footer simple-pager-wrapper page-layout">
+                        <div style="visibility:hidden" class="simple-pager">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div style="margin: 0 auto;width: 330px;">
+    <button class="layui-btn layui-btn-normal jumpa" style="width: 150px;">返回</button>
+    <button class="layui-btn layui-btn-danger layui-btn-disabled delete" style="width: 150px;">批量删除</button>
+</div>
+
+<div id="pop_up" style="display: none">
+    <div class="up-popup upp-addrecord" id="product_win">
+        <div class="upp-cont">
+            <div class="add_edit_dlg layui-form">
+                <form id="uploadForm" enctype="multipart/form-data">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">修改状态</label>
+
+                        <div class="layui-input-inline" style="width: 500px;">
+                            <select class="statu" name="statu" lay-filter="statu">
+                                <option selected="selected" value="-1">请选择状态</option>
+                                <option value="0">未合作</option>
+                                <option value="1">合作中</option>
+                                <option value="2">合作终止</option>
+                            </select>
+                        </div>
+                    </div>
+                    <input style="display: none;" type="text" name="id">
+                </form>
+            </div>
+            <div class="layui-form-item" style="text-align: center">
+                <a href="javascript:void(0)" class="layui-btn layui-btn-normal js-btn-update" id="btn-update"
+                   style="width: 120px;">保存</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<script src="js/jquery-3.2.0.min.js"></script>-->
+<script src="lib/layui/layui.js"></script>
+<script src="config/main.js"></script>
+<script src="js/distributed.js"></script>
+</body>
+</html>

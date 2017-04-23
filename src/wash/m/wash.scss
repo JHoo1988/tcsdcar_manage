@@ -1,0 +1,306 @@
+@charset "UTF-8";
+@import "../../styles/normalize";
+@import "../../styles/mixins";
+@import "../../styles/utilities";
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  outline: 0;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+html {
+  font-family: sans-serif; /* 1 */
+  -ms-text-size-adjust: 100%; /* 2 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  font-family: "Helvetica Neue", Helvetica, STHeiTi, Arial, sans-serif;
+  background-color: #ffffff;
+}
+
+/**
+ * 清洗主页
+ */
+
+.page-wash-m {
+  position: absolute;
+  z-index: 1;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #BC2423;
+}
+
+.page-wash-m .page-container {
+  position: relative;
+  max-width: 540px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.page-wash-m .main {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 60px;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.page-wash-m .section-banner {
+  img {
+    width: 100%;
+  }
+}
+
+.page-wash-m .section-product-list {
+  padding: 4px;
+  width: 100%;
+  overflow: hidden;
+  ul, li {
+    @include reset();
+  }
+  li {
+    overflow: hidden;
+    background-color: #eeeeee;
+    margin-bottom: 4px;
+  }
+  .selected {
+    background-color: #ff9600;
+  }
+  .product {
+    width: 78%;
+  }
+  .btn {
+    width: 21%;
+    cursor: pointer;
+  }
+  .btn img,
+  .product img {
+    display: block;
+    width: 100%;
+  }
+}
+
+.page-wash-m .section-text {
+  width: 100%;
+  overflow: hidden;
+  img {
+    display: block;
+    width: 100%;
+  }
+}
+
+.page-wash-m .footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 60px;
+  overflow: hidden;
+  padding: 10px 12px;
+  background-color: #f7f7f7;
+
+  .shop-cart-num {
+    margin-right: 12px;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background: url("images/unselected.png?__inline") no-repeat;
+    background-size: cover;
+  }
+  .badge {
+    display: none;
+  }
+  .shop-cart-num.selected {
+    background-image: url("images/selected.png?__inline");
+  }
+  .shop-cart-num.selected .badge {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    display: block;
+    background-color: #dd0101;
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+    text-align: center;
+    border-radius: 7px;
+    font-size: 10px;
+    color: #fff;
+  }
+
+  .button-group {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    flex-wrap: wrap-reverse !important;
+  }
+  .btn-call {
+    background: #ff911b url("images/btn-call.png?__inline") no-repeat 50% 50%;
+  }
+  .btn-booking {
+    margin-right: 12px !important;
+    background: #5dbcff url("images/btn-booking.png?__inline") no-repeat 50% 50%;
+  }
+  .btn-booking, .btn-call {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    min-width: 110px;
+    height: 40px;
+    background-size: cover;
+    border-radius: 5px;
+    line-height: 500px;
+    overflow: hidden;
+  }
+}
+
+/**
+ * 在线预约
+ */
+
+.page-booking-m {
+  z-index: 2;
+  background-color: #fff;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  .main {
+    bottom: 0;
+  }
+
+  form {
+
+  }
+
+  .title {
+    font-family: "Microsoft YaHei";
+    padding-top: 10px;
+    color: #141414;
+    line-height: 40px;
+    padding-left: 16px;
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  .title span {
+    background-color: #faaacd;
+    color: #722245;
+    font-size: 30px;
+    font-weight: 400;
+  }
+
+  .close-dialog {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    top: 0;
+    right: 0;
+
+    img {
+      display: block;
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+}
+
+.page-booking-m .service-list {
+  margin: 0 11px;
+  span {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    display: block;
+    border: 1px solid #eee;
+    color: #999;
+    border-radius: 18px;
+    font-size: 14px;
+    height: 40px;
+    line-height: 36px;
+    text-align: center;
+    margin: 2px 4px;
+  }
+  .selected {
+    border-color: #ff8a00;
+    color: #ff8a00;
+  }
+}
+
+.page-booking-m .booking-form {
+  padding: 0 16px 16px;
+  .form-group {
+    margin-bottom: 10px;
+  }
+  .form-select,
+  .form-text {
+    height: 38px;
+    padding: 10px;
+    background-color: #d7d7d7;
+    border: 1px solid #d7d7d7;
+    border-radius: 3px;
+    color: #666;
+  }
+  .form-select {
+    margin-right: 5px;
+  }
+  .form-text {
+    width: 100%;
+  }
+  .item:first-of-type {
+    margin-right: 8px;
+  }
+  .item {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+  }
+  .btn-booking {
+    width: 100%;
+    height: 50px;
+    border: 1px solid #ff8a00;
+    background-color: #ff8a00;
+    border-radius: 5px;
+    font-size: 20px;
+    color: #fff;
+  }
+}

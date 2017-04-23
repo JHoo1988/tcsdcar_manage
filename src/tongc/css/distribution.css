@@ -1,0 +1,23 @@
+@charset "UTF-8";
+.layui-form-item .layui-input-inline {
+  width: 0px; }
+
+#dg_list {
+  font-weight: normal;
+  font-family: "微软雅黑"; }
+  #dg_list input[type=checkbox] {
+    width: 18px;
+    height: 18px;
+    position: relative;
+    top: 4px; }
+  #dg_list .del_shop {
+    color: #FF5722;
+    padding: 0 5px; }
+  #dg_list .edt_shop {
+    color: #00bbfe; }
+  #dg_list .in_cooperation {
+    color: #009688; }
+  #dg_list .cooperative_termination {
+    color: #C3C3C3; }
+
+/*# sourceMappingURL=distribution.css.map */

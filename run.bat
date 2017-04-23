@@ -1,0 +1,1 @@
+fis server clean --root ./dist && fis release -opmud ./dist --domains --file fis-conf.js --root ./src

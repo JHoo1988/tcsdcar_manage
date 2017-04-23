@@ -1,0 +1,65 @@
+@charset "UTF-8";
+@import "../mixins";
+
+$map-image: '../images/banner/map@xs.jpg';
+$map-image2: '../images/banner/map2@xs.jpg';
+
+.sec-city {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #fafafa;
+    .hd {
+        padding: 50px 0;
+    }
+    .title-en {
+        font-size: 60px;
+        color: #00bbff;
+        line-height: 74px;
+    }
+    .title {
+        font-size: 50px;
+        line-height: 74px;
+    }
+    .city-list {
+        font-size: 18px;
+    }
+    .map .animated,
+    .map {
+        width: 100%;
+        height: 500px;
+    }
+}
+
+.sec-city {
+    .city {
+        float: right;
+        width: 45%;
+    }
+    .hd {
+        padding: 15px 0;
+    }
+    .title-en {
+        font-size: 30px;
+        color: #00bbff;
+    }
+    .title {
+        font-size: 26px;
+        line-height: 36px;
+    }
+    .city-list {
+        padding: 0;
+        font-size: 12px;
+    }
+    .city-list li {
+        width: 33.33%;
+    }
+    .map .animated,
+    .map {
+        background-image: url($map-image);
+        width: 563px;
+        height: 396px;
+    }
+    .map .animated {
+        background-image: url($map-image2);
+    }
+}

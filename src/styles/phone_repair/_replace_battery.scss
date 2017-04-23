@@ -1,0 +1,450 @@
+@charset "UTF-8";
+@import "../mixins";
+@import "../utilities";
+
+html {
+  font-size: 62.5%;
+  background-color: gainsboro;
+  min-width: 1360px;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul, li, dl, dt, dd, b {
+  padding: 0;
+  margin: 0;
+}
+
+body, table, div, img, article, aside, ul, ol, li, menu, h1, h2, h3, h4,
+h5, h6, p, button, input, section {
+  box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+//@font-face {
+//  font-face-name: MyriadPro-BoldSemiExt;
+//  src: url('../font/MyriadPro-SemiboldSemiExt.eot');
+//  src: url('../font/MyriadPro-SemiboldSemiExt.otf');
+//  src: url('../font/MyriadPro-SemiboldSemiExt.ttf');
+//  src: url('../font/MyriadPro-SemiboldSemiExt.svg');
+//  src: url('../font/MyriadPro-SemiboldSemiExt.woff');
+//  font-style: normal;
+//  font-weight: normal;
+//}
+.header-box {
+  height: 92px;
+  width: 100%;
+  background-color: white;
+  .site-header {
+    height: 100%;
+    width: 61.66%;
+    margin: 0 auto;
+    background-color: #00bbfe;
+    background-color: white;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .phone-number a {
+      text-decoration: none;
+      color: #a1a1a1;
+    }
+  }
+}
+
+.banner {
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center;
+  background-color: #b1cdff;
+  height: 31.71%;
+  max-height: 670px;
+  img {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    max-width: 1920px;
+  }
+}
+
+.content {
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #c2e4f8;
+
+  /*维修价格信息*/
+  .price_info {
+    height: 796px;
+    background: url("../images/phone_repair/replace_battery/background1.jpg") no-repeat;
+    max-width: 1920px;
+    margin: 0 auto;
+    width: 100%;
+    .product_list {
+      position: relative;
+      display: -webkit-flex;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 125px;
+      .price {
+        border: 15px solid transparent;
+        padding: 10px 10px;
+        -moz-border-image:url(../images/phone_repair/replace_battery/price_border.png) 20 20 round;	/* Old Firefox */
+        -webkit-border-image:url(../images/phone_repair/replace_battery/price_border.png) 20 20 round;	/* Safari and Chrome */
+        -o-border-image:url(../images/phone_repair/replace_battery/price_border.png) 20 20 round;	/* Opera */
+        border-image:url(../images/phone_repair/replace_battery/price_border.png) 20 20 round;
+        height: 175px;
+
+        display: -webkit-flex;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .price12{
+        display: -webkit-flex;
+        display: flex;
+        justify-content: center;
+      }
+      .price1, .price2 {
+        width: 652px;
+        margin: 0 15px;
+      }
+      .price3,.price4 {
+        width: 652px;
+        margin: 35px 15px;
+      }
+    }
+  }
+  /*在线预约表单*/
+  .online_booking {
+    width: 100%;
+    margin:0 auto;
+    max-width: 1920px;
+    height: 564px;
+    background: url("../images/phone_repair/replace_battery/background2.jpg") no-repeat;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .js-form-subscribe {
+      display: -webkit-flex;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      .submit {
+        margin-top: 60px;
+        margin-right: auto;
+        margin-left: auto;
+        width: 373px;
+        height: 91px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        outline: none;
+        -webkit-outline: none;
+        -moz-outline: none;
+        cursor: pointer;
+        border-top-width: 0px;
+        border-right-width: 0px;
+        border-bottom-width: 0px;
+        border-left-width: 0px;
+        background: url("../images/phone_repair/replace_battery/submit.png") no-repeat;
+      }
+      .commit_div {
+        display: -webkit-flex;
+        display: flex;
+        align-content: center;
+        font-family: "Microsoft YaHei UI Light";
+        .commit_zxyy {
+          margin-left: 100px;
+          select {
+            width: 172px;
+            height: 47px;
+            background-color: white;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            padding: 6px 18px;
+            font-size: 20px;
+            color: #595959;
+            border: hidden;
+            opacity: 0;
+            position: relative;
+            top: -46px;
+            left: 0;
+            option {
+              font-size: 20px;
+              color: #595959;
+              padding: 6px 18px;
+              line-height: 50px;
+              border: 0px;
+            }
+            option:hover {
+              background-color: #f80;
+              color: #fff;
+            }
+          }
+          h2 {
+            color: #666666;
+            font-size: 44px;
+          }
+          .row-text {
+            display: none;
+            margin-left: 100px;
+            color: white;
+            margin-bottom: 10px;
+            font-size: 16px;
+          }
+          .commit_zxyy_content {
+            margin-top: 25px;
+            display: -webkit-flex;
+            display: flex;
+            align-content: center;
+            .selectbale {
+              cursor: pointer;
+            }
+            .xzgz_item {
+              width: 172px;
+              height: 47px;
+              background-color: white;
+              -webkit-border-radius: 5px;
+              -moz-border-radius: 5px;
+              border-radius: 5px;
+              padding: 6px 18px;
+              margin-right: 27px;
+
+              display: -webkit-flex;
+              display: flex;
+              justify-content: space-between;
+              align-content: center;
+              img {
+                width: 12px;
+                height: 13px;
+                margin-top: 10px;
+              }
+              span {
+                font-size: 20px;
+                color: #595959;
+              }
+            }
+          }
+          .input_title {
+            color: #666666;
+            font-size: 23px;
+            text-align: center;
+          }
+          .xxdz {
+            width: 568px;
+            height: 47px;
+            background-color: white;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            padding: 6px 18px;
+            border-top-width: 0px;
+            border-right-width: 0px;
+            border-bottom-width: 0px;
+            border-left-width: 0px;
+            outline: none;
+            font-size: 20px;
+            color: #595959;
+          }
+          .name, .phone {
+            width: 273px;
+            height: 47px;
+            background-color: white;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            padding: 6px 18px;
+            border-top-width: 0px;
+            border-right-width: 0px;
+            border-bottom-width: 0px;
+            border-left-width: 0px;
+            margin-right: 27px;
+            outline: none;
+            font-size: 20px;
+            color: #595959;
+          }
+        }
+      }
+    }
+  }
+  .hbd {
+    height: 2353px;
+    background: url("../images/phone_repair/replace_battery/background3.jpg") no-repeat;
+    max-width: 1920px;
+    margin: 0 auto;
+    width: 100%;
+    /*TCL旗下手机维修品牌*/
+    .tcl_phone_repair {
+      margin-top: 70px;
+      display: -webkit-flex;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      .title {
+        margin: 0 auto;
+      }
+      .mzx3 {
+        margin-top: 50px;
+        margin-right: auto;
+        margin-left: auto;
+        display: -webkit-flex;
+        display: flex;
+        justify-content: center;
+        .mzx_item {
+          color: #666666;
+          font-size: 16px;
+          margin: 0 82px;
+          display: -webkit-flex;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          img {
+            height: 72px;
+            width: 64px;
+            margin: 0 auto;
+          }
+        }
+      }
+      .mzx4 {
+        margin-top: 60px;
+        margin-right: auto;
+        margin-left: auto;
+        width: 1204px;
+        .adf {
+          height: 429px;
+          width: 284px;
+          margin: 0 7px;
+        }
+      }
+    }
+    /*常见问题*/
+    .common_problem {
+      width: 1282px;
+      height: 648px;
+      margin-top: 49px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-top: 51px;
+      background: url("../images/phone_repair/replace_screen/QA_bg.png") no-repeat;
+      display: flex;
+      display: -webkit-flex;
+      justify-content: center;
+      .common_problem_content {
+        color: white;
+        font-size: 16px;
+        display: flex;
+        display: -webkit-flex;
+        align-content: center;
+        flex-direction: column;
+        h2 {
+          font-size: 32px;
+          margin: 0 auto;
+        }
+        h3 {
+          margin-top: 26px;
+          margin-right: auto;
+          margin-left: auto;
+          font-size: 22px;
+          color: #00bbff;
+        }
+        p {
+          margin: 0 auto;
+        }
+      }
+    }
+    /*服务流程示意图*/
+    .service_flow {
+      width: 1200px;
+      height: 768px;
+      background-color: #efefef;
+      margin: 0 auto;
+      h2 {
+        text-align: center;
+        font-size: 32px;
+        padding-top: 49px;
+        padding-bottom: 30px;
+        color: black;
+        font-weight: normal;
+      }
+      .service_flow_content {
+        .align_right1 {
+          text-align: end;
+          float: left;
+          position: relative;
+          left: -373px;
+          top: 32px;
+        }
+        .align_right2 {
+          text-align: end;
+          float: left;
+          position: relative;
+          left: -583px;
+          top: 352px;
+        }
+        .align_left1 {
+          text-align: start;
+          float: left;
+          position: relative;
+          left: 390px;
+          top: 70px;
+        }
+        .align_left2 {
+          text-align: start;
+          float: left;
+          position: relative;
+          left: 95px;
+          top: 356px;
+        }
+        img {
+          height: 572px;
+          width: 457px;
+          float: left;
+          left: 371px;
+          position: relative;
+        }
+        h3 {
+          font-size: 35px;
+          color: #0d0d0d;
+        }
+        p {
+          font-size: 21px;
+          color: #636363;
+        }
+      }
+    }
+  }
+}
+
+footer {
+  padding: 46px;
+  background-color: #484848;
+  .foot_div {
+    width: 1200px;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    align-content: center;
+    text-align: center;
+    color: white;
+    font-size: 14px;
+    margin: 0 auto;
+    .qr_code {
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: column;
+      align-content: center;
+    }
+    img, .foot_des {
+      margin: auto 0;
+    }
+  }
+}

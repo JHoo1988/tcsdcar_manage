@@ -1,0 +1,93 @@
+.register{margin: 34px; color: #666;}
+.register-area{width: 960px;  margin: 0 auto; }
+.register-titleBar{margin: 0px 30px; border-bottom: 1px dashed rgb(205, 205, 205); padding: 30px 0;}
+.register-titleBar p{color: #00BBFF; font-size: 18px; font-family: Yahei;}
+
+/*register-agreement*/
+.register-agreement{margin: 20px auto;}
+
+.register-agreement-cont{height: 410px; width: 100%; overflow-y: scroll; padding: 20px 0; border: 1px solid #c0c0c0; background-color: #fff; color: #666; border-radius: 4px;}
+.content{padding: 0 18px; font-size: 12px;}
+.content p{margin: 12px 0; line-height: 1.5;}
+.p-title{font-weight: 600;}
+.p-sub-title{text-indent: 4px; font-weight: 500;}
+.sub-content li{padding: 3px 0 3px 24px ; line-height: 1.5; }
+
+
+.btn{margin: 10px auto 0; width: 300px;}
+
+
+/*register-info*/
+.register-info{margin: 20px auto; display: none}
+.register-complete{margin-left: 120px; display: none}
+.info-table{margin: 50px auto 80px; padding: 20px; width: 595px;}
+.info-table .text{width: 280px; border: 1px solid #bcbcbc; color: #333; padding: 10px 14px; height: 26px; line-height: 16px; border-radius: 0;}
+.info-table .text:focus{border: 1px solid deepskyblue;}
+.info-table .desc{display: inline-block; width: 120px; text-align: right; font-size: 14px;}
+.info-table .desc b{color: red; font-size: 16px; vertical-align: middle}
+.info-table select{width: 126px; float: left; height: 28px; margin-left: 3px;}
+
+.up-ft{color:#999; text-align:center; }
+.up-ft p{ line-height:2; font-size: 12px;}
+
+.b-bottom{border-bottom: 1px solid #666;}
+.v-hidden{visibility: hidden}
+.t-indent{text-indent: 24px;}
+
+
+
+.mkcl:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
+.mkcl{*zoom:1;}
+/*progressbar*/
+#progressbar {
+    width: 500px;
+    overflow: hidden;
+    margin-left: 250px;
+    /*CSS counters to number the steps*/
+    counter-reset: step;
+}
+#progressbar li {
+    list-style-type: none;
+    color: #00BBFF;
+    text-transform: uppercase;
+    font-size: 18px;
+    width: 50%;
+    float: left;
+    position: relative;
+    text-align: center;
+}
+#progressbar li:before {
+    content: counter(step);
+    counter-increment: step;
+    width: 36px;
+    line-height: 36px;
+    display: block;
+    font-size: 16px;
+    color: #fff;
+    background: #ccc;
+    border-radius: 36px;
+    margin: 0 auto 12px auto;
+    z-index: 2;
+    position: relative;
+}
+/*progressbar connectors*/
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: #ccc;
+    position: absolute;
+    left: -50%;
+    top: 17px;
+    z-index: 1; /*put it behind the numbers*/
+}
+#progressbar li:first-child:after {
+    /*connector not needed before the first step*/
+    content: none;
+}
+/*marking active/completed steps green*/
+/*The number of the step and the connector before it = green*/
+#progressbar li.active:before,  #progressbar li.active:after{
+    background: #00BBFF;
+    color: #fff;
+}

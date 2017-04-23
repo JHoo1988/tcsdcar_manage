@@ -1,0 +1,57 @@
+@charset "UTF-8";
+@import "../mixins";
+
+.sec-partner {
+    position: relative;
+    z-index: 2;
+    .hd {
+        background-color: #00bbff;
+        color: #fff;
+        padding: 20px 0;
+    }
+    h3 {
+        @include reset();
+        text-align: center;
+        font-weight: 400;
+    }
+    .title-en {
+        font-size: 24px;
+    }
+    .title {
+        font-size: 20px;
+    }
+    .bd {
+        border-bottom: 10px solid #00bbff;
+        .logo{
+            width: 86%;
+            margin: 0 auto;
+            padding-top: 1.5%;
+            padding-bottom: 1.5%;
+            .logo_div{
+                display: flex;
+                justify-content: center;
+                img{
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .sec-partner {
+        .hd {
+            padding: 50px 0;
+        }
+        .hd .title-en {
+            font-size: 60px;
+        }
+        .hd h3 {
+            font-size: 50px;
+            line-height: 74px;
+        }
+        .bd {
+            border-bottom: 20px solid #00bbff;
+        }
+    }
+}

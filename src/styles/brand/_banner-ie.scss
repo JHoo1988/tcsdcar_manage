@@ -1,0 +1,22 @@
+@charset "UTF-8";
+@import "../mixins";
+
+$banner-bg: '../images/banner/06.jpg';
+
+.brand {
+    .sec-banner {
+        margin-top: 90px;
+        height: 520px;
+    }
+    .sec-banner .desc {
+        padding-top: 50px;
+        font-size: 42px;
+        line-height: 56px;
+        text-align: center;
+        color: #fff;
+    }
+    .sec-banner .title {
+        margin-top: 10px;
+    }
+}
+
