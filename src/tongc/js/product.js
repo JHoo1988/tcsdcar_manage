@@ -431,7 +431,7 @@ layui.use(['form', 'layer', 'global'], function () {
                         var par = {};
                         par.product='a3c09454ef8743098cfb5f7e6ed0f738';//测试产品1
                         par.timeLimit='12';
-                        par.totalAmount='0.1';
+                        par.totalAmount='0.01';
                         par.mobile='18971057583';
                         par.carBodyNo='20170423105931';
                         par.shopCode='BF181BE044';
