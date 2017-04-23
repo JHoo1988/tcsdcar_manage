@@ -74,6 +74,8 @@ layui.define(['jquery','layer', 'form'], function (exports) {
 
 			//根据code获取openid接口
             getWeiXinOpenIdByCode: baseUrl + baseModifyUrl + 'weixin/getWeiXinOpenIdByCode/',
+			//创建订单
+            unifiedOrder: baseUrl + baseModifyUrl + 'weixin/unifiedOrder',
 
 			//退出登录
 			userQuit : baseUrl + baseModifyUrl + 'logout/',

@@ -122,7 +122,6 @@ layui.use(['form', 'layer', 'global'], function () {
             getData: function () {
                 // var par = {};
                 // par.pageIndex = 1;
-
                 // par.pagesize = 999;
                 $.ajax({
                     url: global.url.mfindProductList,
@@ -380,7 +379,34 @@ layui.use(['form', 'layer', 'global'], function () {
                     var b_version = navigator.appVersion;
                     var version = parseFloat(b_version);
                     if (version >= 5.0) {
-                        tablevue.weChatPay();
+                        // 创建订单
+                        var par = {};
+                        par.product='a3c09454ef8743098cfb5f7e6ed0f738';//测试产品1
+                        par.timeLimit='12';
+                        par.totalAmount='0.1';
+                        par.mobile='18971057583';
+                        par.carBodyNo='20170423105931';
+                        par.shopCode='BF181BE044';
+                        par.openid = openId;
+                        $.ajax({
+                            url: global.url.unifiedOrder,
+                            type: 'POST',
+                            dataType: 'json',
+                            data: par,
+                            success: function (data) {
+                                if (undefined != data && null != data && data.code == 200) {
+                                    var result = data.data;
+                                    console.log('payment()-result.orderNo='+result.orderNo+',result.prepayId='+result.prepayId+',result.sign='+result.sign);
+                                    tablevue.weChatPay(result.orderNo,openId,'http://www.tcsdcar.com/m/paysuccess.html');
+                                } else {
+                                    layer.msg('订单创建失败，请重试', { time: 1200 });
+                                }
+                            }
+                            , error: function (xhr) {
+                                layer.msg('订单创建失败，请重试', { time: 1200 });
+                                return false;
+                            }
+                        });
                     } else {
                         layer.msg('微信版本过低，请升级您的微信客户端', { time: 2000 });
                     }
