@@ -1,0 +1,34 @@
+﻿# 此为注释 – 将被 Git 忽略
+#*.a       # 忽略所有 .a 结尾的文件
+#!lib.a    # 但 lib.a 除外
+#/TODO     # 仅仅忽略项目根目录下的 TODO 文件，不包括 #subdir/TODO
+#build/    # 忽略 build/ 目录下的所有文件
+#doc/*.txt # 会忽略 doc/notes.txt 但不包括 doc/server/arch.txt
+*.md~
+~$*
+.metadata/
+RemoteSystemsTempFiles/
+bin/
+Servers/
+.classpath
+.project
+.springBeans
+.checkstyle
+.settings/
+target/
+# File-based project format
+*.ipr
+*.iml
+*.iws
+# Directory-based project format
+.idea/
+node_modules/
+.git/
+# Additional for IntelliJ
+.idea_modules/
+.cache/
+.sass-cache/
+_*.css
+_*.css.map
+=/
+
