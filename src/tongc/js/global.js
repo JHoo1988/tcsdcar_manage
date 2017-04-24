@@ -31,7 +31,7 @@ layui.define(['jquery','layer', 'form'], function (exports) {
 			//删除店铺
             deleteShop: baseUrl + baseModifyUrl + 'shop/deleteShop',
 			//发送短信
-            sendmms: baseUrl + baseModifyUrl + 'productOrder/sendmms',
+            sendmms: baseUrl + baseModifyUrl + 'productOrder/sendSmsForExpire',
 			//查询所有城市
             findAllArea: baseUrl + baseModifyUrl + 'area/findAllArea',
 			//删除城市
@@ -53,7 +53,16 @@ layui.define(['jquery','layer', 'form'], function (exports) {
             //删除品牌
             deleteProductBrands: baseUrl + baseModifyUrl + 'productBrands/deleteProductBrands',
 
-			//查询业务员
+            //查询分类列表 GET
+            findAllProductCategory: baseUrl + baseModifyUrl + 'productCategory/findAllProductCategory',
+            //保存分类信息 POST
+            saveProductCategory: baseUrl + baseModifyUrl + 'productCategory/saveProductCategory',
+            //获取分类详细productCategory/findProductCategoryById/{id} GET
+            findProductCategoryById: baseUrl + baseModifyUrl + 'productCategory/findProductCategoryById/',
+            //删除分类 POST
+            deleteProductCategory: baseUrl + baseModifyUrl + 'productCategory/deleteProductCategory',
+
+	        //查询业务员
             findSalesMan: baseUrl + baseModifyUrl + 'salesman/findSalesMan',
 			//保存业务员信息
             saveSalesMan: baseUrl + baseModifyUrl + 'salesman/saveSalesMan',

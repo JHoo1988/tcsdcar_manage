@@ -3,3 +3,9 @@
 /*.add-edit .layui-form-select dl{*/
     /*max-height: 80px;*/
 /*}*/
+.form-label{
+    width: 100px;
+}
+.form-label-edit{
+    width: 90%;
+}

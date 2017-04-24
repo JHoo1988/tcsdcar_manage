@@ -170,33 +170,60 @@ layui.use(['jquery', 'layedit', 'md5', 'simplePager', 'laydate', 'layer', 'cooki
                     }
                 }
                 if(checked){
-                    layer.open({
-                        title: '批量发送续保短信'
-                        ,content: '<a style="color:#34A8FF">短信模板为:</a>同创盛大'
-                        ,btn: '立即发送'
-                        ,area: ['390px', '260px']
-                        , yes: function () {
-                            var par = _self.getParam();
-                            var ids='[';
-                            var checkboxList = $("input[type='checkbox'][name='singlChoose']");
-                            for (var i = 0; i < checkboxList.length; i++) {
-                                 if($("input[type='checkbox'][name='singlChoose']")[i].checked){
-                                     ids+=$("input[type='checkbox'][name='singlChoose']")[i].value+",";
-                                 }
+                    layer.confirm('是否发送续保短信?', {
+                        btn: ['是', '否']
+                    }, function () {
+                        var par = _self.getParam();
+                        var ids='[';
+                        var id = new Array();
+                        var checkboxList = $("input[type='checkbox'][name='singlChoose']");
+                        for (var i = 0; i < checkboxList.length; i++) {
+                            if($("input[type='checkbox'][name='singlChoose']")[i].checked){
+                                ids+=$("input[type='checkbox'][name='singlChoose']")[i].value+",";
+                                id.push($("input[type='checkbox'][name='singlChoose']")[i].value);
                             }
-                            ids+=']';
-                            par.ids = ids;
-                            layer.closeAll();
-                            $.post(global.url.sendmms, par, function (data, textStatus, xhr) {
-                                if (data.code == 200) {
-                                    layer.msg('短信发送成功！', { time: 500 });
-                                } else {
-                                    layer.msg("短信发送失败，请重试！", { time: 500 });
-                                }
-                            });
-
                         }
+                        ids+=']';
+                        // par.ids = ids;
+                        par.ids = id.toString();
+                        layer.closeAll();
+                        $.post(global.url.sendmms, par, function (data, textStatus, xhr) {
+                            if (data.code == 200) {
+                                layer.msg('短信发送成功！', { time: 500 });
+                            } else {
+                                layer.msg("短信发送失败，请重试！", { time: 500 });
+                            }
+                        });
+                    }, function () {
+                        layer.closeAll();
                     });
+                    // layer.open({
+                    //     title: '批量发送续保短信'
+                    //     ,content: '<a style="color:#34A8FF">短信模板为:</a>同创盛大'
+                    //     ,btn: '立即发送'
+                    //     ,area: ['390px', '260px']
+                    //     , yes: function () {
+                    //         var par = _self.getParam();
+                    //         var ids='[';
+                    //         var checkboxList = $("input[type='checkbox'][name='singlChoose']");
+                    //         for (var i = 0; i < checkboxList.length; i++) {
+                    //              if($("input[type='checkbox'][name='singlChoose']")[i].checked){
+                    //                  ids+=$("input[type='checkbox'][name='singlChoose']")[i].value+",";
+                    //              }
+                    //         }
+                    //         ids+=']';
+                    //         par.ids = ids;
+                    //         layer.closeAll();
+                    //         $.post(global.url.sendmms, par, function (data, textStatus, xhr) {
+                    //             if (data.code == 200) {
+                    //                 layer.msg('短信发送成功！', { time: 500 });
+                    //             } else {
+                    //                 layer.msg("短信发送失败，请重试！", { time: 500 });
+                    //             }
+                    //         });
+                    //
+                    //     }
+                    // });
                 }else{
                     layer.msg('请选择一个订单', { time: 1200 });
                 }
