@@ -111,7 +111,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             $(document).on('click', '.btn-edit', function () {
                 var id = $(this).data('id');
                 var name = $(this).data('name');
-                var firstChar = $(this).data('firstChar');
+                var firstChar = $(this).data('firstchar');
                 var par = _self.getParam();
                 par.id = id;
                 par.name = name;
