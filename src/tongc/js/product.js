@@ -238,6 +238,10 @@ layui.use(['form', 'layer', 'global'], function () {
                 if (code) {
                     console.log(544, window.location.href);
                     console.log('getWechatUserOpenId()-code='+code);
+                    layer.open({
+                        title: '微信code'
+                        ,content: ''+code
+                    });
                     // self.getOpenIdByCode(code);
 
                     $.ajax({
@@ -423,7 +427,7 @@ layui.use(['form', 'layer', 'global'], function () {
                     // 使用微信支付
 
 
-                    layer.msg('微信中打开', { time: 1500 });
+                    layer.msg('支付中...', { time: 2500 });
                     var b_version = navigator.appVersion;
                     var version = parseFloat(b_version);
                     if (version >= 5.0) {
