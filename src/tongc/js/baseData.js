@@ -1,7 +1,7 @@
 /**
  * 基础数据 - 产品列表
  */
-layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'global', 'upload','upmobui'], function () {
+layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'global', 'upload', 'upmobui'], function () {
     var $ = layui.jquery,
         layer = layui.layer,
         simplePager = layui.simplePager,
@@ -31,6 +31,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             upmobui.common.pageFunc(); // 页面共用方法
             simplePager.init();
             upmobui.common.findBalanceForParent();
+            _self.getAllBrands(par);
             _self.getData(par);
             _self.bindEvent();
         },
@@ -159,7 +160,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
         },
         getData: function (par) {
             var _self = this;
-            par.pageIndex= _self.pageIndex;
+            par.pageIndex = _self.pageIndex;
             par.pageSize = _self.pageSize;
             $.ajax({
                 url: global.url.findProductList,
@@ -182,9 +183,9 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                                 html += '<td>' + (i - 0 + 1) + '</td>';
                                 html += '<td><img style="height: 30px;" src="../../../images/product/' + dataList[i].id + '.png"></td>';
                                 // html += '<td><img style="height: 30px;" src="' + dataList[i].imageUrl + '"></td>';
-                                html += '<td>' + dataList[i].brandsName +dataList[i].productName + '</td>';
-                                html += '<td>' +dataList[i].bigCategoryName+dataList[i].smallCategoryName + '</td>';
-                                html += '<td>￥<span style="color: #FF5722">' + dataList[i].twelveCyclePrice + '</span> /12期；￥<span style="color: #FF5722">'+dataList[i].twentyFourCyclePrice+'</span> /24期；￥<span style="color: #FF5722">'+dataList[i].thirtySixCyclePrice+'</span> /36期；</td>';
+                                html += '<td>' + dataList[i].brandsName + dataList[i].productName + '</td>';
+                                // html += '<td>' + dataList[i].bigCategoryName + dataList[i].smallCategoryName + '</td>';
+                                html += '<td>￥<span style="color: #FF5722">' + dataList[i].twelveCyclePrice + '</span> /12期；￥<span style="color: #FF5722">' + dataList[i].twentyFourCyclePrice + '</span> /24期；￥<span style="color: #FF5722">' + dataList[i].thirtySixCyclePrice + '</span> /36期；</td>';
                                 html += '<td>' + dataList[i].createTimeStr + '</td>';
                                 html += '<td >' + dataList[i].productDesc + '</td>';
                                 html += '<td>'
@@ -247,22 +248,12 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
 
             $('.js-btn-update').bind('click', function () {
                 if (_self.checkForm(flag)) {
-                    // var par = _self.getParam();
-                    // par.productName = $('.layui-layer-content [name=productName]').val();
-                    // par.productAttribution = $('.layui-layer-content [name=productAttribution]').val();
-                    // par.twelveCyclePrice = $('.layui-layer-content [name=twelveCyclePrice]').val();
-                    // par.twentyFourCyclePrice = $('.layui-layer-content [name=twentyFourCyclePrice]').val();
-                    // par.thirtySixCyclePrice = $('.layui-layer-content [name=thirtySixCyclePrice]').val();
-                    // par.productDesc = $('.layui-layer-content [name=productDesc]').val();
-
                     _self.layer_index = layer.load(2);
                     var formData = new FormData($("#uploadForm")[0]);
-                    formData.append("token",$.cookie('userToken'));
-                    //36ee4dd84f8448ab9343cff51899813a 大众
-                    //24347abc21b042458259f124553615fb 奥迪
+                    formData.append("token", $.cookie('userToken'));
                     // formData.append("brands",'44d77e1ee14e47d390b3ee02b0ad5a47');//宝马
-                    // formData.append("bigCategory",'52bb8da7fe60427e97c294dd739f0d76');//进口轿车
-                    // formData.append("smallCategory",'935d67cea04342cd8a8a916f45381371');
+                    formData.append("bigCategory", '341b79aef4844d0c9fc2645fe5fdac42');//国产轿车
+                    formData.append("smallCategory", 'a89e758c691f4979b97b766b7ac40c4d');//中型
                     $.ajax({
                         url: global.url.addProduct,
                         type: 'POST',
@@ -277,7 +268,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                             if (undefined != data && null != data && data.code == 200) {
                                 layer.close(_self.layer_index);
                                 var fmsg = '新增成功！';
-                                if(flag==1){
+                                if (flag == 1) {
                                     fmsg = '编辑成功！';
                                 }
                                 layer.msg(fmsg, { time: 500 }, function () {
@@ -292,7 +283,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                                     layer.msg('登录已失效，请重新登录...', { time: 1200 }, function () {
                                         window.parent.location.href = 'login.html';
                                     });
-                                }else{
+                                } else {
                                     layer.msg('操作失败!', { time: 1200 });
                                 }
                             }
@@ -313,6 +304,11 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             return num;
         },
         checkForm: function (flag) {
+            var brandid = $('.layui-layer-content [name=brands]').val();
+            if (!brandid || brandid == -1) {
+                layer.msg('所属品牌不能为空！', { time: 1200 });
+                return false;
+            }
             var name = $('.layui-layer-content [name=productName]').val();
             if (!name) {
                 layer.msg('产品名称不能为空！', { time: 1200 });
@@ -336,11 +332,68 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 return false;
             }
             var namef = $('.layui-layer-content [name=imagefile]').val();
-            if (!namef&&flag!=1) {
+            if (!namef && flag != 1) {
                 layer.msg('图片不能为空！', { time: 1200 });
                 return false;
             }
             return true;
+        },
+        getAllBrands: function (par) {
+            var _self = this;
+            par.pageIndex = 1;
+            par.pageSize = 99999;
+            $.ajax({
+                url: global.url.findAllProductBrands,
+                type: 'GET',
+                dataType: 'json',
+                data: par,
+                success: function (data) {
+                    if (undefined != data.data && null != data.data && data.code == 200) {
+                        var dataList = data.data.content;
+                        var sb = new _self.StringBuffer();
+                        $.each(dataList, function (i, val) {
+                            sb.append("<option value='" + val.id + "'>" + val.name + "</option>");
+                        });
+                        var op = "<option class='brands-option' value='-1'>请选择品牌</option>";
+                        $(".brands").empty().append(op).append(sb.toString());
+                        form.render('select');
+                    }
+                }
+            })
+        },
+        StringBuffer: function (str) {
+            var arr = [];
+            str = str || "";
+            var size = 0;  // 存放数组大小
+            arr.push(str);
+            // 追加字符串
+            this.append = function (str1) {
+                arr.push(str1);
+                return this;
+            };
+            // 返回字符串
+            this.toString = function () {
+                return arr.join("");
+            };
+            // 清空
+            this.clear = function (key) {
+                size = 0;
+                arr = [];
+            }
+            // 返回数组大小
+            this.size = function () {
+                return size;
+            }
+            // 返回数组
+            this.toArray = function () {
+                return buffer;
+            }
+            // 倒序返回字符串
+            this.doReverse = function () {
+                var str = buffer.join('');
+                str = str.split('');
+                return str.reverse().join('');
+            }
         }
     }
 
@@ -349,7 +402,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
 
     layui.upload({
         url: 'http://www.baidu.com'
-        ,success: function(res){
+        , success: function (res) {
             console.log(res); //上传成功返回值，必须为json格式
             alert(res);
         }
