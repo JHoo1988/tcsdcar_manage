@@ -189,7 +189,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                     type: 1,
                     title: shopName+'的店铺二维码',
                     area: ['700px', 'auto'], //宽高
-                    content: '<img src="'+imgurl+'" width="300" height="300" style="display: block;margin: 0px auto;"> <p style="text-align: center;font-size: 18px;margin-bottom: 15px;">'+shopName+'</p><p style="text-align: center;font-size: 16px;margin-bottom: 20px;">店铺编码：'+shopCode+'</p>'
+                    content: '<img src="/images/qrCode/'+shopCode+'.png" width="300" height="300" style="display: block;margin: 0px auto;"> <p style="text-align: center;font-size: 18px;margin-bottom: 15px;">'+shopName+'</p><p style="text-align: center;font-size: 16px;margin-bottom: 20px;">店铺编码：'+shopCode+'</p>'
                 });
             });
         },
