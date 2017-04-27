@@ -77,20 +77,20 @@
                     <table id="dg_list" class="layui-table" lay-skin="line" lay-even>
                         <thead>
                         <tr class="list-head">
-                            <th style="width: 20px;">编号</th>
+                            <th style="width: 30px;">编号</th>
                             <!--<th style="width: 70px;">服务项目</th>-->
-                            <th style="width: 70px;">4S店名称</th>
-                            <th style="width: 70px;">电话</th>
-                            <th style="width: 70px;">店铺编码</th>
-                            <th style="width: 170px;">地址</th>
-                            <th style="width: 100px;" class="td_posR" data-ct="adfafafa">创建时间</th>
+                            <th style="width: 260px;">4S店名称</th>
+                            <th style="width: 100px;">电话</th>
+                            <th style="width: 100px;">店铺编码</th>
+                            <th>地址</th>
+                            <th style="width: 150px;" class="td_posR" data-ct="adfafafa">创建时间</th>
                             <!--<th style="width: 60px;" class="td_posR" data-ct="1234">状态</th>-->
                             <!--<th style="width: 135px;">品类</th>-->
                             <!--<th style="width: 100px;">类别</th>-->
                             <!--<th style="width: 60px;">价格</th>-->
                             <!--<th style="width: 160px;">描述</th>-->
                             <!--<th style="width: 60px;" class="js-p-discount">折扣价</th>-->
-                            <th style="width: 60px;">操作</th>
+                            <th style="width: 140px;">操作</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -116,18 +116,6 @@
             <div class="add_edit_dlg layui-form">
                 <form id="uploadForm" enctype="multipart/form-data">
                     <div class="layui-form-item">
-                        <label class="layui-form-label">4S店名称</label>
-                        <div class="layui-input-block" style="width: 500px;">
-                            <input type="text" class="layui-input" name="shopName" placeholder="4S店名称" autocomplete="off" maxlength="30">
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">4S店电话</label>
-                        <div class="layui-input-block" style="width: 500px;">
-                            <input type="text" class="layui-input" name="mobile" placeholder="4S店电话" autocomplete="off" maxlength="11">
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
                         <label class="layui-form-label">所属省份</label>
                         <div class="layui-input-inline" style="width: 500px;">
                             <select class="province" name="province" lay-filter="selectprovince-add">
@@ -151,6 +139,18 @@
                             <select id="county-add" name="district" lay-filter="county">
                                 <option id='chooseCounty' value='-1'>请选择区/县</option>
                             </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">4S店名称</label>
+                        <div class="layui-input-block" style="width: 500px;">
+                            <input type="text" class="layui-input" name="shopName" placeholder="4S店名称" autocomplete="off" maxlength="30">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">4S店电话</label>
+                        <div class="layui-input-block" style="width: 500px;">
+                            <input type="text" class="layui-input" name="mobile" placeholder="4S店电话" autocomplete="off" maxlength="11">
                         </div>
                     </div>
                     <div class="layui-form-item">

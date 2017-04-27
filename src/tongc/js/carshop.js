@@ -106,7 +106,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 _self.layer_open_index = layer.open({
                     type: 1,
                     title: '新增4S店',
-                    area: ['700px', 'auto'], //宽高
+                    area: ['700px', '550px'], //宽高
                     fixed: false, //不固定
                     maxmin: true,
                     content: content
@@ -165,7 +165,9 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 _self.layer_open_index = layer.open({
                     type: 1,
                     title: '编辑4S店',
-                    area: ['700px', 'auto'], //宽高
+                    area: ['700px', '550px'], //宽高
+                    fixed: false, //不固定
+                    maxmin: true,
                     content: content
                 });
                 $('.layui-layer-content [name=id]').val(id);
@@ -189,6 +191,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                     type: 1,
                     title: shopName+'的店铺二维码',
                     area: ['700px', 'auto'], //宽高
+
                     content: '<img src="/images/qrCode/'+shopCode+'.png" width="300" height="300" style="display: block;margin: 0px auto;"> <p style="text-align: center;font-size: 18px;margin-bottom: 15px;">'+shopName+'</p><p style="text-align: center;font-size: 16px;margin-bottom: 20px;">店铺编码：'+shopCode+'</p>'
                 });
             });
@@ -254,28 +257,11 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                             for (var i = 0; i < len; i++) {
                                 html += '<tr>';
                                 html += '<td>' + (i - 0 + 1) + '</td>';
-                                html += '<td data-ct="' + dataList[i].shopName + '">' + dataList[i].shopName + '</td>';
+                                html += '<td><a data-ct="' + dataList[i].shopName + '"</a>' + dataList[i].shopName + '</td>';
                                 html += '<td data-ct="' + dataList[i].mobile +'">' + dataList[i].mobile + '</td>';
                                 html += '<td data-ct="' + dataList[i].shopCode +'">' + dataList[i].shopCode + '</td>';
-                                html += '<td data-ct="' + dataList[i].cityName +'">' + dataList[i].provinceName +dataList[i].cityName +dataList[i].districtName +dataList[i].addressDetail+ '</td>';
+                                html += '<td ><a data-ct="' + dataList[i].provinceName +dataList[i].cityName +dataList[i].districtName +dataList[i].addressDetail +'"</a>' + dataList[i].provinceName +dataList[i].cityName +dataList[i].districtName +dataList[i].addressDetail+ '</td>';
                                 html += '<td>' + dataList[i].createTimeStr + '</td>';
-                                // if (dataList[i].productStatus == 0) {
-                                //     html += '<td>正常</td>';
-                                // } else if (dataList[i].productStatus == 1) {
-                                //     html += '<td>删除</td>';
-                                // } else {
-                                //     html += '<td></td>';
-                                // }
-                                // html += '<td>' + dataList[i].productCategory + '</td>';
-                                // html += '<td data-ct="' + dataList[i].productAttr + '">' + dataList[i].productAttr + '</td>';
-                                // html += '<td>' + dataList[i].productBusinessPrice + '</td>';
-                                // if (dataList[i].isDiscount == 1) {
-                                //     flag = true;
-                                //     discountPrice = _self.toRoundOff(dataList[i].productBusinessPrice * dataList[i].discount / 10);
-                                // } else {
-                                //     discountPrice = '—';
-                                // }
-                                // html += '<td >' + dataList[i].productAttr + '</td>';
                                 html += '<td>'
                                     + '<a data-ct="查看店铺二维码" href="javascript:void(0);" data-shopcode="' + dataList[i].shopCode + '" data-shopname="' + dataList[i].shopName + '" data-imgurl="' + dataList[i].qrCodeUrl + '" class="layui-btn layui-btn-mini layui-btn-primary btn-twocode">二维码</a>'
                                     + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" data-shopname="' + dataList[i].shopName + '" data-shopphone="' + dataList[i].mobile + '" data-provincename="' + dataList[i].province + '" data-cityname="' + dataList[i].city + '" data-areaname="' + dataList[i].district + '" data-address="' + dataList[i].addressDetail + '" class="layui-btn layui-btn-mini btn-edit">编辑</a>'

@@ -18,7 +18,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
         this.rangeBegin = 1;
         this.rangeEnd = 9999;
         this.pageIndex = 1;
-        this.pageSize = 13;
+        this.pageSize = 12;
         this.totalPage = 0;
         this.totalSize = 0;
     };
@@ -77,6 +77,8 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                     type: 1,
                     title: '新增品牌',
                     area: ['700px', '500px'], //宽高
+                    fixed: false, //不固定
+                    maxmin: true,
                     content: content
                 });
                 form.render();
@@ -122,6 +124,8 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                     type: 1,
                     title: '编辑品牌',
                     area: ['700px', '500px'], //宽高
+                    fixed: false, //不固定
+                    maxmin: true,
                     content: content
                 });
                 $('.layui-layer-content [name=name]').val(name);
@@ -139,6 +143,14 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 // alert(firstChar);
 
             });
+            // // 点击图片填充名字
+            // $(document).on('change', '.layui-upload-file', function () {
+            //     var f = document.getElementsByClassName('layui-upload-file');
+            //     var filename = f.logofile.files[0].name;
+            //     filename = filename.substring(0,filename.indexOf('.'));
+            //     $("input[type='text'][name='name']").val(filename);
+            //    // alert(filename) ;
+            // });
         },
         getParam: function () {
             var par = {};

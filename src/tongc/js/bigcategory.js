@@ -75,6 +75,8 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                     type: 1,
                     title: '新增产品大类',
                     area: ['700px', '200px'], //宽高
+                    fixed: false, //不固定
+                    maxmin: true,
                     content: content
                 });
                 form.render();
@@ -118,6 +120,8 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                     type: 1,
                     title: '编辑产品大类',
                     area: ['700px', '200px'], //宽高
+                    fixed: false, //不固定
+                    maxmin: true,
                     content: content
                 });
                 $('.layui-layer-content [name=id]').val(id);

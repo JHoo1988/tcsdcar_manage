@@ -142,6 +142,8 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'element', 'layer', 'cook
                     type: 1,
                     title: '编辑业务员',
                     area: ['700px', 'auto'], //宽高
+                    fixed: false, //不固定
+                    maxmin: true,
                     content: content
                 });
                 $('.layui-layer-content [name=name]').val(name);
