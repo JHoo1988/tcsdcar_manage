@@ -181,7 +181,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
 
                                 html += '<tr>';
                                 html += '<td>' + (i - 0 + 1) + '</td>';
-                                html += '<td><img style="height: 30px;" src="../../../images/product/' + dataList[i].id + '.png"></td>';
+                                html += '<td><img style="width: 30px;" src="../../../images/product/' + dataList[i].id + '.png"></td>';
                                 // html += '<td><img style="height: 30px;" src="' + dataList[i].imageUrl + '"></td>';
                                 html += '<td>' + dataList[i].brandsName + dataList[i].productName + '</td>';
                                 // html += '<td>' + dataList[i].bigCategoryName + dataList[i].smallCategoryName + '</td>';
