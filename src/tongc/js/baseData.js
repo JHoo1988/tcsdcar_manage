@@ -159,9 +159,13 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             // // 点击图片填充名字
             // $(document).on('change', '.layui-upload-file', function () {
             //     var f = document.getElementsByClassName('layui-upload-file');
-            //     var filename = f.logofile.files[0].name;
+            //     var filename = f.imagefile.files[0].name;
             //     filename = filename.substring(0,filename.indexOf('.'));
-            //     $("input[type='text'][name='productName']").val(filename);
+            //     var fileArray= filename.split('-');
+            //     $("input[type='text'][name='productName']").val(fileArray[0]);
+            //     $("input[type='text'][name='twelveCyclePrice']").val(fileArray[1]);
+            //     $("input[type='text'][name='twentyFourCyclePrice']").val(fileArray[2]);
+            //     $("input[type='text'][name='thirtySixCyclePrice']").val(fileArray[3]);
             //     // alert(filename) ;
             // });
         },
