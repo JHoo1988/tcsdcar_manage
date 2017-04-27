@@ -437,16 +437,6 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             })
         },
         checkForm: function () {
-            var shopname = $('.layui-layer-content [name=shopName]').val();
-            if (!shopname) {
-                layer.msg('4S店名称不能为空！', { time: 1200 });
-                return false;
-            }
-            var shopphone = $('.layui-layer-content [name=mobile]').val();
-            if (!shopphone) {
-                layer.msg('4S店电话不能为空！', { time: 1200 });
-                return false;
-            }
             var provincename = $('.layui-layer-content [name=province]').val();
             if (!provincename||-1==provincename) {
                 layer.msg('省份名称不能为空！', { time: 1200 });
@@ -460,6 +450,16 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             var areaname = $('.layui-layer-content [name=district]').val();
             if (!areaname||-1==areaname) {
                 layer.msg('区/县名称不能为空！', { time: 1200 });
+                return false;
+            }
+            var shopname = $('.layui-layer-content [name=shopName]').val();
+            if (!shopname) {
+                layer.msg('4S店名称不能为空！', { time: 1200 });
+                return false;
+            }
+            var shopphone = $('.layui-layer-content [name=mobile]').val();
+            if (!shopphone) {
+                layer.msg('4S店电话不能为空！', { time: 1200 });
                 return false;
             }
             var address = $('.layui-layer-content [name=addressDetail]').val();
