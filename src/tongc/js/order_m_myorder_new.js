@@ -34,7 +34,7 @@ layui.use(['jquery', 'layedit', 'md5', 'simplePager', 'laydate', 'layer', 'cooki
 
             var param = _self.getParam();
             // param.userId = $.cookie('userId');
-            param.status='1,2,3';
+            param.status='1,2,5';
             _self.initOrderInPage(param);
             global.getAllProvince();
             _self.bindEvent();
@@ -50,7 +50,7 @@ layui.use(['jquery', 'layedit', 'md5', 'simplePager', 'laydate', 'layer', 'cooki
                 if (statu&&statu!='-1'){
                     param.status = statu;
                 }else{
-                    param.status='1,2,3';
+                    param.status='1,2,5';
                 }
                 var timeLimit = $('#timelimit option:selected').val();
                 if (timeLimit&&timeLimit!='-1'){
@@ -75,6 +75,8 @@ layui.use(['jquery', 'layedit', 'md5', 'simplePager', 'laydate', 'layer', 'cooki
             var edit_win = $("#pop_up");
             // 编辑订单
             $('#table-list').on('click', '.btn-edit', function () {
+                // var speed=200;//滑动的速度
+                // $('#table-list').animate({ scrollTop: 0 }, speed);
                 var content = edit_win.html();
                 _self.layer_open_index = layer.open({
                     type: 1,
@@ -82,16 +84,19 @@ layui.use(['jquery', 'layedit', 'md5', 'simplePager', 'laydate', 'layer', 'cooki
                     area: ['700px', 'auto'], //宽高
                     fixed: false, //不固定
                     maxmin: true,
+                    offset: '100px',
                     content: content
                 });
                 var id = $(this).data('id');
                 var mobile = $(this).data('mobile');
                 var carbodyno = $(this).data('carbodyno');
                 var statu = $(this).data('statu');
+                var product = $(this).data('product');
                 $('.layui-layer-content [name=id]').val(id);
                 $('.layui-layer-content [name=mobile]').val(mobile);
                 $('.layui-layer-content [name=carBodyNo]').val(carbodyno);
                 $('.layui-layer-content [name=statu]').val(statu);
+                $('.layui-layer-content [name=product]').val(product);
                 form.render();
                 $("#pop_up").remove();
                 _self.addProductAction();
@@ -103,6 +108,7 @@ layui.use(['jquery', 'layedit', 'md5', 'simplePager', 'laydate', 'layer', 'cooki
                     var id = $(this).data('id');
                     var par = _self.getParam();
                     par.ids = id;
+                    par.status='1,2,5';
                     layer.confirm('是否删这个订单?', {
                         btn: ['是', '否']
                     }, function () {
@@ -274,12 +280,14 @@ layui.use(['jquery', 'layedit', 'md5', 'simplePager', 'laydate', 'layer', 'cooki
                         $('#table-list').empty();
                         var data = result.data;
                         var orderStatus;
+                        var orderproduct;
                         var orderStatusContent;
                         var tableHead = '';
                         if (data != undefined) {
                             $.each(data.content, function (i, val) {
                                 var tableItem = $('<div class="table-item"></div>');
                                 orderStatus = val.statu;
+                                orderproduct = val.product;
                                 orderStatusContent = _self.checkOrderStatus(orderStatus);
                                 tableHead = '<div class="table-item-head">'
                                     + '<table><tr><td><input style="width:18px;height: 18px;" type="checkbox" class="singlChoose" name="singlChoose" value="' + val.id + '"><span style="line-height: 42px;margin-left: 5px;">选择</span> </td><td><b class="c-blue">' + '' + '</b><span class="td-sequence" >质保时间：' + val.createTimeStr + ' 至 ' + val.endTimeStr + '</span><span class="td-sequence" >订单号：' + val.orderNo + '</span></td></tr></table></div>';
@@ -341,7 +349,7 @@ layui.use(['jquery', 'layedit', 'md5', 'simplePager', 'laydate', 'layer', 'cooki
                                     tableContent += '<td class="js-orderStatus" data-status="' + orderStatus + '"style="font-size: 16px">' + orderStatusContent + '</td>'
                                 }
                                 if(orderStatus != 4){
-                                    tableContent += '<td> <p><a href="javascript:void(0)" class="layui-btn layui-btn-mini btn-edit"  data-id="' + val.id + '" data-mobile="' + val.mobile + '" data-carbodyno="' + val.carBodyNo + '" data-statu="' + orderStatus + '">编辑订单</a></p>';
+                                    tableContent += '<td> <p><a href="javascript:void(0)" class="layui-btn layui-btn-mini btn-edit"  data-id="' + val.id + '" data-mobile="' + val.mobile + '" data-carbodyno="' + val.carBodyNo + '" data-statu="' + orderStatus + '" data-product="' + orderproduct + '">编辑订单</a></p>';
                                     tableContent += '<p><a href="javascript:void(0)" class="layui-btn layui-btn-mini layui-btn-danger btn-del" data-id="' + val.id + '">删除订单</a></p></td></tr></tbody></table></div>';
                                 }else{
                                     tableContent += '<td></td></tr></tbody></table></div>';
@@ -416,6 +424,7 @@ layui.use(['jquery', 'layedit', 'md5', 'simplePager', 'laydate', 'layer', 'cooki
                             if (undefined != data && null != data && data.code == 200) {
                                 layer.msg('编辑成功！', { time: 500 }, function () {
                                     var par = _self.getParam();
+                                    par.status='1,2,5';
                                     _self.initOrderInPage(par);
                                     layer.close(_self.layer_open_index);
                                 });
@@ -497,6 +506,9 @@ layui.use(['jquery', 'layedit', 'md5', 'simplePager', 'laydate', 'layer', 'cooki
                     break;
                 case 4:
                     orderStatusContent = "已删除";
+                    break;
+                case 5:
+                    orderStatusContent = "理赔已受理";
                     break;
             }
             return orderStatusContent;

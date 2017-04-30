@@ -28,10 +28,11 @@
                     <select id="statu" name="brandName" lay-filter="brandName">
                         <option value="-1" selected="selected">请选择</option>
                         <option value="1">质保中</option>
-                        <option value="3">已过期</option>
+                        <!--<option value="3">已过期</option>-->
+                        <option value="5">理赔已受理</option>
                         <option value="2">已赔付</option>
-                        <option value="4">已删除</option>
-                        <option value="0">未支付</option>
+                        <!--<option value="4">已删除</option>-->
+                        <!--<option value="0">未支付</option>-->
                     </select>
                 </div>
                 <label class="layui-form-label">保修期限</label>
@@ -123,11 +124,12 @@
                         <div class="layui-input-inline" style="width: 500px;">
                             <select class="statu" name="statu" lay-filter="statu">
                                 <option selected="selected" value="-1">请选状态</option>
-                                <option value="0">未支付</option>
+                                <!--<option value="0">未支付</option>-->
                                 <option value="1">质保中</option>
+                                <option value="5">理赔已受理</option>
                                 <option value="2">已赔付</option>
-                                <option value="3">已过期</option>
-                                <option value="4">已删除</option>
+                                <!--<option value="3">已过期</option>-->
+                                <!--<option value="4">已删除</option>-->
                             </select>
                         </div>
                     </div>
@@ -147,6 +149,7 @@
                     </div>
 
                     <input style="display: none;" type="text" name="id">
+                    <input style="display: none;" type="text" name="product">
                 </form>
             </div>
             <div class="layui-form-item" style="text-align: center">
