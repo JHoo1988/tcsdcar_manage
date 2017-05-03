@@ -21,17 +21,17 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
         this.pageSize = 14;
         this.totalPage = 0;
         this.totalSize = 0;
+        this.par = this.getParam();
     };
 
     Page.prototype = {
 
         init: function () {
             var _self = this;
-            var par = _self.getParam();
             upmobui.common.pageFunc(); // 页面共用方法
             simplePager.init();
             upmobui.common.findBalanceForParent();
-            _self.getData(par);
+            _self.getData(_self.par);
             _self.bindEvent();
             global.getAllProvince();
         },
@@ -39,32 +39,57 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
         bindEvent: function () {
             var _self = this;
             $("#btn-search").bind('click', function () {
-                var par = _self.getParam();
-                par.queryStr = $("#productName").val();
+                _self.par.queryStr = $("#productName").val();
                 var province = $('.content-box [name=selectprovince]').val();
                 if (province && province != '-1') {
-                    par.province = province;
+                    _self.par.province = province;
+                }else{
+                    delete  _self.par.province;
                 }
                 var city = $('.content-box [name=selectcity]').val();
                 if(city && city!='-1'){
-                    par.city = city;
+                    _self.par.city = city;
+                }else {
+                    delete _self.par.city;
                 }
                 var district = $('.content-box [name=area]').val();
                 if(district && district!='-1'){
-                    par.district = district;
+                    _self.par.district = district;
+                }else{
+                    delete  _self.par.district;
                 }
                 //param.size = _self.pageSize;
                 _self.pageIndex = 1;
-                _self.getData(par);
+                _self.getData(_self.par);
             });
             var selectprovince;
             form.on('select(selectprovince)', function(){
                 selectprovince = $('.province option:selected').val();
-                global.getCityByProvinceId(selectprovince);
+
+                if(selectprovince=='-1'){
+                    var ops = "<option class='chooseCity-add' value='-1'>请选择城市</option>";
+                    $(".city").empty().append(ops);
+                    form.render('select');
+                    $('.city option:selected').val(-1);
+
+                    var op = "<option id='chooseCounty' value='-1'>请选择区/县</option>";
+                    $("#county").empty().append(op);
+                    form.render('select');
+                    $('#county option:selected').val(-1);
+                }else{
+                    global.getCityByProvinceId(selectprovince);
+                }
             });
             form.on('select(selectcity)', function(){
                 var city = $('.city option:selected').val();
-                global.getAreaByCityId(city,selectprovince);
+                if(city=='-1'){
+                    var op = "<option id='chooseCounty' value='-1'>请选择区/县</option>";
+                    $("#county").empty().append(op);
+                    form.render('select');
+                    $('#county option:selected').val(-1);
+                }else{
+                    global.getAreaByCityId(city,selectprovince);
+                }
             });
 
 
@@ -120,15 +145,15 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             $(document).on('click', '.btn-del', function (event) {
                 event.preventDefault();
                 var id = $(this).data('id');
-                var par = _self.getParam();
-                par.ids = id;
+                _self.par.ids = id;
                 layer.confirm('是否删这个4S店?', {
                     btn: ['是', '否']
                 }, function () {
-                    $.post(global.url.deleteShop, par, function (data, textStatus, xhr) {
+                    $.post(global.url.deleteShop, _self.par, function (data, textStatus, xhr) {
+                        delete _self.par.ids;
                         if (data.code == 200) {
                             layer.msg('删除成功！', { time: 500 }, function () {
-                                _self.getData(par);
+                                _self.getData(_self.par);
                             });
                         }else if (data.code == 510) {
                             layer.msg('登录已失效，请重新登录...', { time: 1200 }, function () {
@@ -347,8 +372,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                                     fmsg='编辑成功！';
                                 }
                                 layer.msg(fmsg, { time: 500 }, function () {
-                                    var par = _self.getParam();
-                                    _self.getData(par);
+                                    _self.getData(_self.par);
                                     layer.close(_self.layer_open_index);
                                 });
                             } else {
