@@ -23,6 +23,9 @@ layui.use(['jquery', 'layedit', 'md5', 'simplePager', 'laydate', 'layer', 'cooki
         this.layer_load_index;
         this.pollingTime = 60 * 1000;
         this.businessDiscount = 10;
+        this.param=this.getParam();
+        this.param.status='1,2,5';
+        // this.param.userId = $.cookie('userId');
     }
 
     Page.prototype = {
@@ -32,10 +35,7 @@ layui.use(['jquery', 'layedit', 'md5', 'simplePager', 'laydate', 'layer', 'cooki
             upmobui.common.findBalanceForParent();
             simplePager.init();
 
-            var param = _self.getParam();
-            // param.userId = $.cookie('userId');
-            param.status='1,2,5';
-            _self.initOrderInPage(param);
+            _self.initOrderInPage(_self.param);
             global.getAllProvince();
             _self.bindEvent();
             var userModel = decodeURIComponent($.cookie('userModel'));
@@ -49,33 +49,32 @@ layui.use(['jquery', 'layedit', 'md5', 'simplePager', 'laydate', 'layer', 'cooki
 
             //查询
             $('#btn-search').on('click', function () {
-                var param = _self.getParam();
                 // param.userId = $.cookie('userId');
                 var statu = $('#statu option:selected').val();
                 if (statu&&statu!='-1'){
-                    param.status = statu;
+                    _self.param.status = statu;
                 }else{
-                    param.status='1,2,5';
+                    _self.param.status='1,2,5';
                 }
                 var timeLimit = $('#timelimit option:selected').val();
                 if (timeLimit&&timeLimit!='-1'){
-                    param.timeLimit = timeLimit;
+                    _self.param.timeLimit = timeLimit;
                 }
                 var endTime = $('#orderEndTime').val();
                 if (endTime){
-                    param.endTime = endTime;
+                    _self.param.endTime = endTime;
                 }
                 var startTime = $('#orderStartTime').val();
                 if (startTime){
-                    param.startTime = startTime;
+                    _self.param.startTime = startTime;
                 }
                 var queryStr = $('#keyWord').val();
                 if (queryStr){
-                    param.queryStr = queryStr;
+                    _self.param.queryStr = queryStr;
                 }
-                param.pageSize = _self.pageSize;
+                _self.param.pageSize = _self.pageSize;
                 _self.pageIndex = 1;
-                _self.initOrderInPage(param);
+                _self.initOrderInPage(_self.param);
             });
             var edit_win = $("#pop_up");
             // 编辑订单
@@ -111,16 +110,14 @@ layui.use(['jquery', 'layedit', 'md5', 'simplePager', 'laydate', 'layer', 'cooki
             $('#table-list').on('click', '.btn-del', function () {
                     event.preventDefault();
                     var id = $(this).data('id');
-                    var par = _self.getParam();
-                    par.ids = id;
-                    par.status='1,2,5';
+                    _self.param.ids = id;
                     layer.confirm('是否删这个订单?', {
                         btn: ['是', '否']
                     }, function () {
-                        $.post(global.url.deleteOrder, par, function (data, textStatus, xhr) {
+                        $.post(global.url.deleteOrder, _self.param, function (data, textStatus, xhr) {
                             if (data.code == 200) {
                                 layer.msg('删除成功！', { time: 500 }, function () {
-                                    _self.initOrderInPage(par);
+                                    _self.initOrderInPage(_self.param);
                                 });
                             } else {
                                 layer.msg("删除失败，请重试！", { time: 500 });
@@ -433,9 +430,7 @@ layui.use(['jquery', 'layedit', 'md5', 'simplePager', 'laydate', 'layer', 'cooki
                             layer.close(_self.layer_index);
                             if (undefined != data && null != data && data.code == 200) {
                                 layer.msg('编辑成功！', { time: 500 }, function () {
-                                    var par = _self.getParam();
-                                    par.status='1,2,5';
-                                    _self.initOrderInPage(par);
+                                    _self.initOrderInPage(_self.param);
                                     layer.close(_self.layer_open_index);
                                 });
                             } else {
