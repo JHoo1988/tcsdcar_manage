@@ -137,6 +137,15 @@ layui.define(['jquery', 'layer', 'cookie', 'global'], function (exports) {
             //初始化数据 userMobile, companyName
             $('#user_mobile').html($.cookie('userMobile'));
             $('.company-name').html(decodeURIComponent($.cookie('companyName')));
+            var userModel = decodeURIComponent($.cookie('userModel'));
+            if(userModel=='0'){
+                $('.salesman').css('display','block');
+                $('.brand').css('display','block');
+                $('.product').css('display','block');
+                $('.carshop').css('display','block');
+                $('.address').css('display','block');
+                $('.category').css('display','block');
+            }
             // (function () {
             //     var param = {};
             //     param.token = $.cookie('userToken');
