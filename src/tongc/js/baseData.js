@@ -21,31 +21,30 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
         this.pageSize = 13;
         this.totalPage = 0;
         this.totalSize = 0;
+        this.par = this.getParam();
     };
 
     Page.prototype = {
 
         init: function () {
             var _self = this;
-            var par = _self.getParam();
             upmobui.common.pageFunc(); // 页面共用方法
             simplePager.init();
             upmobui.common.findBalanceForParent();
-            _self.getAllBrands(par);
-            _self.getData(par);
+            _self.getAllBrands(_self.par);
+            _self.getData(_self.par);
             _self.bindEvent();
         },
 
         bindEvent: function () {
             var _self = this;
             $("#btn-search").bind('click', function () {
-                var par = _self.getParam();
-                par.brands = $(".brands_search").val();
+                _self.par.brands = $(".brands_search").val();
                 _self.pageIndex=1;
-                if(par.brands&&par.brands!=-1){
-                    _self.getDataM(par);
+                if(_self.par.brands&&_self.par.brands!=-1){
+                    _self.getDataM(_self.par);
                 }else {
-                    _self.getData(par);
+                    _self.getData(_self.par);
                 }
             });
 
@@ -120,14 +119,6 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 var thirtySixCyclePrice = $(this).data('thirtysixcycleprice');
                 var productDesc = $(this).data('productdesc');
                 var brands = $(this).data('brands');
-                var par = _self.getParam();
-                par.id = id;
-                par.productName = productName;
-                par.productAttribution = productAttribution;
-                par.twelveCyclePrice = twelveCyclePrice;
-                par.twentyFourCyclePrice = twentyFourCyclePrice;
-                par.thirtySixCyclePrice = thirtySixCyclePrice;
-                par.productDesc = productDesc;
 
                 var content = edit_win.html();
                 _self.layer_open_index = layer.open({
@@ -376,8 +367,12 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                                     fmsg = '编辑成功！';
                                 }
                                 layer.msg(fmsg, { time: 500 }, function () {
-                                    var par = _self.getParam();
-                                    _self.getData(par);
+                                    if(_self.par.brands&&_self.par.brands!=-1){
+                                        _self.getDataM(_self.par);
+                                    }else {
+                                        _self.getData(_self.par);
+                                    }
+                                    // _self.getData(_self.par);
                                     layer.close(_self.layer_open_index);
                                 });
                             } else {
