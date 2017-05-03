@@ -24,15 +24,30 @@
 
         <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
             <ul class="layui-tab-title">
-                <li class="layui-this" >产品列表</li>
+                <li class="layui-this">产品列表</li>
             </ul>
         </div>
 
         <div class="content-box">
             <div>
-                <div class="pull-left" style="margin: 33px 0px 20px 30px;">
-                    <a class="layui-btn layui-btn-normal" href="javascript:void(0)" class="btn" id="btn_add"><b
-                            style="font-size: 16px;">+</b> 新增产品</a>
+                <div style="margin-top: 24px;">
+                    <div class="layui-form">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">品牌名称</label>
+
+                            <div class="layui-input-inline" style="width: 300px;">
+                                <select class="brands_search" name="brands_search" lay-filter="brands_search">　　　　　　　　
+                                    <option class='brands_search' value='-1'>请选择城市</option>
+                                </select>
+                            </div>
+                            <div class="layui-input-inline" style="width: 120px; margin-left: 52px;">
+                                <input type="button" id="btn-search" class="layui-btn layui-btn-normal" value="搜索"
+                                       style="width: 120px;">
+                            </div>
+                            <a class="layui-btn layui-btn-normal" href="javascript:void(0)" class="btn" id="btn_add"><b
+                                    style="font-size: 16px;">+</b> 新增产品</a>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="grid-wrapper">
@@ -121,7 +136,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">产品图片</label>
                         <!--<div class="layui-input-block" style="width: 500px;">-->
-                            <!--<input type="file" name="file">-->
+                        <!--<input type="file" name="file">-->
                         <!--</div>-->
                         <input type="file" name="imagefile" class="layui-upload-file">
                     </div>
