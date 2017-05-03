@@ -38,6 +38,11 @@ layui.use(['jquery', 'layedit', 'md5', 'simplePager', 'laydate', 'layer', 'cooki
             _self.initOrderInPage(param);
             global.getAllProvince();
             _self.bindEvent();
+            var userModel = decodeURIComponent($.cookie('userModel'));
+            if(userModel=='0'){
+                $('.carno').css('display','block');
+                $('.kehumobile').css('display','block');
+            }
         },
         bindEvent: function () {
             var _self = this;
@@ -350,7 +355,7 @@ layui.use(['jquery', 'layedit', 'md5', 'simplePager', 'laydate', 'layer', 'cooki
                                 }
                                 if(orderStatus != 4){
                                     tableContent += '<td> <p><a href="javascript:void(0)" class="layui-btn layui-btn-mini btn-edit"  data-id="' + val.id + '" data-mobile="' + val.mobile + '" data-carbodyno="' + val.carBodyNo + '" data-statu="' + orderStatus + '" data-product="' + orderproduct + '">编辑订单</a></p>';
-                                    tableContent += '<p><a href="javascript:void(0)" class="layui-btn layui-btn-mini layui-btn-danger btn-del" data-id="' + val.id + '">删除订单</a></p></td></tr></tbody></table></div>';
+                                    tableContent += '<p class="editedd" style="display: none"><a href="javascript:void(0)" class="layui-btn layui-btn-mini layui-btn-danger btn-del" data-id="' + val.id + '">删除订单</a></p></td></tr></tbody></table></div>';
                                 }else{
                                     tableContent += '<td></td></tr></tbody></table></div>';
                                 }
@@ -390,6 +395,11 @@ layui.use(['jquery', 'layedit', 'md5', 'simplePager', 'laydate', 'layer', 'cooki
                             "position":"relative",
                             "top":"4px"
                         });
+                        var userModel = decodeURIComponent($.cookie('userModel'));
+                        if(userModel=='0'){
+                            $('.editedd').css('display','block');
+                        }
+
                     } else {
                         if (result.code == 510) {
                             layer.msg('登录已失效，请重新登录...', {time: 1200}, function () {
