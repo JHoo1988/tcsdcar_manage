@@ -20,6 +20,8 @@ layui.define(['jquery','layer', 'form'], function (exports) {
             deleteOrder: baseUrl + baseModifyUrl + 'productOrder/deleteOrder',
 			//查询产品
             findProductList: baseUrl + baseModifyUrl + 'product/findProductList',
+			//m查询产品
+            findProductListm: baseUrl + baseModifyUrl + 'mobile/findProductList',
 			//添加产品
             addProduct: baseUrl + baseModifyUrl + 'product/addProduct',
 			//删除产品
