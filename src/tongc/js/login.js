@@ -78,27 +78,29 @@ layui.use(['jquery', 'layer','md5', 'cookie', 'global','Validate'], function () 
                     if (result.code == 200) {
                         //保存登录用户名到cookie
                         // $.cookie('userMobile', result.data.userMobile, {expires: 7});
-                        $.cookie('userToken', result.data, {expires: 7});
+                        $.cookie('userToken', result.data.token, {expires: 7});
                         // $.cookie('userId', result.data.userId, {expires: 7});
-                        if(data.loginName=='kf0001'){
-                            $.cookie('companyName', encodeURIComponent('客服1'), {expires: 7});
-                            $.cookie('userModel', encodeURIComponent('1'), {expires: 7});
-                        }else if(data.loginName=='kf0002'){
-                            $.cookie('companyName', encodeURIComponent('客服2'), {expires: 7});
-                            $.cookie('userModel', encodeURIComponent('1'), {expires: 7});
-                        }else if(data.loginName=='kf0003'){
-                            $.cookie('companyName', encodeURIComponent('客服3'), {expires: 7});
-                            $.cookie('userModel', encodeURIComponent('1'), {expires: 7});
-                        }else if(data.loginName=='kf0004'){
-                            $.cookie('companyName', encodeURIComponent('客服4'), {expires: 7});
-                            $.cookie('userModel', encodeURIComponent('1'), {expires: 7});
-                        }else if(data.loginName=='kf0005'){
-                            $.cookie('companyName', encodeURIComponent('客服5'), {expires: 7});
-                            $.cookie('userModel', encodeURIComponent('1'), {expires: 7});
-                        }else if(data.loginName=='admin'){
-                            $.cookie('companyName', encodeURIComponent('同创盛大'), {expires: 7});
-                            $.cookie('userModel', encodeURIComponent('0'), {expires: 7});
-                        }
+                        $.cookie('companyName', encodeURIComponent(result.data.nickName), {expires: 7});
+                        $.cookie('userModel', encodeURIComponent(result.data.role), {expires: 7});
+                        // if(data.loginName=='kf0001'){
+                        //     $.cookie('companyName', encodeURIComponent('客服1'), {expires: 7});
+                        //     $.cookie('userModel', encodeURIComponent('1'), {expires: 7});
+                        // }else if(data.loginName=='kf0002'){
+                        //     $.cookie('companyName', encodeURIComponent('客服2'), {expires: 7});
+                        //     $.cookie('userModel', encodeURIComponent('1'), {expires: 7});
+                        // }else if(data.loginName=='kf0003'){
+                        //     $.cookie('companyName', encodeURIComponent('客服3'), {expires: 7});
+                        //     $.cookie('userModel', encodeURIComponent('1'), {expires: 7});
+                        // }else if(data.loginName=='kf0004'){
+                        //     $.cookie('companyName', encodeURIComponent('客服4'), {expires: 7});
+                        //     $.cookie('userModel', encodeURIComponent('1'), {expires: 7});
+                        // }else if(data.loginName=='kf0005'){
+                        //     $.cookie('companyName', encodeURIComponent('客服5'), {expires: 7});
+                        //     $.cookie('userModel', encodeURIComponent('1'), {expires: 7});
+                        // }else if(data.loginName=='admin'){
+                        //     $.cookie('companyName', encodeURIComponent('同创盛大'), {expires: 7});
+                        //     $.cookie('userModel', encodeURIComponent('0'), {expires: 7});
+                        // }
                         window.location.href = "msp.html";
                     } else {
                         layer.msg('登录失败，用户名或密码错误。',{time:1200});
