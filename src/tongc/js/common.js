@@ -144,7 +144,7 @@ layui.define(['jquery', 'layer', 'cookie', 'global'], function (exports) {
                 $('.product').css('display','block');
                 $('.carshop').css('display','block');
                 $('.address').css('display','block');
-                $('.category').css('display','block');
+                // $('.category').css('display','block');
             }
             // (function () {
             //     var param = {};
