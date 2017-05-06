@@ -24,20 +24,20 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'element', 'layer', 'cook
         this.rangeBegin = 1;
         this.rangeEnd = 9999;
         this.pageIndex = 1;
-        this.pageSize = 14;
+        this.pageSize = 13;
         this.totalPage = 0;
         this.totalSize = 0;
+        this.par = this.getParam();
     };
 
     Page.prototype = {
 
         init: function () {
             var _self = this;
-            var par = _self.getParam();
             upmobui.common.pageFunc(); // 页面共用方法
             simplePager.init();
             upmobui.common.findBalanceForParent();
-            _self.getData(par);
+            _self.getData(_self.par);
             _self.bindEvent();
             // global.getAllProvince();
         },
@@ -45,11 +45,10 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'element', 'layer', 'cook
         bindEvent: function () {
             var _self = this;
             $("#btn-search").bind('click', function () {
-                var par = _self.getParam();
-                par.queryStr = $("#querystr").val();
+                _self.par.queryStr = $("#querystr").val();
                 //param.size = _self.pageSize;
                 _self.pageIndex = 1;
-                _self.getData(par);
+                _self.getData(_self.par);
             });
             // form.on('select(selectprovince)', function () {
             //     var selectprovince = $('.province option:selected').val();
@@ -313,8 +312,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'element', 'layer', 'cook
                             layer.close(_self.layer_index);
                             if (undefined != data && null != data && data.code == '200') {
                                 layer.msg(flagmsg + '成功！', { time: 500 }, function () {
-                                    var par = _self.getParam();
-                                    _self.getData(par);
+                                    _self.getData(_self.par);
                                     layer.close(_self.layer_open_index);
                                 });
                             }else if(data.code == '500'){

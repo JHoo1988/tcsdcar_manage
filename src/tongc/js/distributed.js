@@ -22,19 +22,19 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
         this.pageSize = 12;
         this.totalPage = 0;
         this.totalSize = 0;
+        this.par = this.getParam();
     };
 
     Page.prototype = {
 
         init: function () {
             var _self = this;
-            var par = _self.getParam();
             upmobui.common.pageFunc(); // 页面共用方法
             simplePager.init();
             upmobui.common.findBalanceForParent();
             var codeNameHash = location.hash;
             salesmanid = codeNameHash.substring(1);
-            _self.getData(par);
+            _self.getData(_self.par);
             _self.bindEvent();
             global.getAllProvince();
         },
@@ -42,32 +42,50 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
         bindEvent: function () {
             var _self = this;
             $("#btn-search").bind('click', function () {
-                var par = _self.getParam();
-                par.queryStr = $("#productName").val();
+                _self.par.queryStr = $("#productName").val();
                 var province = $('.content-box [name=selectprovince]').val();
                 if (province && province != '-1') {
-                    par.province = province;
+                    _self.par.province = province;
                 }
                 var city = $('.content-box [name=selectcity]').val();
                 if (city && city != '-1') {
-                    par.city = city;
+                    _self.par.city = city;
                 }
                 var district = $('.content-box [name=area]').val();
                 if (district && district != '-1') {
-                    par.district = district;
+                    _self.par.district = district;
                 }
                 //param.size = _self.pageSize;
                 _self.pageIndex = 1;
-                _self.getData(par);
+                _self.getData(_self.par);
             });
             var selectprovince;
             form.on('select(selectprovince)', function () {
                 selectprovince = $('.province option:selected').val();
-                global.getCityByProvinceId(selectprovince);
+                if(selectprovince=='-1'){
+                    var ops = "<option class='chooseCity-add' value='-1'>请选择城市</option>";
+                    $(".city").empty().append(ops);
+                    form.render('select');
+                    $('.city option:selected').val(-1);
+
+                    var op = "<option id='chooseCounty' value='-1'>请选择区/县</option>";
+                    $("#county").empty().append(op);
+                    form.render('select');
+                    $('#county option:selected').val(-1);
+                }else{
+                    global.getCityByProvinceId(selectprovince);
+                }
             });
             form.on('select(selectcity)', function () {
                 var city = $('.city option:selected').val();
-                global.getAreaByCityId(city, selectprovince);
+                if(city=='-1'){
+                    var op = "<option id='chooseCounty' value='-1'>请选择区/县</option>";
+                    $("#county").empty().append(op);
+                    form.render('select');
+                    $('#county option:selected').val(-1);
+                }else{
+                    global.getAreaByCityId(city,selectprovince);
+                }
             });
 
 
@@ -113,8 +131,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                             $("input[type='checkbox'][name='allChoose']")[0].checked=false;
                             $('.delete').addClass('layui-btn-disabled');
                             layer.msg('取消分配成功！', { time: 1000 }, function () {
-                                par = _self.getParam();
-                                _self.getData(par);
+                                _self.getData(_self.par);
                             });
                         } else if (data.code == 510) {
                             layer.msg('登录已失效，请重新登录...', { time: 1200 }, function () {
@@ -160,8 +177,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                             $("input[type='checkbox'][name='allChoose']")[0].checked=false;
                             $('.delete').addClass('layui-btn-disabled');
                             layer.msg('取消分配成功！', { time: 1000 }, function () {
-                                par = _self.getParam();
-                                _self.getData(par);
+                                _self.getData(_self.par);
                             });
                         } else if (data.code == 510) {
                             layer.msg('登录已失效，请重新登录...', { time: 1200 }, function () {
@@ -394,8 +410,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                             layer.close(_self.layer_index);
                             if (undefined != data && null != data && data.code == 200) {
                                 layer.msg('编辑成功！', { time: 500 }, function () {
-                                    var par = _self.getParam();
-                                    _self.getData(par);
+                                    _self.getData(_self.par);
                                     layer.close(_self.layer_open_index);
                                 });
                             } else {
