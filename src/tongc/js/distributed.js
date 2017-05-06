@@ -321,14 +321,14 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                                 }
                                 html += '<td>' +
                                     '<a data-ct="修改合作状态" data-id="' + dataList[i].id + '" data-statu="' + dataList[i].statu + '" class="edt_shop" href="javascript:;">编辑</a>' +
-                                    '<a data-ct="取消分配给他" data-id="' + dataList[i].id + '" class="del_shop" href="javascript:;">删除</a>' +
+                                    '<a data-ct="取消分配给他" data-id="' + dataList[i].id + '" class="del_shop" href="javascript:;">取消分配</a>' +
                                     '</td>';
                                 html += '</tr>';
                             }
                             $("#dg_list tbody").empty().append(html);
 
                             _self.totalSize = data.data.totalSize;
-                            _self.totalPage = Math.ceil(_self.totalSize / _self.pageSize);
+                            _self.totalPage = data.data.totalPage;
                             $('.pager-footer').show();
                             simplePager.setup({
                                 item: '.simple-pager-wrapper .simple-pager',
