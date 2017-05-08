@@ -177,14 +177,6 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 var cityname = $(this).data('cityname');
                 var areaname = $(this).data('areaname');
                 var address = $(this).data('address');
-                var par = _self.getParam();
-                par.id = id;
-                par.shopname = shopname;
-                par.shopphone = shopphone;
-                par.provincename = provincename;
-                par.cityname = cityname;
-                par.areaname = areaname;
-                par.address = address;
 
                 var content = edit_win.html();
                 _self.layer_open_index = layer.open({
