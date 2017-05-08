@@ -59,18 +59,26 @@ layui.use(['jquery', 'layedit', 'md5', 'simplePager', 'laydate', 'layer', 'cooki
                 var timeLimit = $('#timelimit option:selected').val();
                 if (timeLimit&&timeLimit!='-1'){
                     _self.param.timeLimit = timeLimit;
+                }else{
+                    delete _self.param.timeLimit;
                 }
                 var endTime = $('#orderEndTime').val();
                 if (endTime){
                     _self.param.endTime = endTime;
+                }else{
+                    delete _self.param.endTime;
                 }
                 var startTime = $('#orderStartTime').val();
                 if (startTime){
                     _self.param.startTime = startTime;
+                }else{
+                    delete _self.param.startTime;
                 }
                 var queryStr = $('#keyWord').val();
                 if (queryStr){
                     _self.param.queryStr = queryStr;
+                }else{
+                    delete _self.param.queryStr;
                 }
                 _self.param.pageSize = _self.pageSize;
                 _self.pageIndex = 1;
