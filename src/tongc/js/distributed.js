@@ -326,6 +326,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                                 html += '<td>' + dataList[i].provinceName + dataList[i].cityName + dataList[i].districtName + dataList[i].addressDetail + '</td>';
                                 switch (dataList[i].statu) {//dataList[i].type
                                     case 0:
+                                    case 3:
                                         html += '<td>未合作</td>';
                                         break;
                                     case 1:
