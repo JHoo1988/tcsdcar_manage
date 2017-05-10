@@ -243,7 +243,7 @@ layui.use(['jquery', 'layedit', 'md5', 'simplePager', 'laydate', 'layer', 'cooki
                             var text = '<div>';
                             if (content && content.length > 0) {
                                 for (var i = 0; i < content.length; i++) {
-                                    text+='<p>第' + (i+1) + '次赔付时间：' + content[i].createTime+'</p><br>';
+                                    text+='<p>第' + (i+1) + '次赔付时间：' + content[i].createTimeStr+'</p><br>';
                                 }
                             } else {
                                 text += '<p>暂无赔付记录</p><br>';
