@@ -4,7 +4,7 @@
 /**
  * Created by dell on 2016/9/23.
  */
-layui.use(['jquery', 'layedit', 'md5', 'simplePager', 'laydate', 'layer', 'cookie', 'global', 'upmobui','form'], function () {
+layui.use(['jquery', 'layedit', 'md5', 'simplePager', 'laydate', 'layer', 'cookie', 'global', 'upmobui', 'form'], function () {
     var $ = layui.jquery,
         layer = layui.layer,
         simplePager = layui.simplePager,
@@ -23,8 +23,8 @@ layui.use(['jquery', 'layedit', 'md5', 'simplePager', 'laydate', 'layer', 'cooki
         this.layer_load_index;
         this.pollingTime = 60 * 1000;
         this.businessDiscount = 10;
-        this.param=this.getParam();
-        this.param.status='1,2,5';
+        this.param = this.getParam();
+        this.param.status = '1,2,5';
         // this.param.userId = $.cookie('userId');
     }
 
@@ -39,9 +39,9 @@ layui.use(['jquery', 'layedit', 'md5', 'simplePager', 'laydate', 'layer', 'cooki
             global.getAllProvince();
             _self.bindEvent();
             var userModel = decodeURIComponent($.cookie('userModel'));
-            if(userModel=='0'){
-                $('.carno').css('display','block');
-                $('.kehumobile').css('display','block');
+            if (userModel == '0') {
+                $('.carno').css('display', 'block');
+                $('.kehumobile').css('display', 'block');
             }
         },
         bindEvent: function () {
@@ -51,33 +51,33 @@ layui.use(['jquery', 'layedit', 'md5', 'simplePager', 'laydate', 'layer', 'cooki
             $('#btn-search').on('click', function () {
                 // param.userId = $.cookie('userId');
                 var statu = $('#statu option:selected').val();
-                if (statu&&statu!='-1'){
+                if (statu && statu != '-1') {
                     _self.param.status = statu;
-                }else{
-                    _self.param.status='1,2,5';
+                } else {
+                    _self.param.status = '1,2,5';
                 }
                 var timeLimit = $('#timelimit option:selected').val();
-                if (timeLimit&&timeLimit!='-1'){
+                if (timeLimit && timeLimit != '-1') {
                     _self.param.timeLimit = timeLimit;
-                }else{
+                } else {
                     delete _self.param.timeLimit;
                 }
                 var endTime = $('#orderEndTime').val();
-                if (endTime){
+                if (endTime) {
                     _self.param.endTime = endTime;
-                }else{
+                } else {
                     delete _self.param.endTime;
                 }
                 var startTime = $('#orderStartTime').val();
-                if (startTime){
+                if (startTime) {
                     _self.param.startTime = startTime;
-                }else{
+                } else {
                     delete _self.param.startTime;
                 }
                 var queryStr = $('#keyWord').val();
-                if (queryStr){
+                if (queryStr) {
                     _self.param.queryStr = queryStr;
-                }else{
+                } else {
                     delete _self.param.queryStr;
                 }
                 _self.param.pageSize = _self.pageSize;
@@ -87,31 +87,31 @@ layui.use(['jquery', 'layedit', 'md5', 'simplePager', 'laydate', 'layer', 'cooki
             var edit_win = $("#pop_up");
             // 编辑订单
             $('#table-list').on('click', '.btn-edit', function () {
-                // var speed=200;//滑动的速度
-                // $('#table-list').animate({ scrollTop: 0 }, speed);
-                var content = edit_win.html();
-                _self.layer_open_index = layer.open({
-                    type: 1,
-                    title: '编辑订单',
-                    area: ['700px', 'auto'], //宽高
-                    fixed: false, //不固定
-                    maxmin: true,
-                    offset: '100px',
-                    content: content
-                });
-                var id = $(this).data('id');
-                var mobile = $(this).data('mobile');
-                var carbodyno = $(this).data('carbodyno');
-                var statu = $(this).data('statu');
-                var product = $(this).data('product');
-                $('.layui-layer-content [name=id]').val(id);
-                $('.layui-layer-content [name=mobile]').val(mobile);
-                $('.layui-layer-content [name=carBodyNo]').val(carbodyno);
-                $('.layui-layer-content [name=statu]').val(statu);
-                $('.layui-layer-content [name=product]').val(product);
-                form.render();
-                $("#pop_up").remove();
-                _self.addProductAction();
+                    // var speed=200;//滑动的速度
+                    // $('#table-list').animate({ scrollTop: 0 }, speed);
+                    var content = edit_win.html();
+                    _self.layer_open_index = layer.open({
+                        type: 1,
+                        title: '编辑订单',
+                        area: ['700px', 'auto'], //宽高
+                        fixed: false, //不固定
+                        maxmin: true,
+                        offset: '100px',
+                        content: content
+                    });
+                    var id = $(this).data('id');
+                    var mobile = $(this).data('mobile');
+                    var carbodyno = $(this).data('carbodyno');
+                    var statu = $(this).data('statu');
+                    var product = $(this).data('product');
+                    $('.layui-layer-content [name=id]').val(id);
+                    $('.layui-layer-content [name=mobile]').val(mobile);
+                    $('.layui-layer-content [name=carBodyNo]').val(carbodyno);
+                    $('.layui-layer-content [name=statu]').val(statu);
+                    $('.layui-layer-content [name=product]').val(product);
+                    form.render();
+                    $("#pop_up").remove();
+                    _self.addProductAction();
                 }
             );
             // 删除订单
@@ -147,11 +147,11 @@ layui.use(['jquery', 'layedit', 'md5', 'simplePager', 'laydate', 'layer', 'cooki
                 $('.discount').hide();
             });
             // 全选
-            $('.allChoose').on('change',function () {
-                if($("input[type='checkbox'][name='allChoose']")[0].checked){
+            $('.allChoose').on('change', function () {
+                if ($("input[type='checkbox'][name='allChoose']")[0].checked) {
                     _self.selectAll();
                     $('#btn-export').removeClass('layui-btn-disabled');
-                }else{
+                } else {
                     _self.unSelectAll();
                     $('#btn-export').addClass('layui-btn-disabled');
                 }
@@ -176,30 +176,30 @@ layui.use(['jquery', 'layedit', 'md5', 'simplePager', 'laydate', 'layer', 'cooki
 
 
             //批量发短信
-            $('#btn-export').on('click',function () {
+            $('#btn-export').on('click', function () {
                 var checkboxList = $("input[type='checkbox'][name='singlChoose']");
                 var checked = false;
                 for (var i = 0; i < checkboxList.length; i++) {
-                    if($("input[type='checkbox'][name='singlChoose']")[i].checked){
+                    if ($("input[type='checkbox'][name='singlChoose']")[i].checked) {
                         checked = true;
                         break;
                     }
                 }
-                if(checked){
+                if (checked) {
                     layer.confirm('是否发送续保短信?', {
                         btn: ['是', '否']
                     }, function () {
                         var par = _self.getParam();
-                        var ids='[';
+                        var ids = '[';
                         var id = new Array();
                         var checkboxList = $("input[type='checkbox'][name='singlChoose']");
                         for (var i = 0; i < checkboxList.length; i++) {
-                            if($("input[type='checkbox'][name='singlChoose']")[i].checked){
-                                ids+=$("input[type='checkbox'][name='singlChoose']")[i].value+",";
+                            if ($("input[type='checkbox'][name='singlChoose']")[i].checked) {
+                                ids += $("input[type='checkbox'][name='singlChoose']")[i].value + ",";
                                 id.push($("input[type='checkbox'][name='singlChoose']")[i].value);
                             }
                         }
-                        ids+=']';
+                        ids += ']';
                         // par.ids = ids;
                         par.ids = id.toString();
                         layer.closeAll();
@@ -213,36 +213,49 @@ layui.use(['jquery', 'layedit', 'md5', 'simplePager', 'laydate', 'layer', 'cooki
                     }, function () {
                         layer.closeAll();
                     });
-                    // layer.open({
-                    //     title: '批量发送续保短信'
-                    //     ,content: '<a style="color:#34A8FF">短信模板为:</a>同创盛大'
-                    //     ,btn: '立即发送'
-                    //     ,area: ['390px', '260px']
-                    //     , yes: function () {
-                    //         var par = _self.getParam();
-                    //         var ids='[';
-                    //         var checkboxList = $("input[type='checkbox'][name='singlChoose']");
-                    //         for (var i = 0; i < checkboxList.length; i++) {
-                    //              if($("input[type='checkbox'][name='singlChoose']")[i].checked){
-                    //                  ids+=$("input[type='checkbox'][name='singlChoose']")[i].value+",";
-                    //              }
-                    //         }
-                    //         ids+=']';
-                    //         par.ids = ids;
-                    //         layer.closeAll();
-                    //         $.post(global.url.sendmms, par, function (data, textStatus, xhr) {
-                    //             if (data.code == 200) {
-                    //                 layer.msg('短信发送成功！', { time: 500 });
-                    //             } else {
-                    //                 layer.msg("短信发送失败，请重试！", { time: 500 });
-                    //             }
-                    //         });
-                    //
-                    //     }
-                    // });
-                }else{
+                } else {
                     layer.msg('请选择一个订单', { time: 1200 });
                 }
+            });
+            $(document).on('click', '.checkpaids', function (){
+                var _self = this;
+                var param = {};
+                param.pageIndex = 1;
+                param.pageSize = 99;
+                var id = $(this).data('id');
+                if (!id) {
+                    return;
+                } else {
+                    param.orderId = id;
+                }
+                $.ajax({
+                    url: global.url.findPaidRecordsList,
+                    type: 'GET',
+                    dataType: 'json',
+                    data: param,
+                    beforeSend: function () {
+                        _self.layer_index = layer.load(2);
+                    },
+                    success: function (result) {
+                        layer.close(_self.layer_index);
+                        if (result.code == 200) {
+                            var content = result.data.content;
+                            var text = '<div>';
+                            if (content && content.length > 0) {
+                                for (var i = 0; i < content.length; i++) {
+                                    text+='<p>第' + (i+1) + '次赔付时间：' + content[i].createTime+'</p><br>';
+                                }
+                            } else {
+                                text += '<p>暂无赔付记录</p><br>';
+                            }
+                            text+='</div>';
+                            layer.open({
+                                title: '赔付记录'
+                                ,content: text
+                            });
+                        }
+                    }
+                });
             });
         },
         selectAll: function () {
@@ -285,7 +298,7 @@ layui.use(['jquery', 'layedit', 'md5', 'simplePager', 'laydate', 'layer', 'cooki
                     _self.layer_index = layer.load(2);
                 },
                 success: function (result) {
-                    layer.close(_self.layer_index)
+                    layer.close(_self.layer_index);
                     if (result.code == 200) {
                         $('#table-list').empty();
                         var data = result.data;
@@ -350,18 +363,18 @@ layui.use(['jquery', 'layedit', 'md5', 'simplePager', 'laydate', 'layer', 'cooki
                                     + '<td><p>电话：' + val.mobile + '</p><p>车身号：' + val.carBodyNo + '</p></td>'
                                     + '<td class="js-totalAmount" data-totalAmount="' + val.totalAmount + '">' + originTotalAmountHtml + '<p style="font-size: 18px; color:#FF6C60">￥' + val.totalAmount + '</p>' + saveAmountHtml + '</td>'
                                 if (orderStatus == 1) {
-                                    tableContent += '<td class="js-orderStatus" data-status="' + orderStatus + '"style="font-size: 16px;color: #0bb20c">' + orderStatusContent + '</td>'
+                                    tableContent += '<td class="js-orderStatus" data-status="' + orderStatus + '"style="font-size: 16px;color: #0bb20c"><p>' + orderStatusContent + '</p><a class="checkpaids"  data-id="' + val.id + '" href="javascript:;" style="font-size: 14px;color: #01AAED;">查看赔付记录</a></td>'
                                 } else if (orderStatus == 2) {
-                                    tableContent += '<td class="js-orderStatus" data-status="' + orderStatus + '"style="font-size: 16px;color: #FF4949">' + orderStatusContent + '</td>'
-                                } else if (orderStatus == 3||orderStatus == 4) {
-                                    tableContent += '<td class="js-orderStatus" data-status="' + orderStatus + '"style="font-size: 16px;color: #8492A6">' + orderStatusContent + '</td>'
+                                    tableContent += '<td class="js-orderStatus" data-status="' + orderStatus + '"style="font-size: 16px;color: #FF4949"><p>' + orderStatusContent + '</p><a class="checkpaids"  data-id="' + val.id + '" href="javascript:;" style="font-size: 14px;color: #01AAED;">查看赔付记录</a></td>'
+                                } else if (orderStatus == 3 || orderStatus == 4) {
+                                    tableContent += '<td class="js-orderStatus" data-status="' + orderStatus + '"style="font-size: 16px;color: #8492A6"><p>' + orderStatusContent + '</p><a class="checkpaids"  data-id="' + val.id + '" href="javascript:;" style="font-size: 14px;color: #01AAED;">查看赔付记录</a></td>'
                                 } else {
-                                    tableContent += '<td class="js-orderStatus" data-status="' + orderStatus + '"style="font-size: 16px">' + orderStatusContent + '</td>'
+                                    tableContent += '<td class="js-orderStatus" data-status="' + orderStatus + '"style="font-size: 16px"><p>' + orderStatusContent + '</p><a class="checkpaids"  data-id="' + val.id + '" href="javascript:;" style="font-size: 14px;color: #01AAED;">查看赔付记录</a></td>'
                                 }
-                                if(orderStatus != 4){
+                                if (orderStatus != 4) {
                                     tableContent += '<td> <p><a href="javascript:void(0)" class="layui-btn layui-btn-mini btn-edit"  data-id="' + val.id + '" data-mobile="' + val.mobile + '" data-carbodyno="' + val.carBodyNo + '" data-statu="' + orderStatus + '" data-product="' + orderproduct + '">编辑订单</a></p>';
                                     tableContent += '<p class="editedd" style="display: none"><a href="javascript:void(0)" class="layui-btn layui-btn-mini layui-btn-danger btn-del" data-id="' + val.id + '">删除订单</a></p></td></tr></tbody></table></div>';
-                                }else{
+                                } else {
                                     tableContent += '<td></td></tr></tbody></table></div>';
                                 }
 
@@ -397,20 +410,20 @@ layui.use(['jquery', 'layedit', 'md5', 'simplePager', 'laydate', 'layer', 'cooki
                             $('#myIframe', parent.document).height($('#myIframe', parent.document).contents().find('body').height());
                         }, 0);
                         $("input[type='checkbox'][name='singlChoose']").css({
-                            "position":"relative",
-                            "top":"4px"
+                            "position": "relative",
+                            "top": "4px"
                         });
                         var userModel = decodeURIComponent($.cookie('userModel'));
-                        if(userModel=='0'){
-                            $('.editedd').css('display','block');
+                        if (userModel == '0') {
+                            $('.editedd').css('display', 'block');
                         }
 
                     } else {
                         if (result.code == 510) {
-                            layer.msg('登录已失效，请重新登录...', {time: 1200}, function () {
+                            layer.msg('登录已失效，请重新登录...', { time: 1200 }, function () {
                                 // window.parent.location.href = 'login.html';
                             });
-                        }else{
+                        } else {
                             layer.msg('获取订单失败，请稍后重试！', { time: 1200 });
                         }
                     }
@@ -423,7 +436,7 @@ layui.use(['jquery', 'layedit', 'md5', 'simplePager', 'laydate', 'layer', 'cooki
                 if (_self.checkForm()) {
                     _self.layer_index = layer.load(2);
                     var formData = new FormData($("#uploadForm")[0]);
-                    formData.append("token",$.cookie('userToken'));
+                    formData.append("token", $.cookie('userToken'));
                     $.ajax({
                         url: global.url.addOrder,
                         type: 'POST',
@@ -447,7 +460,7 @@ layui.use(['jquery', 'layedit', 'md5', 'simplePager', 'laydate', 'layer', 'cooki
                                     layer.msg('登录已失效，请重新登录...', { time: 1200 }, function () {
                                         window.parent.location.href = 'login.html';
                                     });
-                                }else{
+                                } else {
                                     layer.msg('编辑失败！', { time: 1500 });
                                 }
                             }

@@ -177,6 +177,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 var cityname = $(this).data('cityname');
                 var areaname = $(this).data('areaname');
                 var address = $(this).data('address');
+                var shoptype = $(this).data('shoptype');
 
                 var content = edit_win.html();
                 _self.layer_open_index = layer.open({
@@ -194,6 +195,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 // $('.layui-layer-content [name=city]').val(cityname);
                 // $('.layui-layer-content [name=district]').val(areaname);
                 $('.layui-layer-content [name=addressDetail]').val(address);
+                $('.layui-layer-content [name=shopType]').val(shoptype);
                 form.render();
                 $("#pop_up").remove();
                 _self.addProductAction(1);
@@ -277,11 +279,16 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                                 html += '<td><a data-ct="' + dataList[i].shopName + '"</a>' + dataList[i].shopName + '</td>';
                                 html += '<td data-ct="' + dataList[i].mobile +'">' + dataList[i].mobile + '</td>';
                                 html += '<td data-ct="' + dataList[i].shopCode +'">' + dataList[i].shopCode + '</td>';
+                                if(dataList[i].shopType==1){
+                                    html += '<td data-ct="' + dataList[i].shopType +'">4S店</td>';
+                                }else if(dataList[i].shopType==2){
+                                    html += '<td data-ct="' + dataList[i].shopType +'">市场店铺</td>';
+                                }
                                 html += '<td ><a data-ct="' + dataList[i].provinceName +dataList[i].cityName +dataList[i].districtName +dataList[i].addressDetail +'"</a>' + dataList[i].provinceName +dataList[i].cityName +dataList[i].districtName +dataList[i].addressDetail+ '</td>';
                                 html += '<td>' + dataList[i].createTimeStr + '</td>';
                                 html += '<td>'
                                     + '<a data-ct="查看店铺二维码" href="javascript:void(0);" data-shopcode="' + dataList[i].shopCode + '" data-shopname="' + dataList[i].shopName + '" data-imgurl="' + dataList[i].qrCodeUrl + '" class="layui-btn layui-btn-mini layui-btn-primary btn-twocode">二维码</a>'
-                                    + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" data-shopname="' + dataList[i].shopName + '" data-shopphone="' + dataList[i].mobile + '" data-provincename="' + dataList[i].province + '" data-cityname="' + dataList[i].city + '" data-areaname="' + dataList[i].district + '" data-address="' + dataList[i].addressDetail + '" class="layui-btn layui-btn-mini btn-edit">编辑</a>'
+                                    + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" data-shopname="' + dataList[i].shopName + '" data-shopphone="' + dataList[i].mobile + '" data-provincename="' + dataList[i].province + '" data-cityname="' + dataList[i].city + '" data-areaname="' + dataList[i].district +'" data-shoptype="' + dataList[i].shopType + '" data-address="' + dataList[i].addressDetail + '" class="layui-btn layui-btn-mini btn-edit">编辑</a>'
                                     + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" class="layui-btn layui-btn-mini layui-btn-danger btn-del">删除</a>'
                                     + '</td>';
                                 html += '</tr>';
@@ -466,6 +473,11 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             var areaname = $('.layui-layer-content [name=district]').val();
             if (!areaname||-1==areaname) {
                 layer.msg('区/县名称不能为空！', { time: 1200 });
+                return false;
+            }
+            var shoptype = $('.layui-layer-content [name=shopType]').val();
+            if (!shoptype||-1==shoptype) {
+                layer.msg('店铺类型不能为空！', { time: 1200 });
                 return false;
             }
             var shopname = $('.layui-layer-content [name=shopName]').val();

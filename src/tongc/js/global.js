@@ -6,7 +6,7 @@ layui.define(['jquery','layer', 'form'], function (exports) {
         layer = layui.layer;
 	var form = layui.form();
 	var baseUrl = 'http://119.23.34.22:8080';
-	// var baseUrl = 'http://localhost:8080';
+	// var baseUrl = 'http://localhost:8088';
 	var baseModifyUrl = '/';
 	var App = function () {
 		this.url = {
@@ -14,6 +14,8 @@ layui.define(['jquery','layer', 'form'], function (exports) {
             login: baseUrl + baseModifyUrl + 'login',
 			//查询订单
             findOrderList: baseUrl + baseModifyUrl + 'productOrder/findOrderList',
+			//查询订单赔付记录 GET orderId,pageIndex,pageSize
+            findPaidRecordsList: baseUrl + baseModifyUrl + 'mobile/findPaidRecordsList',
             //增加/修改订单
             addOrder: baseUrl + baseModifyUrl + 'productOrder/addOrder',
             //删除订单
