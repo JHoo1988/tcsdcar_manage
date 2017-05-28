@@ -1,5 +1,5 @@
 /**
- * 基础数据 - 品牌列表
+ * 基础数据 - 汽车品牌列表
  */
 layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'global', 'upload','upmobui'], function () {
     var $ = layui.jquery,
@@ -75,7 +75,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 var content = edit_win.html();
                 _self.layer_open_index = layer.open({
                     type: 1,
-                    title: '新增品牌',
+                    title: '新增汽车品牌',
                     area: ['700px', '500px'], //宽高
                     fixed: false, //不固定
                     maxmin: true,
@@ -92,7 +92,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 var id = $(this).data('id');
                 var par = _self.getParam();
                 par.ids = id;
-                layer.confirm('是否删除此品牌?', {
+                layer.confirm('是否删除此汽车品牌?', {
                     btn: ['是', '否']
                 }, function () {
                     $.post(global.url.deleteProductBrands, par, function (data, textStatus, xhr) {
@@ -122,7 +122,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 var content = edit_win.html();
                 _self.layer_open_index = layer.open({
                     type: 1,
-                    title: '编辑品牌',
+                    title: '编辑汽车品牌',
                     area: ['700px', '500px'], //宽高
                     fixed: false, //不固定
                     maxmin: true,
@@ -211,7 +211,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                             });
                         } else {
                             $("#dg_list tbody").empty();
-                            layer.msg("暂无品牌", { time: 1200 });
+                            layer.msg("暂无汽车品牌", { time: 1200 });
                         }
                         if (typeof successCallback === "function") {
                             successCallback(data.code);
@@ -302,12 +302,12 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
         checkForm: function (flag) {
             var name = $('.layui-layer-content [name=name]').val();
             if (!name) {
-                layer.msg('品牌名称不能为空！', { time: 1200 });
+                layer.msg('汽车品牌名称不能为空！', { time: 1200 });
                 return false;
             }
             var namef = $('.layui-layer-content [name=logofile]').val();
             if (!namef&&flag!=1) {
-                layer.msg('品牌logo不能为空！', { time: 1200 });
+                layer.msg('汽车品牌logo不能为空！', { time: 1200 });
                 return false;
             }
             return true;

@@ -24,7 +24,7 @@
 
         <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
             <ul class="layui-tab-title">
-                <li class="layui-this">产品列表</li>
+                <li class="layui-this">汽车型号列表</li>
             </ul>
         </div>
 
@@ -45,7 +45,7 @@
                                        style="width: 120px;">
                             </div>
                             <a class="layui-btn layui-btn-normal" href="javascript:void(0)" class="btn" id="btn_add"><b
-                                    style="font-size: 16px;">+</b> 新增产品</a>
+                                    style="font-size: 16px;">+</b> 新增汽车型号</a>
                         </div>
                     </div>
                 </div>
@@ -55,8 +55,8 @@
                         <thead>
                         <tr class="list-head">
                             <th style="width: 40px;">编号</th>
-                            <th style="width: 70px;">产品图片</th>
-                            <th style="width: 160px;">产品名称</th>
+                            <th style="width: 100px;">汽车型号图片</th>
+                            <th style="width: 160px;">汽车型号名称</th>
                             <!--<th style="width: 100px;">类别</th>-->
                             <th style="width: 300px;">价格</th>
                             <th style="width: 200px;" class="td_posR" data-ct="adfafafa">创建时间</th>
@@ -88,7 +88,7 @@
             <div class="add_edit_dlg layui-form">
                 <form id="uploadForm" enctype="multipart/form-data">
                     <div class="layui-form-item">
-                        <label class="layui-form-label">所属品牌</label>
+                        <label class="layui-form-label" style="width: 90px;">所属品牌</label>
 
                         <div class="layui-input-inline" style="width: 500px;">
                             <select class="brands" name="brands" lay-filter="brands">
@@ -98,43 +98,43 @@
                     </div>
 
                     <div class="layui-form-item">
-                        <label class="layui-form-label">名称</label>
-                        <div class="layui-input-block" style="width: 500px;">
-                            <input type="text" autocomplete="off" class="layui-input" name="productName" placeholder="产品名称" maxlength="30">
+                        <label class="layui-form-label" style="width: 90px;">汽车型号名称</label>
+                        <div class="layui-input-block" style="width: 500px;margin-left: 120px;">
+                            <input type="text" autocomplete="off" class="layui-input" name="productName" placeholder="汽车型号名称" maxlength="30">
                             <input type="text" class="layui-input" name="id" style="display: none;">
                         </div>
                     </div>
 
                     <div class="layui-form-item">
-                        <label class="layui-form-label">12期价格</label>
-                        <div class="layui-input-block" style="width: 500px;">
+                        <label class="layui-form-label" style="width: 90px;">12期价格</label>
+                        <div class="layui-input-block" style="width: 500px;margin-left: 120px;">
                             <input type="text" class="layui-input" autocomplete="off" name="twelveCyclePrice" placeholder="12期价格"
                                    maxlength="10">
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label class="layui-form-label">24期价格</label>
-                        <div class="layui-input-block" style="width: 500px;">
+                        <label class="layui-form-label" style="width: 90px;">24期价格</label>
+                        <div class="layui-input-block" style="width: 500px;margin-left: 120px;">
                             <input type="text" class="layui-input" autocomplete="off" name="twentyFourCyclePrice" placeholder="24期价格"
                                    maxlength="10">
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label class="layui-form-label">36期价格</label>
-                        <div class="layui-input-block" style="width: 500px;">
+                        <label class="layui-form-label" style="width: 90px;">36期价格</label>
+                        <div class="layui-input-block" style="width: 500px;margin-left: 120px;">
                             <input type="text" class="layui-input" autocomplete="off" name="thirtySixCyclePrice" placeholder="36期价格"
                                    maxlength="10">
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label class="layui-form-label">描述信息</label>
-                        <div class="layui-input-block" style="width: 500px;">
-                            <input type="text" class="layui-input" name="productDesc" placeholder="产品描述信息（选填，限30字）"
+                        <label class="layui-form-label" style="width: 90px;">描述信息</label>
+                        <div class="layui-input-block" style="width: 500px;margin-left: 120px;">
+                            <input type="text" class="layui-input" name="productDesc" placeholder="汽车型号描述信息（选填，限30字）"
                                    maxlength="30">
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label class="layui-form-label">产品图片</label>
+                        <label class="layui-form-label" style="width: 90px;">汽车型号图片</label>
                         <!--<div class="layui-input-block" style="width: 500px;">-->
                         <!--<input type="file" name="file">-->
                         <!--</div>-->

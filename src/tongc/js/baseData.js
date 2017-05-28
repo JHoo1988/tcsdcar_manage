@@ -1,5 +1,5 @@
 /**
- * 基础数据 - 产品列表
+ * 基础数据 - 汽车型号列表
  */
 layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'global', 'upload', 'upmobui'], function () {
     var $ = layui.jquery,
@@ -75,8 +75,8 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 var content = edit_win.html();
                 _self.layer_open_index = layer.open({
                     type: 1,
-                    title: '新增产品',
-                    area: ['700px', '500px'], //宽高
+                    title: '新增汽车型号',
+                    area: ['700px', 'auto'], //宽高
                     fixed: false, //不固定
                     maxmin: true,
                     content: content
@@ -92,7 +92,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 var id = $(this).data('id');
                 var par = _self.getParam();
                 par.ids = id;
-                layer.confirm('是否删除此产品?', {
+                layer.confirm('是否删除此汽车型号?', {
                     btn: ['是', '否']
                 }, function () {
                     $.post(global.url.deleteProduct, par, function (data, textStatus, xhr) {
@@ -123,8 +123,8 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 var content = edit_win.html();
                 _self.layer_open_index = layer.open({
                     type: 1,
-                    title: '编辑产品',
-                    area: ['700px', '500px'], //宽高
+                    title: '编辑汽车型号',
+                    area: ['700px', 'auto'], //宽高
                     fixed: false, //不固定
                     maxmin: true,
                     content: content
@@ -225,7 +225,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                             });
                         } else {
                             $("#dg_list tbody").empty();
-                            layer.msg("暂无产品", { time: 1200 });
+                            layer.msg("暂无汽车型号", { time: 1200 });
                         }
                         if (typeof successCallback === "function") {
                             successCallback(data.code);
@@ -310,7 +310,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                             });
                         } else {
                             $("#dg_list tbody").empty();
-                            layer.msg("暂无产品", { time: 1200 });
+                            layer.msg("暂无汽车型号", { time: 1200 });
                         }
                         if (typeof successCallback === "function") {
                             successCallback(data.code);
@@ -410,7 +410,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             }
             var name = $('.layui-layer-content [name=productName]').val();
             if (!name) {
-                layer.msg('产品名称不能为空！', { time: 1200 });
+                layer.msg('汽车型号名称不能为空！', { time: 1200 });
                 return false;
             }
             var twelveCyclePrice = $('.layui-layer-content [name=twelveCyclePrice]').val();
