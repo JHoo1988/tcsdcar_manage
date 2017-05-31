@@ -5,8 +5,8 @@ layui.define(['jquery','layer', 'form'], function (exports) {
 	var $ = layui.jquery,
         layer = layui.layer;
 	var form = layui.form();
-	var baseUrl = 'http://119.23.34.22:8080';
-	// var baseUrl = 'http://localhost:8088';
+	// var baseUrl = 'http://119.23.34.22:8080';
+	var baseUrl = 'http://localhost:8088';
 	var baseModifyUrl = '/';
 	var App = function () {
 		this.url = {
