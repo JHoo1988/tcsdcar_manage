@@ -437,6 +437,10 @@ layui.use(['jquery', 'layedit', 'md5', 'simplePager', 'laydate', 'layer', 'cooki
                     _self.layer_index = layer.load(2);
                     var formData = new FormData($("#uploadForm")[0]);
                     formData.append("token", $.cookie('userToken'));
+                    var statu = $('.layui-layer-content [name=statu]').val();
+                    if (!statu || 1 == statu) {
+                        formData.append("sendSms", 0);
+                    }
                     $.ajax({
                         url: global.url.addOrder,
                         type: 'POST',
