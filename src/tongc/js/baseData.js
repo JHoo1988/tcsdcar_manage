@@ -1,13 +1,14 @@
 /**
  * 基础数据 - 汽车型号列表
  */
-layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'global', 'upload', 'upmobui'], function () {
+layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'global', 'upload', 'upmobui','element'], function () {
     var $ = layui.jquery,
         layer = layui.layer,
         simplePager = layui.simplePager,
         global = layui.global,
         form = layui.form(),
         upmobui = layui.upmobui;
+        element = layui.element();
 
     var Page = function () {
         this.layer_index = null;
@@ -511,4 +512,4 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             alert(res);
         }
     });
-})
+});
