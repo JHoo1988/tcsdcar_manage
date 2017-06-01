@@ -172,8 +172,11 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             var _self = this;
             par.pageIndex = _self.pageIndex;
             par.pageSize = _self.pageSize;
+            // par.statu = 0;
+            // par.categroyId = '12';
+            // par.brandsId = '12';
             $.ajax({
-                url: global.url.findProductList,
+                url: global.url.findAllProductModel,
                 type: 'GET',
                 dataType: 'json',
                 data: par,
@@ -193,11 +196,11 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                                 html += '<td>' + (i - 0 + 1) + '</td>';
                                 html += '<td><img style="width: 30px;" src="../../../images/product/' + dataList[i].id + '.png"></td>';
                                 // html += '<td><img style="height: 30px;" src="' + dataList[i].imageUrl + '"></td>';
-                                html += '<td>' + dataList[i].brandsName + dataList[i].productName + '</td>';
+                                html += '<td>' + dataList[i].brandsName + dataList[i].name + '</td>';
                                 // html += '<td>' + dataList[i].bigCategoryName + dataList[i].smallCategoryName + '</td>';
-                                html += '<td>￥<span style="color: #FF5722">' + dataList[i].twelveCyclePrice + '</span> /12期；￥<span style="color: #FF5722">' + dataList[i].twentyFourCyclePrice + '</span> /24期；￥<span style="color: #FF5722">' + dataList[i].thirtySixCyclePrice + '</span> /36期；</td>';
+                                html += '<td><a href="javascript:;" style="color: #00bbfe;text-decoration: underline">点击查看产品价格</a></td>';
                                 html += '<td>' + dataList[i].createTimeStr + '</td>';
-                                html += '<td >' + dataList[i].productDesc + '</td>';
+                                // html += '<td >' + dataList[i].productDesc + '</td>';
                                 html += '<td>'
                                     + '<a href="javascript:void(0);" data-productdesc="' + dataList[i].productDesc + '" data-thirtysixcycleprice="' + dataList[i].thirtySixCyclePrice + '" data-twentyfourcycleprice="' + dataList[i].twentyFourCyclePrice + '" data-twelvecycleprice="' + dataList[i].twelveCyclePrice + '" data-productattribution="' + dataList[i].productAttribution + '" data-id="' + dataList[i].id + '"  data-brands="' + dataList[i].brands + '" data-productname="' + dataList[i].productName + '" class="layui-btn layui-btn-mini btn-edit">编辑</a>'
                                     + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" class="layui-btn layui-btn-mini layui-btn-danger btn-del">删除</a>'
@@ -278,11 +281,11 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                                 html += '<td>' + (i - 0 + 1) + '</td>';
                                 html += '<td><img style="width: 30px;" src="../../../images/product/' + dataList[i].id + '.png"></td>';
                                 // html += '<td><img style="height: 30px;" src="' + dataList[i].imageUrl + '"></td>';
-                                html += '<td>' + dataList[i].brandsName + dataList[i].productName + '</td>';
+                                html += '<td>' + dataList[i].brandsName + dataList[i].name + '</td>';
                                 // html += '<td>' + dataList[i].bigCategoryName + dataList[i].smallCategoryName + '</td>';
-                                html += '<td>￥<span style="color: #FF5722">' + dataList[i].twelveCyclePrice + '</span> /12期；￥<span style="color: #FF5722">' + dataList[i].twentyFourCyclePrice + '</span> /24期；￥<span style="color: #FF5722">' + dataList[i].thirtySixCyclePrice + '</span> /36期；</td>';
+                                html += '<td><a href="javascript:;">点击查看产品价格</a></td>';
                                 html += '<td>' + dataList[i].createTimeStr + '</td>';
-                                html += '<td >' + dataList[i].productDesc + '</td>';
+                                // html += '<td >' + dataList[i].productDesc + '</td>';
                                 html += '<td>'
                                     + '<a href="javascript:void(0);" data-productdesc="' + dataList[i].productDesc + '" data-thirtysixcycleprice="' + dataList[i].thirtySixCyclePrice + '" data-twentyfourcycleprice="' + dataList[i].twentyFourCyclePrice + '" data-twelvecycleprice="' + dataList[i].twelveCyclePrice + '" data-productattribution="' + dataList[i].productAttribution + '" data-brands="' + dataList[i].brands + '" data-id="' + dataList[i].id + '" data-productname="' + dataList[i].productName + '" class="layui-btn layui-btn-mini btn-edit">编辑</a>'
                                     + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" class="layui-btn layui-btn-mini layui-btn-danger btn-del">删除</a>'
@@ -347,10 +350,11 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                     var formData = new FormData($("#uploadForm")[0]);
                     formData.append("token", $.cookie('userToken'));
                     // formData.append("brands",'44d77e1ee14e47d390b3ee02b0ad5a47');//宝马
-                    formData.append("bigCategory", '341b79aef4844d0c9fc2645fe5fdac42');//国产轿车
-                    formData.append("smallCategory", 'a89e758c691f4979b97b766b7ac40c4d');//中型
+                    // formData.append("bigCategory", '341b79aef4844d0c9fc2645fe5fdac42');//国产轿车
+                    formData.append("categroyId", 'a89e758c691f4979b97b766b7ac40c4d');//中型
+                    formData.append("statu", '0');//中型
                     $.ajax({
-                        url: global.url.addProduct,
+                        url: global.url.saveProductModel,
                         type: 'POST',
                         dataType: 'json',
                         data: formData,
@@ -403,33 +407,33 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             return num;
         },
         checkForm: function (flag) {
-            var brandid = $('.layui-layer-content [name=brands]').val();
+            var brandid = $('.layui-layer-content [name=brandsId]').val();
             if (!brandid || brandid == -1) {
                 layer.msg('所属品牌不能为空！', { time: 1200 });
                 return false;
             }
-            var name = $('.layui-layer-content [name=productName]').val();
+            var name = $('.layui-layer-content [name=name]').val();
             if (!name) {
                 layer.msg('汽车型号名称不能为空！', { time: 1200 });
                 return false;
             }
-            var twelveCyclePrice = $('.layui-layer-content [name=twelveCyclePrice]').val();
-            if (!twelveCyclePrice) {
-                layer.msg('12期价格不能为空！', { time: 1200 });
-                return false;
-            }
-
-            var twentyFourCyclePrice = $('.layui-layer-content [name=twentyFourCyclePrice]').val();
-            if (!twentyFourCyclePrice) {
-                layer.msg('24期价格不能为空！', { time: 1200 });
-                return false;
-            }
-
-            var thirtySixCyclePrice = $('.layui-layer-content [name=thirtySixCyclePrice]').val();
-            if (!thirtySixCyclePrice) {
-                layer.msg('36期价格不能为空！', { time: 1200 });
-                return false;
-            }
+            // var twelveCyclePrice = $('.layui-layer-content [name=twelveCyclePrice]').val();
+            // if (!twelveCyclePrice) {
+            //     layer.msg('12期价格不能为空！', { time: 1200 });
+            //     return false;
+            // }
+            //
+            // var twentyFourCyclePrice = $('.layui-layer-content [name=twentyFourCyclePrice]').val();
+            // if (!twentyFourCyclePrice) {
+            //     layer.msg('24期价格不能为空！', { time: 1200 });
+            //     return false;
+            // }
+            //
+            // var thirtySixCyclePrice = $('.layui-layer-content [name=thirtySixCyclePrice]').val();
+            // if (!thirtySixCyclePrice) {
+            //     layer.msg('36期价格不能为空！', { time: 1200 });
+            //     return false;
+            // }
             var namef = $('.layui-layer-content [name=imagefile]').val();
             if (!namef && flag != 1) {
                 layer.msg('图片不能为空！', { time: 1200 });

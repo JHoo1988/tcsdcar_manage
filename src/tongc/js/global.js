@@ -102,6 +102,10 @@ layui.define(['jquery','layer', 'form'], function (exports) {
 			aliRepay:  baseUrl + baseModifyUrl + 'recharge/aliRepay',
 
 			payTest2:  baseUrl + baseModifyUrl + 'alipay/wap/payTest2',
+			// 车型分页查询
+			findAllProductModel:  baseUrl + baseModifyUrl + 'productModel/findAllProductModel',
+			// 保存、修改车型
+			saveProductModel:  baseUrl + baseModifyUrl + 'productModel/saveProductModel',
 		};
 		this.address = {};
 		this.countdown = 60;
