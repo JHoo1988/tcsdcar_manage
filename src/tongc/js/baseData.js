@@ -1,14 +1,14 @@
 /**
  * 基础数据 - 汽车型号列表
  */
-layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'global', 'upload', 'upmobui','element'], function () {
+layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'global', 'upload', 'upmobui', 'element'], function () {
     var $ = layui.jquery,
         layer = layui.layer,
         simplePager = layui.simplePager,
         global = layui.global,
         form = layui.form(),
         upmobui = layui.upmobui;
-        element = layui.element();
+    element = layui.element();
 
     var Page = function () {
         this.layer_index = null;
@@ -33,6 +33,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             simplePager.init();
             upmobui.common.findBalanceForParent();
             _self.getAllBrands(_self.par);
+            _self.getBigCategory(_self.par);
             _self.getData(_self.par);
             _self.bindEvent();
         },
@@ -41,10 +42,10 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             var _self = this;
             $("#btn-search").bind('click', function () {
                 _self.par.brands = $(".brands_search").val();
-                _self.pageIndex=1;
-                if(_self.par.brands&&_self.par.brands!=-1){
+                _self.pageIndex = 1;
+                if (_self.par.brands && _self.par.brands != -1) {
                     _self.getDataM(_self.par);
-                }else {
+                } else {
                     _self.getData(_self.par);
                 }
             });
@@ -114,11 +115,6 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             $(document).on('click', '.btn-edit', function () {
                 var id = $(this).data('id');
                 var productName = $(this).data('productname');
-                var productAttribution = $(this).data('productattribution');
-                var twelveCyclePrice = $(this).data('twelvecycleprice');
-                var twentyFourCyclePrice = $(this).data('twentyfourcycleprice');
-                var thirtySixCyclePrice = $(this).data('thirtysixcycleprice');
-                var productDesc = $(this).data('productdesc');
                 var brands = $(this).data('brands');
 
                 var content = edit_win.html();
@@ -130,25 +126,18 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                     maxmin: true,
                     content: content
                 });
-                $('.layui-layer-content [name=productName]').val(productName);
+                $('.layui-layer-content [name=name]').val(productName);
                 $('.layui-layer-content [name=id]').val(id);
-                $('.layui-layer-content [name=twelveCyclePrice]').val(twelveCyclePrice);
-                $('.layui-layer-content [name=twentyFourCyclePrice]').val(twentyFourCyclePrice);
-                $('.layui-layer-content [name=thirtySixCyclePrice]').val(thirtySixCyclePrice);
-                $('.layui-layer-content [name=productDesc]').val(productDesc);
-                $('.layui-layer-content [name=productAttribution]').val(productAttribution);
-                $('.layui-layer-content [name=brands]').val(brands);
+                $('.layui-layer-content [name=brandsId]').val(brands);
                 form.render();
                 $("#pop_up").remove();
                 _self.addProductAction(1);
 
             });
-
-            // 车型类别
-            form.on('select(productAttribution)', function () {
-                var productAttribution = $('.layui-layer-content [name=productAttribution]').val();
-                // alert(productAttribution);
-
+            // 选择大类后，调用查询小类接口
+            form.on('select(bigCategory)', function () {
+                var selectBigCategory = $('.bigCategory option:selected').val();
+                _self.getSmallCategory(_self.par, selectBigCategory);
             });
             // 点击图片填充名字
             // $(document).on('change', '.layui-upload-file', function () {
@@ -203,7 +192,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                                 html += '<td>' + dataList[i].createTimeStr + '</td>';
                                 // html += '<td >' + dataList[i].productDesc + '</td>';
                                 html += '<td>'
-                                    + '<a href="javascript:void(0);" data-productdesc="' + dataList[i].productDesc + '" data-thirtysixcycleprice="' + dataList[i].thirtySixCyclePrice + '" data-twentyfourcycleprice="' + dataList[i].twentyFourCyclePrice + '" data-twelvecycleprice="' + dataList[i].twelveCyclePrice + '" data-productattribution="' + dataList[i].productAttribution + '" data-id="' + dataList[i].id + '"  data-brands="' + dataList[i].brands + '" data-productname="' + dataList[i].productName + '" class="layui-btn layui-btn-mini btn-edit">编辑</a>'
+                                    + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '"  data-brands="' + dataList[i].brandsId + '" data-productname="' + dataList[i].name + '" class="layui-btn layui-btn-mini btn-edit">编辑</a>'
                                     + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" class="layui-btn layui-btn-mini layui-btn-danger btn-del">删除</a>'
                                     + '</td>';
                                 html += '</tr>';
@@ -257,7 +246,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 }
             })
         },
-        getDataM:function (par) {
+        getDataM: function (par) {
             var _self = this;
             par.pageIndex = _self.pageIndex;
             par.pageSize = _self.pageSize;
@@ -288,7 +277,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                                 html += '<td>' + dataList[i].createTimeStr + '</td>';
                                 // html += '<td >' + dataList[i].productDesc + '</td>';
                                 html += '<td>'
-                                    + '<a href="javascript:void(0);" data-productdesc="' + dataList[i].productDesc + '" data-thirtysixcycleprice="' + dataList[i].thirtySixCyclePrice + '" data-twentyfourcycleprice="' + dataList[i].twentyFourCyclePrice + '" data-twelvecycleprice="' + dataList[i].twelveCyclePrice + '" data-productattribution="' + dataList[i].productAttribution + '" data-brands="' + dataList[i].brands + '" data-id="' + dataList[i].id + '" data-productname="' + dataList[i].productName + '" class="layui-btn layui-btn-mini btn-edit">编辑</a>'
+                                    + '<a href="javascript:void(0);" data-brands="' + dataList[i].brands + '" data-id="' + dataList[i].id + '" data-productname="' + dataList[i].productName + '" class="layui-btn layui-btn-mini btn-edit">编辑</a>'
                                     + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" class="layui-btn layui-btn-mini layui-btn-danger btn-del">删除</a>'
                                     + '</td>';
                                 html += '</tr>';
@@ -352,7 +341,8 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                     formData.append("token", $.cookie('userToken'));
                     // formData.append("brands",'44d77e1ee14e47d390b3ee02b0ad5a47');//宝马
                     // formData.append("bigCategory", '341b79aef4844d0c9fc2645fe5fdac42');//国产轿车
-                    formData.append("categroyId", 'a89e758c691f4979b97b766b7ac40c4d');//中型
+                    // var categroyId = $('.layui-layer-content [name=smallCategory]').val();
+                    // formData.append("categroyId", categroyId);//中型
                     formData.append("statu", '0');//中型
                     $.ajax({
                         url: global.url.saveProductModel,
@@ -372,9 +362,9 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                                     fmsg = '编辑成功！';
                                 }
                                 layer.msg(fmsg, { time: 500 }, function () {
-                                    if(_self.par.brands&&_self.par.brands!=-1){
+                                    if (_self.par.brands && _self.par.brands != -1) {
                                         _self.getDataM(_self.par);
-                                    }else {
+                                    } else {
                                         _self.getData(_self.par);
                                     }
                                     // _self.getData(_self.par);
@@ -418,6 +408,17 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 layer.msg('汽车型号名称不能为空！', { time: 1200 });
                 return false;
             }
+            var bigCategory = $('.layui-layer-content [name=bigCategory]').val();
+            if (!bigCategory || bigCategory == -1) {
+                layer.msg('车型类别一不能为空！', { time: 1200 });
+                return false;
+            }
+            var smallCategory = $('.layui-layer-content [name=categroyId]').val();
+            if (!smallCategory || smallCategory == -1) {
+                layer.msg('车型类别二不能为空！', { time: 1200 });
+                return false;
+            }
+
             // var twelveCyclePrice = $('.layui-layer-content [name=twelveCyclePrice]').val();
             // if (!twelveCyclePrice) {
             //     layer.msg('12期价格不能为空！', { time: 1200 });
@@ -466,7 +467,64 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 }
             })
         },
-        StringBuffer:function(str) {
+        getBigCategory: function (par) {
+            var _self = this;
+            par.pageIndex = _self.pageIndex;
+            par.pageSize = 999;
+            par.level = 1;
+            $.ajax({
+                url: global.url.findAllProductCategory,
+                type: 'GET',
+                dataType: 'json',
+                data: par,
+                success: function (data) {
+                    if (undefined != data.data && null != data.data && data.code == 200) {
+                        var dataList = data.data.content;
+                        var len = dataList.length;
+                        if (len > 0) {
+                            var sb = new _self.StringBuffer();
+                            for (var i = 0; i < len; i++) {
+                                sb.append("<option value='" + dataList[i].id + "'>" + dataList[i].name + "</option>");
+                            }
+                            var op = "<option class='bigCategory-option' value='-1'>请选择车型类别一</option>";
+                            $(".bigCategory").empty().append(op).append(sb.toString());
+                            form.render('select');
+                        }
+
+                    }
+                }
+            })
+        },
+        getSmallCategory: function (par, selectBigCategory) {
+            var _self = this;
+            par.pageIndex = _self.pageIndex;
+            par.pageSize = 999;
+            par.level = 2;
+            par.parent = selectBigCategory;
+            $.ajax({
+                url: global.url.findAllProductCategory,
+                type: 'GET',
+                dataType: 'json',
+                data: par,
+                success: function (data) {
+                    if (undefined != data.data && null != data.data && data.code == 200) {
+                        var dataList = data.data.content;
+                        var len = dataList.length;
+                        if (len > 0) {
+                            var sb = new _self.StringBuffer();
+                            for (var i = 0; i < len; i++) {
+                                sb.append("<option value='" + dataList[i].id + "'>" + dataList[i].name + "</option>");
+                            }
+                            var op = "<option class='categroyId-option' value='-1'>请选择车型类别二</option>";
+                            $(".categroyId").empty().append(op).append(sb.toString());
+                            form.render('select');
+                        }
+
+                    }
+                }
+            })
+        },
+        StringBuffer: function (str) {
             var arr = [];
             str = str || "";
             var size = 0;  // 存放数组大小
