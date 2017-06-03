@@ -239,6 +239,7 @@
 }
 .weui_toast{
     top:40%;
+    z-index: 19891016;
 }
 .hide {
     display: none!important;

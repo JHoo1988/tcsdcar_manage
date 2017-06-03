@@ -142,16 +142,6 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                             $('.layui-layer-content #productForm' + i + ' [name=thirtySixCyclePrice]').val(product.thirtySixCyclePrice);
                             $('.layui-layer-content #productForm' + i + ' [name=productDesc]').val(product.productDesc);
                         }
-                        // var product1 = data.content[0];
-                        // $('.layui-layer-content #qcmProductForm [name=id]').val(product1.id);
-                        // $('.layui-layer-content #qcmProductForm [name=twelveCyclePrice]').val(product1.twelveCyclePrice);
-                        // $('.layui-layer-content #qcmProductForm [name=twentyFourCyclePrice]').val(product1.twentyFourCyclePrice);
-                        // $('.layui-layer-content #qcmProductForm [name=thirtySixCyclePrice]').val(product1.thirtySixCyclePrice);
-                        // var product2 = data.content[1];
-                        // $('.layui-layer-content #blxProductForm [name=id]').val(product2.id);
-                        // $('.layui-layer-content #blxProductForm [name=twelveCyclePrice]').val(product2.twelveCyclePrice);
-                        // $('.layui-layer-content #blxProductForm [name=twentyFourCyclePrice]').val(product2.twentyFourCyclePrice);
-                        // $('.layui-layer-content #blxProductForm [name=thirtySixCyclePrice]').val(product2.thirtySixCyclePrice);
                     }
                     form.render();
                     $("#pop_up").remove();
@@ -356,14 +346,8 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             var _self = this;
             $('.js-btn-update').bind('click', function () {
                 if (_self.checkForm(flag)) {
-                    _self.showLoadin();
-                    _self.addProducts();
                     var formData = new FormData($("#uploadForm")[0]);
                     formData.append("token", $.cookie('userToken'));
-                    // formData.append("brands",'44d77e1ee14e47d390b3ee02b0ad5a47');//宝马
-                    // formData.append("bigCategory", '341b79aef4844d0c9fc2645fe5fdac42');//国产轿车
-                    // var categroyId = $('.layui-layer-content [name=smallCategory]').val();
-                    // formData.append("categroyId", categroyId);//中型
                     formData.append("statu", '0');//中型
                     $.ajax({
                         url: global.url.saveProductModel,
@@ -373,25 +357,14 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                         contentType: false,
                         processData: false,
                         beforeSend: function () {
+                            _self.showLoadin();
                             $('.js-btn-update')[0].disabled = true;
                         },
                         success: function (data) {
-                            _self.hideLoadin();
                             if (undefined != data && null != data && data.code == 200) {
-                                var fmsg = '新增成功！';
-                                if (flag == 1) {
-                                    fmsg = '编辑成功！';
-                                }
-                                layer.msg(fmsg, { time: 500 }, function () {
-                                    if (_self.par.brands && _self.par.brands != -1) {
-                                        _self.getDataM(_self.par);
-                                    } else {
-                                        _self.getData(_self.par);
-                                    }
-                                    // _self.getData(_self.par);
-                                    layer.close(_self.layer_open_index);
-                                });
+                                _self.addProducts(data.data);
                             } else {
+                                _self.hideLoadin();
                                 $('.js-btn-update')[0].disabled = false;
                                 if (data.code == 510) {
                                     layer.msg('登录已失效，请重新登录...', { time: 1200 }, function () {
@@ -411,14 +384,18 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 }
             });
         },
-        addProducts: function () {
+        addProducts: function (id) {
+            var _self = this;
+            $('.layui-layer-content #productForm0 [name=id]').val(id);
+            $('.layui-layer-content #productForm1 [name=id]').val(id);
+
             $('.layui-tab-content form').each(function (index, element) {
                 var formData = new FormData($("#productForm" + index)[0]);
                 formData.append("token", $.cookie('userToken'));
                 formData.append("statu", '0');
-                if(index==0){
+                if (index == 0) {
                     formData.append("productName", '汽车膜产品');
-                }else if(index==1){
+                } else if (index == 1) {
                     formData.append("productName", '玻璃险产品');
                 }
                 $.ajax({
@@ -432,13 +409,18 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                         $('.js-btn-update')[0].disabled = true;
                     },
                     success: function (data) {
-                        _self.hideLoadin();
                         if (undefined != data && null != data && data.code == 200) {
-                            // var fmsg = '新增成功！';
-                            // fmsg = '编辑成功！';
-                            // layer.msg(fmsg, { time: 500 }, function () {
-                            // });
+                            if (index >= 1) {
+                                // _self.hideLoadin();
+                                if (_self.par.brands && _self.par.brands != -1) {
+                                    _self.getDataM(_self.par);
+                                } else {
+                                    _self.getData(_self.par);
+                                }
+                                layer.close(_self.layer_open_index);
+                            }
                         } else {
+                            _self.hideLoadin();
                             $('.js-btn-update')[0].disabled = false;
                             if (data.code == 510) {
                                 layer.msg('登录已失效，请重新登录...', { time: 1200 }, function () {
