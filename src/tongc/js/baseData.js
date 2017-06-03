@@ -413,10 +413,10 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 }
             });
         },
-        addProducts: function (id) {
+        addProducts: function (data) {
             var _self = this;
-            $('.layui-layer-content #productForm0 [name=productModelId]').val(id);
-            $('.layui-layer-content #productForm1 [name=productModelId]').val(id);
+            $('.layui-layer-content #productForm0 [name=productModelId]').val(data.id);
+            $('.layui-layer-content #productForm1 [name=productModelId]').val(data.id);
 
             $('.add-commit form').each(function (index, element) {
                 var formData = new FormData($("#productForm" + index)[0]);
