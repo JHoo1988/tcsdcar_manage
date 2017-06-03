@@ -148,6 +148,32 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                     _self.addProductAction(1);
                 });
             });
+            // 显示价格
+            $(document).on('click', '.show_price', function () {
+                var id = $(this).data('id');
+                var name = $(this).data('name');
+                _self.getAllProducts(_self.par, id, function (data) {
+                    var content = $("#show_product_price").html();
+                    _self.layer_open_index = layer.open({
+                        type: 1,
+                        title: name + '的产品价格',
+                        area: ['700px', 'auto'], //宽高
+                        fixed: false, //不固定
+                        maxmin: true,
+                        content: content
+                    });
+                    if (data.totalSize > 0) {
+                        for (var i = 0; i < data.totalSize; i++) {
+                            var product = data.content[i];
+                            $('.layui-layer-content #product' + i + ' [name=id]').val(product.id);
+                            $('.layui-layer-content #product' + i + ' [name=twelveCyclePrice]').val(product.twelveCyclePrice);
+                            $('.layui-layer-content #product' + i + ' [name=twentyFourCyclePrice]').val(product.twentyFourCyclePrice);
+                            $('.layui-layer-content #product' + i + ' [name=thirtySixCyclePrice]').val(product.thirtySixCyclePrice);
+                            $('.layui-layer-content #product' + i + ' [name=productDesc]').val(product.productDesc);
+                        }
+                    }
+                });
+            });
             // 选择大类后，调用查询小类接口
             form.on('select(bigCategory)', function () {
                 var selectBigCategory = $('.bigCategory option:selected').val();
@@ -200,7 +226,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                                 html += '<td>' + (i - 0 + 1) + '</td>';
                                 html += '<td><img style="width: 30px;" src="../../../images/product/' + dataList[i].id + '.png"></td>';
                                 html += '<td>' + dataList[i].brandsName + dataList[i].name + '</td>';
-                                html += '<td><a href="javascript:;" style="color: #00bbfe;text-decoration: underline">点击查看产品价格</a></td>';
+                                html += '<td><a data-id="' + dataList[i].id + '" data-name="' + dataList[i].brandsName + dataList[i].name + '" class="show_price" href="javascript:;" style="color: #00bbfe;text-decoration: underline">点击查看产品价格</a></td>';
                                 html += '<td>' + dataList[i].createTimeStr + '</td>';
                                 html += '<td>'
                                     + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '"  data-brands="' + dataList[i].brandsId + '" data-productname="' + dataList[i].name + '" class="layui-btn layui-btn-mini btn-edit">编辑</a>'
@@ -284,7 +310,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                                 // html += '<td><img style="height: 30px;" src="' + dataList[i].imageUrl + '"></td>';
                                 html += '<td>' + dataList[i].brandsName + dataList[i].name + '</td>';
                                 // html += '<td>' + dataList[i].bigCategoryName + dataList[i].smallCategoryName + '</td>';
-                                html += '<td><a href="javascript:;">点击查看产品价格</a></td>';
+                                html += '<td><a data-id="' + dataList[i].id + '" data-name="' + dataList[i].brandsName + dataList[i].name + '" class="show_price" href="javascript:;" style="color: #00bbfe;text-decoration: underline">点击查看产品价格</a></td>';
                                 html += '<td>' + dataList[i].createTimeStr + '</td>';
                                 // html += '<td >' + dataList[i].productDesc + '</td>';
                                 html += '<td>'
@@ -593,6 +619,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             })
         },
         getAllProducts: function (par, productModelId, callback) {
+            var _self = this;
             par.pageIndex = 1;
             par.pageSize = 999;
             par.productModelId = productModelId;
@@ -601,9 +628,13 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 type: 'GET',
                 dataType: 'json',
                 data: par,
+                beforeSend: function () {
+                    _self.showLoadin();
+                },
                 success: function (data) {
                     if (undefined != data.data && null != data.data && data.code == 200) {
                         if (typeof callback === "function") {
+                            _self.hideLoadin();
                             callback(data.data);
                         }
                     }
