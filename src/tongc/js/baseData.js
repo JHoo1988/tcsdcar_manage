@@ -43,11 +43,11 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             $("#btn-search").bind('click', function () {
                 _self.par.brands = $(".brands_search").val();
                 _self.pageIndex = 1;
-                if (_self.par.brands && _self.par.brands != -1) {
-                    _self.getDataM(_self.par);
-                } else {
+                // if (_self.par.brands && _self.par.brands != -1) {
+                //     _self.getDataM(_self.par);
+                // } else {
                     _self.getData(_self.par);
-                }
+                // }
             });
 
             $('.layui-tab-title').on('click', 'li', function () {
@@ -200,6 +200,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
         },
         getData: function (par) {
             var _self = this;
+            delete par.level;
             par.pageIndex = _self.pageIndex;
             par.pageSize = _self.pageSize;
             // par.statu = 0;
@@ -603,6 +604,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 dataType: 'json',
                 data: par,
                 success: function (data) {
+                    delete _self.par.level;
                     if (undefined != data.data && null != data.data && data.code == 200) {
                         var dataList = data.data.content;
                         var len = dataList.length;
