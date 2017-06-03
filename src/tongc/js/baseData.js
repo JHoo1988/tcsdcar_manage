@@ -355,10 +355,9 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
         addProductAction: function (flag) {
             var _self = this;
             $('.js-btn-update').bind('click', function () {
-                _self.addProducts();
-                return;
                 if (_self.checkForm(flag)) {
                     _self.layer_index = layer.load(2);
+                    _self.addProducts();
                     var formData = new FormData($("#uploadForm")[0]);
                     formData.append("token", $.cookie('userToken'));
                     // formData.append("brands",'44d77e1ee14e47d390b3ee02b0ad5a47');//宝马
@@ -494,24 +493,40 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 return false;
             }
 
-            // var twelveCyclePrice = $('.layui-layer-content [name=twelveCyclePrice]').val();
-            // if (!twelveCyclePrice) {
-            //     layer.msg('12期价格不能为空！', { time: 1200 });
-            //     return false;
-            // }
-            //
-            // var twentyFourCyclePrice = $('.layui-layer-content [name=twentyFourCyclePrice]').val();
-            // if (!twentyFourCyclePrice) {
-            //     layer.msg('24期价格不能为空！', { time: 1200 });
-            //     return false;
-            // }
-            //
-            // var thirtySixCyclePrice = $('.layui-layer-content [name=thirtySixCyclePrice]').val();
-            // if (!thirtySixCyclePrice) {
-            //     layer.msg('36期价格不能为空！', { time: 1200 });
-            //     return false;
-            // }
+            var twelveCyclePrice = $('.layui-layer-content #productForm0 [name=twelveCyclePrice]').val();
+            if (!twelveCyclePrice) {
+                layer.msg('汽车膜质保12期价格不能为空！', { time: 1200 });
+                return false;
+            }
 
+            var twentyFourCyclePrice = $('.layui-layer-content #productForm0 [name=twentyFourCyclePrice]').val();
+            if (!twentyFourCyclePrice) {
+                layer.msg('汽车膜质保24期价格不能为空！', { time: 1200 });
+                return false;
+            }
+
+            var thirtySixCyclePrice = $('.layui-layer-content #productForm0 [name=thirtySixCyclePrice]').val();
+            if (!thirtySixCyclePrice) {
+                layer.msg('汽车膜质保36期价格不能为空！', { time: 1200 });
+                return false;
+            }
+            twelveCyclePrice = $('.layui-layer-content #productForm1 [name=twelveCyclePrice]').val();
+            if (!twelveCyclePrice) {
+                layer.msg('玻璃险12期价格不能为空！', { time: 1200 });
+                return false;
+            }
+
+            twentyFourCyclePrice = $('.layui-layer-content #productForm1 [name=twentyFourCyclePrice]').val();
+            if (!twentyFourCyclePrice) {
+                layer.msg('玻璃险24期价格不能为空！', { time: 1200 });
+                return false;
+            }
+
+            thirtySixCyclePrice = $('.layui-layer-content #productForm1 [name=thirtySixCyclePrice]').val();
+            if (!thirtySixCyclePrice) {
+                layer.msg('玻璃险36期价格不能为空！', { time: 1200 });
+                return false;
+            }
             return true;
         },
         getAllBrands: function (par) {
