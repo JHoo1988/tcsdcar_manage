@@ -237,5 +237,11 @@
     /*padding: 0 24px;*/
     box-sizing: border-box;
 }
+.weui_toast{
+    top:40%;
+}
+.hide {
+    display: none!important;
+}
 
 

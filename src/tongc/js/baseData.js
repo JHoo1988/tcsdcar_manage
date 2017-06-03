@@ -195,10 +195,10 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 dataType: 'json',
                 data: par,
                 beforeSend: function () {
-                    _self.layer_index = layer.load(2);
+                    _self.showLoadin();
                 },
                 success: function (data) {
-                    layer.close(_self.layer_index);
+                    _self.hideLoadin();
                     if (undefined != data.data && null != data.data && data.code == 200) {
                         var dataList = data.data.content;
                         var html = "";
@@ -262,7 +262,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                     }
                 },
                 error: function (e) {
-                    layer.close(_self.layer_index);
+                    _self.hideLoadin();
                     layer.msg('获取数据失败，请稍后重试！', { time: 500 });
                 }
             })
@@ -277,10 +277,10 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 dataType: 'json',
                 data: par,
                 beforeSend: function () {
-                    _self.layer_index = layer.load(2);
+                    _self.showLoadin();
                 },
                 success: function (data) {
-                    layer.close(_self.layer_index);
+                    _self.hideLoadin();
                     if (undefined != data.data && null != data.data && data.code == 200) {
                         var dataList = data.data.content;
                         var html = "";
@@ -347,7 +347,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                     }
                 },
                 error: function (e) {
-                    layer.close(_self.layer_index);
+                    _self.hideLoadin();
                     layer.msg('获取数据失败，请稍后重试！', { time: 500 });
                 }
             })
@@ -356,7 +356,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             var _self = this;
             $('.js-btn-update').bind('click', function () {
                 if (_self.checkForm(flag)) {
-                    _self.layer_index = layer.load(2);
+                    _self.showLoadin();
                     _self.addProducts();
                     var formData = new FormData($("#uploadForm")[0]);
                     formData.append("token", $.cookie('userToken'));
@@ -376,8 +376,8 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                             $('.js-btn-update')[0].disabled = true;
                         },
                         success: function (data) {
+                            _self.hideLoadin();
                             if (undefined != data && null != data && data.code == 200) {
-                                layer.close(_self.layer_index);
                                 var fmsg = '新增成功！';
                                 if (flag == 1) {
                                     fmsg = '编辑成功！';
@@ -392,7 +392,6 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                                     layer.close(_self.layer_open_index);
                                 });
                             } else {
-                                layer.close(_self.layer_index);
                                 $('.js-btn-update')[0].disabled = false;
                                 if (data.code == 510) {
                                     layer.msg('登录已失效，请重新登录...', { time: 1200 }, function () {
@@ -405,7 +404,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                         },
                         error: function (e) {
                             $('.js-btn-update')[0].disabled = false;
-                            layer.close(_self.layer_index);
+                            _self.hideLoadin();
                             layer.msg('系统错误，请稍后重试！', { time: 500 });
                         }
                     })
@@ -433,13 +432,13 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                         $('.js-btn-update')[0].disabled = true;
                     },
                     success: function (data) {
+                        _self.hideLoadin();
                         if (undefined != data && null != data && data.code == 200) {
                             // var fmsg = '新增成功！';
                             // fmsg = '编辑成功！';
                             // layer.msg(fmsg, { time: 500 }, function () {
                             // });
                         } else {
-                            layer.close(_self.layer_index);
                             $('.js-btn-update')[0].disabled = false;
                             if (data.code == 510) {
                                 layer.msg('登录已失效，请重新登录...', { time: 1200 }, function () {
@@ -452,7 +451,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                     },
                     error: function (e) {
                         $('.js-btn-update')[0].disabled = false;
-                        layer.close(_self.layer_index);
+                        _self.hideLoadin();
                         layer.msg('系统错误，请稍后重试！', { time: 500 });
                     }
                 })
@@ -661,6 +660,15 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 var str = buffer.join('');
                 str = str.split('');
                 return str.reverse().join('');
+            }
+        },
+        hideLoadin: function () {
+            $('#loadingToast').addClass('hide');
+        },
+        showLoadin: function (content) {
+            $('#loadingToast').removeClass('hide');
+            if (content) {
+                $('.weui_toast_content').text(content);
             }
         }
     }
