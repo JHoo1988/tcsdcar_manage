@@ -7,8 +7,8 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
         simplePager = layui.simplePager,
         global = layui.global,
         form = layui.form(),
-        upmobui = layui.upmobui;
-    element = layui.element();
+        upmobui = layui.upmobui,
+        element = layui.element();
 
     var Page = function () {
         this.layer_index = null;
@@ -113,26 +113,50 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
 
             // 编辑项
             $(document).on('click', '.btn-edit', function () {
-                var id = $(this).data('id');
-                var productName = $(this).data('productname');
-                var brands = $(this).data('brands');
+                var _this = $(this);
+                var id = _this.data('id');
+                _self.getAllProducts(_self.par, id, function (data) {
+                    var productName = _this.data('productname');
+                    var brands = _this.data('brands');
+                    var content = edit_win.html();
+                    _self.layer_open_index = layer.open({
+                        type: 1,
+                        title: '编辑汽车型号',
+                        area: ['700px', 'auto'], //宽高
+                        fixed: false, //不固定
+                        maxmin: true,
+                        content: content
+                    });
+                    $('.layui-layer-content [name=name]').val(productName);
+                    $('.layui-layer-content .carTypeName [name=id]').val(id);
+                    $('.layui-layer-content [name=brandsId]').val(brands);
+                    $('.layui-layer-content [name=brands]').val(brands);
+                    $('.layui-layer-content [name=productModelId]').val(id);
 
-                var content = edit_win.html();
-                _self.layer_open_index = layer.open({
-                    type: 1,
-                    title: '编辑汽车型号',
-                    area: ['700px', 'auto'], //宽高
-                    fixed: false, //不固定
-                    maxmin: true,
-                    content: content
+                    if (data.totalSize > 0) {
+                        for (var i = 0; i < data.totalSize; i++) {
+                            var product = data.content[i];
+                            $('.layui-layer-content #productForm' + i + ' [name=id]').val(product.id);
+                            $('.layui-layer-content #productForm' + i + ' [name=twelveCyclePrice]').val(product.twelveCyclePrice);
+                            $('.layui-layer-content #productForm' + i + ' [name=twentyFourCyclePrice]').val(product.twentyFourCyclePrice);
+                            $('.layui-layer-content #productForm' + i + ' [name=thirtySixCyclePrice]').val(product.thirtySixCyclePrice);
+                            $('.layui-layer-content #productForm' + i + ' [name=productDesc]').val(product.productDesc);
+                        }
+                        // var product1 = data.content[0];
+                        // $('.layui-layer-content #qcmProductForm [name=id]').val(product1.id);
+                        // $('.layui-layer-content #qcmProductForm [name=twelveCyclePrice]').val(product1.twelveCyclePrice);
+                        // $('.layui-layer-content #qcmProductForm [name=twentyFourCyclePrice]').val(product1.twentyFourCyclePrice);
+                        // $('.layui-layer-content #qcmProductForm [name=thirtySixCyclePrice]').val(product1.thirtySixCyclePrice);
+                        // var product2 = data.content[1];
+                        // $('.layui-layer-content #blxProductForm [name=id]').val(product2.id);
+                        // $('.layui-layer-content #blxProductForm [name=twelveCyclePrice]').val(product2.twelveCyclePrice);
+                        // $('.layui-layer-content #blxProductForm [name=twentyFourCyclePrice]').val(product2.twentyFourCyclePrice);
+                        // $('.layui-layer-content #blxProductForm [name=thirtySixCyclePrice]').val(product2.thirtySixCyclePrice);
+                    }
+                    form.render();
+                    $("#pop_up").remove();
+                    _self.addProductAction(1);
                 });
-                $('.layui-layer-content [name=name]').val(productName);
-                $('.layui-layer-content [name=id]').val(id);
-                $('.layui-layer-content [name=brandsId]').val(brands);
-                form.render();
-                $("#pop_up").remove();
-                _self.addProductAction(1);
-
             });
             // 选择大类后，调用查询小类接口
             form.on('select(bigCategory)', function () {
@@ -185,12 +209,9 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                                 html += '<tr>';
                                 html += '<td>' + (i - 0 + 1) + '</td>';
                                 html += '<td><img style="width: 30px;" src="../../../images/product/' + dataList[i].id + '.png"></td>';
-                                // html += '<td><img style="height: 30px;" src="' + dataList[i].imageUrl + '"></td>';
                                 html += '<td>' + dataList[i].brandsName + dataList[i].name + '</td>';
-                                // html += '<td>' + dataList[i].bigCategoryName + dataList[i].smallCategoryName + '</td>';
                                 html += '<td><a href="javascript:;" style="color: #00bbfe;text-decoration: underline">点击查看产品价格</a></td>';
                                 html += '<td>' + dataList[i].createTimeStr + '</td>';
-                                // html += '<td >' + dataList[i].productDesc + '</td>';
                                 html += '<td>'
                                     + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '"  data-brands="' + dataList[i].brandsId + '" data-productname="' + dataList[i].name + '" class="layui-btn layui-btn-mini btn-edit">编辑</a>'
                                     + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" class="layui-btn layui-btn-mini layui-btn-danger btn-del">删除</a>'
@@ -333,8 +354,9 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
         },
         addProductAction: function (flag) {
             var _self = this;
-
             $('.js-btn-update').bind('click', function () {
+                _self.addProducts();
+                return;
                 if (_self.checkForm(flag)) {
                     _self.layer_index = layer.load(2);
                     var formData = new FormData($("#uploadForm")[0]);
@@ -391,6 +413,53 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 }
             });
         },
+        addProducts: function () {
+            $('.layui-tab-content form').each(function (index, element) {
+                var formData = new FormData($("#productForm" + index)[0]);
+                formData.append("token", $.cookie('userToken'));
+                formData.append("statu", '0');
+                if(index==0){
+                    formData.append("productName", '汽车膜产品');
+                }else if(index==1){
+                    formData.append("productName", '玻璃险产品');
+                }
+                $.ajax({
+                    url: global.url.addProduct,
+                    type: 'POST',
+                    dataType: 'json',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    beforeSend: function () {
+                        $('.js-btn-update')[0].disabled = true;
+                    },
+                    success: function (data) {
+                        if (undefined != data && null != data && data.code == 200) {
+                            // var fmsg = '新增成功！';
+                            // fmsg = '编辑成功！';
+                            // layer.msg(fmsg, { time: 500 }, function () {
+                            // });
+                        } else {
+                            layer.close(_self.layer_index);
+                            $('.js-btn-update')[0].disabled = false;
+                            if (data.code == 510) {
+                                layer.msg('登录已失效，请重新登录...', { time: 1200 }, function () {
+                                    window.parent.location.href = 'login.html';
+                                });
+                            } else {
+                                layer.msg('操作失败!', { time: 1200 });
+                            }
+                        }
+                    },
+                    error: function (e) {
+                        $('.js-btn-update')[0].disabled = false;
+                        layer.close(_self.layer_index);
+                        layer.msg('系统错误，请稍后重试！', { time: 500 });
+                    }
+                })
+            });
+
+        },
         toRoundOff: function (num) {
             if (num.toString().indexOf('.') > -1) {
                 num = Number(num.toString().substring(0, num.toString().indexOf('.') + 3));
@@ -419,6 +488,12 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 return false;
             }
 
+            var namef = $('.layui-layer-content [name=imagefile]').val();
+            if (!namef && flag != 1) {
+                layer.msg('图片不能为空！', { time: 1200 });
+                return false;
+            }
+
             // var twelveCyclePrice = $('.layui-layer-content [name=twelveCyclePrice]').val();
             // if (!twelveCyclePrice) {
             //     layer.msg('12期价格不能为空！', { time: 1200 });
@@ -436,11 +511,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             //     layer.msg('36期价格不能为空！', { time: 1200 });
             //     return false;
             // }
-            var namef = $('.layui-layer-content [name=imagefile]').val();
-            if (!namef && flag != 1) {
-                layer.msg('图片不能为空！', { time: 1200 });
-                return false;
-            }
+
             return true;
         },
         getAllBrands: function (par) {
@@ -469,7 +540,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
         },
         getBigCategory: function (par) {
             var _self = this;
-            par.pageIndex = _self.pageIndex;
+            par.pageIndex = 1;
             par.pageSize = 999;
             par.level = 1;
             $.ajax({
@@ -478,6 +549,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 dataType: 'json',
                 data: par,
                 success: function (data) {
+                    delete _self.par.level;
                     if (undefined != data.data && null != data.data && data.code == 200) {
                         var dataList = data.data.content;
                         var len = dataList.length;
@@ -497,7 +569,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
         },
         getSmallCategory: function (par, selectBigCategory) {
             var _self = this;
-            par.pageIndex = _self.pageIndex;
+            par.pageIndex = 1;
             par.pageSize = 999;
             par.level = 2;
             par.parent = selectBigCategory;
@@ -520,6 +592,24 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                             form.render('select');
                         }
 
+                    }
+                }
+            })
+        },
+        getAllProducts: function (par, productModelId, callback) {
+            par.pageIndex = 1;
+            par.pageSize = 999;
+            par.productModelId = productModelId;
+            $.ajax({
+                url: global.url.findProductList,
+                type: 'GET',
+                dataType: 'json',
+                data: par,
+                success: function (data) {
+                    if (undefined != data.data && null != data.data && data.code == 200) {
+                        if (typeof callback === "function") {
+                            callback(data.data);
+                        }
                     }
                 }
             })
