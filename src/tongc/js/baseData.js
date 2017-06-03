@@ -388,6 +388,8 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                         },
                         success: function (data) {
                             if (undefined != data && null != data && data.code == 200) {
+                                var brands = $('.layui-layer-content [name=brandsId]').val();
+                                $('.layui-layer-content [name=brands]').val(brands);
                                 _self.addProducts(data.data);
                             } else {
                                 _self.hideLoadin();
@@ -412,10 +414,10 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
         },
         addProducts: function (id) {
             var _self = this;
-            $('.layui-layer-content #productForm0 [name=id]').val(id);
-            $('.layui-layer-content #productForm1 [name=id]').val(id);
+            $('.layui-layer-content #productForm0 [name=productModelId]').val(id);
+            $('.layui-layer-content #productForm1 [name=productModelId]').val(id);
 
-            $('.layui-tab-content form').each(function (index, element) {
+            $('.add-commit form').each(function (index, element) {
                 var formData = new FormData($("#productForm" + index)[0]);
                 formData.append("token", $.cookie('userToken'));
                 formData.append("statu", '0');
