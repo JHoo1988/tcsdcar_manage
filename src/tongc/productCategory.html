@@ -24,7 +24,7 @@
 
         <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
             <ul class="layui-tab-title">
-                <li class="layui-this" >产品类别管理</li>
+                <li class="layui-this">产品类别管理</li>
             </ul>
         </div>
 
@@ -57,7 +57,7 @@
                         <tr class="list-head">
                             <th style="width: 40px;">编号</th>
                             <!--<th style="width: 70px;">服务项目</th>-->
-                            <th >产品类别名称</th>
+                            <th>产品类别名称</th>
                             <!--<th style="width: 70px;">品牌名称</th>-->
                             <!--<th style="width: 100px;" class="td_posR" data-ct="adfafafa">创建时间</th>-->
                             <!--<th style="width: 60px;" class="td_posR" data-ct="1234">状态</th>-->
@@ -95,10 +95,18 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label" style="width: 90px;">产品类别名称</label>
                         <div class="layui-input-block" style="width: 500px;margin-left: 120px">
-                            <input type="text" class="layui-input" name="name" placeholder="产品类别名称" autocomplete="off" maxlength="30">
+                            <input type="text" class="layui-input" name="name" placeholder="产品类别名称" autocomplete="off"
+                                   maxlength="30">
                         </div>
                     </div>
                     <input type="text" class="layui-input" name="id" style="display: none;">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="width: 90px;">产品类别图片</label>
+                        <!--<div class="layui-input-block" style="width: 500px;">-->
+                        <!--<input type="file" name="file">-->
+                        <!--</div>-->
+                        <input type="file" name="imagefile" class="layui-upload-file">
+                    </div>
                 </form>
             </div>
             <div class="layui-form-item" style="text-align: center">

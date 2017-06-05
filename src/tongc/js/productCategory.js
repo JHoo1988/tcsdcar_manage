@@ -1,7 +1,7 @@
 /**
  * 基础数据 - 产品列表
  */
-layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'global', 'upmobui'], function () {
+layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'global', 'upload','upmobui'], function () {
     var $ = layui.jquery,
         layer = layui.layer,
         simplePager = layui.simplePager,
@@ -76,7 +76,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 _self.layer_open_index = layer.open({
                     type: 1,
                     title: '新增产品类别',
-                    area: ['700px', '200px'], //宽高
+                    area: ['700px', 'auto'], //宽高
                     fixed: false, //不固定
                     maxmin: true,
                     content: content
@@ -121,7 +121,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 _self.layer_open_index = layer.open({
                     type: 1,
                     title: '编辑产品类别',
-                    area: ['700px', '200px'], //宽高
+                    area: ['700px', 'auto'], //宽高
                     fixed: false, //不固定
                     maxmin: true,
                     content: content
@@ -293,8 +293,8 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             }
             return true;
         }
-    }
-
+    };
     var page = new Page();
     page.init();
+    layui.upload();
 })
