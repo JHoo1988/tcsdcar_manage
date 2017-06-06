@@ -95,7 +95,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 layer.confirm('是否删除这个产品类别，该产品类别下的产品也将全部删除?', {
                     btn: ['是', '否']
                 }, function () {
-                    $.post(global.url.deleteArea, par, function (data, textStatus, xhr) {
+                    $.post(global.url.deleteProductBrandsCategory, par, function (data, textStatus, xhr) {
                         if (data.code == 200) {
                             layer.msg('删除成功！', { time: 500 }, function () {
                                 _self.getData(par);
@@ -143,9 +143,9 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             var _self = this;
             par.pageIndex = _self.pageIndex;
             par.pageSize = 14;
-            par.level=2;
+            par.level=1;
             $.ajax({
-                url: global.url.findAllArea,
+                url: global.url.findAllProductBrandsCategory,
                 type: 'GET',
                 dataType: 'json',
                 data: par,
@@ -224,20 +224,14 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             var _self = this;
 
             $('.js-btn-update').bind('click', function () {
-                if (_self.checkForm()) {
-                    var par = _self.getParam();
-
+                if (_self.checkForm(flag)) {
                     _self.layer_index = layer.load(2);
-                    par.name = $('.layui-layer-content [name=name]').val();
-                    par.parent = 1;
-                    par.level = 2;
-
                     var formData = new FormData($("#uploadForm")[0]);
-                    formData.append("parent",1);
-                    formData.append("level",2);
+                    // formData.append("parent",1);
+                    formData.append("level",1);
                     formData.append("token",$.cookie('userToken'));
                     $.ajax({
-                        url: global.url.addArea,
+                        url: global.url.saveProductBrandsCategory,
                         type: 'POST',
                         dataType: 'json',
                         data: formData,
@@ -285,10 +279,15 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             }
             return num;
         },
-        checkForm: function () {
+        checkForm: function (flag) {
             var name = $('.layui-layer-content [name=name]').val();
             if (!name) {
                 layer.msg('产品类别名称不能为空！', { time: 1200 });
+                return false;
+            }
+            var namef = $('.layui-layer-content [name=imagefile]').val();
+            if (!namef && flag != 1) {
+                layer.msg('图片不能为空！', { time: 1200 });
                 return false;
             }
             return true;
