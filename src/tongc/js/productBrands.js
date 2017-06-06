@@ -1,7 +1,7 @@
 /**
  * 基础数据 - 产品列表
  */
-layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'global', 'upmobui'], function () {
+layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'global','upload', 'upmobui'], function () {
     var $ = layui.jquery,
         layer = layui.layer,
         simplePager = layui.simplePager,
@@ -35,7 +35,8 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             _self.bindEvent();
             //加载产品类别
             // _self.getBrand(par);
-            global.getAllProvince();
+            // global.getAllProvince();
+            _self.getProductCategory(par);
         },
 
         bindEvent: function () {
@@ -83,7 +84,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 _self.layer_open_index = layer.open({
                     type: 1,
                     title: '新增产品品牌',
-                    area: ['700px', 'auto'], //宽高
+                    area: ['700px', '400px'], //宽高
                     fixed: false, //不固定
                     maxmin: true,
                     content: content
@@ -102,7 +103,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 layer.confirm('是否删这个产品品牌，该产品品牌下的产品也将全部删除?', {
                     btn: ['是', '否']
                 }, function () {
-                    $.post(global.url.deleteArea, par, function (data, textStatus, xhr) {
+                    $.post(global.url.deleteProductBrandsCategory, par, function (data, textStatus, xhr) {
                         if (data.code == 200) {
                             layer.msg('删除成功！', { time: 500 }, function () {
                                 _self.getData(par);
@@ -119,24 +120,24 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             // 编辑项
             $(document).on('click', '.btn-edit', function () {
                 var id = $(this).data('id');
-                var cityName = $(this).data('cityname');
-                var provinceName = $(this).data('provincename');
-                var par = _self.getParam();
-                par.id = id;
-                par.name = cityName;
-                par.parent = provinceName;
+                var name = $(this).data('name');
+                var parent = $(this).data('parent');
+                // var par = _self.getParam();
+                // par.id = id;
+                // par.name = name;
+                // par.parent = parent;
 
                 var content = edit_win.html();
                 _self.layer_open_index = layer.open({
                     type: 1,
                     title: '编辑产品品牌',
-                    area: ['700px', 'auto'], //宽高
+                    area: ['700px', '400px'], //宽高
                     fixed: false, //不固定
                     maxmin: true,
                     content: content
                 });
-                $('.layui-layer-content [name=name]').val(cityName);
-                $('.layui-layer-content [name=parent]').val(provinceName);
+                $('.layui-layer-content [name=name]').val(name);
+                $('.layui-layer-content [name=parent]').val(parent);
                 $('.layui-layer-content [name=id]').val(id);
                 form.render();
                 $("#pop_up").remove();
@@ -153,9 +154,9 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             var _self = this;
             par.pageIndex = _self.pageIndex;
             par.pageSize = 14;
-            par.level=3;
+            par.level=2;
             $.ajax({
-                url: global.url.findAllArea,
+                url: global.url.findAllProductBrandsCategory,
                 type: 'GET',
                 dataType: 'json',
                 data: par,
@@ -174,10 +175,10 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                                 html += '<tr>';
                                 html += '<td>' + (i - 0 + 1) + '</td>';
                                 html += '<td data-ct="' + dataList[i].name + '">' + dataList[i].name + '</td>';
-                                html += '<td data-ct="' + dataList[i].provinceName +'">' + dataList[i].provinceName + '</td>';
+                                html += '<td data-ct="' + dataList[i].parentName +'">' + dataList[i].parentName + '</td>';
                                 // html += '<td>' + dataList[i].createTime + '</td>';
                                 html += '<td>'
-                                    + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" data-provincename="' + dataList[i].provinceName + '" data-cityname="' + dataList[i].name + '" class="layui-btn layui-btn-mini btn-edit">编辑</a>'
+                                    + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" data-parent="' + dataList[i].parent + '" data-name="' + dataList[i].name + '" class="layui-btn layui-btn-mini btn-edit">编辑</a>'
                                     + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" class="layui-btn layui-btn-mini layui-btn-danger btn-del">删除</a>'
                                     + '</td>';
                                 html += '</tr>';
@@ -234,17 +235,13 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             var _self = this;
 
             $('.js-btn-update').bind('click', function () {
-                if (_self.checkForm()) {
-                    var par = _self.getParam();
-
+                if (_self.checkForm(flag)) {
                     _self.layer_index = layer.load(2);
-                    par.parent = $('.layui-layer-content [name=parent]').val();
-                    par.name = $('.layui-layer-content [name=name]').val();
                     var formData = new FormData($("#uploadForm")[0]);
-                    formData.append("level",3);
+                    formData.append("level",2);
                     formData.append("token",$.cookie('userToken'));
                     $.ajax({
-                        url: global.url.addArea,
+                        url: global.url.saveProductBrandsCategory,
                         type: 'POST',
                         dataType: 'json',
                         data: formData,
@@ -284,64 +281,24 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                     })
                 }
             });
-        }
-        ,getBrand: function (par, successCallback) {
+        },
+        getProductCategory: function (par) {
+            var _self = this;
+            par.pageIndex = _self.pageIndex;
+            par.pageSize = 99999;
+            par.level=1;
             $.ajax({
-                url: global.url.getProductAllBrandList,
-                type: 'POST',
+                url: global.url.findAllProductBrandsCategory,
+                type: 'GET',
                 dataType: 'json',
                 data: par,
-                beforeSend: function () {
-
-                },
-                success: function (data) {
-                    if (undefined != data.data && null != data.data && data.flag == 'success') {
-                        var dataList = data.data;
-                        var len = dataList.length;
-                        if (len > 0) {
-                            var html = '<option selected="selected" value="请选择">请选择</option>';
-                            for (var i = 0; i < len; i++) {
-                                html += '<option value="' + dataList[i].brandId + '">' + dataList[i].brandName + '</option>'
-                            }
-                            $('.content-box [name=selectprovince]').empty().append(html);
-
-                            form.render();
-                            if (typeof successCallback === "function") {
-                                successCallback();
-                            }
-
-                        } else {
-                            layer.msg('产品类别为空，请先新建产品类别！');
-                        }
-
-                    } else {
-                        if (data.code == 510) {
-                            layer.msg('登录已失效，请重新登录...', { time: 1200 }, function () {
-                                window.parent.location.href = 'login.html';
-                            });
-                        }else{
-                            layer.msg('获取数据失败!', { time: 1200 });
-                        }
-                    }
-                },
-                error: function () {
-                    layer.msg('获取数据失败，请稍后重试！');
-                }
-            })
-        },
-        getAllProvince: function () {
-            $.ajax({
-                url: global.url.findAllProvince,
-                type: 'get',
-                dataType: 'json',
-                data: 'param={"version":"v1"}&token=' + $.cookie('userToken'),
                 success: function (result) {
                     var sb = new StringBuffer();
-                    $.each(result.data, function (i, val) {
-                        sb.append("<option value='" + val.provinceId + "'>" + val.provinceName + "</option>");
+                    $.each(result.data.content, function (i, val) {
+                        sb.append("<option value='" + val.id + "'>" + val.name + "</option>");
                     });
-                    var op = $("#choosePro").clone();
-                    $("#province").empty().append(op).append(sb.toString());
+                    var op = $(".choosePro").clone();
+                    $(".province").empty().append(op).append(sb.toString());
                     form.render('select');
                 }
             })
@@ -352,7 +309,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             }
             return num;
         },
-        checkForm: function () {
+        checkForm: function (flag) {
             var name = $('.layui-layer-content [name=name]').val();
             if (!name) {
                 layer.msg('产品品牌名称不能为空！', { time: 1200 });
@@ -360,7 +317,12 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             }
             var parent = $('.layui-layer-content [name=parent]').val();
             if (parent&&parent=="-1") {
-                layer.msg('请选择该市所属产品类别！', { time: 1500 });
+                layer.msg('请选择该产品品牌所属产品类别！', { time: 1500 });
+                return false;
+            }
+            var namef = $('.layui-layer-content [name=imagefile]').val();
+            if (!namef && flag != 1) {
+                layer.msg('图片不能为空！', { time: 1200 });
                 return false;
             }
             return true;
@@ -369,7 +331,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
 
     var page = new Page();
     page.init();
-
+    layui.upload();
     function StringBuffer(str) {
         var arr = [];
         str = str || "";
