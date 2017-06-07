@@ -43,11 +43,9 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             var _self = this;
             $("#btn-search").bind('click', function () {
                 var par = _self.getParam();
-                // par.startDate = $("#startDate").val();
-                // par.endDate = $("#endDate").val();
-                var parent =$('.content-box [name=parent]').val();
-                if(parent!="-1"){
-                    par.parent = parent;
+                var parent = $('.content-box [name=parent]').val();
+                if (parent && parent != "-1") {
+                    par.smallBrandsCategory = parent;
                 }
                 par.queryStr = $("#cityName").val();
 
@@ -179,8 +177,8 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                                 html += '<tr>';
                                 html += '<td>' + (i - 0 + 1) + '</td>';
                                 html += '<td data-ct="' + dataList[i].productName + '">' + dataList[i].productName + '</td>';
-                                html += '<td data-ct="' + dataList[i].bigBrandsCategoryName +'">' + dataList[i].bigBrandsCategoryName + '</td>';
-                                html += '<td>12期价格￥'+dataList[i].twelveCyclePrice+'； 24期价格￥'+dataList[i].twentyFourCyclePrice+'； 36期价格￥'+dataList[i].thirtySixCyclePrice+ '</td>';
+                                html += '<td data-ct="' + dataList[i].bigBrandsCategoryName + '">' + dataList[i].bigBrandsCategoryName + '</td>';
+                                html += '<td>12期价格￥' + dataList[i].twelveCyclePrice + '； 24期价格￥' + dataList[i].twentyFourCyclePrice + '； 36期价格￥' + dataList[i].thirtySixCyclePrice + '</td>';
                                 html += '<td>'
                                     + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" data-bigbrandscategoryname="' + dataList[i].bigBrandsCategory + '" data-twelvecycleprice="' + dataList[i].twelveCyclePrice + '" data-twentyfourcycleprice="' + dataList[i].twentyFourCyclePrice + '" data-thirtysixcycleprice="' + dataList[i].thirtySixCyclePrice + '" data-productname="' + dataList[i].productName + '" data-productdesc="' + dataList[i].productDesc + '" class="layui-btn layui-btn-mini btn-edit">编辑</a>'
                                     + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" class="layui-btn layui-btn-mini layui-btn-danger btn-del">删除</a>'
@@ -242,7 +240,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 if (_self.checkForm(flag)) {
                     _self.layer_index = layer.load(2);
                     var formData = new FormData($("#uploadForm")[0]);
-                    formData.append("token",$.cookie('userToken'));
+                    formData.append("token", $.cookie('userToken'));
                     $.ajax({
                         url: global.url.saveBrandsProduct,
                         type: 'POST',
@@ -256,9 +254,9 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                         success: function (data) {
                             layer.close(_self.layer_index);
                             if (undefined != data && null != data && data.code == 200) {
-                                var flagmsg='新增成功！';
-                                if(flag==1){
-                                    flagmsg='编辑成功！';
+                                var flagmsg = '新增成功！';
+                                if (flag == 1) {
+                                    flagmsg = '编辑成功！';
                                 }
                                 layer.msg(flagmsg, { time: 500 }, function () {
                                     var par = _self.getParam();
@@ -271,7 +269,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                                     layer.msg('登录已失效，请重新登录...', { time: 1200 }, function () {
                                         window.parent.location.href = 'login.html';
                                     });
-                                }else{
+                                } else {
                                     layer.msg('请求失败，请重试', { time: 1200 });
                                 }
                             }
@@ -286,10 +284,10 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             });
         },
         getProductBrands: function (par) {
-            var _self=this;
+            var _self = this;
             par.pageIndex = _self.pageIndex;
             par.pageSize = 14;
-            par.level=2;
+            par.level = 2;
             $.ajax({
                 url: global.url.findAllProductBrandsCategory,
                 type: 'GET',
