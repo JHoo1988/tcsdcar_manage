@@ -1,7 +1,7 @@
 /**
  * 基础数据 - 产品列表
  */
-layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'global', 'upmobui'], function () {
+layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'global', 'upload', 'upmobui'], function () {
     var $ = layui.jquery,
         layer = layui.layer,
         simplePager = layui.simplePager,
@@ -36,6 +36,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             //加载省份
             // _self.getBrand(par);
             // global.getAllProvince();
+            _self.getProductBrands(par);
         },
 
         bindEvent: function () {
@@ -173,11 +174,11 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
 
                                 html += '<tr>';
                                 html += '<td>' + (i - 0 + 1) + '</td>';
-                                html += '<td data-ct="' + dataList[i].name + '">' + dataList[i].name + '</td>';
-                                html += '<td data-ct="' + dataList[i].provinceName +'">' + dataList[i].provinceName + '</td>';
+                                html += '<td data-ct="' + dataList[i].productName + '">' + dataList[i].productName + '</td>';
+                                html += '<td data-ct="' + dataList[i].bigBrandsCategoryName +'">' + dataList[i].bigBrandsCategoryName + '</td>';
                                 // html += '<td>' + dataList[i].createTime + '</td>';
                                 html += '<td>'
-                                    + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" data-provincename="' + dataList[i].provinceName + '" data-cityname="' + dataList[i].name + '" class="layui-btn layui-btn-mini btn-edit">编辑</a>'
+                                    + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" data-bigbrandscategoryname="' + dataList[i].bigBrandsCategory + '" data-twelvecycleprice="' + dataList[i].twelveCyclePrice + '" data-twentyfourcycleprice="' + dataList[i].twentyFourCyclePrice + '" data-thirtysixcycleprice="' + dataList[i].thirtySixCyclePrice + '" class="layui-btn layui-btn-mini btn-edit">编辑</a>'
                                     + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" class="layui-btn layui-btn-mini layui-btn-danger btn-del">删除</a>'
                                     + '</td>';
                                 html += '</tr>';
@@ -234,17 +235,12 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             var _self = this;
 
             $('.js-btn-update').bind('click', function () {
-                if (_self.checkForm()) {
-                    var par = _self.getParam();
-
+                if (_self.checkForm(flag)) {
                     _self.layer_index = layer.load(2);
-                    par.parent = $('.layui-layer-content [name=parent]').val();
-                    par.name = $('.layui-layer-content [name=name]').val();
                     var formData = new FormData($("#uploadForm")[0]);
-                    formData.append("level",3);
                     formData.append("token",$.cookie('userToken'));
                     $.ajax({
-                        url: global.url.addArea,
+                        url: global.url.saveBrandsProduct,
                         type: 'POST',
                         dataType: 'json',
                         data: formData,
@@ -285,19 +281,24 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 }
             });
         },
-        getAllProvince: function () {
+        getProductBrands: function (par) {
+            var _self=this;
+            par.pageIndex = _self.pageIndex;
+            par.pageSize = 14;
+            par.level=2;
             $.ajax({
-                url: global.url.findAllProvince,
-                type: 'get',
+                url: global.url.findAllProductBrandsCategory,
+                type: 'GET',
                 dataType: 'json',
-                data: 'param={"version":"v1"}&token=' + $.cookie('userToken'),
+                data: par,
                 success: function (result) {
                     var sb = new StringBuffer();
-                    $.each(result.data, function (i, val) {
-                        sb.append("<option value='" + val.provinceId + "'>" + val.provinceName + "</option>");
+                    $.each(result.data.content, function (i, val) {
+                        sb.append("<option value='" + val.id + "'>" + val.name + "</option>");
                     });
-                    var op = $("#choosePro").clone();
-                    $("#province").empty().append(op).append(sb.toString());
+                    // var op = $("#choosePro").clone();
+                    var op = '<option selected="selected" value="-1">请选择产品品牌</option>';
+                    $(".province").empty().append(op).append(sb.toString());
                     form.render('select');
                 }
             })
@@ -308,15 +309,35 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             }
             return num;
         },
-        checkForm: function () {
-            var name = $('.layui-layer-content [name=name]').val();
-            if (!name) {
-                layer.msg('城市名称不能为空！', { time: 1200 });
+        checkForm: function (flag) {
+            var brandid = $('.layui-layer-content [name=bigBrandsCategory]').val();
+            if (!brandid || brandid == -1) {
+                layer.msg('所属产品品牌不能为空！', { time: 1200 });
                 return false;
             }
-            var parent = $('.layui-layer-content [name=parent]').val();
-            if (parent&&parent=="-1") {
-                layer.msg('请选择该市所属省份！', { time: 1500 });
+            var name = $('.layui-layer-content [name=productName]').val();
+            if (!name) {
+                layer.msg('产品名称不能为空！', { time: 1200 });
+                return false;
+            }
+            var twelveCyclePrice = $('.layui-layer-content [name=twelveCyclePrice]').val();
+            if (!twelveCyclePrice) {
+                layer.msg('产品12期价格不能为空！', { time: 1200 });
+                return false;
+            }
+            var twentyFourCyclePrice = $('.layui-layer-content [name=twentyFourCyclePrice]').val();
+            if (!twentyFourCyclePrice) {
+                layer.msg('产品24期价格不能为空！', { time: 1200 });
+                return false;
+            }
+            var thirtySixCyclePrice = $('.layui-layer-content [name=thirtySixCyclePrice]').val();
+            if (!thirtySixCyclePrice) {
+                layer.msg('产品36期价格不能为空！', { time: 1200 });
+                return false;
+            }
+            var imagefile = $('.layui-layer-content [name=imagefile]').val();
+            if (!imagefile && flag != 1) {
+                layer.msg('图片不能为空！', { time: 1200 });
                 return false;
             }
             return true;
@@ -325,7 +346,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
 
     var page = new Page();
     page.init();
-
+    layui.upload();
     function StringBuffer(str) {
         var arr = [];
         str = str || "";

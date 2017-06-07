@@ -116,6 +116,8 @@ layui.define(['jquery', 'layer', 'form'], function (exports) {
             deleteProductBrandsCategory: baseUrl + baseModifyUrl + 'productBrandsCategory/deleteProductBrandsCategory',
             // 查询产品
             findBrandsProductList: baseUrl + baseModifyUrl + 'brandsProduct/findBrandsProductList',
+            // 保存产品
+            saveBrandsProduct: baseUrl + baseModifyUrl + 'brandsProduct/saveBrandsProduct',
         };
         this.address = {};
         this.countdown = 60;

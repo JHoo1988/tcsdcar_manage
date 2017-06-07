@@ -105,16 +105,45 @@
                         <label class="layui-form-label" style="width: 90px;">所属产品品牌</label>
 
                         <div class="layui-input-inline" style="width: 500px;">
-                            <select class="province" name="parent" lay-filter="selectprovince">
-                                <option class="choosePror" selected="selected" value="-1">请选择产品品牌</option>
+                            <select class="province" name="bigBrandsCategory" lay-filter="selectprovince">
+                                <option class="choosePro" selected="selected" value="-1">请选择产品品牌</option>
                             </select>
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label" style="width: 90px;">产品名称</label>
                         <div class="layui-input-block" style="width: 500px;margin-left: 120px;">
-                            <input type="text" class="layui-input" name="name" placeholder="产品名称" autocomplete="off" maxlength="30">
+                            <input type="text" class="layui-input" name="productName" placeholder="产品名称" autocomplete="off" maxlength="30">
                         </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="width: 90px;">12期价格</label>
+                        <div class="layui-input-block" style="width: 500px;margin-left: 120px;">
+                            <input type="text" class="layui-input" name="twelveCyclePrice" placeholder="产品12期价格" autocomplete="off" maxlength="30">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="width: 90px;">24期价格</label>
+                        <div class="layui-input-block" style="width: 500px;margin-left: 120px;">
+                            <input type="text" class="layui-input" name="twentyFourCyclePrice" placeholder="产品24期价格" autocomplete="off" maxlength="30">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="width: 90px;">36期价格</label>
+                        <div class="layui-input-block" style="width: 500px;margin-left: 120px;">
+                            <input type="text" class="layui-input" name="thirtySixCyclePrice" placeholder="产品36期价格" autocomplete="off" maxlength="30">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="width: 90px;">描述信息</label>
+                        <div class="layui-input-block" style="width: 500px;margin-left: 120px;">
+                            <input type="text" class="layui-input" name="productDesc"
+                                   placeholder="输入产品描述信息(选填)">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="width: 90px;">汽车型号图片</label>
+                        <input type="file" name="imagefile" class="layui-upload-file">
                     </div>
                     <input style="display: none;" type="text" name="id">
                 </form>
