@@ -100,10 +100,10 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 var id = $(this).data('id');
                 var par = _self.getParam();
                 par.ids = id;
-                layer.confirm('是否删这个城市，该城市下的地区也将全部删除?', {
+                layer.confirm('是否删这个产品?', {
                     btn: ['是', '否']
                 }, function () {
-                    $.post(global.url.deleteArea, par, function (data, textStatus, xhr) {
+                    $.post(global.url.deleteBrandsProduct, par, function (data, textStatus, xhr) {
                         if (data.code == 200) {
                             layer.msg('删除成功！', { time: 500 }, function () {
                                 _self.getData(par);
@@ -119,26 +119,30 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
 
             // 编辑项
             $(document).on('click', '.btn-edit', function () {
+                // data-thirtysixcycleprice="' + dataList[i].
                 var id = $(this).data('id');
-                var cityName = $(this).data('cityname');
-                var provinceName = $(this).data('provincename');
-                var par = _self.getParam();
-                par.id = id;
-                par.name = cityName;
-                par.parent = provinceName;
-
+                var bigBrandsCategory = $(this).data('bigbrandscategoryname');
+                var productName = $(this).data('productname');
+                var twelveCyclePrice = $(this).data('twelvecycleprice');
+                var twentyFourCyclePrice = $(this).data('twentyfourcycleprice');
+                var thirtySixCyclePrice = $(this).data('thirtysixcycleprice');
+                var productDesc = $(this).data('productdesc');
                 var content = edit_win.html();
                 _self.layer_open_index = layer.open({
                     type: 1,
-                    title: '编辑城市',
-                    area: ['700px', '250px'], //宽高
+                    title: '编辑产品',
+                    area: ['700px', 'auto'], //宽高
                     fixed: false, //不固定
                     maxmin: true,
                     content: content
                 });
-                $('.layui-layer-content [name=name]').val(cityName);
-                $('.layui-layer-content [name=parent]').val(provinceName);
                 $('.layui-layer-content [name=id]').val(id);
+                $('.layui-layer-content [name=bigBrandsCategory]').val(bigBrandsCategory);
+                $('.layui-layer-content [name=productName]').val(productName);
+                $('.layui-layer-content [name=twelveCyclePrice]').val(twelveCyclePrice);
+                $('.layui-layer-content [name=twentyFourCyclePrice]').val(twentyFourCyclePrice);
+                $('.layui-layer-content [name=thirtySixCyclePrice]').val(thirtySixCyclePrice);
+                $('.layui-layer-content [name=productDesc]').val(productDesc);
                 form.render();
                 $("#pop_up").remove();
                 _self.addProductAction(1);
@@ -178,7 +182,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                                 html += '<td data-ct="' + dataList[i].bigBrandsCategoryName +'">' + dataList[i].bigBrandsCategoryName + '</td>';
                                 html += '<td>12期价格￥'+dataList[i].twelveCyclePrice+'； 24期价格￥'+dataList[i].twentyFourCyclePrice+'； 36期价格￥'+dataList[i].thirtySixCyclePrice+ '</td>';
                                 html += '<td>'
-                                    + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" data-bigbrandscategoryname="' + dataList[i].bigBrandsCategory + '" data-twelvecycleprice="' + dataList[i].twelveCyclePrice + '" data-twentyfourcycleprice="' + dataList[i].twentyFourCyclePrice + '" data-thirtysixcycleprice="' + dataList[i].thirtySixCyclePrice + '" class="layui-btn layui-btn-mini btn-edit">编辑</a>'
+                                    + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" data-bigbrandscategoryname="' + dataList[i].bigBrandsCategory + '" data-twelvecycleprice="' + dataList[i].twelveCyclePrice + '" data-twentyfourcycleprice="' + dataList[i].twentyFourCyclePrice + '" data-thirtysixcycleprice="' + dataList[i].thirtySixCyclePrice + '" data-productname="' + dataList[i].productName + '" data-productdesc="' + dataList[i].productDesc + '" class="layui-btn layui-btn-mini btn-edit">编辑</a>'
                                     + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" class="layui-btn layui-btn-mini layui-btn-danger btn-del">删除</a>'
                                     + '</td>';
                                 html += '</tr>';

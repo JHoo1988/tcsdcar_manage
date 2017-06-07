@@ -118,6 +118,8 @@ layui.define(['jquery', 'layer', 'form'], function (exports) {
             findBrandsProductList: baseUrl + baseModifyUrl + 'brandsProduct/findBrandsProductList',
             // 保存产品
             saveBrandsProduct: baseUrl + baseModifyUrl + 'brandsProduct/saveBrandsProduct',
+            // 删除产品
+            deleteBrandsProduct: baseUrl + baseModifyUrl + 'brandsProduct/deleteBrandsProduct',
         };
         this.address = {};
         this.countdown = 60;

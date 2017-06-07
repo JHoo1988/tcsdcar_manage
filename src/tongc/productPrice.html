@@ -68,13 +68,7 @@
                             <!--<th style="width: 70px;">服务项目</th>-->
                             <th style="width: 170px;">产品名称</th>
                             <th style="width: 170px;">所属产品品牌</th>
-                            <!--<th style="width: 100px;" class="td_posR" data-ct="adfafafa">创建时间</th>-->
-                            <!--<th style="width: 60px;" class="td_posR" data-ct="1234">状态</th>-->
-                            <!--<th style="width: 135px;">品类</th>-->
-                            <!--<th style="width: 100px;">类别</th>-->
                             <th >价格</th>
-                            <!--<th style="width: 160px;">描述</th>-->
-                            <!--<th style="width: 60px;" class="js-p-discount">折扣价</th>-->
                             <th style="width: 80px;">操作</th>
                         </tr>
                         </thead>
@@ -101,6 +95,7 @@
         <div class="upp-cont">
             <div class="add_edit_dlg layui-form">
                 <form id="uploadForm" enctype="multipart/form-data">
+                    <input style="display: none;" type="text" name="id">
                     <div class="layui-form-item">
                         <label class="layui-form-label" style="width: 90px;">所属产品品牌</label>
 
@@ -145,7 +140,6 @@
                         <label class="layui-form-label" style="width: 90px;">汽车型号图片</label>
                         <input type="file" name="imagefile" class="layui-upload-file">
                     </div>
-                    <input style="display: none;" type="text" name="id">
                 </form>
             </div>
             <div class="layui-form-item" style="text-align: center">
