@@ -39,8 +39,8 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             var _self = this;
             $("#btn-search").bind('click', function () {
                 var par = _self.getParam();
-                par.startDate = $("#startDate").val();
-                par.endDate = $("#endDate").val();
+                // par.startDate = $("#startDate").val();
+                // par.endDate = $("#endDate").val();
                 par.queryStr = $("#productName").val();
 
                 //param.size = _self.pageSize;

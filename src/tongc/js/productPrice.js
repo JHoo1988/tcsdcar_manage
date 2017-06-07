@@ -35,7 +35,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             _self.bindEvent();
             //加载省份
             // _self.getBrand(par);
-            global.getAllProvince();
+            // global.getAllProvince();
         },
 
         bindEvent: function () {
@@ -153,9 +153,9 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             var _self = this;
             par.pageIndex = _self.pageIndex;
             par.pageSize = 14;
-            par.level=3;
+            // par.queryStr=3;
             $.ajax({
-                url: global.url.findAllArea,
+                url: global.url.findBrandsProductList,
                 type: 'GET',
                 dataType: 'json',
                 data: par,
@@ -284,50 +284,6 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                     })
                 }
             });
-        }
-        ,getBrand: function (par, successCallback) {
-            $.ajax({
-                url: global.url.getProductAllBrandList,
-                type: 'POST',
-                dataType: 'json',
-                data: par,
-                beforeSend: function () {
-
-                },
-                success: function (data) {
-                    if (undefined != data.data && null != data.data && data.flag == 'success') {
-                        var dataList = data.data;
-                        var len = dataList.length;
-                        if (len > 0) {
-                            var html = '<option selected="selected" value="请选择">请选择</option>';
-                            for (var i = 0; i < len; i++) {
-                                html += '<option value="' + dataList[i].brandId + '">' + dataList[i].brandName + '</option>'
-                            }
-                            $('.content-box [name=selectprovince]').empty().append(html);
-
-                            form.render();
-                            if (typeof successCallback === "function") {
-                                successCallback();
-                            }
-
-                        } else {
-                            layer.msg('省份为空，请先新建省份！');
-                        }
-
-                    } else {
-                        if (data.code == 510) {
-                            layer.msg('登录已失效，请重新登录...', { time: 1200 }, function () {
-                                window.parent.location.href = 'login.html';
-                            });
-                        }else{
-                            layer.msg('获取数据失败!', { time: 1200 });
-                        }
-                    }
-                },
-                error: function () {
-                    layer.msg('获取数据失败，请稍后重试！');
-                }
-            })
         },
         getAllProvince: function () {
             $.ajax({
