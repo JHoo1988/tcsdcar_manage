@@ -176,7 +176,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                                 html += '<td>' + (i - 0 + 1) + '</td>';
                                 html += '<td data-ct="' + dataList[i].productName + '">' + dataList[i].productName + '</td>';
                                 html += '<td data-ct="' + dataList[i].bigBrandsCategoryName +'">' + dataList[i].bigBrandsCategoryName + '</td>';
-                                // html += '<td>' + dataList[i].createTime + '</td>';
+                                html += '<td>12期价格￥'+dataList[i].twelveCyclePrice+'； 24期价格￥'+dataList[i].twentyFourCyclePrice+'； 36期价格￥'+dataList[i].thirtySixCyclePrice+ '</td>';
                                 html += '<td>'
                                     + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" data-bigbrandscategoryname="' + dataList[i].bigBrandsCategory + '" data-twelvecycleprice="' + dataList[i].twelveCyclePrice + '" data-twentyfourcycleprice="' + dataList[i].twentyFourCyclePrice + '" data-thirtysixcycleprice="' + dataList[i].thirtySixCyclePrice + '" class="layui-btn layui-btn-mini btn-edit">编辑</a>'
                                     + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" class="layui-btn layui-btn-mini layui-btn-danger btn-del">删除</a>'
