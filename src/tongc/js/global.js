@@ -106,9 +106,9 @@ layui.define(['jquery', 'layer', 'form'], function (exports) {
             findAllProductModel: baseUrl + baseModifyUrl + 'productModel/findAllProductModel',
             // 保存、修改车型
             saveProductModel: baseUrl + baseModifyUrl + 'productModel/saveProductModel',
-            // 产品品牌分类，产品品牌，产品型号
+            // 产品品牌
             saveProductBrandsCategory: baseUrl + baseModifyUrl + 'productBrandsCategory/saveProductBrandsCategory',
-            // 产品品牌分类，产品品牌，产品型号
+            // 产品品牌
             findAllProductBrandsCategory: baseUrl + baseModifyUrl + 'productBrandsCategory/findAllProductBrandsCategory',
             // 产品品牌图片url
             productBrandsCategorys: baseUrl + baseModifyUrl + 'productBrandsCategorys/image/',
@@ -126,6 +126,12 @@ layui.define(['jquery', 'layer', 'form'], function (exports) {
             findAllCouponConsumRecord: baseUrl + baseModifyUrl + 'coupon/findAllCouponConsumRecord',
             // 卡券生成接口
             generateCouponBatch: baseUrl + baseModifyUrl + 'coupon/generateCouponBatch',
+            // 产品品牌分类
+            findAllProductTypeCategory: baseUrl + baseModifyUrl + 'productType/findAllProductTypeCategory',
+            // 产品品牌分类
+            saveProductTypeCategory: baseUrl + baseModifyUrl + 'productType/saveProductTypeCategory',
+            // 产品品牌分类
+            deleteProductTypeCategory: baseUrl + baseModifyUrl + 'productType/deleteProductTypeCategory',
         };
         this.address = {};
         this.countdown = 60;
