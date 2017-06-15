@@ -125,10 +125,11 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             // 编辑项
             $(document).on('click', '.btn-edit', function () {
                 var id = $(this).data('id');
-                var name = $(this).data('name');
-                var par = _self.getParam();
-                par.id = id;
-                par.name = name;
+                var productType = $(this).data('producttype');
+                var twelvecycleprice = $(this).data('twelvecycleprice');
+                var twentyfourcycleprice = $(this).data('twentyfourcycleprice');
+                var thirtysixcycleprice = $(this).data('thirtysixcycleprice');
+                var productdesc = $(this).data('productdesc');
 
                 var content = edit_win.html();
                 _self.layer_open_index = layer.open({
@@ -140,7 +141,11 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                     content: content
                 });
                 $('.layui-layer-content [name=id]').val(id);
-                $('.layui-layer-content [name=name]').val(name);
+                $('.layui-layer-content [name=productType]').val(productType);
+                $('.layui-layer-content [name=twelveCyclePrice]').val(twelvecycleprice);
+                $('.layui-layer-content [name=twentyFourCyclePrice]').val(twentyfourcycleprice);
+                $('.layui-layer-content [name=thirtySixCyclePrice]').val(thirtysixcycleprice);
+                $('.layui-layer-content [name=productDesc]').val(productdesc);
                 form.render();
                 $("#pop_up").remove();
                 _self.addProductAction(1);
@@ -176,9 +181,13 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                                 html += '<tr>';
                                 html += '<td>' + (i - 0 + 1) + '</td>';
                                 html += '<td>' + dataList[i].productName + '</td>';
-                                html += '<td>12期：￥' + dataList[i].twelveCyclePrice + ' / 24期：￥' + dataList[i].twentyFourCyclePrice + ' / 36期：￥' + dataList[i].twentyFourCyclePrice + '</td>';
+                                html += '<td>12期：￥' + dataList[i].twelveCyclePrice + ' / 24期：￥' + dataList[i].twentyFourCyclePrice + ' / 36期：￥' + dataList[i].thirtySixCyclePrice + '</td>';
+                                html += '<td data-ct="' + dataList[i].productDesc + '">' + dataList[i].productDesc + '</td>';
                                 html += '<td>'
-                                    + '<a href="javascript:void(0);" data-name="' + dataList[i].name + '" data-id="' + dataList[i].id + '" class="layui-btn layui-btn-mini btn-edit">编辑</a>'
+                                    + '<a href="javascript:void(0);" ' +
+                                    'data-id="' + dataList[i].id + '" data-twelvecycleprice="' + dataList[i].twelveCyclePrice + '" ' +
+                                    'data-twentyfourcycleprice="' + dataList[i].twentyFourCyclePrice + '" data-thirtysixcycleprice="' + dataList[i].thirtySixCyclePrice + '" ' +
+                                    'data-productdesc="' + dataList[i].productDesc + '" data-producttype="' + dataList[i].productType + '" class="layui-btn layui-btn-mini btn-edit">编辑</a>'
                                     + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" class="layui-btn layui-btn-mini layui-btn-danger btn-del">删除</a>'
                                     + '</td>';
                                 html += '</tr>';
