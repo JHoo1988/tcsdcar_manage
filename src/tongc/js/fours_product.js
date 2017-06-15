@@ -113,6 +113,13 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
 
             // 编辑项
             $(document).on('click', '.btn-edit', function () {
+
+                var productname = $(this).data('productname');
+                var brandsname = $(this).data('brands');
+                var id = $(this).data('id');
+                $('#myIframe', parent.document).attr('src', 'foursProductManager.html#'+id+','+brandsname+productname);
+
+                return;
                 var _this = $(this);
                 var id = _this.data('id');
                 _self.getAllProducts(_self.par, id, function (data) {
