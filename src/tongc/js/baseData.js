@@ -227,7 +227,8 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                                 html += '<td>' + (i - 0 + 1) + '</td>';
                                 html += '<td><img style="width: 30px;" src="../../../images/product/' + dataList[i].id + '.png"></td>';
                                 html += '<td>' + dataList[i].brandsName + dataList[i].name + '</td>';
-                                html += '<td><a data-id="' + dataList[i].id + '" data-name="' + dataList[i].brandsName + dataList[i].name + '" class="show_price" href="javascript:;" style="color: #00bbfe;text-decoration: underline">点击查看产品价格</a></td>';
+                                html += '<td>' + dataList[i].bigCategoryName  + dataList[i].smallCategoryName + '</td>';
+                                // html += '<td><a data-id="' + dataList[i].id + '" data-name="' + dataList[i].brandsName + dataList[i].name + '" class="show_price" href="javascript:;" style="color: #00bbfe;text-decoration: underline">点击查看产品价格</a></td>';
                                 html += '<td>' + dataList[i].createTimeStr + '</td>';
                                 html += '<td>'
                                     + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '"  data-brands="' + dataList[i].brandsId + '" data-productname="' + dataList[i].name + '" class="layui-btn layui-btn-mini btn-edit">编辑</a>'
@@ -310,8 +311,8 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                                 html += '<td><img style="width: 30px;" src="../../../images/product/' + dataList[i].id + '.png"></td>';
                                 // html += '<td><img style="height: 30px;" src="' + dataList[i].imageUrl + '"></td>';
                                 html += '<td>' + dataList[i].brandsName + dataList[i].name + '</td>';
-                                // html += '<td>' + dataList[i].bigCategoryName + dataList[i].smallCategoryName + '</td>';
-                                html += '<td><a data-id="' + dataList[i].id + '" data-name="' + dataList[i].brandsName + dataList[i].name + '" class="show_price" href="javascript:;" style="color: #00bbfe;text-decoration: underline">点击查看产品价格</a></td>';
+                                html += '<td>' + dataList[i].bigCategoryName + dataList[i].smallCategoryName + '</td>';
+                                // html += '<td><a data-id="' + dataList[i].id + '" data-name="' + dataList[i].brandsName + dataList[i].name + '" class="show_price" href="javascript:;" style="color: #00bbfe;text-decoration: underline">点击查看产品价格</a></td>';
                                 html += '<td>' + dataList[i].createTimeStr + '</td>';
                                 // html += '<td >' + dataList[i].productDesc + '</td>';
                                 html += '<td>'
@@ -388,12 +389,21 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                             $('.js-btn-update')[0].disabled = true;
                         },
                         success: function (data) {
+                            _self.hideLoadin();
                             if (undefined != data && null != data && data.code == 200) {
-                                var brands = $('.layui-layer-content [name=brandsId]').val();
-                                $('.layui-layer-content [name=brands]').val(brands);
-                                _self.addProducts(data.data);
+                                var flagmsg = '新增成功！';
+                                if (flag==1){
+                                    flagmsg = '编辑成功！';
+                                }
+                                layer.msg(flagmsg, { time: 500 }, function () {
+                                    layer.close(_self.layer_open_index);
+                                    if (_self.par.brands && _self.par.brands != -1) {
+                                        _self.getDataM(_self.par);
+                                    } else {
+                                        _self.getData(_self.par);
+                                    }
+                                });
                             } else {
-                                _self.hideLoadin();
                                 $('.js-btn-update')[0].disabled = false;
                                 if (data.code == 510) {
                                     layer.msg('登录已失效，请重新登录...', { time: 1200 }, function () {
@@ -412,62 +422,6 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                     })
                 }
             });
-        },
-        addProducts: function (data) {
-            var _self = this;
-            $('.layui-layer-content #productForm0 [name=productModelId]').val(data.id);
-            $('.layui-layer-content #productForm1 [name=productModelId]').val(data.id);
-
-            $('.add-commit form').each(function (index, element) {
-                var formData = new FormData($("#productForm" + index)[0]);
-                formData.append("token", $.cookie('userToken'));
-                formData.append("statu", '0');
-                if (index == 0) {
-                    formData.append("productName", '汽车膜产品');
-                } else if (index == 1) {
-                    formData.append("productName", '玻璃险产品');
-                }
-                $.ajax({
-                    url: global.url.addProduct,
-                    type: 'POST',
-                    dataType: 'json',
-                    data: formData,
-                    contentType: false,
-                    processData: false,
-                    beforeSend: function () {
-                        $('.js-btn-update')[0].disabled = true;
-                    },
-                    success: function (data) {
-                        if (undefined != data && null != data && data.code == 200) {
-                            if (index >= 1) {
-                                // _self.hideLoadin();
-                                if (_self.par.brands && _self.par.brands != -1) {
-                                    _self.getDataM(_self.par);
-                                } else {
-                                    _self.getData(_self.par);
-                                }
-                                layer.close(_self.layer_open_index);
-                            }
-                        } else {
-                            _self.hideLoadin();
-                            $('.js-btn-update')[0].disabled = false;
-                            if (data.code == 510) {
-                                layer.msg('登录已失效，请重新登录...', { time: 1200 }, function () {
-                                    window.parent.location.href = 'login.html';
-                                });
-                            } else {
-                                layer.msg('操作失败!', { time: 1200 });
-                            }
-                        }
-                    },
-                    error: function (e) {
-                        $('.js-btn-update')[0].disabled = false;
-                        _self.hideLoadin();
-                        layer.msg('系统错误，请稍后重试！', { time: 500 });
-                    }
-                })
-            });
-
         },
         toRoundOff: function (num) {
             if (num.toString().indexOf('.') > -1) {
@@ -500,41 +454,6 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             var namef = $('.layui-layer-content [name=imagefile]').val();
             if (!namef && flag != 1) {
                 layer.msg('图片不能为空！', { time: 1200 });
-                return false;
-            }
-
-            var twelveCyclePrice = $('.layui-layer-content #productForm0 [name=twelveCyclePrice]').val();
-            if (!twelveCyclePrice) {
-                layer.msg('汽车膜质保12期价格不能为空！', { time: 1200 });
-                return false;
-            }
-
-            var twentyFourCyclePrice = $('.layui-layer-content #productForm0 [name=twentyFourCyclePrice]').val();
-            if (!twentyFourCyclePrice) {
-                layer.msg('汽车膜质保24期价格不能为空！', { time: 1200 });
-                return false;
-            }
-
-            var thirtySixCyclePrice = $('.layui-layer-content #productForm0 [name=thirtySixCyclePrice]').val();
-            if (!thirtySixCyclePrice) {
-                layer.msg('汽车膜质保36期价格不能为空！', { time: 1200 });
-                return false;
-            }
-            twelveCyclePrice = $('.layui-layer-content #productForm1 [name=twelveCyclePrice]').val();
-            if (!twelveCyclePrice) {
-                layer.msg('玻璃险12期价格不能为空！', { time: 1200 });
-                return false;
-            }
-
-            twentyFourCyclePrice = $('.layui-layer-content #productForm1 [name=twentyFourCyclePrice]').val();
-            if (!twentyFourCyclePrice) {
-                layer.msg('玻璃险24期价格不能为空！', { time: 1200 });
-                return false;
-            }
-
-            thirtySixCyclePrice = $('.layui-layer-content #productForm1 [name=thirtySixCyclePrice]').val();
-            if (!thirtySixCyclePrice) {
-                layer.msg('玻璃险36期价格不能为空！', { time: 1200 });
                 return false;
             }
             return true;

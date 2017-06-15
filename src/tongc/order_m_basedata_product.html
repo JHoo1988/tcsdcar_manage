@@ -57,9 +57,9 @@
                         <tr class="list-head">
                             <th style="width: 40px;">编号</th>
                             <th style="width: 100px;">汽车型号图片</th>
-                            <th style="width: 160px;">汽车型号名称</th>
-                            <!--<th style="width: 100px;">类别</th>-->
-                            <th style="width: 300px;">价格</th>
+                            <th style="width: 200px;">汽车型号名称</th>
+                            <th style="width: 200px;">汽车类别</th>
+                            <!--<th style="width: 300px;">价格</th>-->
                             <th>创建时间</th>
                             <!--<th>描述</th>-->
                             <th style="width: 80px;">操作</th>
@@ -126,98 +126,9 @@
 
                     <div class="layui-form-item">
                         <label class="layui-form-label" style="width: 90px;">汽车型号图片</label>
-                        <!--<div class="layui-input-block" style="width: 500px;">-->
-                        <!--<input type="file" name="file">-->
-                        <!--</div>-->
                         <input type="file" name="imagefile" class="layui-upload-file">
                     </div>
                 </form>
-                <div class="layui-tab layui-tab-card" style="margin: 0 20px;">
-                    <ul class="layui-tab-title">
-                        <li class="layui-this">汽车膜质保</li>
-                        <li>玻璃险</li>
-                    </ul>
-                    <div class="layui-tab-content add-commit" style="height: 200px;">
-                        <div class="layui-tab-item layui-show">
-                            <form id="productForm0" enctype="multipart/form-data">
-                                <input type="text" name="id" style="display: none;">
-                                <input type="text" name="brands" style="display: none;">
-                                <input type="text" name="productModelId" style="display: none;">
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 90px;">12期价格</label>
-                                    <div class="layui-input-block" style="width: 500px;margin-left: 120px;">
-                                        <input type="text" class="layui-input" autocomplete="off"
-                                               name="twelveCyclePrice" placeholder="汽车膜质保服务12期价格"
-                                               maxlength="10">
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 90px;">24期价格</label>
-                                    <div class="layui-input-block" style="width: 500px;margin-left: 120px;">
-                                        <input type="text" class="layui-input" autocomplete="off"
-                                               name="twentyFourCyclePrice" placeholder="汽车膜质保服务24期价格"
-                                               maxlength="10">
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 90px;">36期价格</label>
-                                    <div class="layui-input-block" style="width: 500px;margin-left: 120px;">
-                                        <input type="text" class="layui-input" autocomplete="off"
-                                               name="thirtySixCyclePrice" placeholder="汽车膜质保服务36期价格"
-                                               maxlength="10">
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 90px;">描述信息</label>
-                                    <div class="layui-input-block" style="width: 500px;margin-left: 120px;">
-                                        <input type="text" class="layui-input" name="productDesc"
-                                               placeholder="汽车膜质保服务产品描述信息（选填，限30字）"
-                                               maxlength="30">
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="layui-tab-item">
-                            <form id="productForm1" enctype="multipart/form-data">
-                                <input type="text" name="id" style="display: none;">
-                                <input type="text" name="brands" style="display: none;">
-                                <input type="text" name="productModelId" style="display: none;">
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 90px;">12期价格</label>
-                                    <div class="layui-input-block" style="width: 500px;margin-left: 120px;">
-                                        <input type="text" class="layui-input" autocomplete="off"
-                                               name="twelveCyclePrice" placeholder="玻璃险12期价格"
-                                               maxlength="10">
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 90px;">24期价格</label>
-                                    <div class="layui-input-block" style="width: 500px;margin-left: 120px;">
-                                        <input type="text" class="layui-input" autocomplete="off"
-                                               name="twentyFourCyclePrice" placeholder="玻璃险24期价格"
-                                               maxlength="10">
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 90px;">36期价格</label>
-                                    <div class="layui-input-block" style="width: 500px;margin-left: 120px;">
-                                        <input type="text" class="layui-input" autocomplete="off"
-                                               name="thirtySixCyclePrice" placeholder="玻璃险36期价格"
-                                               maxlength="10">
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label" style="width: 90px;">描述信息</label>
-                                    <div class="layui-input-block" style="width: 500px;margin-left: 120px;">
-                                        <input type="text" class="layui-input" name="productDesc"
-                                               placeholder="玻璃险产品描述信息（选填，限30字）"
-                                               maxlength="30">
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="layui-form-item" style="text-align: center;margin-top: 30px;">
                 <a href="javascript:void(0)" class="layui-btn layui-btn-normal js-btn-update" id="btn-update"
