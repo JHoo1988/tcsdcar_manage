@@ -175,7 +175,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                                 html += '<td>' + (i - 0 + 1) + '</td>';
                                 html += '<td data-ct="' + dataList[i].name + '">' + dataList[i].name + '</td>';
                                 html += '<td data-ct="' + dataList[i].provinceName +'">' + dataList[i].provinceName + '</td>';
-                                html += '<td>' + dataList[i].createTime + '</td>';
+                                html += '<td>' + dataList[i].createTimeStr + '</td>';
                                 html += '<td>'
                                     + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" data-provincename="' + dataList[i].provinceName + '" data-cityname="' + dataList[i].name + '" class="layui-btn layui-btn-mini btn-edit">编辑</a>'
                                     + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" class="layui-btn layui-btn-mini layui-btn-danger btn-del">删除</a>'

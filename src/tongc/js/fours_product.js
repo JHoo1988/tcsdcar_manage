@@ -121,16 +121,16 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                     var content = edit_win.html();
                     _self.layer_open_index = layer.open({
                         type: 1,
-                        title: '编辑汽车型号',
+                        title: '编辑'+brands+productName+'的所属产品',
                         area: ['700px', 'auto'], //宽高
                         fixed: false, //不固定
                         maxmin: true,
                         content: content
                     });
-                    $('.layui-layer-content [name=name]').val(productName);
-                    $('.layui-layer-content .carTypeName [name=id]').val(id);
-                    $('.layui-layer-content [name=brandsId]').val(brands);
-                    $('.layui-layer-content [name=brands]').val(brands);
+                    // $('.layui-layer-content [name=name]').val(productName);
+                    // $('.layui-layer-content .carTypeName [name=id]').val(id);
+                    // $('.layui-layer-content [name=brandsId]').val(brands);
+                    // $('.layui-layer-content [name=brands]').val(brands);
                     $('.layui-layer-content [name=productModelId]').val(id);
 
                     if (data.totalSize > 0) {
@@ -225,13 +225,13 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
 
                                 html += '<tr>';
                                 html += '<td>' + (i - 0 + 1) + '</td>';
-                                html += '<td><img style="width: 30px;" src="../../../images/product/' + dataList[i].id + '.png"></td>';
+                                // html += '<td><img style="width: 30px;" src="../../../images/product/' + dataList[i].id + '.png"></td>';
                                 html += '<td>' + dataList[i].brandsName + dataList[i].name + '</td>';
                                 html += '<td><a data-id="' + dataList[i].id + '" data-name="' + dataList[i].brandsName + dataList[i].name + '" class="show_price" href="javascript:;" style="color: #00bbfe;text-decoration: underline">点击查看产品价格</a></td>';
-                                html += '<td>' + dataList[i].createTimeStr + '</td>';
+                                // html += '<td>' + dataList[i].createTimeStr + '</td>';
                                 html += '<td>'
-                                    + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '"  data-brands="' + dataList[i].brandsId + '" data-productname="' + dataList[i].name + '" class="layui-btn layui-btn-mini btn-edit">编辑</a>'
-                                    + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" class="layui-btn layui-btn-mini layui-btn-danger btn-del">删除</a>'
+                                    + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '"  data-brands="' + dataList[i].brandsName + '" data-productname="' + dataList[i].name + '" class="layui-btn layui-btn-mini btn-edit">编辑产品</a>'
+                                    // + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" class="layui-btn layui-btn-mini layui-btn-danger btn-del">删除产品</a>'
                                     + '</td>';
                                 html += '</tr>';
                             }
@@ -307,16 +307,16 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
 
                                 html += '<tr>';
                                 html += '<td>' + (i - 0 + 1) + '</td>';
-                                html += '<td><img style="width: 30px;" src="../../../images/product/' + dataList[i].id + '.png"></td>';
+                                // html += '<td><img style="width: 30px;" src="../../../images/product/' + dataList[i].id + '.png"></td>';
                                 // html += '<td><img style="height: 30px;" src="' + dataList[i].imageUrl + '"></td>';
                                 html += '<td>' + dataList[i].brandsName + dataList[i].name + '</td>';
                                 // html += '<td>' + dataList[i].bigCategoryName + dataList[i].smallCategoryName + '</td>';
                                 html += '<td><a data-id="' + dataList[i].id + '" data-name="' + dataList[i].brandsName + dataList[i].name + '" class="show_price" href="javascript:;" style="color: #00bbfe;text-decoration: underline">点击查看产品价格</a></td>';
-                                html += '<td>' + dataList[i].createTimeStr + '</td>';
+                                // html += '<td>' + dataList[i].createTimeStr + '</td>';
                                 // html += '<td >' + dataList[i].productDesc + '</td>';
                                 html += '<td>'
-                                    + '<a href="javascript:void(0);" data-brands="' + dataList[i].brands + '" data-id="' + dataList[i].id + '" data-productname="' + dataList[i].productName + '" class="layui-btn layui-btn-mini btn-edit">编辑</a>'
-                                    + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" class="layui-btn layui-btn-mini layui-btn-danger btn-del">删除</a>'
+                                    + '<a href="javascript:void(0);" data-brands="' + dataList[i].brandsName + '" data-id="' + dataList[i].id + '" data-productname="' + dataList[i].productName + '" class="layui-btn layui-btn-mini btn-edit">编辑产品</a>'
+                                    // + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" class="layui-btn layui-btn-mini layui-btn-danger btn-del">删除产品</a>'
                                     + '</td>';
                                 html += '</tr>';
                             }
@@ -555,7 +555,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                         $.each(dataList, function (i, val) {
                             sb.append("<option value='" + val.id + "'>" + val.name + "</option>");
                         });
-                        var op = "<option class='brands-option' value='-1'>请选择品牌</option>";
+                        var op = "<option class='brands-option' value='-1'>请选择汽车品牌</option>";
                         $(".brands_search").empty().append(op).append(sb.toString());
                         $(".brands").empty().append(op).append(sb.toString());
                         form.render('select');
