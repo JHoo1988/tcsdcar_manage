@@ -235,6 +235,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                                 html += '<td>' + (i - 0 + 1) + '</td>';
                                 // html += '<td><img style="width: 30px;" src="../../../images/product/' + dataList[i].id + '.png"></td>';
                                 html += '<td>' + dataList[i].brandsName + dataList[i].name + '</td>';
+                                html += '<td>' + dataList[i].bigCategoryName  + dataList[i].smallCategoryName + '</td>';
                                 html += '<td><a data-id="' + dataList[i].id + '" data-name="' + dataList[i].brandsName + dataList[i].name + '" class="show_price" href="javascript:;" style="color: #00bbfe;text-decoration: underline">点击查看产品价格</a></td>';
                                 // html += '<td>' + dataList[i].createTimeStr + '</td>';
                                 html += '<td>'
