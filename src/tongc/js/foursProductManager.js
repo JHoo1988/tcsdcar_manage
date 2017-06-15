@@ -289,9 +289,31 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             return num;
         },
         checkForm: function (flag) {
-            var name = $('.layui-layer-content [name=name]').val();
-            if (!name) {
-                layer.msg('产品名称不能为空！', { time: 1200 });
+            var brandid = $('.layui-layer-content [name=brandsId]').val();
+            if (!brandid || brandid == -1) {
+                layer.msg('所属产品类别不能为空！', { time: 1200 });
+                return false;
+            }
+            var twelveCyclePrice = $('.layui-layer-content [name=twelveCyclePrice]').val();
+            if (!twelveCyclePrice) {
+                layer.msg('12期价格不能为空！', { time: 1200 });
+                return false;
+            }
+
+            var twentyFourCyclePrice = $('.layui-layer-content [name=twentyFourCyclePrice]').val();
+            if (!twentyFourCyclePrice) {
+                layer.msg('24期价格不能为空！', { time: 1200 });
+                return false;
+            }
+
+            var thirtySixCyclePrice = $('.layui-layer-content [name=thirtySixCyclePrice]').val();
+            if (!thirtySixCyclePrice) {
+                layer.msg('36期价格不能为空！', { time: 1200 });
+                return false;
+            }
+            var namef = $('.layui-layer-content [name=imagefile]').val();
+            if (!namef && flag != 1) {
+                layer.msg('图片不能为空！', { time: 1200 });
                 return false;
             }
             return true;
