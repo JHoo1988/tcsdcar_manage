@@ -120,6 +120,12 @@ layui.define(['jquery', 'layer', 'form'], function (exports) {
             saveBrandsProduct: baseUrl + baseModifyUrl + 'brandsProduct/saveBrandsProduct',
             // 删除产品
             deleteBrandsProduct: baseUrl + baseModifyUrl + 'brandsProduct/deleteBrandsProduct',
+            // 卡券库存列表
+            findAllCoupon: baseUrl + baseModifyUrl + 'coupon/findAllCoupon',
+            // PC获取卡券列表（已分配，已使用）
+            findAllCouponConsumRecord: baseUrl + baseModifyUrl + 'coupon/findAllCouponConsumRecord',
+            // 卡券生成接口
+            generateCouponBatch: baseUrl + baseModifyUrl + 'coupon/generateCouponBatch',
         };
         this.address = {};
         this.countdown = 60;
