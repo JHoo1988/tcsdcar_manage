@@ -289,7 +289,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                                 }
                                 html += '<td >' + dataList[i].startTimeStr + '</td>';
                                 html += '<td>' + dataList[i].expireTimeStr + '</td>';
-                                html += '<td>' + dataList[i].couponDesc + '</td>';
+                                html += '<td data-ct="' + dataList[i].couponDesc + '">' + dataList[i].couponDesc + '</td>';
                                 html += '</tr>';
                             }
                             $("#dg_list tbody").empty().append(html);
