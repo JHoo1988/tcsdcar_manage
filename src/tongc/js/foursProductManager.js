@@ -10,6 +10,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
         upmobui = layui.upmobui;
     var carId = '';
     var carName = '';
+    var carBrandsId = '';
 
     var Page = function () {
         this.layer_index = null;
@@ -38,6 +39,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             var contentarry = content.split(',');
             carId = contentarry[0];
             carName = contentarry[1];
+            carBrandsId = contentarry[2];
             if(carName){
                 $('.top_title').text(carName+'产品管理');
             }
@@ -142,7 +144,6 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 form.render();
                 $("#pop_up").remove();
                 _self.addProductAction(1);
-
             });
         },
         getParam: function () {
@@ -174,7 +175,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
 
                                 html += '<tr>';
                                 html += '<td>' + (i - 0 + 1) + '</td>';
-                                html += '<td>' + dataList[i].name + '</td>';
+                                html += '<td>' + dataList[i].productName + '</td>';
                                 html += '<td>12期：￥' + dataList[i].twelveCyclePrice + ' / 24期：￥' + dataList[i].twentyFourCyclePrice + ' / 36期：￥' + dataList[i].twentyFourCyclePrice + '</td>';
                                 html += '<td>'
                                     + '<a href="javascript:void(0);" data-name="' + dataList[i].name + '" data-id="' + dataList[i].id + '" class="layui-btn layui-btn-mini btn-edit">编辑</a>'
@@ -233,14 +234,17 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
         },
         addProductAction: function (flag) {
             var _self = this;
-
             $('.js-btn-update').bind('click', function () {
                 if (_self.checkForm(flag)) {
+                    var productName = $(".brands").find("option:selected").text();
                     _self.layer_index = layer.load(2);
                     var formData = new FormData($("#uploadForm")[0]);
                     formData.append("token",$.cookie('userToken'));
+                    formData.append("brands",carBrandsId);
+                    formData.append("productModelId",carId);
+                    formData.append("productName",productName);
                     $.ajax({
-                        url: global.url.saveProductTypeCategory,
+                        url: global.url.addProduct,
                         type: 'POST',
                         dataType: 'json',
                         data: formData,
@@ -289,8 +293,8 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             return num;
         },
         checkForm: function (flag) {
-            var brandid = $('.layui-layer-content [name=brandsId]').val();
-            if (!brandid || brandid == -1) {
+            var productType = $('.layui-layer-content [name=productType]').val();
+            if (!productType || productType == -1) {
                 layer.msg('所属产品类别不能为空！', { time: 1200 });
                 return false;
             }

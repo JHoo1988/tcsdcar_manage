@@ -115,9 +115,10 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             $(document).on('click', '.btn-edit', function () {
 
                 var productname = $(this).data('productname');
-                var brandsname = $(this).data('brands');
+                var brandsname = $(this).data('brandsname');
+                var brands = $(this).data('brands');
                 var id = $(this).data('id');
-                $('#myIframe', parent.document).attr('src', 'foursProductManager.html#'+id+','+brandsname+productname);
+                $('#myIframe', parent.document).attr('src', 'foursProductManager.html#'+id+','+brandsname+productname+','+brands);
 
                 return;
                 var _this = $(this);
@@ -237,7 +238,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                                 html += '<td><a data-id="' + dataList[i].id + '" data-name="' + dataList[i].brandsName + dataList[i].name + '" class="show_price" href="javascript:;" style="color: #00bbfe;text-decoration: underline">点击查看产品价格</a></td>';
                                 // html += '<td>' + dataList[i].createTimeStr + '</td>';
                                 html += '<td>'
-                                    + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '"  data-brands="' + dataList[i].brandsName + '" data-productname="' + dataList[i].name + '" class="layui-btn layui-btn-mini btn-edit">编辑产品</a>'
+                                    + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '"  data-brandsname="' + dataList[i].brandsName + '" data-brands="' + dataList[i].brandsId + '" data-productname="' + dataList[i].name + '" class="layui-btn layui-btn-mini btn-edit">编辑产品</a>'
                                     // + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" class="layui-btn layui-btn-mini layui-btn-danger btn-del">删除产品</a>'
                                     + '</td>';
                                 html += '</tr>';
@@ -258,91 +259,6 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
 
                                     _self.pageIndex = pageIndex;
                                     _self.getData(par);
-                                    return false;
-                                }
-                            });
-                        } else {
-                            $("#dg_list tbody").empty();
-                            layer.msg("暂无汽车型号", { time: 1200 });
-                        }
-                        if (typeof successCallback === "function") {
-                            successCallback(data.code);
-                        }
-                        setTimeout(function () {
-                            $('#myIframe', parent.document).height($('#myIframe', parent.document).contents().find('body').height());
-                        }, 100)
-                    } else {
-                        $("#dg_list tbody").empty();
-                        $('.pager-footer').hide();
-                        setTimeout(function () {
-                            $('#myIframe', parent.document).height($('#myIframe', parent.document).contents().find('body').height());
-                            layer.msg("没有相关数据", { time: 1200 });
-                        }, 100)
-                        if (data.code == 510) {
-                            layer.msg('登录已失效，请重新登录...', { time: 1200 }, function () {
-                                window.parent.location.href = 'login.html';
-                            });
-                        }
-                    }
-                },
-                error: function (e) {
-                    _self.hideLoadin();
-                    layer.msg('获取数据失败，请稍后重试！', { time: 500 });
-                }
-            })
-        },
-        getDataM: function (par) {
-            var _self = this;
-            par.pageIndex = _self.pageIndex;
-            par.pageSize = _self.pageSize;
-            $.ajax({
-                url: global.url.findProductListm,
-                type: 'GET',
-                dataType: 'json',
-                data: par,
-                beforeSend: function () {
-                    _self.showLoadin();
-                },
-                success: function (data) {
-                    _self.hideLoadin();
-                    if (undefined != data.data && null != data.data && data.code == 200) {
-                        var dataList = data.data.content;
-                        var html = "";
-                        var len = dataList.length;
-                        if (len > 0) {
-                            for (var i = 0; i < len; i++) {
-
-                                html += '<tr>';
-                                html += '<td>' + (i - 0 + 1) + '</td>';
-                                // html += '<td><img style="width: 30px;" src="../../../images/product/' + dataList[i].id + '.png"></td>';
-                                // html += '<td><img style="height: 30px;" src="' + dataList[i].imageUrl + '"></td>';
-                                html += '<td>' + dataList[i].brandsName + dataList[i].name + '</td>';
-                                // html += '<td>' + dataList[i].bigCategoryName + dataList[i].smallCategoryName + '</td>';
-                                html += '<td><a data-id="' + dataList[i].id + '" data-name="' + dataList[i].brandsName + dataList[i].name + '" class="show_price" href="javascript:;" style="color: #00bbfe;text-decoration: underline">点击查看产品价格</a></td>';
-                                // html += '<td>' + dataList[i].createTimeStr + '</td>';
-                                // html += '<td >' + dataList[i].productDesc + '</td>';
-                                html += '<td>'
-                                    + '<a href="javascript:void(0);" data-brands="' + dataList[i].brandsName + '" data-id="' + dataList[i].id + '" data-productname="' + dataList[i].productName + '" class="layui-btn layui-btn-mini btn-edit">编辑产品</a>'
-                                    // + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" class="layui-btn layui-btn-mini layui-btn-danger btn-del">删除产品</a>'
-                                    + '</td>';
-                                html += '</tr>';
-                            }
-                            $("#dg_list tbody").empty().append(html);
-
-
-                            _self.totalSize = data.data.totalSize;
-                            _self.totalPage = Math.ceil(_self.totalSize / _self.pageSize);
-                            $('.pager-footer').show();
-                            simplePager.setup({
-                                item: '.simple-pager-wrapper .simple-pager',
-                                data: data.data,
-                                pageIndex: _self.pageIndex,
-                                pageSize: _self.pageSize,
-                                showPageCount: 5,
-                                cbclick: function (pageIndex) {
-
-                                    _self.pageIndex = pageIndex;
-                                    _self.getDataM(par);
                                     return false;
                                 }
                             });

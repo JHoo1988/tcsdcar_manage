@@ -95,13 +95,11 @@
             <div class="add_edit_dlg layui-form">
                 <form id="uploadForm" enctype="multipart/form-data">
                     <input type="text" class="layui-input" name="id" style="display: none;">
-                    <input type="text" name="brands" style="display: none;">
-                    <input type="text" name="productModelId" style="display: none;">
                     <div class="layui-form-item">
                         <label class="layui-form-label" style="width: 90px;">所属类别</label>
 
                         <div class="layui-input-inline" style="width: 500px;">
-                            <select class="brands" name="brandsId" lay-filter="brands">
+                            <select class="brands" name="productType" lay-filter="brands">
                                 <option class="brands-option" value="-1">选择产品类别</option>
                             </select>
                         </div>
@@ -109,7 +107,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label" style="width: 90px;">12期价格</label>
                         <div class="layui-input-block" style="width: 500px;margin-left: 120px;">
-                            <input type="text" class="layui-input" autocomplete="off"
+                            <input type="number" class="layui-input" autocomplete="off"
                                    name="twelveCyclePrice" placeholder="12期价格"
                                    maxlength="10">
                         </div>
@@ -117,7 +115,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label" style="width: 90px;">24期价格</label>
                         <div class="layui-input-block" style="width: 500px;margin-left: 120px;">
-                            <input type="text" class="layui-input" autocomplete="off"
+                            <input type="number" class="layui-input" autocomplete="off"
                                    name="twentyFourCyclePrice" placeholder="24期价格"
                                    maxlength="10">
                         </div>
@@ -125,7 +123,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label" style="width: 90px;">36期价格</label>
                         <div class="layui-input-block" style="width: 500px;margin-left: 120px;">
-                            <input type="text" class="layui-input" autocomplete="off"
+                            <input type="number" class="layui-input" autocomplete="off"
                                    name="thirtySixCyclePrice" placeholder="36期价格"
                                    maxlength="10">
                         </div>
@@ -133,7 +131,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label" style="width: 90px;">描述信息</label>
                         <div class="layui-input-block" style="width: 500px;margin-left: 120px;">
-                            <input type="text" class="layui-input" name="productDesc"
+                            <input type="text" class="layui-input" name="productDesc" autocomplete="off"
                                    placeholder="产品描述信息（选填，限30字）"
                                    maxlength="30">
                         </div>
