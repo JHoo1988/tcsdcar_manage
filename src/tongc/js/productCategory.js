@@ -167,7 +167,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                                 // html += '<td>' + dataList[i].createTimeStr + '</td>';
                                 html += '<td>'
                                     + '<a href="javascript:void(0);" data-name="' + dataList[i].name + '" data-id="' + dataList[i].id + '" class="layui-btn layui-btn-mini btn-edit">编辑</a>'
-                                    + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" class="layui-btn layui-btn-mini layui-btn-danger btn-del">删除</a>'
+                                    // + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" class="layui-btn layui-btn-mini layui-btn-danger btn-del">删除</a>'
                                     + '</td>';
                                 html += '</tr>';
                             }
