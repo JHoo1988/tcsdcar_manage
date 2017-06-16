@@ -46,7 +46,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 // if (_self.par.brands && _self.par.brands != -1) {
                 //     _self.getDataM(_self.par);
                 // } else {
-                    _self.getData(_self.par);
+                _self.getData(_self.par);
                 // }
             });
 
@@ -72,21 +72,21 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 }
             })
 
-            var edit_win = $("#pop_up");
-            $("#btn_add").bind('click', function (event) {
-                var content = edit_win.html();
-                _self.layer_open_index = layer.open({
-                    type: 1,
-                    title: '新增汽车型号',
-                    area: ['700px', 'auto'], //宽高
-                    fixed: false, //不固定
-                    maxmin: true,
-                    content: content
-                });
-                form.render();
-                $("#pop_up").remove();
-                _self.addProductAction(0);
-            });
+            // var edit_win = $("#pop_up");
+            // $("#btn_add").bind('click', function (event) {
+            //     var content = edit_win.html();
+            //     _self.layer_open_index = layer.open({
+            //         type: 1,
+            //         title: '新增汽车型号',
+            //         area: ['700px', 'auto'], //宽高
+            //         fixed: false, //不固定
+            //         maxmin: true,
+            //         content: content
+            //     });
+            //     form.render();
+            //     $("#pop_up").remove();
+            //     _self.addProductAction(0);
+            // });
 
             // 删除项
             $(document).on('click', '.btn-del', function (event) {
@@ -118,88 +118,121 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 var brandsname = $(this).data('brandsname');
                 var brands = $(this).data('brands');
                 var id = $(this).data('id');
-                $('#myIframe', parent.document).attr('src', 'foursProductManager.html#'+id+','+brandsname+productname+','+brands);
+                $('#myIframe', parent.document).attr('src', 'foursProductManager.html#' + id + ',' + brandsname + productname + ',' + brands);
 
-                return;
-                var _this = $(this);
-                var id = _this.data('id');
-                _self.getAllProducts(_self.par, id, function (data) {
-                    var productName = _this.data('productname');
-                    var brands = _this.data('brands');
-                    var content = edit_win.html();
-                    _self.layer_open_index = layer.open({
-                        type: 1,
-                        title: '编辑'+brands+productName+'的所属产品',
-                        area: ['700px', 'auto'], //宽高
-                        fixed: false, //不固定
-                        maxmin: true,
-                        content: content
-                    });
-                    // $('.layui-layer-content [name=name]').val(productName);
-                    // $('.layui-layer-content .carTypeName [name=id]').val(id);
-                    // $('.layui-layer-content [name=brandsId]').val(brands);
-                    // $('.layui-layer-content [name=brands]').val(brands);
-                    $('.layui-layer-content [name=productModelId]').val(id);
-
-                    if (data.totalSize > 0) {
-                        for (var i = 0; i < data.totalSize; i++) {
-                            var product = data.content[i];
-                            $('.layui-layer-content #productForm' + i + ' [name=id]').val(product.id);
-                            $('.layui-layer-content #productForm' + i + ' [name=twelveCyclePrice]').val(product.twelveCyclePrice);
-                            $('.layui-layer-content #productForm' + i + ' [name=twentyFourCyclePrice]').val(product.twentyFourCyclePrice);
-                            $('.layui-layer-content #productForm' + i + ' [name=thirtySixCyclePrice]').val(product.thirtySixCyclePrice);
-                            $('.layui-layer-content #productForm' + i + ' [name=productDesc]').val(product.productDesc);
-                        }
-                    }
-                    form.render();
-                    $("#pop_up").remove();
-                    _self.addProductAction(1);
-                });
+                // return;
+                // var _this = $(this);
+                // var id = _this.data('id');
+                // _self.getAllProducts(_self.par, id, function (data) {
+                //     var productName = _this.data('productname');
+                //     var brands = _this.data('brands');
+                //     var content = edit_win.html();
+                //     _self.layer_open_index = layer.open({
+                //         type: 1,
+                //         title: '编辑' + brands + productName + '的所属产品',
+                //         area: ['700px', 'auto'], //宽高
+                //         fixed: false, //不固定
+                //         maxmin: true,
+                //         content: content
+                //     });
+                //     // $('.layui-layer-content [name=name]').val(productName);
+                //     // $('.layui-layer-content .carTypeName [name=id]').val(id);
+                //     // $('.layui-layer-content [name=brandsId]').val(brands);
+                //     // $('.layui-layer-content [name=brands]').val(brands);
+                //     $('.layui-layer-content [name=productModelId]').val(id);
+                //
+                //     if (data.totalSize > 0) {
+                //         for (var i = 0; i < data.totalSize; i++) {
+                //             var product = data.content[i];
+                //             $('.layui-layer-content #productForm' + i + ' [name=id]').val(product.id);
+                //             $('.layui-layer-content #productForm' + i + ' [name=twelveCyclePrice]').val(product.twelveCyclePrice);
+                //             $('.layui-layer-content #productForm' + i + ' [name=twentyFourCyclePrice]').val(product.twentyFourCyclePrice);
+                //             $('.layui-layer-content #productForm' + i + ' [name=thirtySixCyclePrice]').val(product.thirtySixCyclePrice);
+                //             $('.layui-layer-content #productForm' + i + ' [name=productDesc]').val(product.productDesc);
+                //         }
+                //     }
+                //     form.render();
+                //     $("#pop_up").remove();
+                //     _self.addProductAction(1);
+                // });
             });
             // 显示价格
             $(document).on('click', '.show_price', function () {
                 var id = $(this).data('id');
                 var name = $(this).data('name');
                 _self.getAllProducts(_self.par, id, function (data) {
-                    var content = $("#show_product_price").html();
-                    _self.layer_open_index = layer.open({
-                        type: 1,
-                        title: name + '的产品价格',
-                        area: ['700px', 'auto'], //宽高
-                        fixed: false, //不固定
-                        maxmin: true,
-                        content: content
-                    });
                     if (data.totalSize > 0) {
+                        var html = '<div class="layui-tab layui-tab-card" style="margin: 0 20px;"><ul class="layui-tab-title">';
+
                         for (var i = 0; i < data.totalSize; i++) {
                             var product = data.content[i];
-                            $('.layui-layer-content #product' + i + ' [name=id]').val(product.id);
-                            $('.layui-layer-content #product' + i + ' [name=twelveCyclePrice]').val(product.twelveCyclePrice);
-                            $('.layui-layer-content #product' + i + ' [name=twentyFourCyclePrice]').val(product.twentyFourCyclePrice);
-                            $('.layui-layer-content #product' + i + ' [name=thirtySixCyclePrice]').val(product.thirtySixCyclePrice);
-                            $('.layui-layer-content #product' + i + ' [name=productDesc]').val(product.productDesc);
+                            if (i == 0) {
+                                html += '<li class="layui-this">' + product.productName + '</li>'
+                            } else {
+                                html += '<li>' + product.productName + '</li>'
+                            }
                         }
+                        html += '</ul><div class="layui-tab-content" style="height: 200px;">';
+                        for (var i = 0; i < data.totalSize; i++) {
+                            var product = data.content[i];
+                            if (i == 0) {
+                                html += ' <div class="layui-tab-item layui-show">';
+                            } else {
+                                html += ' <div class="layui-tab-item">';
+                            }
+                            html += '<div class="layui-form-item">' +
+                                '   <label class="layui-form-label" style="width: 90px;">12期价格</label>' +
+                                '<div class="layui-input-block" style="width: 500px;margin-left: 120px;">' +
+                                '   <input type="text" class="layui-input" value="' + product.twelveCyclePrice + '" name="twelveCyclePrice" placeholder="暂无汽车膜质保服务12期价格" readonly="true">' +
+                                '   </div>' +
+                                '   </div>' +
+                                '<div class="layui-form-item">' +
+                                '   <label class="layui-form-label" style="width: 90px;">24期价格</label>' +
+                                '<div class="layui-input-block" style="width: 500px;margin-left: 120px;">' +
+                                '   <input type="text" class="layui-input" value="' + product.twentyFourCyclePrice + '" name="twentyFourCyclePrice" placeholder="暂无汽车膜质保服务24期价格" readonly="true">' +
+                                '</div>' +
+                                '</div>' +
+                                '<div class="layui-form-item">' +
+                                '<label class="layui-form-label" style="width: 90px;">36期价格</label>' +
+                                '<div class="layui-input-block" style="width: 500px;margin-left: 120px;">' +
+                                '<input type="text" class="layui-input" value="' + product.thirtySixCyclePrice + '" name="thirtySixCyclePrice" placeholder="暂无汽车膜质保服务36期价格" readonly="true">' +
+                                '</div>' +
+                                '</div>' +
+                                '<div class="layui-form-item">' +
+                                '<label class="layui-form-label" style="width: 90px;">描述信息</label>' +
+                                '<div class="layui-input-block" style="width: 500px;margin-left: 120px;">' +
+                                '<input type="text" class="layui-input" value="' + product.productDesc + '" name="productDesc" placeholder="暂无汽车膜质保服务产品描述信息" readonly="true">' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>'
+                        }
+                        html += '</div> </div>';
+                        $("#show_product_price .up-popup").empty().append(html);
+
+                        var content = $("#show_product_price").html();
+                        _self.layer_open_index = layer.open({
+                            type: 1,
+                            title: name + '的产品价格',
+                            area: ['700px', 'auto'], //宽高
+                            fixed: false, //不固定
+                            maxmin: true,
+                            content: content
+                        });
+                    } else {
+                        $("#show_product_price .up-popup").empty();
+                        layer.open({
+                            title: '提示'
+                            , content: '该车型暂无产品'
+                        });
                     }
                 });
+
             });
             // 选择大类后，调用查询小类接口
             form.on('select(bigCategory)', function () {
                 var selectBigCategory = $('.bigCategory option:selected').val();
                 _self.getSmallCategory(_self.par, selectBigCategory);
             });
-            // 点击图片填充名字
-            // $(document).on('change', '.layui-upload-file', function () {
-            //     var f = document.getElementsByClassName('layui-upload-file');
-            //     var filename = f.imagefile.files[0].name;
-            //     filename = filename.substring(0,filename.indexOf('.'));
-            //     // var fileArray= filename.split('-');
-            //     $("input[type='text'][name='productName']").val(filename);
-            //     // $("input[type='text'][name='productName']").val(fileArray[0]);
-            //     // $("input[type='text'][name='twelveCyclePrice']").val(fileArray[1]);
-            //     // $("input[type='text'][name='twentyFourCyclePrice']").val(fileArray[2]);
-            //     // $("input[type='text'][name='thirtySixCyclePrice']").val(fileArray[3]);
-            //     // alert(filename) ;
-            // });
         },
         getParam: function () {
             var par = {};
@@ -235,7 +268,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                                 html += '<td>' + (i - 0 + 1) + '</td>';
                                 // html += '<td><img style="width: 30px;" src="../../../images/product/' + dataList[i].id + '.png"></td>';
                                 html += '<td>' + dataList[i].brandsName + dataList[i].name + '</td>';
-                                html += '<td>' + dataList[i].bigCategoryName  + dataList[i].smallCategoryName + '</td>';
+                                html += '<td>' + dataList[i].bigCategoryName + dataList[i].smallCategoryName + '</td>';
                                 html += '<td><a data-id="' + dataList[i].id + '" data-name="' + dataList[i].brandsName + dataList[i].name + '" class="show_price" href="javascript:;" style="color: #00bbfe;text-decoration: underline">点击查看产品价格</a></td>';
                                 // html += '<td>' + dataList[i].createTimeStr + '</td>';
                                 html += '<td>'
@@ -293,106 +326,106 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 }
             })
         },
-        addProductAction: function (flag) {
-            var _self = this;
-            $('.js-btn-update').bind('click', function () {
-                if (_self.checkForm(flag)) {
-                    var formData = new FormData($("#uploadForm")[0]);
-                    formData.append("token", $.cookie('userToken'));
-                    formData.append("statu", '0');//中型
-                    $.ajax({
-                        url: global.url.saveProductModel,
-                        type: 'POST',
-                        dataType: 'json',
-                        data: formData,
-                        contentType: false,
-                        processData: false,
-                        beforeSend: function () {
-                            _self.showLoadin();
-                            $('.js-btn-update')[0].disabled = true;
-                        },
-                        success: function (data) {
-                            if (undefined != data && null != data && data.code == 200) {
-                                var brands = $('.layui-layer-content [name=brandsId]').val();
-                                $('.layui-layer-content [name=brands]').val(brands);
-                                _self.addProducts(data.data);
-                            } else {
-                                _self.hideLoadin();
-                                $('.js-btn-update')[0].disabled = false;
-                                if (data.code == 510) {
-                                    layer.msg('登录已失效，请重新登录...', { time: 1200 }, function () {
-                                        window.parent.location.href = 'login.html';
-                                    });
-                                } else {
-                                    layer.msg('操作失败!', { time: 1200 });
-                                }
-                            }
-                        },
-                        error: function (e) {
-                            $('.js-btn-update')[0].disabled = false;
-                            _self.hideLoadin();
-                            layer.msg('系统错误，请稍后重试！', { time: 500 });
-                        }
-                    })
-                }
-            });
-        },
-        addProducts: function (data) {
-            var _self = this;
-            $('.layui-layer-content #productForm0 [name=productModelId]').val(data.id);
-            $('.layui-layer-content #productForm1 [name=productModelId]').val(data.id);
-
-            $('.add-commit form').each(function (index, element) {
-                var formData = new FormData($("#productForm" + index)[0]);
-                formData.append("token", $.cookie('userToken'));
-                formData.append("statu", '0');
-                if (index == 0) {
-                    formData.append("productName", '汽车膜产品');
-                } else if (index == 1) {
-                    formData.append("productName", '玻璃险产品');
-                }
-                $.ajax({
-                    url: global.url.addProduct,
-                    type: 'POST',
-                    dataType: 'json',
-                    data: formData,
-                    contentType: false,
-                    processData: false,
-                    beforeSend: function () {
-                        $('.js-btn-update')[0].disabled = true;
-                    },
-                    success: function (data) {
-                        if (undefined != data && null != data && data.code == 200) {
-                            if (index >= 1) {
-                                // _self.hideLoadin();
-                                if (_self.par.brands && _self.par.brands != -1) {
-                                    _self.getDataM(_self.par);
-                                } else {
-                                    _self.getData(_self.par);
-                                }
-                                layer.close(_self.layer_open_index);
-                            }
-                        } else {
-                            _self.hideLoadin();
-                            $('.js-btn-update')[0].disabled = false;
-                            if (data.code == 510) {
-                                layer.msg('登录已失效，请重新登录...', { time: 1200 }, function () {
-                                    window.parent.location.href = 'login.html';
-                                });
-                            } else {
-                                layer.msg('操作失败!', { time: 1200 });
-                            }
-                        }
-                    },
-                    error: function (e) {
-                        $('.js-btn-update')[0].disabled = false;
-                        _self.hideLoadin();
-                        layer.msg('系统错误，请稍后重试！', { time: 500 });
-                    }
-                })
-            });
-
-        },
+        // addProductAction: function (flag) {
+        //     var _self = this;
+        //     $('.js-btn-update').bind('click', function () {
+        //         if (_self.checkForm(flag)) {
+        //             var formData = new FormData($("#uploadForm")[0]);
+        //             formData.append("token", $.cookie('userToken'));
+        //             formData.append("statu", '0');//中型
+        //             $.ajax({
+        //                 url: global.url.saveProductModel,
+        //                 type: 'POST',
+        //                 dataType: 'json',
+        //                 data: formData,
+        //                 contentType: false,
+        //                 processData: false,
+        //                 beforeSend: function () {
+        //                     _self.showLoadin();
+        //                     $('.js-btn-update')[0].disabled = true;
+        //                 },
+        //                 success: function (data) {
+        //                     if (undefined != data && null != data && data.code == 200) {
+        //                         var brands = $('.layui-layer-content [name=brandsId]').val();
+        //                         $('.layui-layer-content [name=brands]').val(brands);
+        //                         _self.addProducts(data.data);
+        //                     } else {
+        //                         _self.hideLoadin();
+        //                         $('.js-btn-update')[0].disabled = false;
+        //                         if (data.code == 510) {
+        //                             layer.msg('登录已失效，请重新登录...', { time: 1200 }, function () {
+        //                                 window.parent.location.href = 'login.html';
+        //                             });
+        //                         } else {
+        //                             layer.msg('操作失败!', { time: 1200 });
+        //                         }
+        //                     }
+        //                 },
+        //                 error: function (e) {
+        //                     $('.js-btn-update')[0].disabled = false;
+        //                     _self.hideLoadin();
+        //                     layer.msg('系统错误，请稍后重试！', { time: 500 });
+        //                 }
+        //             })
+        //         }
+        //     });
+        // },
+        // addProducts: function (data) {
+        //     var _self = this;
+        //     $('.layui-layer-content #productForm0 [name=productModelId]').val(data.id);
+        //     $('.layui-layer-content #productForm1 [name=productModelId]').val(data.id);
+        //
+        //     $('.add-commit form').each(function (index, element) {
+        //         var formData = new FormData($("#productForm" + index)[0]);
+        //         formData.append("token", $.cookie('userToken'));
+        //         formData.append("statu", '0');
+        //         if (index == 0) {
+        //             formData.append("productName", '汽车膜产品');
+        //         } else if (index == 1) {
+        //             formData.append("productName", '玻璃险产品');
+        //         }
+        //         $.ajax({
+        //             url: global.url.addProduct,
+        //             type: 'POST',
+        //             dataType: 'json',
+        //             data: formData,
+        //             contentType: false,
+        //             processData: false,
+        //             beforeSend: function () {
+        //                 $('.js-btn-update')[0].disabled = true;
+        //             },
+        //             success: function (data) {
+        //                 if (undefined != data && null != data && data.code == 200) {
+        //                     if (index >= 1) {
+        //                         // _self.hideLoadin();
+        //                         if (_self.par.brands && _self.par.brands != -1) {
+        //                             _self.getDataM(_self.par);
+        //                         } else {
+        //                             _self.getData(_self.par);
+        //                         }
+        //                         layer.close(_self.layer_open_index);
+        //                     }
+        //                 } else {
+        //                     _self.hideLoadin();
+        //                     $('.js-btn-update')[0].disabled = false;
+        //                     if (data.code == 510) {
+        //                         layer.msg('登录已失效，请重新登录...', { time: 1200 }, function () {
+        //                             window.parent.location.href = 'login.html';
+        //                         });
+        //                     } else {
+        //                         layer.msg('操作失败!', { time: 1200 });
+        //                     }
+        //                 }
+        //             },
+        //             error: function (e) {
+        //                 $('.js-btn-update')[0].disabled = false;
+        //                 _self.hideLoadin();
+        //                 layer.msg('系统错误，请稍后重试！', { time: 500 });
+        //             }
+        //         })
+        //     });
+        //
+        // },
         toRoundOff: function (num) {
             if (num.toString().indexOf('.') > -1) {
                 num = Number(num.toString().substring(0, num.toString().indexOf('.') + 3));
