@@ -147,6 +147,7 @@ layui.define(['jquery', 'layer', 'cookie', 'global'], function (exports) {
                 $('.product-category').css('display','block');
                 $('.shican').css('display','block');
                 $('.fours').css('display','block');
+                $('.coupon').css('display','block');
                 // $('.category').css('display','block');
             }
             // (function () {
