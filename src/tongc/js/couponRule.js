@@ -34,9 +34,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             _self.getData(par);
             _self.bindEvent();
             //加载产品类别
-            // _self.getBrand(par);
-            // global.getAllProvince();
-            _self.getProductCategory(par);
+            _self.getBigCategory(par);
         },
 
         bindEvent: function () {
@@ -83,8 +81,8 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 var content = edit_win.html();
                 _self.layer_open_index = layer.open({
                     type: 1,
-                    title: '新增产品品牌',
-                    area: ['700px', 'auto'], //宽高
+                    title: '新增卡券赠送规则',
+                    area: ['700px', '550px'], //宽高
                     fixed: false, //不固定
                     maxmin: true,
                     content: content
@@ -100,10 +98,10 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 var id = $(this).data('id');
                 var par = _self.getParam();
                 par.ids = id;
-                layer.confirm('是否删这个产品品牌，该产品品牌下的产品也将全部删除?', {
+                layer.confirm('是否删这个卡券赠送规则?', {
                     btn: ['是', '否']
                 }, function () {
-                    $.post(global.url.deleteProductBrandsCategory, par, function (data, textStatus, xhr) {
+                    $.post(global.url.deleteCouponRole, par, function (data, textStatus, xhr) {
                         if (data.code == 200) {
                             layer.msg('删除成功！', { time: 500 }, function () {
                                 _self.getData(par);
@@ -122,16 +120,12 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 var id = $(this).data('id');
                 var name = $(this).data('name');
                 var parent = $(this).data('parent');
-                // var par = _self.getParam();
-                // par.id = id;
-                // par.name = name;
-                // par.parent = parent;
 
                 var content = edit_win.html();
                 _self.layer_open_index = layer.open({
                     type: 1,
-                    title: '编辑产品品牌',
-                    area: ['700px', 'auto'], //宽高
+                    title: '编辑卡券赠送规则',
+                    area: ['700px', '550px'], //宽高
                     fixed: false, //不固定
                     maxmin: true,
                     content: content
@@ -144,6 +138,12 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 _self.addProductAction(1);
 
             });
+            // 选择大类后，调用查询小类接口
+            form.on('select(bigCategory)', function () {
+                var par = _self.getParam();
+                var selectBigCategory = $('.bigCategory option:selected').val();
+                _self.getSmallCategory(par, selectBigCategory);
+            });
         },
         getParam: function () {
             var par = {};
@@ -154,9 +154,8 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             var _self = this;
             par.pageIndex = _self.pageIndex;
             par.pageSize = 14;
-            par.level=1;
             $.ajax({
-                url: global.url.findAllProductBrandsCategory,
+                url: global.url.findAllCouponRole,
                 type: 'GET',
                 dataType: 'json',
                 data: par,
@@ -175,7 +174,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                                 html += '<tr>';
                                 html += '<td>' + (i - 0 + 1) + '</td>';
                                 html += '<td data-ct="' + dataList[i].name + '">' + dataList[i].name + '</td>';
-                                // html += '<td data-ct="' + dataList[i].parentName +'">' + dataList[i].parentName + '</td>';
+                                html += '<td data-ct="' + dataList[i].parentName +'">' + dataList[i].parentName + '</td>';
                                 // html += '<td>' + dataList[i].createTime + '</td>';
                                 html += '<td>'
                                     + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" data-parent="' + dataList[i].parent + '" data-name="' + dataList[i].name + '" class="layui-btn layui-btn-mini btn-edit">编辑</a>'
@@ -238,10 +237,9 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 if (_self.checkForm(flag)) {
                     _self.layer_index = layer.load(2);
                     var formData = new FormData($("#uploadForm")[0]);
-                    formData.append("level",1);
                     formData.append("token",$.cookie('userToken'));
                     $.ajax({
-                        url: global.url.saveProductBrandsCategory,
+                        url: global.url.saveCouponRole,
                         type: 'POST',
                         dataType: 'json',
                         data: formData,
@@ -282,26 +280,96 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 }
             });
         },
-        getProductCategory: function (par) {
+        getBigCategory: function (par) {
             var _self = this;
-            par.pageIndex = _self.pageIndex;
-            par.pageSize = 99999;
-            par.level=1;
+            par.pageIndex = 1;
+            par.pageSize = 999;
+            par.level = 1;
             $.ajax({
-                url: global.url.findAllProductTypeCategory,
+                url: global.url.findAllProductCategory,
                 type: 'GET',
                 dataType: 'json',
                 data: par,
-                success: function (result) {
-                    var sb = new StringBuffer();
-                    $.each(result.data.content, function (i, val) {
-                        sb.append("<option value='" + val.id + "'>" + val.name + "</option>");
-                    });
-                    var op = $(".choosePro").clone();
-                    $(".province").empty().append(op).append(sb.toString());
-                    form.render('select');
+                success: function (data) {
+                    if (undefined != data.data && null != data.data && data.code == 200) {
+                        var dataList = data.data.content;
+                        var len = dataList.length;
+                        if (len > 0) {
+                            var sb = new _self.StringBuffer();
+                            for (var i = 0; i < len; i++) {
+                                sb.append("<option value='" + dataList[i].id + "'>" + dataList[i].name + "</option>");
+                            }
+                            var op = "<option class='bigCategory-option' value='-1'>请选择车型类别一</option>";
+                            $(".bigCategory").empty().append(op).append(sb.toString());
+                            form.render('select');
+                        }
+
+                    }
                 }
             })
+        },
+        getSmallCategory: function (par, selectBigCategory) {
+            var _self = this;
+            par.pageIndex = 1;
+            par.pageSize = 999;
+            par.level = 2;
+            par.parent = selectBigCategory;
+            $.ajax({
+                url: global.url.findAllProductCategory,
+                type: 'GET',
+                dataType: 'json',
+                data: par,
+                success: function (data) {
+                    if (undefined != data.data && null != data.data && data.code == 200) {
+                        var dataList = data.data.content;
+                        var len = dataList.length;
+                        if (len > 0) {
+                            var sb = new _self.StringBuffer();
+                            for (var i = 0; i < len; i++) {
+                                sb.append("<option value='" + dataList[i].id + "'>" + dataList[i].name + "</option>");
+                            }
+                            var op = "<option class='categroyId-option' value='-1'>请选择车型类别二</option>";
+                            $(".productCategroyId").empty().append(op).append(sb.toString());
+                            form.render('select');
+                        }
+
+                    }
+                }
+            })
+        },
+        StringBuffer: function (str) {
+            var arr = [];
+            str = str || "";
+            var size = 0;  // 存放数组大小
+            arr.push(str);
+            // 追加字符串
+            this.append = function (str1) {
+                arr.push(str1);
+                return this;
+            };
+            // 返回字符串
+            this.toString = function () {
+                return arr.join("");
+            };
+            // 清空
+            this.clear = function (key) {
+                size = 0;
+                arr = [];
+            }
+            // 返回数组大小
+            this.size = function () {
+                return size;
+            }
+            // 返回数组
+            this.toArray = function () {
+                return buffer;
+            }
+            // 倒序返回字符串
+            this.doReverse = function () {
+                var str = buffer.join('');
+                str = str.split('');
+                return str.reverse().join('');
+            }
         },
         toRoundOff: function (num) {
             if (num.toString().indexOf('.') > -1) {
@@ -310,19 +378,14 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             return num;
         },
         checkForm: function (flag) {
-            var name = $('.layui-layer-content [name=name]').val();
-            if (!name) {
-                layer.msg('产品品牌名称不能为空！', { time: 1200 });
+            var productCategroyId = $('.layui-layer-content [name=productCategroyId]').val();
+            if (!productCategroyId || productCategroyId == -1) {
+                layer.msg('车型类别二不能为空！', { time: 1200 });
                 return false;
             }
-            // var parent = $('.layui-layer-content [name=parent]').val();
-            // if (parent&&parent=="-1") {
-            //     layer.msg('请选择该产品品牌所属产品类别！', { time: 1500 });
-            //     return false;
-            // }
-            var namef = $('.layui-layer-content [name=imagefile]').val();
-            if (!namef && flag != 1) {
-                layer.msg('图片不能为空！', { time: 1200 });
+            var couponType = $('.layui-layer-content [name=couponType]').val();
+            if (!couponType && flag != 1) {
+                layer.msg('卡券类型不能为空！', { time: 1200 });
                 return false;
             }
             return true;

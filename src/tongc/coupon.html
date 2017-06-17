@@ -37,11 +37,13 @@
                                 <div class="layui-input-inline">
                                     <select id="statu" name="statu" lay-filter="brandName">
                                         <option value="-1" selected="selected">请选择</option>
-                                        <option value="1">未分配</option>
-                                        <option value="2">已分配</option>
-                                        <option value="3">已使用</option>
-                                        <option value="4">已过期</option>
-                                        <option value="5">已失效</option>
+                                        <option value="0">未使用</option>
+                                        <option value="1">已使用</option>
+                                        <!--<option value="1">未分配</option>-->
+                                        <!--<option value="2">已分配</option>-->
+                                        <!--<option value="3">已使用</option>-->
+                                        <!--<option value="4">已过期</option>-->
+                                        <!--<option value="5">已失效</option>-->
                                     </select>
                                 </div>
                                 <label class="layui-form-label">卡券类型</label>
@@ -49,8 +51,12 @@
                                 <div class="layui-input-inline">
                                     <select id="timelimit" name="counponType" lay-filter="">
                                         <option value="-1" selected="selected">请选择</option>
-                                        <option value="1">现金券</option>
-                                        <option value="2">洗车券</option>
+                                        <option value="1">现金券30元</option>
+                                        <option value="2">现金券50元</option>
+                                        <option value="3">现金券100元</option>
+                                        <option value="4">现金券150元</option>
+                                        <option value="5">现金券200元</option>
+                                        <option value="6">现金券300元</option>
                                     </select>
                                 </div>
                             </div>
@@ -138,8 +144,12 @@
                         <div class="layui-input-inline" style="width: 500px;">
                             <select class="counponType" name="couponType" lay-filter="counponType">
                                 <option selected="selected" value="-1">请选择卡券类型</option>
-                                <option value="1">现金券</option>
-                                <option value="2">洗车券</option>
+                                <option value="1">现金券30元</option>
+                                <option value="2">现金券50元</option>
+                                <option value="3">现金券100元</option>
+                                <option value="4">现金券150元</option>
+                                <option value="5">现金券200元</option>
+                                <option value="6">现金券300元</option>
                             </select>
                         </div>
                     </div>
@@ -155,7 +165,8 @@
                         <label class="layui-form-label">失效时间</label>
 
                         <div class="layui-input-inline" style="width: 500px;">
-                            <input type="text" class="layui-input" name="expireTime" id="expireTime" placeholder="卡券失效时间"
+                            <input type="text" class="layui-input" name="expireTime" id="expireTime"
+                                   placeholder="卡券失效时间"
                                    readonly="readonly" onclick="layui.laydate({elem: this})">
                         </div>
                     </div>
@@ -169,7 +180,8 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">面额</label>
                         <div class="layui-input-block" style="width: 500px;">
-                            <input type="number" class="layui-input" name="amount" placeholder="每张卡券面额(填写数字整数)" autocomplete="off">
+                            <input type="number" class="layui-input" name="amount" placeholder="每张卡券面额(填写数字整数)"
+                                   autocomplete="off">
                         </div>
                     </div>
                     <div class="layui-form-item">

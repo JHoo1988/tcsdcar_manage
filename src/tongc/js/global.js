@@ -132,6 +132,12 @@ layui.define(['jquery', 'layer', 'form'], function (exports) {
             saveProductTypeCategory: baseUrl + baseModifyUrl + 'productType/saveProductTypeCategory',
             // 产品品牌分类
             deleteProductTypeCategory: baseUrl + baseModifyUrl + 'productType/deleteProductTypeCategory',
+            // 卡券分配规则
+            saveCouponRole: baseUrl + baseModifyUrl + 'couponRole/saveCouponRole',
+            // 卡券分配规则列表
+            findAllCouponRole: baseUrl + baseModifyUrl + 'couponRole/findAllCouponRole',
+            // 卡券分配规则删除
+            deleteCouponRole: baseUrl + baseModifyUrl + 'couponRole/deleteCouponRole',
         };
         this.address = {};
         this.countdown = 60;

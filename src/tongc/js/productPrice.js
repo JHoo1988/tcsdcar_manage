@@ -287,7 +287,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             var _self = this;
             par.pageIndex = _self.pageIndex;
             par.pageSize = 14;
-            par.level = 2;
+            par.level = 1;
             $.ajax({
                 url: global.url.findAllProductBrandsCategory,
                 type: 'GET',
