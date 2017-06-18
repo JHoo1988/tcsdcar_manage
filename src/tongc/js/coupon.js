@@ -268,16 +268,22 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                             for (var i = 0; i < len; i++) {
                                 html += '<tr>';
                                 html += '<td>' + (i - 0 + 1) + '</td>';
-                                switch (dataList[i].couponType) {
-                                    case 1:
-                                        html += '<td>现金券</td>';
-                                        break;
-                                    case 2:
-                                        html += '<td>洗车券</td>';
-                                        break;
-                                    default:
-                                        break;
+                                var couponTypeStr='';
+                                var couponType = dataList[i].couponType;
+                                if(couponType=='1'){
+                                    couponTypeStr='现金券30元';
+                                }else if(couponType=='2'){
+                                    couponTypeStr='现金券50元';
+                                }else if(couponType=='3'){
+                                    couponTypeStr='现金券100元';
+                                }else if(couponType=='4'){
+                                    couponTypeStr='现金券150元';
+                                }else if(couponType=='5'){
+                                    couponTypeStr='现金券200元';
+                                }else if(couponType=='6'){
+                                    couponTypeStr='现金券300元';
                                 }
+                                html += '<td>' + couponTypeStr + '</td>';
                                 html += '<td>' + dataList[i].amount + '元</td>';
                                 html += '<td>' + dataList[i].code + '</td>';
                                 switch (dataList[i].statu) {

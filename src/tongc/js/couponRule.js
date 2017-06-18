@@ -118,8 +118,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             // 编辑项
             $(document).on('click', '.btn-edit', function () {
                 var id = $(this).data('id');
-                var name = $(this).data('name');
-                var parent = $(this).data('parent');
+                var couponType = $(this).data('coupontype');
 
                 var content = edit_win.html();
                 _self.layer_open_index = layer.open({
@@ -130,8 +129,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                     maxmin: true,
                     content: content
                 });
-                $('.layui-layer-content [name=name]').val(name);
-                $('.layui-layer-content [name=parent]').val(parent);
+                $('.layui-layer-content [name=couponType]').val(couponType);
                 $('.layui-layer-content [name=id]').val(id);
                 form.render();
                 $("#pop_up").remove();
@@ -173,11 +171,26 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
 
                                 html += '<tr>';
                                 html += '<td>' + (i - 0 + 1) + '</td>';
-                                html += '<td data-ct="' + dataList[i].name + '">' + dataList[i].name + '</td>';
-                                html += '<td data-ct="' + dataList[i].parentName +'">' + dataList[i].parentName + '</td>';
+                                var couponTypeStr='';
+                                var couponType = dataList[i].couponType;
+                                if(couponType=='1'){
+                                    couponTypeStr='现金券30元';
+                                }else if(couponType=='2'){
+                                    couponTypeStr='现金券50元';
+                                }else if(couponType=='3'){
+                                    couponTypeStr='现金券100元';
+                                }else if(couponType=='4'){
+                                    couponTypeStr='现金券150元';
+                                }else if(couponType=='5'){
+                                    couponTypeStr='现金券200元';
+                                }else if(couponType=='6'){
+                                    couponTypeStr='现金券300元';
+                                }
+                                html += '<td data-ct="' + couponTypeStr + '">' + couponTypeStr + '</td>';
+                                html += '<td data-ct="' + dataList[i].productCategroyName +'">' + dataList[i].productCategroyName + '</td>';
                                 // html += '<td>' + dataList[i].createTime + '</td>';
                                 html += '<td>'
-                                    + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" data-parent="' + dataList[i].parent + '" data-name="' + dataList[i].name + '" class="layui-btn layui-btn-mini btn-edit">编辑</a>'
+                                    + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" data-coupontype="' + dataList[i].couponType + '" class="layui-btn layui-btn-mini btn-edit">编辑</a>'
                                     + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" class="layui-btn layui-btn-mini layui-btn-danger btn-del">删除</a>'
                                     + '</td>';
                                 html += '</tr>';
