@@ -187,7 +187,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                                     couponTypeStr='现金券300元';
                                 }
                                 html += '<td data-ct="' + couponTypeStr + '">' + couponTypeStr + '</td>';
-                                html += '<td data-ct="' + dataList[i].productCategroyName +'">' + dataList[i].productCategroyName + '</td>';
+                                html += '<td data-ct="' + dataList[i].parentName+ dataList[i].productCategroyName +'">' + dataList[i].parentName+ dataList[i].productCategroyName + '</td>';
                                 // html += '<td>' + dataList[i].createTime + '</td>';
                                 html += '<td>'
                                     + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" data-coupontype="' + dataList[i].couponType + '" class="layui-btn layui-btn-mini btn-edit">编辑</a>'

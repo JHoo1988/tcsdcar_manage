@@ -123,7 +123,7 @@ layui.define(['jquery', 'layer', 'form'], function (exports) {
             // 卡券库存列表
             findAllCoupon: baseUrl + baseModifyUrl + 'coupon/findAllCoupon',
             // PC获取卡券列表（已分配，已使用）
-            findAllCouponConsumRecord: baseUrl + baseModifyUrl + 'coupon/findAllCouponConsumRecord',
+            findAllCouponConsumRecord: baseUrl + baseModifyUrl + 'consumRecord/findAllCouponConsumRecord',
             // 卡券生成接口
             generateCouponBatch: baseUrl + baseModifyUrl + 'coupon/generateCouponBatch',
             // 产品品牌分类

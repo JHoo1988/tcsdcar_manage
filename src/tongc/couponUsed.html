@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>同创盛大服务平台</title>
+    <meta name="viewport" content="initial-scale=1.0,width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="renderer" content="webkit"/>
+    <link rel="stylesheet" type="text/css" href="css/msp.css">
+    <link rel="stylesheet" type="text/css" href="css/baseData.css">
+    <link rel="stylesheet" type="text/css" href="css/simple-pager.css">
+    <link rel="stylesheet" type="text/css" href="lib/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="css/couponUsed.css">
+    <style>
+        .layui-layer-content {
+            overflow-y: hidden !important;
+        }
+    </style>
+</head>
+<body style="min-width: 800px; min-height: 870px; background-color: #fff;" id="baseData">
+
+<div style="width: 100%; margin-left: 0;">
+    <div class="upmc-wp">
+        <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+            <ul class="layui-tab-title">
+                <li class="layui-this">卡券管理</li>
+            </ul>
+        </div>
+        <div class="content-box">
+            <div>
+                <div class="pull-left ">
+                    <div style="margin-top: 24px;">
+                        <div class="dp-filter layui-form">
+                            <!--<div class="layui-form-item">-->
+                                <!--<label class="layui-form-label">卡券状态</label>-->
+
+                                <!--<div class="layui-input-inline">-->
+                                    <!--<select id="statu" name="statu" lay-filter="brandName">-->
+                                        <!--<option value="-1" selected="selected">请选择</option>-->
+                                        <!--<option value="0">未使用</option>-->
+                                        <!--<option value="1">已使用</option>-->
+                                        <!--&lt;!&ndash;<option value="1">未分配</option>&ndash;&gt;-->
+                                        <!--&lt;!&ndash;<option value="2">已分配</option>&ndash;&gt;-->
+                                        <!--&lt;!&ndash;<option value="3">已使用</option>&ndash;&gt;-->
+                                        <!--&lt;!&ndash;<option value="4">已过期</option>&ndash;&gt;-->
+                                        <!--&lt;!&ndash;<option value="5">已失效</option>&ndash;&gt;-->
+                                    <!--</select>-->
+                                <!--</div>-->
+                                <!--<label class="layui-form-label">卡券类型</label>-->
+
+                                <!--<div class="layui-input-inline">-->
+                                    <!--<select id="timelimit" name="counponType" lay-filter="">-->
+                                        <!--<option value="-1" selected="selected">请选择</option>-->
+                                        <!--<option value="1">现金券30元</option>-->
+                                        <!--<option value="2">现金券50元</option>-->
+                                        <!--<option value="3">现金券100元</option>-->
+                                        <!--<option value="4">现金券150元</option>-->
+                                        <!--<option value="5">现金券200元</option>-->
+                                        <!--<option value="6">现金券300元</option>-->
+                                    <!--</select>-->
+                                <!--</div>-->
+                            <!--</div>-->
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">有效时间</label>
+
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" name="startTime" placeholder="起始时间"
+                                           readonly="readonly" onclick="layui.laydate({elem: this})">
+                                </div>
+                                <label class="layui-form-label">至</label>
+
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" name="endTime" placeholder="结束时间"
+                                           readonly="readonly" onclick="layui.laydate({elem: this})">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">关键字</label>
+
+                                <div class="layui-input-inline" style="width: 500px;">
+                                    <input type="text" class="layui-input" id="carBodyNo"
+                                           placeholder="输入 完整的店铺编码 搜索">
+                                </div>
+                                <div class="layui-input-inline" style="width: 120px; margin-left: 52px;">
+                                    <input type="button" id="btn-search" class="layui-btn layui-btn-normal" value="搜索"
+                                           style="width: 120px;">
+                                </div>
+                                <!--<div class="layui-input-inline" style="width: 120px;">-->
+                                    <!--<input type="button" id="btn-export"-->
+                                           <!--class="layui-btn layui-btn-primary layui-btn-disabled" value="发送续保短信"-->
+                                           <!--style="width: 120px;">-->
+                                <!--</div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="grid-wrapper">
+                    <table id="dg_list" class="layui-table" lay-skin="line" lay-even>
+                        <thead>
+                        <tr class="list-head">
+                            <th style="width: 40px;">编号</th>
+                            <th style="width: 120px;">类型</th>
+                            <th style="width: 80px;">面额</th>
+                            <th style="width: 100px;">卡券编码</th>
+                            <th style="width: 60px;">状态</th>
+                            <th style="width: 100px;">生效时间</th>
+                            <th style="width: 150px;">失效时间</th>
+                            <th>描述</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+
+                    <div class="pager-footer simple-pager-wrapper page-layout">
+                        <div style="visibility:hidden" class="simple-pager">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div id="pop_up" style="display: none">
+    <div class="up-popup upp-addrecord" id="product_win">
+        <div class="upp-cont">
+            <div class="add_edit_dlg layui-form">
+                <form id="uploadForm" enctype="multipart/form-data">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">卡券类型</label>
+                        <div class="layui-input-inline" style="width: 500px;">
+                            <select class="counponType" name="couponType" lay-filter="counponType">
+                                <option selected="selected" value="-1">请选择卡券类型</option>
+                                <option value="1">现金券30元</option>
+                                <option value="2">现金券50元</option>
+                                <option value="3">现金券100元</option>
+                                <option value="4">现金券150元</option>
+                                <option value="5">现金券200元</option>
+                                <option value="6">现金券300元</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">生效时间</label>
+
+                        <div class="layui-input-inline" style="width: 500px;">
+                            <input type="text" class="layui-input" name="startTime" id="startTime" placeholder="卡券生效时间"
+                                   readonly="readonly" onclick="layui.laydate({elem: this})">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">失效时间</label>
+
+                        <div class="layui-input-inline" style="width: 500px;">
+                            <input type="text" class="layui-input" name="expireTime" id="expireTime"
+                                   placeholder="卡券失效时间"
+                                   readonly="readonly" onclick="layui.laydate({elem: this})">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">生成数量</label>
+                        <div class="layui-input-block" style="width: 500px;">
+                            <input type="number" class="layui-input" name="total" placeholder="生成卡券的数量(填写数字整数)"
+                                   autocomplete="off" maxlength="30">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">面额</label>
+                        <div class="layui-input-block" style="width: 500px;">
+                            <input type="number" class="layui-input" name="amount" placeholder="每张卡券面额(填写数字整数)"
+                                   autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">描述</label>
+                        <div class="layui-input-block" style="width: 500px;">
+                            <input type="text" class="layui-input" name="couponDesc" autocomplete="off"
+                                   placeholder="卡券的使用范围，使用规则等(卡券一旦生成，描述不可更改！)" maxlength="500">
+                        </div>
+                    </div>
+                    <!--<input style="display: none;" type="text" name="id">-->
+                </form>
+            </div>
+            <div class="layui-form-item" style="text-align: center">
+                <a href="javascript:void(0)" class="layui-btn layui-btn-normal js-btn-update" id="btn-update"
+                   style="width: 120px;">保存</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="lib/layui/layui.js"></script>
+<script src="config/main.js"></script>
+<script src="js/couponUsed.js?v20170618"></script>
+</body>
+</html>
+
+
+
