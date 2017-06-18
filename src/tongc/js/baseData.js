@@ -78,7 +78,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 _self.layer_open_index = layer.open({
                     type: 1,
                     title: '新增汽车型号',
-                    area: ['700px', 'auto'], //宽高
+                    area: ['700px', '550px'], //宽高
                     fixed: false, //不固定
                     maxmin: true,
                     content: content
@@ -122,7 +122,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                     _self.layer_open_index = layer.open({
                         type: 1,
                         title: '编辑汽车型号',
-                        area: ['700px', 'auto'], //宽高
+                        area: ['700px', '550px'], //宽高
                         fixed: false, //不固定
                         maxmin: true,
                         content: content
