@@ -226,6 +226,9 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                     var formData = new FormData($("#uploadForm")[0]);
                     // formData.append("parent",1);
                     formData.append("level",1);
+                    formData.append("twelveCyclePrice",0);
+                    formData.append("twentyFourCyclePrice",0);
+                    formData.append("thirtySixCyclePrice",0);
                     formData.append("token",$.cookie('userToken'));
                     $.ajax({
                         url: global.url.saveProductCategory,
