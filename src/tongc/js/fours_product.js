@@ -41,7 +41,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
         bindEvent: function () {
             var _self = this;
             $("#btn-search").bind('click', function () {
-                _self.par.brands = $(".brands_search").val();
+                _self.par.brandsId = $(".brands_search").val();
                 _self.pageIndex = 1;
                 _self.getData(_self.par);
             });
