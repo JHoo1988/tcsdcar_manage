@@ -106,6 +106,8 @@ layui.define(['jquery', 'layer', 'form'], function (exports) {
             findAllProductModel: baseUrl + baseModifyUrl + 'productModel/findAllProductModel',
             // 保存、修改车型
             saveProductModel: baseUrl + baseModifyUrl + 'productModel/saveProductModel',
+            // 删除车型
+            deleteProductModel: baseUrl + baseModifyUrl + 'productModel/deleteProductModel',
             // 产品品牌
             saveProductBrandsCategory: baseUrl + baseModifyUrl + 'productBrandsCategory/saveProductBrandsCategory',
             // 产品品牌
