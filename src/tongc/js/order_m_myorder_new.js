@@ -440,6 +440,8 @@ layui.use(['jquery', 'layedit', 'md5', 'simplePager', 'laydate', 'layer', 'cooki
                     var statu = $('.layui-layer-content [name=statu]').val();
                     if (!statu || 1 == statu) {
                         formData.append("sendSms", 0);
+                    }else{
+                        formData.append("sendSms", 1);//1发送，0不发送
                     }
                     $.ajax({
                         url: global.url.addOrder,
