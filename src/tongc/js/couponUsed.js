@@ -279,19 +279,23 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                                 }else if(couponType=='6'){
                                     couponTypeStr='现金券300元';
                                 }
-                                html += '<td>' + couponTypeStr + '</td>';
-                                html += '<td>' + dataList[i].amount + '元</td>';
+                                html += '<td>现金券</td>';
+                                // html += '<td>' + dataList[i].amount + '元</td>';
                                 html += '<td>' + dataList[i].code + '</td>';
-                                switch (dataList[i].statu) {
-                                    case 0:
-                                        html += '<td>未分配</td>';
-                                        break;
-                                    default:
-                                        break;
+                                // switch (dataList[i].statu) {
+                                //     case 0:
+                                //         html += '<td>未分配</td>';
+                                //         break;
+                                //     default:
+                                //         break;
+                                // }
+                                html += '<td >' + dataList[i].createTimeStr + '</td>';
+                                // html += '<td>' + dataList[i].expireTimeStr + '</td>';
+                                if(dataList[i].shopCode){
+                                    html += '<td data-ct="' + dataList[i].shopCode + '">' + dataList[i].shopCode + '</td>';
+                                }else{
+                                    html += '<td>暂未使用</td>';
                                 }
-                                html += '<td >' + dataList[i].startTimeStr + '</td>';
-                                html += '<td>' + dataList[i].expireTimeStr + '</td>';
-                                html += '<td data-ct="' + dataList[i].couponDesc + '">' + dataList[i].couponDesc + '</td>';
                                 html += '</tr>';
                             }
                             $("#dg_list tbody").empty().append(html);
