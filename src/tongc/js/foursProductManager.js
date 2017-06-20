@@ -1,7 +1,7 @@
 /**
  * 基础数据 - 产品列表
  */
-layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'global', 'upload','upmobui'], function () {
+layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'global', 'upload', 'upmobui'], function () {
     var $ = layui.jquery,
         layer = layui.layer,
         simplePager = layui.simplePager,
@@ -11,6 +11,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
     var carId = '';
     var carName = '';
     var carBrandsId = '';
+    var smallCategory = '';
 
     var Page = function () {
         this.layer_index = null;
@@ -40,8 +41,9 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
             carId = contentarry[0];
             carName = contentarry[1];
             carBrandsId = contentarry[2];
-            if(carName){
-                $('.top_title').text(carName+'产品管理');
+            smallCategory = contentarry[3];
+            if (carName) {
+                $('.top_title').text(carName + '产品管理');
             }
             _self.getData(par);
             _self.bindEvent();
@@ -244,7 +246,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                             layer.msg('登录已失效，请重新登录...', { time: 1200 }, function () {
                                 window.parent.location.href = 'login.html';
                             });
-                        }else{
+                        } else {
                             layer.msg('操作失败!', { time: 1200 });
                         }
                     }
@@ -262,10 +264,10 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                     var productName = $(".brands").find("option:selected").text();
                     _self.layer_index = layer.load(2);
                     var formData = new FormData($("#uploadForm")[0]);
-                    formData.append("token",$.cookie('userToken'));
-                    formData.append("brands",carBrandsId);
-                    formData.append("productModelId",carId);
-                    formData.append("productName",productName);
+                    formData.append("token", $.cookie('userToken'));
+                    formData.append("brands", carBrandsId);
+                    formData.append("productModelId", carId);
+                    formData.append("productName", productName);
                     $.ajax({
                         url: global.url.addProduct,
                         type: 'POST',
@@ -295,7 +297,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                                     layer.msg('登录已失效，请重新登录...', { time: 1200 }, function () {
                                         window.parent.location.href = 'login.html';
                                     });
-                                }else{
+                                } else {
                                     layer.msg('操作失败!', { time: 1200 });
                                 }
                             }
@@ -308,6 +310,127 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                     })
                 }
             });
+        },
+        addProductActionMy: function (flag) {
+            var _self = this;
+            var twelvecycleprice = 0;
+            var twentyfourcycleprice = 0;
+            var thirtysixcycleprice = 0;
+            if (smallCategory == 'bba5f534090b4a27999b5dc2f250d0b4') {//国产轿车-紧凑型
+                twelvecycleprice = 108;
+                twentyfourcycleprice = 198;
+                thirtysixcycleprice = 259;
+            } else if (smallCategory == 'a89e758c691f4979b97b766b7ac40c4d' || smallCategory == '2e419539044d46a3bc953473f150a44a') {//国产轿车-中型  国产SUV-紧凑型
+                twelvecycleprice = 158;
+                twentyfourcycleprice = 288;
+                thirtysixcycleprice = 379;
+            } else if (smallCategory == 'ef9f26dbf7ce452788d0c9f231c04b9c' || smallCategory == '47e29bda83474e2f84c5890ae9dfeb4b') {//国产轿车-大中型  国产SUV-中型
+                twelvecycleprice = 188;
+                twentyfourcycleprice = 358;
+                thirtysixcycleprice = 457;
+            } else if (smallCategory == '6beeb4f814a34375a35ee6c2c449ffee') {//国产SUV-大中型
+                twelvecycleprice = 208;
+                twentyfourcycleprice = 378;
+                thirtysixcycleprice = 508;
+            } else if (smallCategory == '0dd9a3650464465a8ea9888f8c036f90' || smallCategory == '22663b67f04a4b38b5c12bbbf6baac2f') {//合资SUV和合资轿车-紧凑型
+                twelvecycleprice = 168;
+                twentyfourcycleprice = 308;
+                thirtysixcycleprice = 409;
+            } else if (smallCategory == '581ae92cfbd0492393a0c9851a726d6d' || smallCategory == '8d58afaf309a453d8a1446aa2cf423e9') {//合资SUV和合资轿车-中型
+                twelvecycleprice = 228;
+                twentyfourcycleprice = 416;
+                thirtysixcycleprice = 550;
+            } else if (smallCategory == '930d5882885c453194c4addb50dd9905' || smallCategory == '935d67cea04342cd8a8a916f45381371' || smallCategory == '0b81790c6a7a4168ae741e4bb2d24bf8' || smallCategory == '03ffcb5adf9e44c18b0ce850e2c47a27' || smallCategory == '0e122d2656ce40b7bd667460481b86aa') {//合资SUV和合资轿车-中大型，进口轿车和进口SUV-紧凑型,合资MPV
+                twelvecycleprice = 398;
+                twentyfourcycleprice = 722;
+                thirtysixcycleprice = 958;
+            } else if (smallCategory == 'd0d21bc4913a476db368a7134a67b136' || smallCategory == 'b8754d6b1d17449884a12bb13a2911ac') {//合资SUV和合资轿车-大型
+                twelvecycleprice = 419;
+                twentyfourcycleprice = 758;
+                thirtysixcycleprice = 1008;
+            } else if (smallCategory == '49aa7e992e6f4b3d83156a3b81561726' || smallCategory == '3741b710a0e54db9a1b6a7f8b3df7fba') {//进口轿车和进口SUV-中型
+                twelvecycleprice = 798;
+                twentyfourcycleprice = 1439;
+                thirtysixcycleprice = 1918;
+            } else if (smallCategory == '58f34bc4b3ce4fffb1d63255a3680d59' || smallCategory == '9a1e5f380cc64a46ab453bceef53960f') {//进口轿车和进口SUV-中大型
+                twelvecycleprice = 898;
+                twentyfourcycleprice = 1618;
+                thirtysixcycleprice = 2158;
+            } else if (smallCategory == '73705e3ae0dd479f894f848b0d46d841' || smallCategory == 'fe50ad984438488b8308a5acc13dcacd') {//进口轿车和进口SUV-大型
+                twelvecycleprice = 1680;
+                twentyfourcycleprice = 3028;
+                thirtysixcycleprice = 4038;
+            } else if (smallCategory == '01442e12499a4eb5af7445dd8021b1da') {//进口MPV
+                twelvecycleprice = 898;
+                twentyfourcycleprice = 1618;
+                thirtysixcycleprice = 1918;
+            } else if (smallCategory == 'c02a7d26838d4b94a0b95016f42121e6') {//进口跑车
+                twelvecycleprice = 2680;
+                twentyfourcycleprice = 4828;
+                thirtysixcycleprice = 6438;
+            } else if (smallCategory == '05ed41a42dec485bb7d6c0955ab6e0db') {//国产MPV
+                twelvecycleprice = 115;
+                twentyfourcycleprice = 208;
+                thirtysixcycleprice = 278;
+            }
+            var productdesc = "汽车玻璃破损服务";
+            $('.layui-layer-content [name=productType]').val("5cc3516f4a73475693b0fe20c59c67b9");//玻璃破损服务
+            $('.layui-layer-content [name=twelveCyclePrice]').val(twelvecycleprice);
+            $('.layui-layer-content [name=twentyFourCyclePrice]').val(twentyfourcycleprice);
+            $('.layui-layer-content [name=thirtySixCyclePrice]').val(thirtysixcycleprice);
+            $('.layui-layer-content [name=productDesc]').val(productdesc);
+            form.render();
+
+            if (_self.checkForm(flag)) {
+                var productName = $(".brands").find("option:selected").text();
+                _self.layer_index = layer.load(2);
+                var formData = new FormData($("#uploadForm")[0]);
+                formData.append("token", $.cookie('userToken'));
+                formData.append("brands", carBrandsId);
+                formData.append("productModelId", carId);
+                formData.append("productName", productName);
+                $.ajax({
+                    url: global.url.addProduct,
+                    type: 'POST',
+                    dataType: 'json',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    beforeSend: function () {
+                        $('.js-btn-update')[0].disabled = true;
+                    },
+                    success: function (data) {
+                        if (undefined != data && null != data && data.code == 200) {
+                            layer.close(_self.layer_index);
+                            var flagmsg = '新增成功！';
+                            if (flag == 1) {
+                                flagmsg = '编辑成功！';
+                            }
+                            layer.msg(flagmsg, { time: 500 }, function () {
+                                // var par = _self.getParam();
+                                // _self.getData(par);
+                                layer.close(_self.layer_open_index);
+                                window.history.go(-1);
+                            });
+                        } else {
+                            layer.close(_self.layer_index);
+                            $('.js-btn-update')[0].disabled = false;
+                            if (data.code == 510) {
+                                layer.msg('登录已失效，请重新登录...', { time: 1200 }, function () {
+                                    window.parent.location.href = 'login.html';
+                                });
+                            } else {
+                                layer.msg('操作失败!', { time: 1200 });
+                            }
+                        }
+                    },
+                    error: function (e) {
+                        $('.js-btn-update')[0].disabled = false;
+                        layer.close(_self.layer_index);
+                        layer.msg('系统错误，请稍后重试！', { time: 500 });
+                    }
+                })
+            }
         },
         toRoundOff: function (num) {
             if (num.toString().indexOf('.') > -1) {

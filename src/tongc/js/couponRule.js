@@ -198,7 +198,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                             $("#dg_list tbody").empty().append(html);
 
                             _self.totalSize = data.data.totalSize;
-                            _self.totalPage = Math.ceil(_self.totalSize / _self.pageSize);
+                            _self.totalPage = data.data.totalPage;
                             $('.pager-footer').show();
                             simplePager.setup({
                                 item: '.simple-pager-wrapper .simple-pager',

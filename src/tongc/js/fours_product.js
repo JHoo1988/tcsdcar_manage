@@ -97,8 +97,9 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 var productname = $(this).data('productname');
                 var brandsname = $(this).data('brandsname');
                 var brands = $(this).data('brands');
+                var smallCategory = $(this).data('smallcategory');
                 var id = $(this).data('id');
-                $('#myIframe', parent.document).attr('src', 'foursProductManager.html#' + id + ',' + brandsname + productname + ',' + brands);
+                $('#myIframe', parent.document).attr('src', 'foursProductManager.html#' + id + ',' + brandsname + productname + ',' + brands+ ',' +smallCategory);
             });
             // 显示价格
             $(document).on('click', '.show_price', function () {
@@ -216,7 +217,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                                 html += '<td><a data-id="' + dataList[i].id + '" data-name="' + dataList[i].brandsName + dataList[i].name + '" class="show_price" href="javascript:;" style="color: #00bbfe;text-decoration: underline">点击查看产品价格</a></td>';
                                 // html += '<td>' + dataList[i].createTimeStr + '</td>';
                                 html += '<td>'
-                                    + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '"  data-brandsname="' + dataList[i].brandsName + '" data-brands="' + dataList[i].brandsId + '" data-productname="' + dataList[i].name + '" class="layui-btn layui-btn-mini btn-edit">编辑产品</a>'
+                                    + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '"  data-brandsname="' + dataList[i].brandsName + '" data-brands="' + dataList[i].brandsId + '" data-productname="' + dataList[i].name + '" data-smallcategory="' + dataList[i].categroyId + '" class="layui-btn layui-btn-mini btn-edit">编辑产品</a>'
                                     // + '<a href="javascript:void(0);" data-id="' + dataList[i].id + '" class="layui-btn layui-btn-mini layui-btn-danger btn-del">删除产品</a>'
                                     + '</td>';
                                 html += '</tr>';
