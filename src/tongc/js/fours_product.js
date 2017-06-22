@@ -128,25 +128,25 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                             html += '<div class="layui-form-item">' +
                                 '   <label class="layui-form-label" style="width: 90px;">12期价格</label>' +
                                 '<div class="layui-input-block" style="width: 500px;margin-left: 120px;">' +
-                                '   <input type="text" class="layui-input" value="' + product.twelveCyclePrice + '" name="twelveCyclePrice" placeholder="暂无汽车膜质保服务12期价格" readonly="true">' +
+                                '   <input type="text" class="layui-input" value="' + product.twelveCyclePrice + '" name="twelveCyclePrice" placeholder="暂无玻璃贴膜破损服务12期价格" readonly="true">' +
                                 '   </div>' +
                                 '   </div>' +
                                 '<div class="layui-form-item">' +
                                 '   <label class="layui-form-label" style="width: 90px;">24期价格</label>' +
                                 '<div class="layui-input-block" style="width: 500px;margin-left: 120px;">' +
-                                '   <input type="text" class="layui-input" value="' + product.twentyFourCyclePrice + '" name="twentyFourCyclePrice" placeholder="暂无汽车膜质保服务24期价格" readonly="true">' +
+                                '   <input type="text" class="layui-input" value="' + product.twentyFourCyclePrice + '" name="twentyFourCyclePrice" placeholder="暂无玻璃贴膜破损服务24期价格" readonly="true">' +
                                 '</div>' +
                                 '</div>' +
                                 '<div class="layui-form-item">' +
                                 '<label class="layui-form-label" style="width: 90px;">36期价格</label>' +
                                 '<div class="layui-input-block" style="width: 500px;margin-left: 120px;">' +
-                                '<input type="text" class="layui-input" value="' + product.thirtySixCyclePrice + '" name="thirtySixCyclePrice" placeholder="暂无汽车膜质保服务36期价格" readonly="true">' +
+                                '<input type="text" class="layui-input" value="' + product.thirtySixCyclePrice + '" name="thirtySixCyclePrice" placeholder="暂无玻璃贴膜破损服务36期价格" readonly="true">' +
                                 '</div>' +
                                 '</div>' +
                                 '<div class="layui-form-item">' +
                                 '<label class="layui-form-label" style="width: 90px;">描述信息</label>' +
                                 '<div class="layui-input-block" style="width: 500px;margin-left: 120px;">' +
-                                '<input type="text" class="layui-input" value="' + product.productDesc + '" name="productDesc" placeholder="暂无汽车膜质保服务产品描述信息" readonly="true">' +
+                                '<input type="text" class="layui-input" value="' + product.productDesc + '" name="productDesc" placeholder="暂无玻璃贴膜破损服务产品描述信息" readonly="true">' +
                                 '</div>' +
                                 '</div>' +
                                 '</div>'
@@ -307,19 +307,19 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
 
             var twelveCyclePrice = $('.layui-layer-content #productForm0 [name=twelveCyclePrice]').val();
             if (!twelveCyclePrice) {
-                layer.msg('汽车膜质保12期价格不能为空！', { time: 1200 });
+                layer.msg('玻璃贴膜破损12期价格不能为空！', { time: 1200 });
                 return false;
             }
 
             var twentyFourCyclePrice = $('.layui-layer-content #productForm0 [name=twentyFourCyclePrice]').val();
             if (!twentyFourCyclePrice) {
-                layer.msg('汽车膜质保24期价格不能为空！', { time: 1200 });
+                layer.msg('玻璃贴膜破损24期价格不能为空！', { time: 1200 });
                 return false;
             }
 
             var thirtySixCyclePrice = $('.layui-layer-content #productForm0 [name=thirtySixCyclePrice]').val();
             if (!thirtySixCyclePrice) {
-                layer.msg('汽车膜质保36期价格不能为空！', { time: 1200 });
+                layer.msg('玻璃贴膜破损36期价格不能为空！', { time: 1200 });
                 return false;
             }
             twelveCyclePrice = $('.layui-layer-content #productForm1 [name=twelveCyclePrice]').val();
