@@ -68,28 +68,28 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 }
             })
 
-            // 删除项
-            $(document).on('click', '.btn-del', function (event) {
-                event.preventDefault();
-                var id = $(this).data('id');
-                var par = _self.getParam();
-                par.ids = id;
-                layer.confirm('是否删除此汽车型号?', {
-                    btn: ['是', '否']
-                }, function () {
-                    $.post(global.url.deleteProduct, par, function (data, textStatus, xhr) {
-                        if (data.code == 200) {
-                            layer.msg('删除成功！', { time: 500 }, function () {
-                                _self.getData(par);
-                            });
-                        } else {
-                            layer.msg("删除失败，请重试！", { time: 500 });
-                        }
-                    });
-                }, function () {
-                    layer.closeAll();
-                });
-            });
+            // // 删除项
+            // $(document).on('click', '.btn-del', function (event) {
+            //     event.preventDefault();
+            //     var id = $(this).data('id');
+            //     var par = _self.getParam();
+            //     par.ids = id;
+            //     layer.confirm('是否删除此汽车型号?', {
+            //         btn: ['是', '否']
+            //     }, function () {
+            //         $.post(global.url.deleteProduct, par, function (data, textStatus, xhr) {
+            //             if (data.code == 200) {
+            //                 layer.msg('删除成功！', { time: 500 }, function () {
+            //                     _self.getData(par);
+            //                 });
+            //             } else {
+            //                 layer.msg("删除失败，请重试！", { time: 500 });
+            //             }
+            //         });
+            //     }, function () {
+            //         layer.closeAll();
+            //     });
+            // });
 
             // 编辑项
             $(document).on('click', '.btn-edit', function () {
