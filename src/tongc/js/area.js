@@ -112,7 +112,7 @@ layui.use(['jquery', 'simplePager', 'laydate', 'form', 'layer', 'cookie', 'globa
                 layer.confirm('是否删这一地区?', {
                     btn: ['是', '否']
                 }, function () {
-                    $.post(global.url.deleteProduct, par, function (data, textStatus, xhr) {
+                    $.post(global.url.deleteArea, par, function (data, textStatus, xhr) {
                         if (data.code == 200) {
                             layer.msg('删除成功！', { time: 500 }, function () {
                                 _self.getData(par);
